@@ -152,13 +152,13 @@ export default function App() {
   return <div className="app-shell">
     <a href="#main-content" className="skip-link">Skip to content</a>
     <header className="floating-toolbar">
-      <div className="app-wordmark"><span className="wordmark-symbol"><Icon name="layers" /></span><strong>Exam <span>Quizer</span></strong></div>
       <nav ref={mainNav} className="main-nav sliding-indicator" aria-label="Main navigation">
         {([{ id: 'practice', label: 'Practice', icon: 'book' }, { id: 'history', label: 'Results', icon: 'chart' }, { id: 'syllabus', label: 'Syllabus', icon: 'layers' }] as const).map(item => <button key={item.id} className={'nav-item' + (view === item.id ? ' is-current' : '')} onClick={() => navigate(item.id)} aria-current={view === item.id ? 'page' : undefined}><Icon name={item.icon} />{item.label}</button>)}
       </nav>
-      <div className="display-controls"><span className="local-status"><span />{storageAvailable ? 'Saved locally' : 'Storage unavailable'}</span><button className="icon-button theme-toggle" title={theme === 'dark' ? 'Light theme' : 'Dark theme'} aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}><Icon name={theme === 'dark' ? 'sun' : 'moon'} /></button></div>
+      <div className="display-controls"><button className="icon-button theme-toggle" title={theme === 'dark' ? 'Light theme' : 'Dark theme'} aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}><Icon name={theme === 'dark' ? 'sun' : 'moon'} /></button></div>
     </header>
 
+    <div className="workspace">
     <aside className="sidebar" aria-label="Courses and topics">
       <div className="sidebar-title"><h2>Your courses</h2><span className="quiet-badge">2 courses</span></div>
       <div className="course-options">
@@ -266,6 +266,7 @@ export default function App() {
         <section className="panel sources-panel"><div className="panel-heading"><h2>Source library</h2><span className="quiet-badge">{countLabel(courseSources.length, 'document')}</span></div><p>Use these filenames to find the original course materials.</p><details className="source-catalog"><summary>Show sources</summary><ul>{courseSources.map(source => <li key={source.path}><span className="quiet-badge">{source.kind}</span><div><strong>{source.title}</strong><small>{source.path}</small></div></li>)}</ul></details></section>
       </>}
     </main>
+    </div>
     <dialog ref={endDialog} className="confirm-dialog" onCancel={() => setConfirmEnd(false)} onClose={() => setConfirmEnd(false)} aria-labelledby="end-title"><h2 id="end-title">End this session?</h2><p>Your submitted answers will be saved. Skipped questions count as unanswered.</p><div><button className="secondary-button" autoFocus onClick={() => setConfirmEnd(false)}>Resume session</button><button className="primary-button" onClick={() => active && finish(active, 'manual')}>End and view results</button></div></dialog>
   </div>
 }

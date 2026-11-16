@@ -8,6 +8,6 @@ The questions draw on my notes, lectures, group exercises, GitHub course materia
 
 With Node.js 24 or later, run `npm ci` and `npm run dev`, then open [the local app](http://127.0.0.1:5174/).
 
-## GitHub Pages
+## Try it
 
-Select **Settings → Pages → Source → GitHub Actions**, then run **Deploy Exam Quizer** on `main`. Later pushes to `main` deploy automatically.
+[Open Study Deck](https://knukev.github.io/Study_deck/)
