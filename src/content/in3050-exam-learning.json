@@ -1,0 +1,2895 @@
+[
+  {
+    "id": "in3050-extra-ml-001",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "A store should preach how many minutes a delivery takes, based on marked examples. Why is this guided regression?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The target is a numerical value and the training data have observed delivery times."
+      },
+      {
+        "id": "b",
+        "text": "The goal is always to divide customers into unmarked groups."
+      },
+      {
+        "id": "c",
+        "text": "All problems with numbers like input are regression, regardless of the target variable."
+      },
+      {
+        "id": "d",
+        "text": "Guided learning requires that the goal only has two possible values."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The target variable distinguishes regression from classification. Delivery time is numerical, and the times in the training set provide the targets.",
+    "source": "Perceptron and Linear Regression · Paragraphs 122–136",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Perceptron and Linear Regression.docx",
+        "location": "Paragraphs 122–136"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-002",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "A feature has the three unordered values red, green, and blue. What representation avoids imposing a numerical order on the categories?",
+    "options": [
+      {
+        "id": "a",
+        "text": "One feature where all categories get the same value."
+      },
+      {
+        "id": "b",
+        "text": "Three indicators: \\((1,0,0)\\), \\((0,1,0)\\) and \\((0,0,1)\\)."
+      },
+      {
+        "id": "c",
+        "text": "One feature with the values 1, 2 and 3, used as normal numerical distance."
+      },
+      {
+        "id": "d",
+        "text": "One feature that uses the number of letters in the colour name."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "One-hot encoding gives each category a separate indicator. Any integers used directly in a distance model introduce differences that do not result from the unarranged categories.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF pages 4–5 · question 3: Features",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF pages 4–5 · question 3: Features"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-003",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "A data set has two numerical features and one categorical feature with four values. The category texture is replaced by a full one-hot encoding without dropping a category. How many features does each observation get, before adding the bias?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(8\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(6\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(3\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Keep the two numeric values. One categorical value becomes four indicators, so the number becomes \\(2+4=6\\).",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 5 · question 3c",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 5 · question 3c"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-004",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "boolean",
+    "prompt": "Substitution of a numerical feature by range categories may make two previously different values impossible to distinguish by using this feature alone.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "Two numbers in the same range are given the same category. Discretisation may therefore lose information about differences within the range.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 6 · question 3e",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 6 · question 3e"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-005",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "A min-max scaler is adapted to the training index with \\(\\min=10\\) and \\(\\max=30\\). The same scaler is used without cutting to a new value of 5. What is the result?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.25\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(5\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(-0.25\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The transformation is \\(\\frac{x-\\min}{\\max-\\min}\\). The new value is \\(\\frac{5-10}{30-10}=\\frac{-5}{20}=-0.25\\). New observations may be outside the training interval.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 12–13 · question 7a",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 12–13 · question 7a"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-006",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "For one feature, the training average is 80 and the standard deviation 10. A new observation has value 95. What does the standardized value mean?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.5: the observation is located 1.5 training standard deviation above the training average."
+      },
+      {
+        "id": "b",
+        "text": "0.95: value is 95 percent of maximum."
+      },
+      {
+        "id": "c",
+        "text": "15: subtract only the average."
+      },
+      {
+        "id": "d",
+        "text": "−1.5: the observation is below the training average."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Standardisation returns \\(z=\\frac{95-80}{10}=1.5\\). The scaling uses the average and standard deviation of practice, not a min-max limit.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 12–13 · question 7b",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 12–13 · question 7b"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-007",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "A 1-NN model has query \\(q=(0,0)\\) and training points \\(A=(3,0)\\), class \\(A\\), and \\(B=(0,2)\\), class \\(B\\). Both features are divided by the specified scaling factors \\(s_{1}=3\\) and \\(s_{2}=1\\). Which class is chosen before and after the scaling?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(A\\) before scaling, \\(B\\) after scaling."
+      },
+      {
+        "id": "b",
+        "text": "\\(B\\) before scaling, \\(A\\) after scaling."
+      },
+      {
+        "id": "c",
+        "text": "\\(A\\) both before and after scaling"
+      },
+      {
+        "id": "d",
+        "text": "\\(B\\) both before and after scaling"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Before scaling, the distances are 3 and 2, so \\(B\\) is nearer. After scaling, the points are \\((1,0)\\) and \\((0,2)\\), and the distances are 1 and 2, so \\(A\\) is nearer. Applying the same centring to each point leaves pairwise distances unchanged.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 13 · question 7c",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF page 13 · question 7c"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Supervised Learning.docx",
+        "location": "Paragraphs 158–166"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-008",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "Three classes of \\(A\\), \\(B\\) and \\(C\\) occur among the five nearest neighbours such as \\([A, A, B, B, C]\\). What statement about common unbalanced CNN is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(C\\) wins because it's least represented."
+      },
+      {
+        "id": "b",
+        "text": "All five neighbours need to have different distances to count their votes."
+      },
+      {
+        "id": "c",
+        "text": "An odd number for \\(k\\) does not prevent the equality of votes between classes in a multi-class problem."
+      },
+      {
+        "id": "d",
+        "text": "\\(A\\) wins unambiguously because \\(k\\) is odd."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "\\(A\\) and \\(B\\) have both votes. Odds prevent 50/50 reconciliation between two classes, but are not enough to avoid even the highest number of votes between several classes. The model needs a fixed rule for such cases.",
+    "source": "Adapted from 2022 Exam · PDF page 3 · question 4",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 3 · question 4"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Supervised Learning.docx",
+        "location": "Paragraphs 117–121"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-009",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "boolean",
+    "prompt": "A direct CNN implementation can normally throw all marked training observations after ‘training’ and still calculate exactly the same neighbours for any new query.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "kNN is instance based: the prediction depends on the location of training observations and the labels they have. They must remain available, where appropriate in a suitable search structure.",
+    "source": "Supervised Learning · Paragraphs 158–162",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Supervised Learning.docx",
+        "location": "Paragraphs 158–162"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-010",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "A training kit does not contain identical feature vectors. You evaluate the 1-NN on the same observations, and let each observation be its own neighbour. What's correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Test accuracy on new data must also become 100%."
+      },
+      {
+        "id": "b",
+        "text": "The training accuracy can never be higher than 50%."
+      },
+      {
+        "id": "c",
+        "text": "This is equivalent to leave-one-out validation."
+      },
+      {
+        "id": "d",
+        "text": "The training accuracy becomes 100%, but this is not an independent measure of generalisation."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Each observation has the distance 0 to itself and gets its own label. This tests the recovery of training data. Leave-one-out would remove the observation from the training section before preaching.",
+    "source": "Supervised Learning · Paragraphs 117–121",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Supervised Learning.docx",
+        "location": "Paragraphs 117–121"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 7–8, 80–83"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-011",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A model uses \\(z=w_{0}x_{0}+w_{1}x_{1}\\) with \\(x_{0}=-1\\). If it should be written as \\(z=b+w_{1}x_{1}\\), what is \\(b\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(b=-w_{0}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(b=w_{0}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(b=-1\\) whatever \\(w_{0}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(b=w_{0}w_{1}\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The Bias grant is \\(w_{0}(-1)=-w_{0}\\). The weight of a constant −1 thus has the opposite sign of an additive bias joint.",
+    "source": "Adapted from 2022 Exam · PDF page 3 · question 5a",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 3 · question 5a"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 9 · perceptron"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-012",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A classifier gives class 1 when \\(x_{2}>2x_{1}+1\\). Which score with the rule ‘class 1’ when \\(\\operatorname{score}>0\\) expresses exactly this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(x_{2}-2x_{1}+1\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(x_{2}-2x_{1}-1\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2x_{1}-x_{2}+1\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(x_{2}+2x_{1}+1\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Move all points left: \\(x_{2}-2x_{1}-1>0\\). The sign determines which side of the line gets class 1; a negative scaling would replace the classes.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 5–7 · question 3a",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 5–7 · question 3a"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-013",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A perceptron starts with \\(w=0\\) and \\(b=0\\), giving 1 when \\(wx+b>0\\), otherwise 0. Use \\(\\eta =1\\) and update \\(w\\leftarrow w+(t-\\hat{y})x\\), \\(b\\leftarrow b+(t-\\hat{y})\\). First treat \\((x=1,t=1)\\), then \\((x=2,t=0)\\). What are the end values \\((w,b)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((1, 0)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((-2, -1)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((-1, 0)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((1, 1)\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "First, score is 0 and \\(\\hat{y}=0\\), then \\(w=1\\) and \\(b=1\\). For the next point, score is 3 and \\(\\hat{y}=1\\). The update is therefore \\(w=1-2=-1\\) and \\(b=1-1=0\\). The second answer is calculated with the weights already updated.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 8–10 · question 5: sequential training",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 8–10 · question 5: sequential training"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-014",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A perceptron starts with \\(w=b=0\\) and uses the 1 class only at a positive score. For the batch \\((x=1,t=1)\\), \\((x=2,t=0)\\), both predictions are calculated before any update. The corrections are summarised, \\(\\eta =1\\). What is \\((w,b)\\) going to be?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((-1, 0)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((2, 2)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((0, 0)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((1, 1)\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "With the original weights, 0 is predicted for both points. Only the first is incorrect and contributes to \\((\\Delta w,\\Delta b)=(1,1)\\). This is the batch's total correction, and differs from sequential updates.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 8–10 · question 5c: batch",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 8–10 · question 5c: batch"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-015",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "In a purely full-batch step without a regularization, the sum of the \\(N\\) example gradients shall be replaced by the average. How can the learning rate be changed to maintain the exact same update?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Multiply the learning rate with \\(N\\)."
+      },
+      {
+        "id": "b",
+        "text": "Divide the learning rate by \\(N\\)."
+      },
+      {
+        "id": "c",
+        "text": "Change the sign at the learning rate."
+      },
+      {
+        "id": "d",
+        "text": "Keep the learning rate; the sum and average are always identical."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The average gradient is \\(\\frac{\\text{sum of gradients}}{N}\\). \\(\\eta_{\\mathrm{new}}\\cdot\\frac{\\text{sum}}{N}=\\eta_{\\mathrm{old}}\\cdot\\text{sum}\\) needs \\(\\eta _{\\mathrm{new}}=N\\cdot \\eta _{\\mathrm{old}}\\). This applies to the specified step without any other elements or optimizer modes.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 9 · sum of squares versus mean",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 9 · sum of squares versus mean"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-016",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A residual change from 2 to 6, while all other residuals and the number of observations are kept fixed. How does this residual's contribution change to the sum of squared errors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It's the same because just the sign numerator."
+      },
+      {
+        "id": "b",
+        "text": "It's going to be nine times as big."
+      },
+      {
+        "id": "c",
+        "text": "It's going to be three times that big."
+      },
+      {
+        "id": "d",
+        "text": "It's going to be six times as big."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Quadratic error changed from \\(2^{2}=4\\) to \\(6^{2}=36\\). The ratio is \\(\\frac{36}{4}=9\\); squareing makes large residuals especially costly.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 9 · question 6: MSE",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 9 · question 6: MSE"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraph 139"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-017",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "boolean",
+    "prompt": "If all training dimensions are in \\([0,1]\\), normal linear regression with identity output will also be limited to \\([0,1]\\) on new inputs.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The refined model \\(wx+b\\) has no built-in restriction to the range \\([0,1]\\). Such a restriction requires another initial function or explicit restriction.",
+    "source": "Adapted from 2022 Exam · PDF page 3 · question 5a",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 3 · question 5a"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Perceptron and Linear Regression.docx",
+        "location": "Paragraphs 132–144"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-018",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "For the dimensions \\([1, 2, 6]\\) a model is used that is always predicting the same constant \\(b\\). Which \\(b\\) minimises MSE on these three observations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(1\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(6\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(3\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(2\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Minimizing the sum of \\((1-b)^{2}+(2-b)^{2}+(6-b)^{2}\\) is the average of \\(2(3b-9)=0\\), \\(b=3\\). The median 2 would instead minimise absolute errors.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 9 · MSE",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 9 · MSE"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraph 139"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-019",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A model uses \\(\\hat{y}=w_{0}(-1)+w_{1}x_{1}+w_{2}x_{2}\\) with \\(w=(1,-2,1)\\). For \\(p=(x_{1}=1,x_{2}=3)\\) and \\(t=2\\), use \\(L=\\tfrac{1}{2}(\\hat{y}-t)^{2}\\) and \\(\\eta =0.1\\). What is the weight vector after one gradient step?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((1.2; -2.2; 0.4)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((0.9; -1.9; 1.3)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((1; -2; 1)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((0.8; -1.8; 1.6)\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The prediction is \\(-1-2+3=0\\), so \\(\\hat{y}-t=-2\\). With extended input \\((-1,1,3)\\), the gradient is \\((2,-2,-6)\\). New weight becomes \\((1;-2;1)-0.1(2;-2;-6)=(0.8;-1.8;1.6)\\).",
+    "source": "Adapted from 2022 Exam · PDF page 3 · question 5b",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 3 · question 5b"
+      },
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF page 4 · solution to question 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-020",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "Which pair separates a model parameter from a hyperparameter by regular linear regression practice with gradient descent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The weight \\(w\\) is learned from data; the learning rate \\(\\eta\\) is selected as training setting."
+      },
+      {
+        "id": "b",
+        "text": "Both \\(w\\) and \\(\\eta\\) must have been measured directly in the test set."
+      },
+      {
+        "id": "c",
+        "text": "The learning rate is always taught as an ordinary coefficient in the regression."
+      },
+      {
+        "id": "d",
+        "text": "The number of features is the target variable, while the weight is a class label."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The model weights are adapted by the training algorithm. The learning rate determines how the alignment occurs and is here a selected hyperparameter, not an ordinary regression coefficient.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 6–8 · question 3c",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 6–8 · question 3c"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Perceptron and Linear Regression.docx",
+        "location": "Paragraphs 63–70"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-021",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "boolean",
+    "prompt": "A model \\(\\hat{y}=b+w_{1}x+w_{2}x^{2}\\) is linear in its trainable parameters, although the graph as a function of \\(x\\) may be curved.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The parameters \\(b\\), \\(w_{1}\\) and \\(w_{2}\\) occur linearly. However, the feature transformation from \\(x\\) to \\((x,x^{2})\\) allows the prediction to be a parabola in the original input space.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 16–17 · question 9d",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 16–17 · question 9d"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Perceptron and Linear Regression.docx",
+        "location": "Paragraphs 140–144"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-022",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A perceptron run stops with zero training errors on a linearly separable data set. What conclusion is justified?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It must have minimised logistical cross-entropy globally."
+      },
+      {
+        "id": "b",
+        "text": "It has found one separator for the training data; other separators can generalise differently."
+      },
+      {
+        "id": "c",
+        "text": "It has found the unique separator that exists."
+      },
+      {
+        "id": "d",
+        "text": "Zero exercise error proves zero error on all future data."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Linear separability can give many possible limits. The stop condition of the receiver describes the classification of the training kit, not evidence of optimal generalisation or resolution of another loss function.",
+    "source": "Perceptron and Linear Regression · Paragraphs 98–104",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Perceptron and Linear Regression.docx",
+        "location": "Paragraphs 98–104"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 9 · question 6c"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-023",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "A spam model returns \\(P(\\text{spam}\\mid x)=0.30\\). In a binary model, what is \\(P(\\text{not spam}\\mid x)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(1.30\\)"
+      },
+      {
+        "id": "b",
+        "text": "Can't be derived even if the two classes are exhaustive."
+      },
+      {
+        "id": "c",
+        "text": "\\(0.70\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.30\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "In a binary problem, the probabilities of the two exhaustive classes add to 1. That's why \\(1-0.30=0.70\\) becomes.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 12 · question 6a",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 12 · question 6a"
+      },
+      {
+        "path": "IN3050/old_exams/trial-exam-2021-combined-without-solutions.pdf",
+        "location": "PDF page 3 · Logistic Regression"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-024",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "boolean",
+    "prompt": "For a mathematical sigmoid with final logit \\(z\\) a high score alone can provide the probability exactly 1 and thus guarantee that the observation is spam.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "For a final real \\(z\\) \\(\\sigma (z)\\) is strictly between 0 and 1. In any case, high modeled probability is not a guarantee that the label of a new observation is correct.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 12 · question 6b",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 12 · question 6b"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-025",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "A logistical classifier gives class 1 when \\(p\\ge 0.8\\), where \\(p=\\sigma (z)\\). What is the equivalent threshold for \\(z\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(z\\ge 0.8\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(z\\ge\\ln(0.8)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(z\\ge -\\ln (4)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(z\\ge \\ln (4)\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(\\sigma (z)\\ge 0.8\\) means that odds \\(\\frac{p}{1-p}\\ge4\\). Since \\(z\\) is log-odds, the corresponding threshold is \\(\\ln (4)\\approx 1.386\\).",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 12 · question 6c–d",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 12 · question 6c–d"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 11 · sigmoid"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-026",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "Three One-vs-Rest models produce \\(A=0.70\\), \\(B=0.60\\) and \\(C=0.10\\). You should select exactly one class at the highest score. What is selected?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(A\\); the cuts do not need to add up to 1 for the argmax rule to be used."
+      },
+      {
+        "id": "b",
+        "text": "\\(B\\) because 0.60 is closest to 0.50."
+      },
+      {
+        "id": "c",
+        "text": "\\(A\\) and \\(B\\) simultaneously, even if the task requires one class."
+      },
+      {
+        "id": "d",
+        "text": "None; One-vs-Rest can never handle such cuts."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Argmax selects \\(A\\) because 0.70 is largest. Separate rent One-vs-Rest corps are not automatically a normalized common class distribution.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 12 · question 6d",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF page 12 · question 6d"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-027",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "Six unordered fruit types are coded as 1 measures to 6 and trained with square regression losses. What is the main problem with this encoding?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All six classes are treated equally far apart."
+      },
+      {
+        "id": "b",
+        "text": "The loss introduces any numerical order and distance between the types of fruit."
+      },
+      {
+        "id": "c",
+        "text": "Square loss does not accept integer as target."
+      },
+      {
+        "id": "d",
+        "text": "The model gets six independent probabilities that automatically sums to 1."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "To confuse class 1 with 6 is punishable much more than to confuse 1 with 2, although the numerical order is only a code. A nominal multiclass problem needs a suitable class model and target encoding.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 11–12 · question 6b–c",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 11–12 · question 6b–c"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-028",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "A logistical model uses \\(z=b+wx\\). You switch the binary labels 0 and 1 and want the probability \\(q(x)=1-\\sigma (z)\\). What are the exact parameters of \\(q\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(b'=1-b\\) and \\(w'=w\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(b'=-b\\) and \\(w'=w\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(b'=-b\\) and \\(w'=-w\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(b'=b\\) and \\(w'=w\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Sigmoid has the identity \\(1-\\sigma (z)=\\sigma (-z)\\). The entire logo must therefore be replaced by \\(-(b+wx)=-b-wx\\).",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 11 · sigmoid",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 11 · sigmoid"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 12 · binary probabilities"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-029",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "For the same sigmoid output \\(p=0.9\\) and \\(t=0\\), \\(L_{1}=-t \\ln (p)-(1-t)\\ln (1-p)\\) and \\(L_{2}=\\tfrac{1}{2}(p-t)^{2}\\) are compared. What are the derivatives of the \\(z\\) logo?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both are 0.9."
+      },
+      {
+        "id": "b",
+        "text": "\\(\\frac{dL_1}{dz}=0.081\\) and \\(\\frac{dL_2}{dz}=0.9\\)."
+      },
+      {
+        "id": "c",
+        "text": "Both are 0.09."
+      },
+      {
+        "id": "d",
+        "text": "\\(\\frac{dL_1}{dz}=0.9\\) and \\(\\frac{dL_2}{dz}=0.081\\)."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "For cross-entropy with sigmoid, the derivative is \\(p-t=0.9\\). For half-square loss, the sigmoid derivative comes with: \\((p-t)p(1-p)=0.9\\cdot 0.9\\cdot 0.1=0.081\\).",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 12 · discussion of different losses in question 9",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 12 · discussion of different losses in question 9"
+      },
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF page 5 · logistic regression training"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-030",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "boolean",
+    "prompt": "When a spam classifier is to avoid marking legitimate messages as spam, it is relevant to measure false positives for the spam class.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "With spam as a positive class, a false positive means that a legitimate message is marked as spam. This type of error is directly related to the objective of protecting legitimate messages.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 12 · question 6d",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 12 · question 6d"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-031",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "A softmax model has logins \\(A=-2\\), \\(B=1\\) and \\(C=0\\). What option does the correct class option give without having to calculate all of the exponentials?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(B\\), since softmax keeps the order between logins."
+      },
+      {
+        "id": "b",
+        "text": "\\(C\\), since 0 always corresponds to the maximum softmax value."
+      },
+      {
+        "id": "c",
+        "text": "\\(A\\), since maximum absolute value wins."
+      },
+      {
+        "id": "d",
+        "text": "All three, since softmax makes the probabilities the same."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The Exponential function is strictly growing, and all three numerators are divided by the same positive sum. So the greatest log is the probability.",
+    "source": "Deep learning · Paragraphs 103–106, 279–280",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 103–106, 279–280"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-032",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "The model \\(p=\\sigma (2x-1)\\) is used at the threshold 0.5. All weights and bias are multiplied by 3. What happens to inputs that are not within the decision boundary?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The decision boundary is moved from \\(x=0.5\\) to \\(x=1.5\\)."
+      },
+      {
+        "id": "b",
+        "text": "The class selection is unchanged, but the probabilities are pushed closer to 0 or 1."
+      },
+      {
+        "id": "c",
+        "text": "All class choices are turned around."
+      },
+      {
+        "id": "d",
+        "text": "Both class choices and probabilities are unchanged."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The new login is \\(3(2x-1)\\). Positive scaling preserves the sign and the zero point, so the 0.5 threshold classes are equal. The size of the logo is increasing, so the sigmoid gives more extreme probabilities.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 12 · classification threshold",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 12 · classification threshold"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 11 · sigmoid"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-033",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "An MLP with threshold functions in hidden layers can represent XOR. What is the problem of training these hidden layers with the usual gradient descent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A hidden layer cannot have more than one node."
+      },
+      {
+        "id": "b",
+        "text": "Back-propagation requires continuous target values."
+      },
+      {
+        "id": "c",
+        "text": "The threshold function has zero derivative almost everywhere and is not derivable at the leap."
+      },
+      {
+        "id": "d",
+        "text": "XOR becomes linearly separable only by changing the learning rate."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The ability to represent and train are different questions. Hidden threshold nodes may express non-linear functions, but their local derivative does not provide a useful common gradient signal.",
+    "source": "Adapted from 2022 Exam · PDF page 4 · question 7b",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 4 · question 7b"
+      },
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF page 6 · question 7b"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-034",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A regression network has hidden activations of \\(a_{1}=0.25\\) and \\(a_{2}=0.75\\). Output is \\(y=w_{0}(-1)+w_{1}a_{1}+w_{2}a_{2}\\), with \\(w=(-2,4,-2)\\) and identity output. What is \\(y\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(-2.5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.5\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(\\sigma(1.5)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(1.5\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The Bias grant is \\((-2)(-1)=2\\). Output becomes \\(2+4\\cdot 0.25-2\\cdot 0.75=1.5\\). The output shall not be sealed when the specified output is identity.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 7 · question 5b",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 7 · question 5b"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 10–11 · question 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-035",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A regression network has linear output \\(y=3\\) and a \\(t=5\\) target. An incoming output weight is \\(w=2\\), the activation is \\(a=0.25\\), and \\(L=\\tfrac{1}{2}(y-t)^{2}\\). With \\(\\eta =0.2\\), what does this mass become after one gradient step?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(2.1\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(1.9\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2.4\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(2.025\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The gradient is \\((y-t)a=(3-5)\\cdot 0.25=-0.5\\). The update will be \\(2-0.2(-0.5)=2.1\\). A linear output has local derivative 1.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 8 · question 5c",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 8 · question 5c"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-036",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A hidden sigmoid neuron has activation \\(a=0.5\\) and feeds two output nodes. The output deltas are \\(\\delta _{1}=2\\) and \\(\\delta _{2}=-1\\), with connection weights \\(v_{1}=3\\) and \\(v_{2}=4\\). What is the hidden neuron’s delta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(-0.5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.5\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(2.5\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The contributions from the next layer are summarised: \\(3\\cdot 2+4\\cdot (-1)=2\\). Gang with the \\(a(1-a)=0.25\\) sigmoid derivative, so the hidden delta becomes 0.5.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 14–15 · question 8: hidden-layer deltas",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 14–15 · question 8: hidden-layer deltas"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 148–152"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-037",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "boolean",
+    "prompt": "At one normal gradient step for a nervous network, all parameter gradients are calculated at the same old parameter values, before updating the weights.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The gradient of the whole parameter vector is defined in one point. If the starting weights change before calculating the hidden delta, the parameter values from different points are mixed and the update becomes a different algorithm.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 8 · question 5d",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 8 · question 5d"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 12 · hidden-layer weight updates"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-038",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "For a single observation, input to a layer is \\(a=(2,-1)\\), and the team delta is \\(\\delta =(3,4)\\). The weight \\(W\\) is the form \\(2\\times 2\\) with one output node per row and \\(z=Wa+b\\). What is \\(\\frac{\\partial L}{\\partial W}\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(\\begin{bmatrix}3 & 4 \\\\ 2 & -1\\end{bmatrix}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\begin{bmatrix}5 & 2 \\\\ 6 & 3\\end{bmatrix}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(\\begin{bmatrix}6 & -3 \\\\ 8 & -4\\end{bmatrix}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\begin{bmatrix}6 & 8 \\\\ -3 & -4\\end{bmatrix}\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The gradient is the outer product of \\(\\delta a^{T}\\). The first row becomes \\(3\\cdot (2,-1)=(6,-3)\\), second row \\(4\\cdot (2,-1)=(8,-4)\\). The Orientation follows the defined definition of \\(W\\).",
+    "source": "Deep learning · Paragraphs 134–142, 153–156",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 134–142, 153–156"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-039",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "What does one epoch mean when the entire training kit is used for normal mini-batch training?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Exactly one parameter update regardless of batch size."
+      },
+      {
+        "id": "b",
+        "text": "One evaluation of the final test set."
+      },
+      {
+        "id": "c",
+        "text": "One activation function in the last layer."
+      },
+      {
+        "id": "d",
+        "text": "One review of the training observations."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "An epoch denotes a review of the training kit. With mini bats, each epoch can contain many updates.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 15 · question 8e",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 15 · question 8e"
+      },
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF page 6 · batch and stochastic gradient descent"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-040",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "You practice 1,030 observations with batch size 128 and keep the last, smaller batch. How many parameter updates are there per epoch?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(9\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(8\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(128\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(1\\,030\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Eight full batches use \\(8\\cdot 128=1\\,024\\) observations. The last six form a ninth batch, so the number of updates is \\(\\left\\lceil\\frac{1\\,030}{128}\\right\\rceil=9\\).",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 15 · question 8e: mini-batch",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 15 · question 8e: mini-batch"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-041",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "boolean",
+    "prompt": "A step with a stochastic gradient descent that reduces the loss of the selected example must also reduce the total training loss.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "An example gives an estimate of the overall gradient. A step that helps this example may increase the loss for others; therefore, the total training curve may fluctuate between updates.",
+    "source": "Adapted from Suggested Solutions for the 2022 Exam · PDF page 6 · stochastic gradient descent",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF page 6 · stochastic gradient descent"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 15 · question 8e"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-042",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "Two identical sigmoid neurons in the same hidden layer are initialized with identical weights, bias and weights. They get the same inputs and are updated with deterministic gradient descent. Why is this symmetry unfortunate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The network does not get a rainy forward pass."
+      },
+      {
+        "id": "b",
+        "text": "The nerves receive identical activations and gradients and can continue to learn the same feature."
+      },
+      {
+        "id": "c",
+        "text": "They must automatically change the signs of all weights at the next step."
+      },
+      {
+        "id": "d",
+        "text": "Identical weights always give different hidden participants."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "With identical connections and the same inputs, both the forward activations and the backpropagated contributions are identical. The update preserves this symmetry. Different initialisations can let the neurons learn different roles.",
+    "source": "Deep learning · Paragraphs 88–102, 148–156",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 88–102, 148–156"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-043",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "An output node has additive bias \\(b\\) in \\(z=\\sum w_{i}a_{i}+b\\). If delta is \\(\\delta=\\frac{\\partial L}{\\partial z}\\), what is the gradient with respect to bias?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0, because bias doesn't come from a data point."
+      },
+      {
+        "id": "b",
+        "text": "The sum of all inputs, without \\(\\delta\\)."
+      },
+      {
+        "id": "c",
+        "text": "\\(\\delta\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\delta b\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Since \\(\\frac{\\partial z}{\\partial b}=1\\), the core rule gives \\(\\frac{\\partial L}{\\partial b}=\\delta\\cdot1=\\delta\\). This applies to additive bias; a representation with constant −1 must handle the sign accordingly.",
+    "source": "Deep learning · Paragraphs 153–156",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 153–156"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-044",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "\\(L(w+\\varepsilon)=2.0006\\) and \\(L(w-\\varepsilon)=1.9994\\), where \\(\\varepsilon =0.001\\). Use central difference: \\(\\frac{L(w+\\varepsilon)-L(w-\\varepsilon)}{2\\varepsilon}\\). What is the approximate gradient?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(1.2\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.0012\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(600\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.6\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Central difference is \\(\\frac{L(w+\\varepsilon)-L(w-\\varepsilon)}{2\\varepsilon}\\). Here \\(\\frac{0.0012}{0.002}=0.6\\), the denominator is the distance between the two evaluation points.",
+    "source": "theory backpropagation · Cell 23 · numerisk gradientkontroll; sentral variant definert i oppgaven",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 23 · numerisk gradientkontroll; sentral variant definert i oppgaven"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-045",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A regression network shall be capable of predicting both negative and positive temperatures without a predetermined limit. Which output activation directly matches this requirement?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The identity function."
+      },
+      {
+        "id": "b",
+        "text": "Sigmoid without rescale."
+      },
+      {
+        "id": "c",
+        "text": "Softmax over one output node."
+      },
+      {
+        "id": "d",
+        "text": "A threshold function with only the values 0 and 1."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Identity output allows the weighted sum to be an arbitrary real number. The other options limit output or express categories instead of the desired temperature.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 10–11 · question 5",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 10–11 · question 5"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 103–106"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-046",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A batch is divided into two parts respectively with 2 and 6 examples. The average gradients are \\(g_{1}=1\\) and \\(g_{2}=3\\). What total mean gradient corresponds to all eight examples, without updating between the components?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(3.5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(2.5\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(4\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The interim averages must be weighted by the number of examples: \\(\\frac{2\\cdot1+6\\cdot3}{8}=\\frac{20}{8}=2.5\\). An unweighted average of 1 and 3 would give the small portion too much weight.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 15 · question 8e",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 15 · question 8e"
+      },
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF page 6 · batch training"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-047",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A dataset contains 950 negative and 50 positive examples. A model always predicts the negative class. What are its accuracy and its recall for the positive class?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5% accuracy and 100% recall."
+      },
+      {
+        "id": "b",
+        "text": "0% accuracy and 0% recall."
+      },
+      {
+        "id": "c",
+        "text": "95% accuracy and 0% recall."
+      },
+      {
+        "id": "d",
+        "text": "95% accuracy and 95% recall."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "950 of 1,000 becomes correct, so the accuracy is 95%. None of the 50 positives are found, so positive recall is 0. The example shows why accuracy alone can hide a problem by imbalance.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 8–9 · question 4c",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 8–9 · question 4c"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 39–42, 150–155"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-048",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "In the table, ‘spam’ is a positive class. What is recall if you evaluate \"legitimate\" as the class to be found instead?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(75 \\%\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(60 \\%\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(85 \\%\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(90 \\%\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Recall for legitimate is the number of legitimate found as legitimate divided by all actual legitimate: \\(\\frac{90}{10+90}=0.90\\). You have to swap which row represents the target class.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 9 · question 4b: metrics for both classes",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF page 9 · question 4b: metrics for both classes"
+      }
+    ],
+    "table": {
+      "caption": "Confusion matrix",
+      "columns": [
+        "Actual Class",
+        "Predicate spam",
+        "Predicateally Valid"
+      ],
+      "rows": [
+        [
+          "Spam",
+          "30",
+          "20"
+        ],
+        [
+          "Legitimate",
+          "10",
+          "90"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-extra-ml-049",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "Two models are evaluated on the same test set. \\(A\\) has 90% accuracy and \\(B\\) has 85%. Can you conclude that \\(A\\) must have higher recall for a rarely positive class?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No; total accuracy does not determine recall for each class."
+      },
+      {
+        "id": "b",
+        "text": "Yeah, because accuracy and recall are always the same goal."
+      },
+      {
+        "id": "c",
+        "text": "Yeah, if both of them use numerical features."
+      },
+      {
+        "id": "d",
+        "text": "No, because recall cannot be calculated on a test set."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Accuracy counts all right together. The distribution of errors between classes may be different, so that the model with the highest accuracy still ignores several of the rare positive cases.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 9 · question 4c",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF page 9 · question 4c"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-050",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A binary test has 50 actually positive. The model has recall 0.8 and precision 0.5. How many false positives does it have?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(80\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(40\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(10\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(25\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Recall gives \\(\\mathrm{TP}=0.8\\cdot 50=40\\). Precision 0.5 means \\(\\frac{40}{40+\\mathrm{FP}}=0.5\\), so \\(\\mathrm{TP}+\\mathrm{FP}=80\\) and \\(\\mathrm{FP}=40\\).",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 9 · question 4b",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF page 9 · question 4b"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 181–186"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-051",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "Two validation folds have the sizes 20 and 80. The model's accuracy is respectively 100% and 75%. What is accuracy when the 100 holdout predictions are collected and counted once every time?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(75 \\%\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(95 \\%\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(80 \\%\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(87.5 \\%\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The correct number is \\(20\\cdot 1+80\\cdot 0.75=80\\). Pooled accuracy becomes \\(\\frac{80}{100}=80\\,\\%\\). Unweighted average of the two fold percentages is 87.5%, but there is another aggregate when the folds have different sizes.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 8 · question 5d: cross-validation",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 8 · question 5d: cross-validation"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 74–77"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-052",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "boolean",
+    "prompt": "You adjust the model repeatedly according to results of the same ‘final test set’. In practice, this data set also acts as development data.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The choices are affected by the results on the set. It is therefore no longer an unmoved end goal; you may have adapted the choice of models to the specific features of this particular set.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 8 · question 5c",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 8 · question 5c"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 48–53"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-053",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "Three models have the error rates in the table. If you select a model only after the lowest validation error, which one do you choose?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(A\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(C\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(A\\) and \\(C\\) are equally good because they have the same number of parameters."
+      },
+      {
+        "id": "d",
+        "text": "\\(B\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The validation errors are 12% for \\(A\\), 8% for \\(B\\), and 14% for \\(C\\). Choose \\(B\\), even though \\(C\\) has the lowest training error. The test set should not be used to revisit model selection.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 8 · question 5b–c",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 8 · question 5b–c"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 32–50"
+      }
+    ],
+    "table": {
+      "caption": "Mistakes after practice",
+      "columns": [
+        "Model",
+        "Training Error",
+        "Validation error"
+      ],
+      "rows": [
+        [
+          "\\(A\\)",
+          "10%",
+          "12%"
+        ],
+        [
+          "\\(B\\)",
+          "5%",
+          "8%"
+        ],
+        [
+          "\\(C\\)",
+          "0%",
+          "14%"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-extra-ml-054",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "You have to select \\(k\\) for kNN. Candidates get different best \\(k\\) when the development set is split into two random parts. What is the most reasonable interpretation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The model selection can be sensitive to what observations are evaluated; more robust validation may be useful."
+      },
+      {
+        "id": "b",
+        "text": "NNTP must be implemented error because subsets should always give the same ranking."
+      },
+      {
+        "id": "c",
+        "text": "The maximum \\(k\\) must be automatically correct on both subsets."
+      },
+      {
+        "id": "d",
+        "text": "The final test set should be used until the two options are identical."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Selection variation can change measured results and ratings. Cross-validation may reduce the dependence of a single split, but does not guarantee identical choices.",
+    "source": "Supervised Learning · Paragraphs 131–146",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Supervised Learning.docx",
+        "location": "Paragraphs 131–146"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 105–113"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-055",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "boolean",
+    "prompt": "A model with low training error and high validation error will always stop overfitting if the number of training observations increases.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "More relevant, independent examples can reduce variance and overfitting. The effect depends on data quality, the model, and the training setup.",
+    "source": "More on supervised learning · Paragraphs 238–243, 264–266",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 238–243, 264–266"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-056",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "For 30 observations, leave-one-out validation without tuning is performed. How many models are trained and how many observations are used for practice in each model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1 Model, 30 Training Observations."
+      },
+      {
+        "id": "b",
+        "text": "30 models, 29 training observations per model."
+      },
+      {
+        "id": "c",
+        "text": "29 models, 30 training observations per model."
+      },
+      {
+        "id": "d",
+        "text": "30 models, 1 training observation per model."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Each observation is kept out once. It provides 30 training runs; in each run, the other 29 is used for training and one is excluded for validation.",
+    "source": "More on supervised learning · Paragraphs 80–83",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 80–83"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-057",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "What describes specificity in a binary classification problem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The actual positive rate that is being preached positive."
+      },
+      {
+        "id": "b",
+        "text": "The share of the data set that belongs to the largest class."
+      },
+      {
+        "id": "c",
+        "text": "The actual negative rate that's being preached negative."
+      },
+      {
+        "id": "d",
+        "text": "The rate of positive that actually was positive."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Specificity is \\(\\frac{\\mathrm{TN}}{\\mathrm{TN}+\\mathrm{FP}}\\). It measures how well the model recognises the negative cases; sensitivity/recall measures the corresponding proportion among positives.",
+    "source": "More on supervised learning · Paragraphs 150–155",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 150–155"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-058",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A threshold is \\(\\mathrm{TP}=6\\), \\(\\mathrm{FN}=4\\), \\(\\mathrm{FP}=3\\) and \\(\\mathrm{TN}=27\\). Which point does \\((\\mathrm{FPR}, \\mathrm{TPR})\\) draw on the ROC curve?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((0.30; 0.60)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((0.60; 0.10)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((0.10; 0.67)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((0.10; 0.60)\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(\\mathrm{FPR}=\\frac{\\mathrm{FP}}{\\mathrm{FP}+\\mathrm{TN}}=\\frac3{30}=0.10\\). \\(\\mathrm{TPR}=\\frac{\\mathrm{TP}}{\\mathrm{TP}+\\mathrm{FN}}=\\frac6{10}=0.60\\). Precision \\(\\frac{6}{9}\\) does not belong to the \\(y\\) axis of a ROC curve.",
+    "source": "More on supervised learning · Paragraphs 150–174",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 150–174"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-059",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "What statement about statistical inductive bias is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "There are assumptions that limit or prefer what the model can learn, such as linear relationships."
+      },
+      {
+        "id": "b",
+        "text": "That's always the same thing as an additive bee joints in one node."
+      },
+      {
+        "id": "c",
+        "text": "It only means a bug in programming."
+      },
+      {
+        "id": "d",
+        "text": "It's completely removed just using a larger test set."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inductive biases are the assumptions of the model or learning procedure that make generalisation from final data possible. This is a different use of the word than the bias parameter \\(b\\) in a linear score.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 9 · question 6c",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 9 · question 6c"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 16–17 · question 9b"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Perceptron and Linear Regression.docx",
+        "location": "Paragraphs 146–152"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-060",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "boolean",
+    "prompt": "A model can get high accuracy on a random holdout set similar to the training data, but still perform poorly on a new population with other patterns.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The Holdout evaluation describes the performance of the distribution set represents. A modified population may break the assumption that future observations are similar to those you claimed and tested.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF pages 8–9 · question 6a",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF pages 8–9 · question 6a"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 24–30"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-061",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "Which pair describes two common sources of variation between trees in a random forest?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Just to give each three a different name."
+      },
+      {
+        "id": "b",
+        "text": "Bootstrap samples of observations and random feature samples by split-candidates."
+      },
+      {
+        "id": "c",
+        "text": "Identical observations and identical features at all elections."
+      },
+      {
+        "id": "d",
+        "text": "A new test set for each node and no training data."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Bootstrap changes what observations a tree sees. Random feature selections by split make strong features not necessarily dominate all trees in the same way.",
+    "source": "Adapted from 2022 Exam · PDF page 5 · question 8",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 5 · question 8"
+      },
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF page 7 · Random forest"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-062",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "A bootstrap sample of size 4 is drawn with replacement from four observations. What is the probability that a particular observation is never drawn?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\frac{3}{4}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((\\frac{3}{4})^{4}\\approx 0.316\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\frac{1}{4}\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "For each of the four independent moves, there is a chance to avoid the \\(\\frac{3}{4}\\) observation. The probability of avoiding it in all four ways is the product \\((\\frac{3}{4})^{4}\\).",
+    "source": "Adapted from Suggested Solutions for the 2022 Exam · PDF page 7 · bootstrap",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF page 7 · bootstrap"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 116–123"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-063",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "An unbalanced ensemble has three classifications. They give \\(A\\), \\(B\\) and \\(A\\) respectively for the same input. What does hard majority voting give?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(B\\)"
+      },
+      {
+        "id": "b",
+        "text": "Class with the highest probability, even if probabilities are not given."
+      },
+      {
+        "id": "c",
+        "text": "A completely new class that was not proposed."
+      },
+      {
+        "id": "d",
+        "text": "\\(A\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Hard voting counts class suggestions. \\(A\\) gets two out of three votes and wins; you don't need probabilities for this rule.",
+    "source": "Adapted from 2021 Mock Exam · PDF page 5 · Majority Voting Classifier",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2021-combined-without-solutions.pdf",
+        "location": "PDF page 5 · Majority Voting Classifier"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 13 · question 7"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-064",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "Two models give \\(P(A)=0.51\\) each, and one third gives \\(P(A)=0.01\\). In a binary problem, each gives its hard-vote at threshold 0.5. What is the result of hard majority voting and equal weighted averages of probabilities with threshold 0.5 respectively?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hard vending results in \\(A\\), the probability mean results in \\(B\\)."
+      },
+      {
+        "id": "b",
+        "text": "They both give \\(A\\)."
+      },
+      {
+        "id": "c",
+        "text": "They both give \\(B\\)."
+      },
+      {
+        "id": "d",
+        "text": "Hard vending results in \\(B\\), the probability mean results in \\(A\\)."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Two out of three hard-votes are \\(A\\). The average is \\(\\frac{0.51+0.51+0.01}{3}\\approx0.343\\), which is below 0.5, giving \\(B\\). Aggregation rules use different information.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 13 · voting classifier",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 13 · voting classifier"
+      },
+      {
+        "path": "IN3050/old_exams/trial-exam-2021-combined-without-solutions.pdf",
+        "location": "PDF page 5 · Majority Voting Classifier"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-065",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "boolean",
+    "prompt": "Majority voting may not have lower accuracy than the best individual member on the same test set.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Several models are not an automatic guarantee of improvement. If several weak or correlated models violate a good member, the ensemble may make several mistakes.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 13 · majority voting",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 13 · majority voting"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 5 · variation among trees"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-066",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "When you are ready to stop, you will receive validation block 0.40, 0.31, 0.28, 0.30 and 0.35 after epoch 1-5. You should restore the model from the best observed epoch. Which one do you choose?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The average of the epoch numbers, regardless of the weights."
+      },
+      {
+        "id": "b",
+        "text": "Epoke 3."
+      },
+      {
+        "id": "c",
+        "text": "Epoke 5, because it's been training the longest."
+      },
+      {
+        "id": "d",
+        "text": "Epoke 1, because it has the least chance of learning."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The lowest observed validation block is 0.28 after epoch 3. To restore this checkpoint is something other than just to keep the weights from the last epoch.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 15 · question 8f",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 15 · question 8f"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 253–262"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-067",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "For the same data loss, \\(\\lambda \\sum w_{i}^{2}\\) regularisation links are compared before and after one feature is scaled to \\(x'=100x\\). The model maintains the prediction at \\(w'=\\frac w{100}\\). What happens to exactly this weight's contribution to the L2 joint by the unchanged \\(\\lambda\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The contribution will be 100 times larger."
+      },
+      {
+        "id": "b",
+        "text": "The contribution will be exactly zero."
+      },
+      {
+        "id": "c",
+        "text": "The contribution becomes \\(\\frac1{10\\,000}\\) of the original."
+      },
+      {
+        "id": "d",
+        "text": "The contribution is unchanged because the prediction is unchanged."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The new weight is squared: \\(\\left(\\frac w{100}\\right)^2=\\frac{w^2}{10\\,000}\\). The regularization of coefficients therefore depends on the scale of features, although rescale of the weight may retain the predictions.",
+    "source": "More on supervised learning · Paragraphs 274–284",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 274–284"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF page 13 · scaling"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-068",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "boolean",
+    "prompt": "L2 regularisation and feature selection limit a model in different ways. Ridge regression does not require removing every feature with a small coefficient.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "Ridge regression shrinks coefficients but generally retains the features. Feature selection explicitly removes some features.",
+    "source": "More on supervised learning · Paragraphs 269–284",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 269–284"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-069",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "A model selection uses \\(J=L_{\\mathrm{data}}+\\lambda \\sum w_{i}^{2}\\), without a bias penalty. \\(A\\) has \\(L_{\\mathrm{data}}=2\\) and \\(\\sum w_{i}^{2}=8\\); \\(B\\) has \\(L_{\\mathrm{data}}=3\\) and \\(\\sum w_{i}^{2}=2\\). Which \\(\\lambda\\) range makes \\(B\\) have strictly lower \\(J\\) than \\(A\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0\\le \\lambda <\\frac{1}{6}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\lambda =0\\) only"
+      },
+      {
+        "id": "c",
+        "text": "All \\(\\lambda \\ge 0\\) including 0"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\lambda >\\frac{1}{6}\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(B\\) is preferred when \\(3+2\\lambda <2+8\\lambda\\), namely \\(1<6\\lambda\\) and \\(\\lambda >\\frac{1}{6}\\). At \\(\\lambda =\\frac{1}{6}\\) they are equal; at smaller \\(\\lambda\\) As is better data adaptation more important.",
+    "source": "More on supervised learning · Paragraphs 253–255, 274–284",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 253–255, 274–284"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-070",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "What statement about selecting the regularisation strength fits a training, validation and testing configuration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Compare the candidates for validation data and keep the test set for the final assessment."
+      },
+      {
+        "id": "b",
+        "text": "Always choose the \\(\\lambda\\) that gives the lowest unregularised training error."
+      },
+      {
+        "id": "c",
+        "text": "Always use the same \\(\\lambda\\) for all data sets without evaluation."
+      },
+      {
+        "id": "d",
+        "text": "Let each test sample phase determine its own \\(\\lambda\\)."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The regulatory strength controls a weighing which must be assessed on data outside the alignment of the model weights. An unaffected test set is used after the settings have been selected.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 8 · question 5c",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 8 · question 5c"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 245–257"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-071",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "Why does a recurrent model naturally fit when the meaning of the present word depends on previous words in a sentence?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It must train a completely independent set of weights for each word number."
+      },
+      {
+        "id": "b",
+        "text": "The hidden state may convey information from earlier times."
+      },
+      {
+        "id": "c",
+        "text": "It automatically sorts all the words alphabetically before preaching."
+      },
+      {
+        "id": "d",
+        "text": "It ignores the sequence to make all sequences identical."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "An RNN updates its state using the current input and the previous state. This allows it to use sequence context. How well it learns long-range dependencies depends on the model and training.",
+    "source": "Adapted from 2022 Exam · PDF page 5 · question 9",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 5 · question 9"
+      },
+      {
+        "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+        "location": "PDF pages 7–8 · RNN"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 245–267"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-072",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "A simple CNN gets the words ‘the dog bites the man’ and ‘man bites the dog’. Why can it produce different end states even if the words are the same?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An RNN just uses an disorderly count of the words."
+      },
+      {
+        "id": "b",
+        "text": "All RNNs force the end state to be equal to the mean of the word vectors."
+      },
+      {
+        "id": "c",
+        "text": "The state is updated sequentially, so it usually depends on the order."
+      },
+      {
+        "id": "d",
+        "text": "The number of trainable parameters must be different for these sentences."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Each word is treated together with the state of the preceding words. The same update weights used in different order of operation can therefore give rise to different conditions.",
+    "source": "Adapted from 2022 Exam · PDF page 5 · question 9",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 5 · question 9"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 249–267"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-073",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "A simplified scaler RNN has \\(h_{t}=uh_{t-1}+x_{t}\\) with identity activation and constant \\(u=0.5\\). When the inputs are kept fixed, what is \\(\\frac{\\partial h_4}{\\partial h_0}\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(2\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(4\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\frac{1}{16}\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "At each time \\(\\frac{\\partial h_t}{\\partial h_{t-1}}=u=0.5\\) is. The kernel rule along four transitions results in \\(u^{4}=0.5^{4}=\\frac{1}{16}\\). This illustrates shrinkage along a recurrent chain in the provided simple model.",
+    "source": "Deep learning · Paragraphs 125–131, 261–267",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 125–131, 261–267"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-074",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "boolean",
+    "prompt": "A regular 1D text convolution filter teaches a separate, independent set of filter weights for each position in the sentence.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Weighting allows the same local pattern to be recognised in different positions. Each window does not get its own independent filter only because the position in the text is different.",
+    "source": "Deep learning · Paragraphs 209–214, 237–242",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 209–214, 237–242"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-075",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "A one-dimensional convolution without bias or padding uses kernel \\([1,-1]\\) on input \\([3,5,2]\\), fighting 1. Define each output as normal left-to-right scalar product without turning the core. What is the output vector?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\([-2, 3]\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\([2, -3]\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\([3, 5, 2]\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\([8, 7]\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The first window is \\([3,5]\\) and returns \\(3-5=-2\\). Others are \\([5,2]\\) and give \\(5-2=3\\). The convention is given because mathematical convolution is sometimes defined by the inverted nucleus.",
+    "source": "Deep learning · Paragraphs 209–214, 237–242",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 209–214, 237–242"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-076",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "What characteristic distinguishes a normal convolution from a fully coupled layer on the same image?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That the model never uses an activation function."
+      },
+      {
+        "id": "b",
+        "text": "Local connections and weight distribution across positions."
+      },
+      {
+        "id": "c",
+        "text": "A separate fully independent weight for each image in the test set."
+      },
+      {
+        "id": "d",
+        "text": "No training parameters."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A convolution filter sees a local area and reproduces the weights when moving. A fully coupled layer has its own connections from all input values to each output node.",
+    "source": "Deep learning · Paragraphs 62–70, 237–242",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 62–70, 237–242"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-077",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "Four pooling windows produce one number each. If each window contains \\(2\\times 2\\) values, how many input values are combined represented when the windows do not overlap?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(8\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(64\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(16\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(4\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Each of four windows contains four values. \\(4\\cdot 4=16\\) input values are compressed to four output values; the exact information within each window is not necessarily retained.",
+    "source": "Deep learning · Paragraphs 188–195",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 188–195"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-078",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "boolean",
+    "prompt": "A \\(y=F(x)+x\\) residual block with \\(F(x)=0\\) preserves the input \\(x\\), instead of passing zero on.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The direct identity path provides \\(y=0+x=x\\). This explains why the block can represent passing the input, but does not in itself say that any practice or generalization is getting better.",
+    "source": "Deep learning · Paragraphs 197–207",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 197–207"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-079",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "An embeding table has 12,000 token rows and 64 columns. How many treble numbers does the table contain, without any other layers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(12\\,064\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(187.5\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(12\\,000^{2}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(768\\,000\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Each of the 12,000 tokens has a vector with 64 coefficients. This gives \\(12\\,000\\cdot 64=768\\,000\\) parameters in the table. The length of a concrete sentence does not change the size of the table.",
+    "source": "Deep learning · Paragraphs 288–307",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 288–307"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-ml-080",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "boolean",
+    "prompt": "In the case of standard autoregressive text generation, each new token is chosen regardless of the tokens that the model has already generated.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The model builds the sequence step by step, conditional on the text that already exists. During generation it does not know a future phase sequence from which it can read.",
+    "source": "Deep learning · Paragraphs 269–286",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 269–286"
+      }
+    ]
+  }
+]

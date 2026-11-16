@@ -1,0 +1,454 @@
+[
+  {
+    "id": "in3230-wireless-iot-01",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "Which use case is typical for an LPWAN?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Live 4K video from every endpoint."
+      },
+      {
+        "id": "b",
+        "text": "Data storage with bidirectional traffic of several gigabits per second."
+      },
+      {
+        "id": "c",
+        "text": "Continuous high-bitrate music streaming."
+      },
+      {
+        "id": "d",
+        "text": "Battery-powered meters that send small amounts of data over long distances."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "LPWAN prioritises long range and low power consumption for devices with low data needs.",
+    "source": "Wireless communications · Paragraphs 304–321",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 304–321"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF pages 5–7"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-02",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "What kind of spectrum does LoRaWAN use in the lecture example?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dedicated licensed LTE spectrum."
+      },
+      {
+        "id": "b",
+        "text": "Only licensed satellite spectrum."
+      },
+      {
+        "id": "c",
+        "text": "Unlicensed bands."
+      },
+      {
+        "id": "d",
+        "text": "A wired point-to-point link."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "LoRaWAN may operate in unlicensed bands. The lecture uses the European band around 868 MHz as an example.",
+    "source": "Wireless communications · Paragraphs 319–324",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 319–324"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF pages 7 and 9"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-03",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "NB-IoT is based on the LTE ecosystem and can use existing LTE infrastructure.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "NB-IoT is a 3GPP technology for IoT. Support can be introduced into compatible LTE infrastructure with a software update.",
+    "source": "Wireless communications · Paragraphs 340–347",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 340–347"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF page 12"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-04",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "An NB-IoT device necessarily loses its network registration when it enters Power Saving Mode (PSM).",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "In PSM, a device can sleep with its radio off while retaining its network registration.",
+    "source": "Wireless communications · Paragraphs 356–360",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 356–360"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF page 15"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-05",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Two LoRaWAN sensors send messages of the same size over channels of equal bandwidth. What trade-off applies if the sensor in the basement needs a higher spreading factor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Better reception can come at the cost of longer airtime per message."
+      },
+      {
+        "id": "b",
+        "text": "Shorter airtime always improves reception."
+      },
+      {
+        "id": "c",
+        "text": "A higher spreading factor gives a higher raw data rate at the same bandwidth."
+      },
+      {
+        "id": "d",
+        "text": "The message size changes automatically to keep airtime the same."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "At fixed bandwidth, increasing the spreading factor makes each symbol last longer. This can improve a weak radio link at the cost of more airtime.",
+    "source": "Wireless communications · Paragraphs 329–338",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 329–338"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF pages 9–10"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-06",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An NB-IoT device needs to receive an occasional message while idle. Which mechanism lets it check for network paging at longer intervals?",
+    "options": [
+      {
+        "id": "a",
+        "text": "PSM with the radio switched off throughout."
+      },
+      {
+        "id": "b",
+        "text": "More repetitions of uplink messages."
+      },
+      {
+        "id": "c",
+        "text": "LoRaWAN ADR."
+      },
+      {
+        "id": "d",
+        "text": "eDRX."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "eDRX extends the time between listening windows. The device can receive paging during those windows, so a message may have to wait until the next one.",
+    "source": "Wireless communications · Paragraphs 356–360",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 356–360"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF pages 15–16"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-07",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Why concentrate the same NB-IoT transmit power in a narrower frequency band?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To reduce power per hertz."
+      },
+      {
+        "id": "b",
+        "text": "To spread the same total power over more hertz."
+      },
+      {
+        "id": "c",
+        "text": "To increase power per hertz."
+      },
+      {
+        "id": "d",
+        "text": "To keep power per hertz constant while total power drops."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Spreading the same transmit power over less bandwidth increases power spectral density. This can improve NB-IoT coverage.",
+    "source": "Wireless communications · Paragraphs 350–353",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 350–353"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF pages 13–14"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-08",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Two battery-powered sensors have different link margins. On which sensor can LoRaWAN ADR typically lower the spreading factor to reduce airtime?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the sensor that can barely reach the gateway."
+      },
+      {
+        "id": "b",
+        "text": "Only the sensor with the lowest battery level, regardless of link quality."
+      },
+      {
+        "id": "c",
+        "text": "The sensor with a stable link and good margin."
+      },
+      {
+        "id": "d",
+        "text": "Both sensors, even if the receiver can no longer decode their messages."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Good link margin can allow a lower spreading factor, raising the data rate and reducing airtime while maintaining delivery.",
+    "source": "Wireless communications · Paragraphs 329–338",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 329–338"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF page 10"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-09",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "In a simplified LoRa model with fixed bandwidth, symbol time is proportional to two raised to the spreading factor. A frame requires 30 symbols in either case. How does airtime change from SF7 to SF10?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It triples."
+      },
+      {
+        "id": "b",
+        "text": "It increases eightfold."
+      },
+      {
+        "id": "c",
+        "text": "It quadruples."
+      },
+      {
+        "id": "d",
+        "text": "It falls to one eighth of its original value."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Bandwidth and symbol count are fixed. The airtime ratio is \\(2^{10}/2^7=2^3=8\\).",
+    "source": "Wireless communications · Paragraphs 329–338",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 329–338"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF pages 9–10"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-10",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "An NB-IoT sensor uses 0.25 mJ for each transmission, including repetitions. It sends one reading per hour. If transmissions per reading increase from one to eight, how much extra transmission energy does it use over 24 hours?",
+    "options": [
+      {
+        "id": "a",
+        "text": "42 mJ"
+      },
+      {
+        "id": "b",
+        "text": "48 mJ"
+      },
+      {
+        "id": "c",
+        "text": "6 mJ"
+      },
+      {
+        "id": "d",
+        "text": "168 mJ"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "There are seven additional transmissions per reading. For 24 readings, the increase is \\(24\\cdot7\\cdot0.25=42\\,\\mathrm{mJ}\\).",
+    "source": "Wireless communications · Paragraphs 350–353",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 350–353"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF page 14"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-11",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Assume an NB-IoT sensor can receive a message only at the next eDRX listening window. Messages arrive uniformly at random within an interval, and each window is effectively instantaneous. How does the average wait change when the interval goes from 20 to 80 seconds?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It increases from 20 to 80 seconds."
+      },
+      {
+        "id": "b",
+        "text": "It falls from 40 to 10 seconds."
+      },
+      {
+        "id": "c",
+        "text": "It increases from 10 to 80 seconds."
+      },
+      {
+        "id": "d",
+        "text": "It increases from 10 to 40 seconds."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The waiting time is uniformly distributed from zero to one full interval. The average is half the interval, or 10 and 40 seconds, respectively.",
+    "source": "Wireless communications · Paragraphs 356–360",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 356–360"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF page 16"
+      }
+    ]
+  },
+  {
+    "id": "in3230-wireless-iot-12",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-3",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "An operator needs to choose a technology for basement sensors. The site has no LoRaWAN gateways, but NB-IoT service is available and coverage has been measured. The sensors send one reading per day and occasionally need to receive a command within a few minutes. Which plan best meets these requirements?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Choose NB-IoT and keep the radio in PSM for a full day to ensure immediate reception."
+      },
+      {
+        "id": "b",
+        "text": "Choose LoRaWAN at the lowest spreading factor because having no gateways improves coverage."
+      },
+      {
+        "id": "c",
+        "text": "Use NB-IoT repetitions to guarantee that the receiver wakes between scheduled listening windows."
+      },
+      {
+        "id": "d",
+        "text": "Choose NB-IoT and test an eDRX interval that leaves enough time to deliver the command."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The measured NB-IoT coverage meets the connectivity requirement. eDRX lets the sensor sleep between listening windows. The interval and other delays must fit within the command deadline.",
+    "source": "Wireless communications · Paragraphs 304–314 and 340–360",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 304–314 and 340–360"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF pages 14–18"
+      }
+    ]
+  }
+]

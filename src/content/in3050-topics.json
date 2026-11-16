@@ -1,0 +1,177 @@
+[
+  {
+    "id": "ai-linear-algebra",
+    "title": "Linear Algebra and Geometry",
+    "description": "Vectors, distances, projections, matrices, and linear decision boundaries.",
+    "order": 1,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb"
+    ],
+    "objectives": [
+      "Calculate dot products, norms, and projections.",
+      "Determine the dimensions and entries of matrix products.",
+      "Interpret weights and bias geometrically in a linear model."
+    ]
+  },
+  {
+    "id": "ai-optimization-search",
+    "title": "Optimization and Search",
+    "description": "Search spaces, local optima, hill climbing, simulated annealing, and gradient methods.",
+    "order": 2,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb"
+    ],
+    "objectives": [
+      "Distinguish discrete and continuous search spaces.",
+      "Compare hill climbing, random restarts, and simulated annealing.",
+      "Carry out a gradient step and reason about local optima."
+    ]
+  },
+  {
+    "id": "ai-supervised-knn",
+    "title": "Supervised Learning and kNN",
+    "description": "Data representations, distance metrics, neighbour voting, and choosing k.",
+    "order": 3,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb"
+    ],
+    "objectives": [
+      "Calculate distances and determine the outcome of neighbour voting.",
+      "Explain how scaling, k, and weighting affect predictions.",
+      "Choose model settings without using the final test set."
+    ]
+  },
+  {
+    "id": "ai-perceptron-regression",
+    "title": "Perceptrons and Linear Regression",
+    "description": "Linear models, thresholds, learning rules, MSE, and gradient updates.",
+    "order": 4,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb"
+    ],
+    "objectives": [
+      "Interpret linear decision boundaries and perceptron updates.",
+      "Calculate MSE, RMSE, and gradients for linear regression.",
+      "Explain the limitations of linear classifiers on non-linearly separable data."
+    ]
+  },
+  {
+    "id": "ai-evolutionary-algorithms",
+    "title": "Evolutionary Algorithms",
+    "description": "Representations, fitness, variation, randomness, and valid genotypes.",
+    "order": 5,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb"
+    ],
+    "objectives": [
+      "Match problem representations to valid variation operators.",
+      "Calculate expected mutation counts and simple crossover outcomes.",
+      "Explain selection pressure, diversity, and stochastic evaluation."
+    ]
+  },
+  {
+    "id": "ai-evolutionary-applications",
+    "title": "Population Management and Applications",
+    "description": "Selection, replacement, diversity, differential evolution, and wrapper search.",
+    "order": 6,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb"
+    ],
+    "objectives": [
+      "Compare parent selection and survivor selection strategies.",
+      "Work through differential evolution and calculate penalised wrapper objectives.",
+      "Choose validation and diversity mechanisms for applied search problems."
+    ]
+  },
+  {
+    "id": "ai-logistic-regression",
+    "title": "Logistic Regression and Multiclass Classification",
+    "description": "Sigmoid, cross-entropy, gradients, one-vs-rest, and softmax.",
+    "order": 7,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb"
+    ],
+    "objectives": [
+      "Convert logits to sigmoid or softmax probabilities.",
+      "Calculate cross-entropy and a gradient update.",
+      "Distinguish binary, multiclass, and multilabel classification."
+    ]
+  },
+  {
+    "id": "ai-backpropagation",
+    "title": "Neural Networks and Backpropagation",
+    "description": "Hidden layers, forward passes, the chain rule, and gradient computation.",
+    "order": 8,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+      "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/week8.pdf"
+    ],
+    "objectives": [
+      "Follow a forward pass and count network parameters.",
+      "Use the chain rule to calculate gradients through hidden layers.",
+      "Distinguish gradient calculation, optimisation, and gradient checking."
+    ]
+  },
+  {
+    "id": "ai-evaluation-generalization",
+    "title": "Evaluation and Generalization",
+    "description": "Data splits, cross-validation, error metrics, class imbalance, and generalisation.",
+    "order": 9,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/01_theory_evaluation_and_generalization.ipynb",
+      "IN3050/personal_notes/Notater/Exam preperation.docx",
+      "IN3050/personal_notes/Forelesning/More on supervised learning.docx"
+    ],
+    "objectives": [
+      "Plan data splits and cross-validation without information leakage.",
+      "Calculate and interpret precision, recall, F1, and ROC curves under class imbalance.",
+      "Analyse computational cost, the bias–variance trade-off, and learning curves."
+    ]
+  },
+  {
+    "id": "ai-regularization-ensembles",
+    "title": "Regularization and Ensembles",
+    "description": "L1, L2, feature selection, early stopping, bagging, and boosting.",
+    "order": 10,
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+      "IN3050/personal_notes/Notater/Exam preperation.docx"
+    ],
+    "objectives": [
+      "Calculate L1 and L2 penalties and explain their effects.",
+      "Use feature selection and early stopping without data leakage.",
+      "Compare when bagging and boosting can help."
+    ]
+  },
+  {
+    "id": "ai-deep-learning",
+    "title": "Deep Learning",
+    "description": "Deep networks, ReLU, convolutions, residual connections, RNNs, and embeddings.",
+    "order": 11,
+    "sourcePaths": [
+      "IN3050/personal_notes/Forelesning/Deep learning.docx"
+    ],
+    "objectives": [
+      "Explain saturation, ReLU, and residual connections.",
+      "Calculate convolution, pooling, and recurrent state updates.",
+      "Describe weight sharing, embeddings, and autoregressive language-model training."
+    ]
+  },
+  {
+    "id": "ai-unsupervised-learning",
+    "title": "Unsupervised Learning",
+    "description": "Hierarchical clustering, k-means, autoencoders, and dimensionality reduction.",
+    "sourcePaths": [
+      "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+      "IN3050/personal_notes/Forelesning/Unsupervised learning.docx",
+      "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_mentimeter_clustering.pdf",
+      "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/02_mentimeter_autoencoders.pdf",
+      "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/03_mentimeter_pca_and_tsne.pdf"
+    ],
+    "objectives": [
+      "Interpret dendrograms and calculate distances between clusters under different linkage rules.",
+      "Perform assignment and update steps in k-means and calculate WCSS.",
+      "Explain reconstruction in autoencoders and choose between PCA and t-SNE."
+    ]
+  }
+]

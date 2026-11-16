@@ -1,0 +1,104 @@
+[
+  {
+    "id": "net-introduction",
+    "title": "Introduction to Networking",
+    "description": "Fragmentation, MTU, and trade-offs in network design.",
+    "order": 1,
+    "sourcePaths": [
+      "In3230/lecture_slides/in3230_intro.pdf"
+    ],
+    "objectives": [
+      "Explain why IP fragments need to be reassembled.",
+      "Distinguish PMTUD from PLPMTUD.",
+      "Analyse load balancing and packet ordering."
+    ]
+  },
+  {
+    "id": "net-architecture",
+    "title": "Networking Principles",
+    "description": "Layering, addressing, the end-to-end principle, and multipath networking.",
+    "order": 2,
+    "sourcePaths": [
+      "In3230/Github/plenaries-in3230-in4230-h26-main/p4_30-09-2026/README.md",
+      "In3230/Github/plenaries-in3230-in4230-h26-main/p5_14-10-2026/README.md",
+      "In3230/lecture_slides/in3230_arch.pdf",
+      "In3230/personal_notes/Gruppetimer/Plenary session 7. October.docx"
+    ],
+    "objectives": [
+      "Distinguish PDUs, SDUs, and functions with different scopes.",
+      "Explain NAT, mobility, and MPTCP.",
+      "Evaluate end-to-end design and protocol extensions."
+    ]
+  },
+  {
+    "id": "net-transport",
+    "title": "The Internet Transport Layer",
+    "description": "TCP, UDP, acknowledgements, and loss recovery.",
+    "order": 3,
+    "sourcePaths": [
+      "In3230/lecture_slides/in3230_transportlayer.pdf"
+    ],
+    "objectives": [
+      "Interpret TCP sequence numbers, ACKs, and windows.",
+      "Analyse retransmissions and RTT measurements.",
+      "Compare loss recovery mechanisms and their impact on short flows."
+    ]
+  },
+  {
+    "id": "net-congestion",
+    "title": "Congestion Control",
+    "description": "Windows, queues, congestion, and fair bandwidth allocation.",
+    "order": 4,
+    "sourcePaths": [
+      "In3230/lecture_slides/in3230_cc.pdf"
+    ],
+    "objectives": [
+      "Calculate window sizes, bandwidth–delay products, and bandwidth shares.",
+      "Distinguish flow control from congestion control.",
+      "Evaluate RED, CoDel, ECN, BBR, and pacing."
+    ]
+  },
+  {
+    "id": "net-wireless-1",
+    "title": "Wireless Communications I",
+    "description": "Radio waves, modulation, multiplexing, and MIMO.",
+    "order": 5,
+    "sourcePaths": [
+      "In3230/lecture_slides/in3230_2026_w1_final.pdf"
+    ],
+    "objectives": [
+      "Calculate wavelength, symbol rate, and channel capacity.",
+      "Distinguish TDMA, FDMA, CDMA, and OFDMA.",
+      "Explain MIMO, beamforming, and errors on wireless links."
+    ]
+  },
+  {
+    "id": "net-wireless-2",
+    "title": "Wireless Communications II",
+    "description": "Wi-Fi, mobile networks, and roaming.",
+    "order": 6,
+    "sourcePaths": [
+      "In3230/lecture_slides/in3230_2026_w2_final.pdf"
+    ],
+    "objectives": [
+      "Analyse hidden terminals and RTS/CTS.",
+      "Distinguish the LTE control plane from the data plane.",
+      "Explain roaming and mobile virtual network operators."
+    ]
+  },
+  {
+    "id": "net-wireless-3",
+    "title": "Wireless Communications III",
+    "description": "Massive IoT, LPWAN, LoRaWAN, and NB-IoT.",
+    "order": 7,
+    "sourcePaths": [
+      "In3230/personal_notes/Forelesning/Wireless communications.docx",
+      "In3230/lecture_slides/in3230_2025_w3_final.pdf"
+    ],
+    "objectives": [
+      "Compare LoRaWAN and NB-IoT in terms of coverage, spectrum, and infrastructure.",
+      "Explain how spreading factor and ADR affect airtime and link quality.",
+      "Evaluate trade-offs between coverage, energy use, and receive latency in NB-IoT."
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+
+# Keep original course materials local. Track folder placeholders and documentation.
+resources/**
+!resources/**/
+!resources/**/.gitkeep
+!resources/README.md
+!resources/lenker.example.txt

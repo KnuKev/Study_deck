@@ -1,0 +1,2151 @@
+[
+  {
+    "id": "in3050-extra-found-001",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "An observation is first moved by the vector \\((2; -1)\\) and then by \\((-3; 4)\\). Which single vector does the same total move?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((-1; 3)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((5; -5)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((-6; -4)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((1; -3)\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The moves are summed in coordinates: \\((2-3; -1+4)=(-1; 3)\\). The starting point does not affect the total movement vector.",
+    "source": "theory linear algebra · Cell 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 8"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-002",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "Two non-zero vectors have negative scalar product. Then the angle between them is greater than 90 degrees.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "\\(a\\cdot b=\\lVert a\\rVert\\lVert b\\rVert\\cos(\\theta)\\). The standards are positive, so a negative scale product means negative cosine and an angle between 90 and 180 degrees.",
+    "source": "theory linear algebra · Cell 10",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 10"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-003",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A classifier assigns class 1 when \\(w\\cdot x+b>0\\). All weights and the bias are multiplied by 7. What happens to its decisions?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All positive observations change class."
+      },
+      {
+        "id": "b",
+        "text": "Only observations with integer features keep the class."
+      },
+      {
+        "id": "c",
+        "text": "They are unchanged for all observations."
+      },
+      {
+        "id": "d",
+        "text": "The decision boundary moves seven units."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The new score is \\(7(w\\cdot x+b)\\). A positive scaling factor does not change the sign or where the score is zero.",
+    "source": "theory linear algebra · Cell 15",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-004",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "If both \\(w\\) and \\(b\\) are replaced with \\(-w\\) and \\(-b\\), the \\(w\\cdot x+b=0\\) limit retains the same position, but the pages with positive and negative scores are replaced.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The equation \\(-(w\\cdot x+b)=0\\) describes the same line. Outside the limit, the score changes sign; border points still have zero score.",
+    "source": "theory linear algebra · Cell 15",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-005",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "\\(b=(4; 1)\\) is projected on \\(a=(1; 2)\\). Which residual vector is \\(r=b-\\operatorname{proj}_{a}(b)\\), and what is \\(a\\cdot r\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(r=(2.8; -1.4)\\) and \\(a\\cdot r=0\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(r=(1.2; 2.4)\\) and \\(a\\cdot r=6\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(r=(3; -1)\\) and \\(a\\cdot r=1\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(r=(2; -1)\\) and \\(a\\cdot r=0\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The projection factor is \\(\\frac{a\\cdot b}{a\\cdot a}=\\frac{6}{5}=1.2\\). The projection is \\((1.2; 2.4)\\), so the rest is \\((2.8; -1.4)\\). The shell product becomes \\(2.8-2.8=0\\).",
+    "source": "theory linear algebra · Cells 13–14",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cells 13–14"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-006",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "\\(A\\) is a \\(2\\times 3\\) and a \\(B\\) is a \\(3\\times 2\\). What claim about \\(AB\\) and \\(BA\\) are correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(AB\\) and \\(BA\\) must contain the same elements."
+      },
+      {
+        "id": "b",
+        "text": "Both are defined; \\(AB\\) is \\(2\\times 2\\) and \\(BA\\) is \\(3\\times 3\\)."
+      },
+      {
+        "id": "c",
+        "text": "Only \\(AB\\) is defined."
+      },
+      {
+        "id": "d",
+        "text": "Both are defined and form \\(2\\times 2\\)."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Both products have corresponding internal dimensions, but the outer dimensions are different. Matrix multiplication is therefore not generally commutative either.",
+    "source": "theory linear algebra · Cell 21",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 21"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-007",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "What is the length of the vector \\(-3v\\) compared to the length of a non-zero vector \\(v\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Same length, just the opposite direction."
+      },
+      {
+        "id": "b",
+        "text": "One third of the length."
+      },
+      {
+        "id": "c",
+        "text": "Three times the length."
+      },
+      {
+        "id": "d",
+        "text": "Negative three times the length."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A norm is always non-negative, and \\(\\lVert cv\\rVert=|c|\\lVert v\\rVert\\). The factor −3 reverses the direction and triples the length.",
+    "source": "theory linear algebra · Cell 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 8"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-008",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A model uses \\(\\operatorname{score}=2x_{1}-x_{2}+5\\). The features are redefined to \\(z_{1}=x_{1}-3\\) and \\(z_{2}=x_{2}+2\\). What score in \\(z\\) coordinates gives exactly the same result?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(2z_{1}-z_{2}+5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(2z_{1}-z_{2}-3\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2z_{1}+z_{2}+13\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(2z_{1}-z_{2}+13\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Insert \\(x_{1}=z_{1}+3\\) and \\(x_{2}=z_{2}-2\\): \\(2(z_{1}+3)-(z_{2}-2)+5=2z_{1}-z_{2}+13\\). A shift of features has to be compensated here in the bias.",
+    "source": "theory linear algebra · Cell 15",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-009",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "For \\(\\operatorname{score}(x)=w\\cdot x+b\\), where \\(w=(3; -2)\\), \\(x\\) is increased by \\(\\Delta x=(1; 2)\\). How much does the score change?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It decreases by 1."
+      },
+      {
+        "id": "b",
+        "text": "It increases by 1."
+      },
+      {
+        "id": "c",
+        "text": "It increases by 7."
+      },
+      {
+        "id": "d",
+        "text": "It depends on the bias \\(b\\)."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The change is \\(w\\cdot \\Delta x=3\\cdot 1-2\\cdot 2=-1\\). The unchanged bias will cancel out when we subtract old score from new one.",
+    "source": "theory linear algebra · Cells 10 and 15",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cells 10 and 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-010",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A linear model gives the prediction \\(s(x)=w\\cdot x+b\\). You have three observations \\(x_{1}\\), \\(x_{2}\\) and \\(x_{3}\\). Which identity always applies without rounding?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The prediction of the sum is always equal to the sum of the predictions, even when \\(b\\ne 0\\)."
+      },
+      {
+        "id": "b",
+        "text": "The average of the predictions is the prediction of the average observation."
+      },
+      {
+        "id": "c",
+        "text": "The median of the predictions is always the prediction of the average observation."
+      },
+      {
+        "id": "d",
+        "text": "The average prediction is always equal to the bias."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "\\(\\frac{(w\\cdot x_1+b)+(w\\cdot x_2+b)+(w\\cdot x_3+b)}{3}=w\\cdot\\frac{x_1+x_2+x_3}{3}+b\\). For a sum without division, however, the bias are counted three times on the right-hand side.",
+    "source": "theory linear algebra · Cells 15 and 21",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cells 15 and 21"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-011",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A hill clipper tries one random neighbor. The neighbour is worse, so the algorithm stops and claims it's in a local optimism. What is missing for this conclusion?",
+    "options": [
+      {
+        "id": "a",
+        "text": "At least one worse starting solution."
+      },
+      {
+        "id": "b",
+        "text": "That the tested neighbour has the same representation as the target function."
+      },
+      {
+        "id": "c",
+        "text": "Knowledge that none of the other authorised neighbours are better."
+      },
+      {
+        "id": "d",
+        "text": "A proof that fitness is positive."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "One failed sample does not exclude improvements in the rest of the neighborhood. A local optimism needs to be assessed against the whole defined neighbourhood.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF page 3, question 2a",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF page 3, question 2a"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 37–45"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-012",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "We minimize the cost in the table. Neighbors differ in exactly one piece. A string hill clipper starts in 00 and just takes improvements. What happens if we instead allow moves that turn up to two bits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "00 is the global minimum in both cases."
+      },
+      {
+        "id": "b",
+        "text": "00 can already be improved to 11 with one-bit stretch."
+      },
+      {
+        "id": "c",
+        "text": "Na company definition cannot affect local optimism."
+      },
+      {
+        "id": "d",
+        "text": "00 is the local minimum with one bit, but can be improved directly to 11 with the new neighborhood."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "01 and 10 have higher costs than 00, so no one bit enhancement is available. 11 has lower costs, but are two bit changes away. Local optimisation depends on the neighbourhood.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 2, question 1",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF page 2, question 1"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 37–45"
+      }
+    ],
+    "table": {
+      "caption": "A binary application",
+      "columns": [
+        "Solution",
+        "Cost"
+      ],
+      "rows": [
+        [
+          "00",
+          "2"
+        ],
+        [
+          "01",
+          "4"
+        ],
+        [
+          "10",
+          "3"
+        ],
+        [
+          "11",
+          "0"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-extra-found-013",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "From \\(A\\) the next-neighbor always chooses the nearest unvisited city and returns to \\(A\\) at the end. The symmetric travel costs are given in the table; they do not have to satisfy the similarity of triangles. What claim is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Greedy route \\(A\\mathbin{-}B\\mathbin{-}C\\mathbin{-}D\\mathbin{-}A\\) becomes 104, while \\(A\\mathbin{-}C\\mathbin{-}B\\mathbin{-}D\\mathbin{-}A\\) becomes 7."
+      },
+      {
+        "id": "b",
+        "text": "The Greedy route becomes the 7 and is the shortest."
+      },
+      {
+        "id": "c",
+        "text": "Both of these paths become 104."
+      },
+      {
+        "id": "d",
+        "text": "The Greedy route \\(A\\mathbin{-}B\\mathbin{-}D\\mathbin{-}C\\mathbin{-}A\\) becomes 104."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "From \\(A\\) select \\(B\\) (1), then \\(C\\) (1), then \\(D\\) (100), and back to \\(A\\) (2): 104. This option uses \\(2+1+2+2=7\\). Local short choice does not necessarily give a short total route.",
+    "source": "Optimization and Search · Paragraphs 24–35",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 24–35"
+      }
+    ],
+    "table": {
+      "caption": "Symmetric travel costs; diagonal is 0",
+      "columns": [
+        "City",
+        "\\(A\\)",
+        "\\(B\\)",
+        "\\(C\\)",
+        "\\(D\\)"
+      ],
+      "rows": [
+        [
+          "\\(A\\)",
+          "0",
+          "1",
+          "2",
+          "2"
+        ],
+        [
+          "\\(B\\)",
+          "1",
+          "0",
+          "1",
+          "2"
+        ],
+        [
+          "\\(C\\)",
+          "2",
+          "1",
+          "0",
+          "100"
+        ],
+        [
+          "\\(D\\)",
+          "2",
+          "2",
+          "100",
+          "0"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-extra-found-014",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A task wants the lowest travel time \\(c(x)\\), but the search code is written to maximize. What new goal function exactly preserves which routes are the best?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(f(x)=1\\) for all routes"
+      },
+      {
+        "id": "b",
+        "text": "\\(f(x)=-c(x)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(f(x)=c(x)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(f(x)=c(x)^{2}\\) when travel times are positive"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Maximizing the negative cost is the same thing as minimising the cost. This applies to the ranking; any selection method with positive fitness requirements must be handled separately.",
+    "source": "Optimization and Search · Paragraphs 4–14",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 4–14"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-015",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "Exhaustive search over all valid solutions in a finite, non-empty search space finds a global optimum if every cost is computed correctly.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "When all valid candidates have been examined, no one can translate the candidate at a better cost. The guarantee concerns the final search space defined and the correct evaluation, not that the search is timely in use.",
+    "source": "Optimization and Search · Paragraphs 27–32",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 27–32"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-016",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "For TSP with fixed start-up and various reversion routes, \\((n-1)!\\) order is considered. How many times more routes need to be investigated when increasing the number of cities from 9 to 11?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 times more."
+      },
+      {
+        "id": "b",
+        "text": "20 times more."
+      },
+      {
+        "id": "c",
+        "text": "110 times more."
+      },
+      {
+        "id": "d",
+        "text": "90 times more."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The numbers are \\(8!\\) and \\(10!\\). \\(\\frac{10!}{8!}=10\\cdot9=90\\) ratio. Small increases in problem-size may result in large increases in exhaustive searches.",
+    "source": "Optimization and Search · Paragraphs 27–32",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 27–32"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-017",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "Simulated annealing with very high, constant temperature is the same as exhaustive searches that examine each solution exactly once.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "High temperature provides a high probability of accepting poor neighbourly features. The result is similar to a random walk through neighbours and can visit the same solution many times; there is no exhaustive listing.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 1, question 1c",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 1, question 1c"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 74–84"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-018",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A simulated-annealing operation minimises cost. The starting cost is 12. It then accepts the costs 9, 11 and 10 in this order. The code only stores the current solution. What has to be done to safely return the best solution visited in this run?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Set the temperature to zero after driving; it restores the solution at cost 9."
+      },
+      {
+        "id": "b",
+        "text": "Store the best visited solution separately; it has cost 9."
+      },
+      {
+        "id": "c",
+        "text": "Returns the current solution; it must be best and has cost 10."
+      },
+      {
+        "id": "d",
+        "text": "Returns the previous solution with cost 11."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "SA can accept deteriorations, so current and best visited solutions are different sizes. The best cost was 9 even if the execution ended on 10.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF pages 3–4, question 2b",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF pages 3–4, question 2b"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-019",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "For a lower SA draw, use \\(p=\\exp\\left(-\\frac{\\Delta}{T}\\right)\\). Drag \\(A\\) has \\(\\Delta =3\\), \\(T=6\\); move \\(B\\) has \\(\\Delta =1\\), \\(T=2\\). How are acceptance probabilities compared?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(B\\) is always accepted because \\(\\Delta\\) is smaller."
+      },
+      {
+        "id": "b",
+        "text": "\\(A\\) has twice the probability because \\(T\\) is larger."
+      },
+      {
+        "id": "c",
+        "text": "They're the same because \\(\\frac{\\Delta}{T}=0.5\\) in both cases."
+      },
+      {
+        "id": "d",
+        "text": "\\(A\\) has three times more probability."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "It's the ratio of the deterioration to the temperature that determines the exponent. Both give \\(\\exp(-0.5)\\), approximately 0.607.",
+    "source": "Optimization and Search · Paragraphs 74–84",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 74–84"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-020",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An SA temperature starts at 8 and is multiplied by 0.5 after each iteration. What is the temperature used at the beginning of the fourth iteration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(2\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(4\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(1\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The starting temperatures of the four iterations are 8, 4, 2 and 1. 0.5 temperature occurs only after the fourth iteration has been completed.",
+    "source": "Adapted from 2023 Exam Solutions Guide · PDF pages 3–4, question 2b",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+        "location": "PDF pages 3–4, question 2b"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-021",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "We minimise \\(f(x)=x^{2}\\) from \\(x=1\\) with a gradient descent step \\(x_{\\mathrm{new}}=x-\\eta f'(x)\\), where \\(\\eta =1.2\\). What's going on?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(x_{\\mathrm{new}}=-1.4\\) and the cost increase from 1 to 1.96."
+      },
+      {
+        "id": "b",
+        "text": "\\(x_{\\mathrm{new}}=-0.2\\) and cost decrease to 0.04."
+      },
+      {
+        "id": "c",
+        "text": "\\(x_{\\mathrm{new}}=1.4\\) and the cost becomes 1.4."
+      },
+      {
+        "id": "d",
+        "text": "\\(x_{\\mathrm{new}}=0\\) because the gradient descent always hits the minimum of a quadratic function."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The gradient is \\(2x=2\\), so \\(x_{\\mathrm{new}}=1-1.2\\cdot 2=-1.4\\). The step is so large that we pass the minimum and ends at a higher cost, \\((-1.4)^2=1.96\\).",
+    "source": "Optimization and Search · Paragraphs 95–103",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 95–103"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-022",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "If the gradient of a differentiable function is zero, the point is necessarily a local minimum.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "A zero gradient identifies a stationary point, which can also be a maximum or a saddle point. For \\(f(x)=-x^{2}\\), \\(f'(0)=0\\), yet \\(x=0\\) is a maximum.",
+    "source": "Optimization and Search · Paragraphs 86–101",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 86–101"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-023",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "For \\(f(x,y)=(x-3)^{2}+2y^{2}\\) we start at \\((1; 2)\\). With gradient descent and \\(\\eta =0.1\\), what is the point after a simultaneous update step?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((1.2; 1.6)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((1.4; 1.6)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((1.4; 1.2)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((0.6; 2.8)\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The gradient is \\((2(x-3); 4y)=(-4; 8)\\). Subtract 0.1 times the gradient: \\((1+0.4; 2-0.8)=(1.4; 1.2)\\). Both gradient components are calculated at the old point.",
+    "source": "Optimization and Search · Paragraphs 86–103",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 86–103"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-024",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Assume that each independent hill-climbing run hits a global optimism with probability 0.3. What is the probability of at least one such hit in three runs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.9\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.027\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.343\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.657\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The probability of three booms is \\((1-0.3)^3=0.343\\). The supplement is \\(1-0.343=0.657\\). Independence is an explicit prerequisite here.",
+    "source": "Optimization and Search · Paragraphs 61–65",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 61–65"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-025",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A search makes 20 independent a restarter. Each initial solution is evaluated once, and each run evaluates 50 new neighbours. No evaluation is shared or repeated from cache. How many fitness evaluations are used?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(1\\,020\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(1\\,000\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(70\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(1\\,001\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Each run uses \\(1+50=51\\) evaluations. \\(20\\cdot 51=1\\,020\\). This is a more comparable work budget than just counting the number of driving.",
+    "source": "Optimization and Search · Paragraphs 38–43 and 61–65",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 38–43 and 61–65"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-026",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "A hill clipper maximizes \\(f\\) and only accepts strictly better neighbours. If \\(f\\) is replaced with \\(3f+100\\) and the same neighbours are tested in the same order, the exact same acceptance decisions are taken.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "For two candidates, \\(a\\) and \\(b\\) are \\(f(a)>f(b)\\) equivalent to \\(3f(a)+100>3f(b)+100\\). So the positive scaling and the common displacement do not change this ranking.",
+    "source": "Optimization and Search · Paragraphs 37–43",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+        "location": "Paragraphs 37–43"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-027",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A gene shall select one category from {red, blue, green}, without any ordered distance between categories. What mutation best fits this assumption?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Gaussian noise on the category code without checking whether the result is an allowed category."
+      },
+      {
+        "id": "b",
+        "text": "Arithmetic average of two category codes, regardless of whether the result is in the category set."
+      },
+      {
+        "id": "c",
+        "text": "Random reset to an allowed category."
+      },
+      {
+        "id": "d",
+        "text": "Creep on arbitrary integer codes, which automatically gives the right similarity between colors."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Random reset selects among valid categories. Creep and Gaussian noise, however, assume a meaningful numerical proximity not given here.",
+    "source": "Evolutionary algorithms 1 · Paragraphs 124–134",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 1.docx",
+        "location": "Paragraphs 124–134"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 3"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-028",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Start with the permutation \\([1,2,3,4,5,6]\\). Reverse the positions 2–5, including the end-points, and then replace the elements in the positions 1 and 6. What is the result?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\([6,2,3,4,5,1]\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\([1,5,4,3,2,6]\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\([6,4,3,2,5,1]\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\([6,5,4,3,2,1]\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Inversion returns \\([1,5,4,3,2,6]\\). The change in first and last position is \\([6,5,4,3,2,1]\\). Both operations maintain that each element occurs once.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 5–6, question 3b",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 5–6, question 3b"
+      },
+      {
+        "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+        "location": "PDF page 2, question 2b"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 4"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-029",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "PMX copies 3–5 from \\(P_1=[1,2,3,4,5,6,7]\\) to the child. \\(P_2=[4,1,2,7,6,5,3]\\). Use PMX mapping for conflicts and fill other free positions from \\(P_2\\). What's the baby going to be?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\([7,1,3,4,5,6,2]\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\([4,1,3,4,5,5,3]\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\([4,1,3,4,5,6,7]\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\([2,1,3,4,5,6,7]\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "First we get \\([\\_,\\_,3,4,5,\\_,\\_]\\). \\(P_2\\) value 2 at position 3 is moved to position 3 in \\(P_2\\), i.e. 7. The value of 7 at the 4 position is moved to 1 position, where 4 is located. The value of 6 at 5 is moved to 6, where 5 is located. The last available position 2 gets the value 1 from \\(P_2\\).",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 5–6, question 3c",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 5–6, question 3c"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-030",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "In edge recombination, the next choice is between \\(B\\), \\(C\\), and \\(D\\). None of the edges to these cities is shared by both parents. After removing the cities already visited, \\(B\\) has two possible neighbours, \\(C\\) has one, and \\(D\\) has three. Which city does the shortest neighbour-list rule select?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Always the alphabetical first, \\(B\\)."
+      },
+      {
+        "id": "b",
+        "text": "\\(C\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(B\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(D\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Without a common edge, the candidate is given priority with the shortest remaining neighbouring list. It's \\(C\\) with one neighbor. A rule for random/alphabetic tie breaks is not needed here.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 6–7, question 3d",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 6–7, question 3d"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-031",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "All individuals have bit 0 in the same gene position. If only variation is crossover that copies genes from parents, the position can become 1 after many generations.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Copier crossover can only fetch a value that already exists in this position of the parents. Without mutation or new individuals, the lost allele 1 cannot reoccur.",
+    "source": "Evolutionary algorithms 1 · Paragraphs 108–122",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 1.docx",
+        "location": "Paragraphs 108–122"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-032",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Two binary parents disagree with four gene positions. Uniform crossovers choose independently and equally between parents in each position. What is the expected Hamming distance from the child to the first parent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(4\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(1\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(2\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Only the four different positions can contribute to the distance. Each of them is going to be equal to the other parent with probability \\(\\frac{1}{2}\\), so the expectation is \\(4\\cdot \\frac{1}{2}=2\\).",
+    "source": "Evolutionary Algorithms – week 5 · PDF page 5",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-033",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A bit string has four bits. Each bit spin independently with probability 0.1. What is the probability that the entire genotype remains unchanged after mutation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.6561\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.9\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.6\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.0001\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "All four bits must avoid mutation. Independence returns \\((1-0.1)^4=0.9^4=0.6561\\). Subtracting the expected number of changes from 1 does not give this probability.",
+    "source": "Evolutionary Algorithms – week 5 · PDF page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 3"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-034",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "boolean",
+    "difficulty": "hard",
+    "prompt": "If each bit in a fixed bit string turns independently with probability 0.5, all bit strings with the same length are equally likely to result.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "Each desired piece of result requires either that the old piece be kept or turned upside down; both have a probability of \\(\\frac{1}{2}\\). A specific string with \\(n\\) bits therefore gets the probability \\(\\left(\\frac12\\right)^n\\), regardless of the starting string.",
+    "source": "Evolutionary Algorithms – week 5 · PDF page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 3"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-035",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "A mutation setting with expected one bit change per progeny ensures that each offspring actually gets exactly one bit change.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "An expectation target is an average over many random mutations. Independent bit-flips can produce zero, one or more changes in a particular offspring.",
+    "source": "Evolutionary Algorithms – week 5 · PDF page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+        "location": "PDF page 3"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-036",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An evolutionary algorithm minimises a non-negative cost \\(c\\) and uses fitness-proportionate selection, where higher fitness is better. Which expression keeps fitness positive even when \\(c=0\\) and favours lower costs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(f=c\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(f=-c\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(f=\\frac1c\\) without special handling"
+      },
+      {
+        "id": "d",
+        "text": "\\(f=\\frac1{1+c}\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(\\frac1{1+c}\\) is always positive for \\(c\\ge 0\\) and decreases as the cost increases. \\(-c\\) is not suitable for direct positive roulette-fitness, and \\(\\frac1c\\) is undefined at \\(c=0\\).",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 1 and 3, question 2a",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 1 and 3, question 2a"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-037",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Two candidates have costs 1 and 9. The code sets \\(f=-\\operatorname{cost}\\) and uses \\(p_i=\\frac{f_i}{\\sum f}\\) directly. Why would this be wrong for the minimization target?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The candidate at cost 9 gets probability 0.9 and is favored."
+      },
+      {
+        "id": "b",
+        "text": "The candidate at cost 1 gets probability 0.9, so everything is right."
+      },
+      {
+        "id": "c",
+        "text": "The probabilities add up to −1."
+      },
+      {
+        "id": "d",
+        "text": "Both probabilities are going to be negative."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The sum is −10, so \\(p\\) becomes \\(\\frac{-1}{-10}=0.1\\) and \\(\\frac{-9}{-10}=0.9\\). The figures look like valid probabilities, but the ranking is opposite the low cost target.",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 3, question 2a",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF page 3, question 2a"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-038",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Two individuals have positive fitness 1 and 9. What happens to the best probability of fitness-proportional selection if we add 100 to both fitness values?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It drops to \\(\\frac{9}{200}\\), or 0.045."
+      },
+      {
+        "id": "b",
+        "text": "It drops from 0.9 to \\(\\frac{109}{210}\\), about 0.519."
+      },
+      {
+        "id": "c",
+        "text": "It's still 0.9 because the ranking is unchanged."
+      },
+      {
+        "id": "d",
+        "text": "It rises to 1."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Before is the probability \\(\\frac9{1+9}\\). Then it's \\(\\frac{109}{101+109}\\). Common additions change relative fitness rates, even if the ranking is unchanged, and this gives weaker selection pressures.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 2, question 2a",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 2, question 2a"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/week6.pdf",
+        "location": "PDF page 11"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-039",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A 4-bit genotype is read as a binary integer with the most significant bit left. The start string 1010 gets its left bit turned. Fitness is \\((15-x)^{2}\\). What is fitness after mutation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(121\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(225\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(169\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(25\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "1010 is 10. When the left bit spins, the string 0010 becomes \\(x=2\\). This makes fitness \\((15-2)^{2}=13^{2}=169\\).",
+    "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF pages 2–4, question 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+        "location": "PDF pages 2–4, question 2"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-040",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "An EA shall place exactly three sensors in different cells in a \\(3\\times 3\\) grid. The coordinates go from 0 to 2. Which candidate is valid?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\([(0;0), (0;0), (2;2)]\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\([(0;0), (1;1), (3;2)]\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\([(0;0), (2;2)]\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\([(0;0), (1;1), (2;2)]\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The candidate must have exactly three different positions, all within the grid. The repeat options, coordinate 3 or only two sensors break each requirement.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 3–4, question 2a–b",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 3–4, question 2a–b"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-041",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "The aim is to maximise the minimum distance between any sensors located. Layout \\(A\\) has the two distances \\([1,10,10]\\), while \\(B\\) has \\([3,3,3]\\). Which layout is best after this goal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(B\\), because the minimum distance is 3 instead of 1."
+      },
+      {
+        "id": "b",
+        "text": "\\(A\\), because the average is larger."
+      },
+      {
+        "id": "c",
+        "text": "\\(A\\), because the maximum distance is 10."
+      },
+      {
+        "id": "d",
+        "text": "They're just as good because they both have three pairs."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Fitness is the minimum of all pairwise distances. \\(A\\) scores 1 and \\(B\\) scores 3. Under this objective, a large average distance does not make up for a close pair.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 3–4, question 2a",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 3–4, question 2a"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-042",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Identical sensors are represented as a list of busy cells. The lists \\([2,5,8]\\) and \\([8,2,5]\\) describe the same layout. What is a possible consequence when population diversity is only measured as inequality between lists?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Fitness must always use the order in the list."
+      },
+      {
+        "id": "b",
+        "text": "The diversity measure may count the same physical solution more than once."
+      },
+      {
+        "id": "c",
+        "text": "The lists must have different minimum sensor spacings."
+      },
+      {
+        "id": "d",
+        "text": "Only the first list is a valid genotype."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The order is irrelevant for identical sensors. A distance measure that treats the positions as an disorderly set, or a canonical sorting, prevents such equivalent representations from looking different.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 3–5, question 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF pages 3–5, question 2"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-043",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Two valid sensor lists \\([1,2,3]\\) and \\([3,4,5]\\) are checked at first position. The child becomes \\([1,4,5]\\). If reverse parental direction gives \\([3,2,3]\\), what repair keeps the requirement of three unique cells?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Delete both 3s without inserting anything."
+      },
+      {
+        "id": "b",
+        "text": "Add a fourth sensor to a free cell."
+      },
+      {
+        "id": "c",
+        "text": "Replace one of the two 3s with an allowed free cell."
+      },
+      {
+        "id": "d",
+        "text": "Keep both 3s because their parents were valid."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The child must still have exactly three unique valid positions. Repairing a repeated position with a free cell resolves the conflict without changing the number of sensors.",
+    "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 4, question 2a–b",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+        "location": "PDF page 4, question 2a–b"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-044",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "The fitness values are \\([2,3,5,10]\\), and four parents are drawn independently using fitness-proportionate selection. What is the probability of drawing the individual with fitness 10 at least once?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\frac{1}{16}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(1\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\frac{15}{16}\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The probability on each draw is \\(\\frac{10}{20}=\\frac{1}{2}\\). The probability of never drawing it in four attempts is \\((\\frac{1}{2})^{4}=\\frac{1}{16}\\). The probability of drawing it at least once is \\(\\frac{15}{16}\\).",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 2, question 2a",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 2, question 2a"
+      },
+      {
+        "path": "IN3050/old_exams/trial-exam-2021-combined-without-solutions.pdf",
+        "location": "PDF page 1, EA Selection"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-045",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Five individuals have all different fitness. A deterministic tournament draws three different individuals in uniform without a refund. What is the probability that the population's best individual wins?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(\\frac{3}{5}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\frac{1}{5}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(1\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The best individual wins every time it's among the three participants. Three out of five individuals are pulled, so the probability of joining is \\(\\frac{3}{5}\\).",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 2, question 2b",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 2, question 2b"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 32–45"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-046",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Four individuals have fitness 1, 2, 3 and 4. Two different participants are drawn uniformly without a refund, and the strongest wins. What is the win probability of the individual with fitness 3?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(\\frac{2}{3}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\frac{1}{4}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "There are six equally likely pairs. The individual with fitness 3 wins in the pairs \\(\\{1,3\\}\\) and \\(\\{2,3\\}\\), but loses against 4. Thus, the probability is \\(\\frac{2}{6}=\\frac{1}{3}\\).",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 2, question 2b",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 2, question 2b"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-047",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "In a deterministic tournament with two independent features of reversal, a uniquely weak individual can never win.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "With the back-up, the same individual may be pulled twice. If both of the participants are filled by the weakest individual, it also becomes the winner. For \\(N\\) individuals and uniform independent moves, this event has a probability of \\(\\frac1{N^2}\\).",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 2, question 2b",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF page 2, question 2b"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 39–45"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-048",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Fitness sharing uses \\(\\operatorname{sh}(d)=\\max\\left(0,1-\\frac d3\\right)\\) and \\(f'=\\frac f{\\sum\\operatorname{sh}(d)}\\), including the distance to the individual itself. One individual has \\(f=12\\) and the distances \\([0,1,2,4]\\) for the entire population. What is \\(f'\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(12\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(4\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(9\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(6\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The split sum becomes \\(1+\\frac{2}{3}+\\frac{1}{3}+0=2\\). Therefore \\(f'=\\frac{12}{2}=6\\) is. The self contribution of \\(d=0\\) must be included.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF pages 3–4, question 2c",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF pages 3–4, question 2c"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-049",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "\\(A\\) and \\(B\\) are identical genotypes with raw fitness 8 each. \\(C\\) has raw fitness 6 and is located outside the split radius of both. With \\(\\operatorname{sh}(0)=1\\) and no other positive sharing contribution: who has the highest adjusted fitness?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(C\\), with adjusted fitness 6 against 4 for \\(A\\) and \\(B\\)."
+      },
+      {
+        "id": "b",
+        "text": "\\(A\\) and \\(B\\), because raw fitness 8 always determines."
+      },
+      {
+        "id": "c",
+        "text": "All three get adjusted fitness \\(\\frac{22}{3}\\)."
+      },
+      {
+        "id": "d",
+        "text": "\\(A\\) and \\(B\\) receive 8, while \\(C\\) receives 3."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "\\(A\\) and \\(B\\) share themselves and each other: \\(\\frac8{1+1}=4\\). \\(C\\) only shares with itself: \\(\\frac{6}{1}=6\\). Sharing can therefore give a different niche priority even if raw fitness is lower.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF pages 3–4, question 2c",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF pages 3–4, question 2c"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 82–85"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-050",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "When fitness sharing includes the individual himself, and all other individuals are outside the division radius, the individual retains its raw fitness if \\(\\operatorname{sh}(0)=1\\).",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The sum in the denominator then consists only of the self-contribution 1. The adjusted value becomes \\(\\frac f1=f\\); there are no other individuals in the niche to share with.",
+    "source": "Adapted from 2021 Exam with Suggested Solutions · PDF pages 3–4, question 2c",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+        "location": "PDF pages 3–4, question 2c"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-051",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Crowding pairs each offspring with the most similar parent; in this case, the distances give a unique one-to-one pairing. \\(P_1\\) features fitness 10, \\(P_2\\) has 8, \\(C_1\\) has 9 and \\(C_2\\) has 11. The one with the highest fitness in each pair survives. Who's keeping?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(P_1\\) and \\(P_2\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(P_1\\) and \\(C_1\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(P_1\\) and \\(C_2\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(C_1\\) and \\(C_2\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "\\(C_1\\) is closest to \\(P_1\\) (distance 1) and loses 9 against 10. \\(C_2\\) is closest to \\(P_2\\) (distance 1) and wins 11 against 8. The competition takes place between similar solutions, not just by selecting offspring together.",
+    "source": "Evolutionary algorithms 2 · Paragraphs 87–91",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 87–91"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/week6.pdf",
+        "location": "PDF page 15"
+      }
+    ],
+    "table": {
+      "caption": "Distance from offspring to parents",
+      "columns": [
+        "Offspring",
+        "\\(P_1\\)",
+        "\\(P_2\\)"
+      ],
+      "rows": [
+        [
+          "\\(C_1\\)",
+          "1",
+          "7"
+        ],
+        [
+          "\\(C_2\\)",
+          "6",
+          "1"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-extra-found-052",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "What is a possible disadvantage with very frequent exchanges of many individuals between the islands of an Iceland-EA?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mutation becomes mathematically impossible."
+      },
+      {
+        "id": "b",
+        "text": "Fitness can no longer be calculated locally."
+      },
+      {
+        "id": "c",
+        "text": "All islands must then have identical population sizes."
+      },
+      {
+        "id": "d",
+        "text": "The islands can become equal and lose the advantage of exploring different solutions."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Migration spreads good individuals, but too strong a mixture can homogenise the subpopulations. The range and number of migrants must be balanced against the desire for independent exploration.",
+    "source": "Evolutionary algorithms 2 · Paragraphs 100–115",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 100–115"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-053",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "What is an example of speciation described in the lecture notes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Limit mating to individuals with similar genotypes, phenotypes or compatible species marks."
+      },
+      {
+        "id": "b",
+        "text": "Let all offspring compete directly with the population's best individual."
+      },
+      {
+        "id": "c",
+        "text": "Replace all fitness values with the same constant."
+      },
+      {
+        "id": "d",
+        "text": "Selecting all parents from only one random individual."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Speciation introduces groups or rules for who can mate. This differs from fitness sharing, which alters effective fitness based on the needs of niches.",
+    "source": "Evolutionary algorithms 2 · Paragraphs 94–98",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 94–98"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/week6.pdf",
+        "location": "PDF page 16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-054",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A steady-state EA has 100 individuals and replaces five of them in each update. How much of the population is replaced per update?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(100 \\%\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(5 \\%\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(20 \\%\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(50 \\%\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Five percent is \\(\\frac5{100}=0.05=5\\,\\%\\). Steady-state only replaces part of the population at a time, while the rest is retained.",
+    "source": "evolutionary applications flight lab · Cell 9",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 9"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-055",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An EA evaluates 100 individuals at start-up. Each of ten later generations copies two elites without a new evaluation and creates 98 new offspring that are evaluated once. How many total evaluations are used?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(1\\,100\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(980\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(1\\,080\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(1\\,000\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The start costs 100 evaluations. The ten generations cost \\(10\\cdot 98=980\\) new evaluations. In total, this 1,080; copied elites are explicitly not re-evaluated.",
+    "source": "evolutionary applications flight lab · Cell 9",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 9"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 1.docx",
+        "location": "Paragraphs 47–56"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-056",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "In a maximization problem with unchanged deterministic fitness, the best fitness in the population cannot fall if at least one copy of the best candidate is always kept unchanged.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The old best candidate is still with and has the same fitness. New candidates can improve the maximum or leave it unchanged, but do not reduce it under these conditions.",
+    "source": "Evolutionary algorithms 2 · Paragraphs 54–64",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 54–64"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-057",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "Elitism based on one noisy fitness measurement guarantees that the true, expected performance of the best candidate will be better for each generation.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "A candidate may look best due to his/her measurement. Keeping the measured winner therefore does not ensure improvement in expected performance, and even without noise, elitism only guarantees non-deterioration, not strict improvement every time.",
+    "source": "Evolutionary algorithms 2 · Paragraphs 54–64",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 54–64"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-058",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "DE uses \\(v=x_{\\mathrm{best}}+F(x_{r1}-x_{r2})\\). What will \\(v\\) be if the two selected population vectors are identical, regardless of their final \\(F\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(v=x_{r1}+x_{r2}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(v=x_{\\mathrm{best}}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(v=0\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(v=F\\cdot x_{\\mathrm{best}}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "When \\(x_{r1}=x_{r2}\\), the difference is zero. The mutation contribution disappears and \\(v\\) equals \\(x_{\\mathrm{best}}\\). This illustrates why variation in the population is important.",
+    "source": "evolutionary applications flight lab · Cell 13",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-059",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "For EA hyperparameter search, one model training takes 30 seconds, while selection and mutation takes milliseconds. What size is most useful for managing a realistic search budget?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The number of times the best fitness is improved, regardless of the skills that fail."
+      },
+      {
+        "id": "b",
+        "text": "Number of elites copied without new training."
+      },
+      {
+        "id": "c",
+        "text": "Number of required model exercises/evaluations, including CV folds, if any."
+      },
+      {
+        "id": "d",
+        "text": "Only number of generations, regardless of population size and CV-folds."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "When model training dominates time use, the budget should measure this work. One candidate’s fitness may require more exercise when cross-validating; the number of generations alone does not describe the full cost.",
+    "source": "evolutionary applications flight lab · Cell 12",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 12"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 132–143"
+      }
+    ]
+  },
+  {
+    "id": "in3050-extra-found-060",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "An EA stopped after 50 generations without improvement has thus proved that it found the global optimism.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Lack of improvement is a practical stopping criterion, but the search may have lost diversity or been locally stuck. Without further knowledge of the problem, it is not a proof of optimumity.",
+    "source": "Evolutionary algorithms 1 · Paragraphs 51–56",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 1.docx",
+        "location": "Paragraphs 51–56"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+        "location": "Paragraphs 67–70"
+      }
+    ]
+  }
+]

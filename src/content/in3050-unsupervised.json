@@ -1,0 +1,551 @@
+[
+  {
+    "id": "in3050-unsupervised-01",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "You have measurements of length, weight, and age, but no known classes. Which task is an example of unsupervised learning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Training a model on known age groups."
+      },
+      {
+        "id": "b",
+        "text": "Predicting weight using known weights as training targets."
+      },
+      {
+        "id": "c",
+        "text": "Measuring accuracy against known species labels."
+      },
+      {
+        "id": "d",
+        "text": "Finding groups of observations with similar measurements."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Clustering uses the feature vectors alone. The other tasks require known targets or labels.",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 4 and 7",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 4 and 7"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Unsupervised learning.docx",
+        "location": "Paragraphs 4–16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-02",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "What do the leaves in a dendrogram for agglomerative clustering show?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The centroids of the final clusters."
+      },
+      {
+        "id": "b",
+        "text": "The chosen number of principal components."
+      },
+      {
+        "id": "c",
+        "text": "The individual observations."
+      },
+      {
+        "id": "d",
+        "text": "The distance between every pair of clusters."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The algorithm starts with one cluster per observation. Each observation becomes a leaf, and the branches show how the clusters merge.",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 8–10",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 8–10"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_mentimeter_clustering.pdf",
+        "location": "PDF page 6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-03",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "In standard k-means, you choose the number of clusters before running the algorithm.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The number of clusters is a hyperparameter. The algorithm updates assignments and centroids using that fixed number.",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 17 and 23",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 17 and 23"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Unsupervised learning.docx",
+        "location": "Paragraphs 107–121"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-04",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "What does the decoder do in a standard autoencoder?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Assign a class label to the input."
+      },
+      {
+        "id": "b",
+        "text": "Reconstruct the input from its latent code."
+      },
+      {
+        "id": "c",
+        "text": "Find the nearest centroid for each code."
+      },
+      {
+        "id": "d",
+        "text": "Calculate the principal components from the covariance matrix."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The encoder creates the latent code. The decoder uses it to reconstruct the input, and the reconstruction can be compared with the original.",
+    "source": "Lecture 12 – Unsupervised Learning · Cell 27",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cell 27"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/02_mentimeter_autoencoders.pdf",
+        "location": "PDF page 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-05",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "The first principal component in PCA must always be one of the original features.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "A principal component can be a linear combination of several features. PCA creates new axes, and the first captures the greatest variance.",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 32 and 40",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 32 and 40"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/03_mentimeter_pca_and_tsne.pdf",
+        "location": "PDF page 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-06",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Three merges in an agglomerative dendrogram occur at heights 2, 5, and 9. You start with four observations. How many clusters do you get by cutting the dendrogram horizontally at height 6?",
+    "options": [
+      {
+        "id": "a",
+        "text": "One cluster."
+      },
+      {
+        "id": "b",
+        "text": "Three clusters."
+      },
+      {
+        "id": "c",
+        "text": "Four clusters."
+      },
+      {
+        "id": "d",
+        "text": "Two clusters."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The merges at 2 and 5 are below the cut. Each reduces the number of clusters by one, taking it from four to two.",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 8–10",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 8–10"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_mentimeter_clustering.pdf",
+        "location": "PDF pages 5–6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-07",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "The four pairwise distances across two clusters are 2, 4, 6, and 12. What is the distance between the clusters under average linkage?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2."
+      },
+      {
+        "id": "b",
+        "text": "5."
+      },
+      {
+        "id": "c",
+        "text": "6."
+      },
+      {
+        "id": "d",
+        "text": "12."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Average linkage takes the mean of the distances across the two clusters. Their sum is 24, so the mean is 6.",
+    "source": "Lecture 12 – Unsupervised Learning · Cell 12",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cell 12"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Unsupervised learning.docx",
+        "location": "Paragraphs 68–93"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-08",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "In one k-means iteration, a cluster contains the one-dimensional points 1, 2, and 9. Where does its centroid move in the update step?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To 2."
+      },
+      {
+        "id": "b",
+        "text": "To 5."
+      },
+      {
+        "id": "c",
+        "text": "To 4."
+      },
+      {
+        "id": "d",
+        "text": "To 9."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The centroid moves to the arithmetic mean. The three points sum to 12, so the new centroid is 4.",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 17 and 20",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 17 and 20"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_mentimeter_clustering.pdf",
+        "location": "PDF pages 8 and 11"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-09",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "You are training a denoising autoencoder on images with some pixels removed. What should the model compare each reconstruction with during training?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The image after the pixels were removed."
+      },
+      {
+        "id": "b",
+        "text": "The corresponding clean image."
+      },
+      {
+        "id": "c",
+        "text": "A class label for the image."
+      },
+      {
+        "id": "d",
+        "text": "The latent code before decoding."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The model receives the corrupted image as input and uses the clean image as its target. The reconstruction loss rewards recovering the missing information.",
+    "source": "Lecture 12 – Unsupervised Learning · Cell 30",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cell 30"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Unsupervised learning.docx",
+        "location": "Paragraphs 131–138"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-10",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "You add 100 to one feature for every observation. You then centre both datasets feature by feature before applying PCA. Will the centred datasets be identical?",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The mean of the shifted feature also increases by 100. Subtracting the mean cancels the shift for each observation.",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 32–34",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 32–34"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/03_mentimeter_pca_and_tsne.pdf",
+        "location": "PDF pages 2 and 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-11",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Run one full k-means iteration on the points 0, 2, 3, and 9, starting with centroids 0 and 8. After that iteration, what is the sum of squared distances from the assigned points to their updated centroids?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(13\\)."
+      },
+      {
+        "id": "b",
+        "text": "\\(\\frac{7}{3}\\)."
+      },
+      {
+        "id": "c",
+        "text": "\\(\\frac{14}{9}\\)."
+      },
+      {
+        "id": "d",
+        "text": "\\(\\frac{14}{3}\\)."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The points 0, 2 and 3 are closest to 0, while 9 is closest to 8. The new centroids are \\(\\frac{5}{3}\\) and 9. The sum will be \\(\\frac{25+1+16}{9}+0=\\frac{14}{3}\\).",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 17 and 20",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 17 and 20"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_mentimeter_clustering.pdf",
+        "location": "PDF page 11"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-12",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Consider the clusters {0, 2} and {4, 6} on the number line, using squared Euclidean distance. By how much does WCSS increase if the clusters merge, as measured by Ward linkage?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4."
+      },
+      {
+        "id": "b",
+        "text": "8."
+      },
+      {
+        "id": "c",
+        "text": "20."
+      },
+      {
+        "id": "d",
+        "text": "16."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Before the merge, the centroids are 1 and 5 and the total WCSS is 4. After the merge, the centroid is 3 and WCSS is 20. Ward linkage uses the increase of 16.",
+    "source": "Lecture 12 – Unsupervised Learning · Cell 12",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cell 12"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_mentimeter_clustering.pdf",
+        "location": "PDF pages 4 and 6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-13",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "An autoencoder is evaluated using the sum of squared reconstruction errors. For input (2, 0, −1), model A outputs (1, 0, −2) and model B outputs (2, 1, 1). What are the two reconstruction losses?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A gets 2 and B gets 3."
+      },
+      {
+        "id": "b",
+        "text": "A gets 4 and B gets 9."
+      },
+      {
+        "id": "c",
+        "text": "A gets 2 and B gets 5."
+      },
+      {
+        "id": "d",
+        "text": "A gets 1 and B gets 4."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "For A, the squared errors are 1, 0, and 1. For B, they are 0, 1, and 4. The losses are 2 and 5, respectively.",
+    "source": "Lecture 12 – Unsupervised Learning · Cell 27",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cell 27"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/02_mentimeter_autoencoders.pdf",
+        "location": "PDF pages 3 and 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-14",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Three principal components explain 8, 3, and 1 units of variance, respectively. How many components do you need to retain at least 95% of the total variance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "One component."
+      },
+      {
+        "id": "b",
+        "text": "Three components."
+      },
+      {
+        "id": "c",
+        "text": "Two components."
+      },
+      {
+        "id": "d",
+        "text": "It cannot be determined from the explained variance alone."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Total variance is 12. The first two components explain \\(\\frac{11}{12}\\approx91.7\\,\\%\\), below 95%. Adding the third component captures all the variance.",
+    "source": "Lecture 12 – Unsupervised Learning · Cells 34–36",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cells 34–36"
+      }
+    ]
+  },
+  {
+    "id": "in3050-unsupervised-15",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "boolean",
+    "difficulty": "hard",
+    "prompt": "For a dataset with curved structure, small distances between groups in a 2D t-SNE plot are enough to rank the global distances between those groups in the original data.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "t-SNE is designed primarily to preserve local neighbourhoods. The global geometry and distances between separate groups in the plot can differ from those in the original data.",
+    "source": "Lecture 12 – Unsupervised Learning · Cell 38",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Cell 38"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/03_mentimeter_pca_and_tsne.pdf",
+        "location": "PDF pages 4–5"
+      }
+    ]
+  }
+]

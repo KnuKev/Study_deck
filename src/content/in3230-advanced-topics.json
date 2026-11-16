@@ -1,0 +1,73 @@
+[
+  {
+    "id": "net-http-quic",
+    "title": "HTTP/2 and QUIC",
+    "description": "Web transport, multiplexing, head-of-line blocking, and connection setup.",
+    "order": 8,
+    "sourcePaths": [
+      "In3230/lecture_slides/http2-and-quic.pdf"
+    ],
+    "objectives": [
+      "Explain the differences between HTTP/1.1, HTTP/2, and HTTP/3.",
+      "Analyse streams, packet loss, and head-of-line blocking.",
+      "Calculate connection setup costs under stated RTT assumptions."
+    ]
+  },
+  {
+    "id": "net-cloud",
+    "title": "Cloud Computing",
+    "description": "Service models, elasticity, availability, and resource sharing.",
+    "order": 9,
+    "sourcePaths": [
+      "In3230/lecture_slides/in3230_cloud_computing.pdf",
+      "In3230/personal_notes/Forelesning/Cloud computing.docx"
+    ],
+    "objectives": [
+      "Distinguish IaaS, PaaS, SaaS, and cloud deployment models.",
+      "Evaluate elasticity, multitenancy, and single points of failure.",
+      "Calculate basic SLA limits, costs, and capacity during failures."
+    ]
+  },
+  {
+    "id": "net-mpls",
+    "title": "MPLS and VPNs",
+    "description": "Label stacks, traffic engineering, and virtual private networks.",
+    "order": 10,
+    "sourcePaths": [
+      "In3230/lecture_slides/in3230_mpls_lecture.pdf"
+    ],
+    "objectives": [
+      "Trace push, swap, and pop operations through an MPLS network.",
+      "Choose paths that meet capacity constraints and explain local rerouting.",
+      "Distinguish L2VPN, L3VPN, and the roles of their labels."
+    ]
+  },
+  {
+    "id": "net-interconnects",
+    "title": "Interconnection Networks",
+    "description": "Topologies, flow control, capacity, and routing in interconnection networks.",
+    "order": 11,
+    "sourcePaths": [
+      "In3230/lecture_slides/interconnects-lecture.pdf"
+    ],
+    "objectives": [
+      "Compare direct and indirect networks and their bisection bandwidth.",
+      "Calculate credit requirements, transfer time, and payload throughput.",
+      "Explain blocking, deadlock, and livelock."
+    ]
+  },
+  {
+    "id": "net-network-operations",
+    "title": "Networking in Practice",
+    "description": "Campus networks, redundancy, capacity planning, and standards.",
+    "order": 12,
+    "sourcePaths": [
+      "In3230/lecture_slides/in3230_guest-lecture.pdf"
+    ],
+    "objectives": [
+      "Relate physical links, switching, and routing to campus network operations.",
+      "Evaluate redundancy against shared causes of failure.",
+      "Size capacity for operation after a link fails."
+    ]
+  }
+]

@@ -1,0 +1,4667 @@
+[
+  {
+    "id": "in3050-la-001",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "A data matrix \\(X\\) has 120 observations and 5 features, with one observation per row. What is the shape of \\(X\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(5 \\times  5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(120 \\times  120\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(5 \\times  120\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(120 \\times  5\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The rows are observations and the columns are features, so \\(X\\) has 120 rows and 5 columns.",
+    "source": "theory linear algebra · Cell 17",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 17"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-002",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "What is the Euclidean distance between \\((1,1)\\) and \\((4,5)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(7\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(25\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(5\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\sqrt{7}\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The difference is \\((3,4)\\). The \\(L_2\\) distance is \\(\\sqrt{3^2+4^2}=\\sqrt{25}=5\\).",
+    "source": "theory linear algebra · Cell 5",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-003",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "What is the Manhattan distance between \\((-1,2)\\) and \\((2,-2)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(7\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(1\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(25\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(5\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The \\(L_1\\) distance is \\(\\lvert-1-2\\rvert+\\lvert2-(-2)\\rvert=3+4=7\\).",
+    "source": "theory linear algebra · Cell 5",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 5"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-004",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "boolean",
+    "prompt": "Transposition changes rows and columns in a matrix.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "A matrix with the form \\(m\\times n\\) gets the form \\(n\\times m\\) after transposition.",
+    "source": "theory linear algebra · Cell 19",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 19"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-005",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "What is the shell product of \\(u=(2,-1,3)\\) and \\(v=(1,4,-2)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(-6\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(-8\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(8\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "\\(u\\cdot v=2\\cdot1+(-1)\\cdot4+3\\cdot(-2)=2-4-6=-8\\).",
+    "source": "theory linear algebra · Cell 10",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 10"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-006",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "For the decision boundary \\(2x_1-x_2+3=0\\), which vector is normally at the limit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((3; 3)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((-1; -2)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((1; 2)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((2; -1)\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The coefficients of \\(x_1\\) and \\(x_2\\) form the normal vector \\(w\\). Bias 3 moves the limit but is not part of the normal vector.",
+    "source": "theory linear algebra · Cell 15",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-007",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "boolean",
+    "prompt": "Two non-zero vectors with scalar product 0 are parallel.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "They're orthogonal, because \\(a\\cdot b=\\lVert a\\rVert\\lVert b\\rVert\\cos\\theta\\) and \\(\\cos\\theta=0\\) give 90 degrees.",
+    "source": "theory linear algebra · Cell 10",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 10"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-008",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "boolean",
+    "prompt": "Normal matrix multiplication \\(\\mathtt{A@B}\\) is the same as elementary multiplication \\(\\mathtt{A*B}\\).",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Matrix multiplication sums up products along a row and a column. Elemental multiplication multiplys the corresponding elements.",
+    "source": "theory linear algebra · Cell 24",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 24"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-009",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "\\(X\\) is a \\(40\\times3\\) and a \\(W\\) is a \\(3\\times2\\). What is the shape of \\(XW\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(2 \\times  40\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(3 \\times  3\\)"
+      },
+      {
+        "id": "c",
+        "text": "Product not defined"
+      },
+      {
+        "id": "d",
+        "text": "\\(40 \\times  2\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The internal dimensions of 3 are equivalent. The outer dimensions determine the result: \\(40\\times2\\).",
+    "source": "theory linear algebra · Cell 21",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 21"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-010",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "What is the projection of \\(b=(3,1)\\) on \\(a=(1,1)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((1; -1)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((4; 4)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((3; 1)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((2; 2)\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(\\operatorname{proj}_a(b)=\\frac{a\\cdot b}{a\\cdot a}a=\\frac42(1,1)=(2,2)\\). The rest of \\(b-\\operatorname{proj}_a(b)=(1,-1)\\) is orthogonal on \\(a\\).",
+    "source": "theory linear algebra · Cell 13",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-011",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "A model uses \\(\\mathrm{score}=2x_1-3x_2+4\\). Bias is built in as \\(x_0=-1\\). What should \\(w_0\\) be?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(-4\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(-1\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(4\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "We need \\(w_0x_0=4\\). With \\(x_0=-1\\) this means \\(w_0=-4\\). The feature convention determines the sign.",
+    "source": "theory linear algebra · Cell 28",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 28"
+      }
+    ]
+  },
+  {
+    "id": "in3050-la-012",
+    "courseId": "IN3050",
+    "topicId": "ai-linear-algebra",
+    "type": "choice",
+    "prompt": "What is the element in row 1, column 2 in the product \\(AB\\)? Row and column numbers start at 1.",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(12\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(8\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(15\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(9\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The first row of \\(A\\) is \\((1,2)\\). The second column in \\(B\\) is \\((3,3)\\). The shell product is \\(1\\cdot3+2\\cdot3=9\\).",
+    "source": "theory linear algebra · Cell 21",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Cell 21"
+      }
+    ],
+    "table": {
+      "caption": "Matrix \\(A\\) and \\(B\\)",
+      "columns": [
+        "Matrix",
+        "Row 1",
+        "Row 2"
+      ],
+      "rows": [
+        [
+          "\\(A\\)",
+          "\\((1,2)\\)",
+          "\\((0,-1)\\)"
+        ],
+        [
+          "\\(B\\)",
+          "\\((2,3)\\)",
+          "\\((4,3)\\)"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-opt-001",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "What problem is above all discreet optimization?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Adjust a real regression weight"
+      },
+      {
+        "id": "b",
+        "text": "Adjust a continuous temperature parameter"
+      },
+      {
+        "id": "c",
+        "text": "Find the order of cities in a TSP router"
+      },
+      {
+        "id": "d",
+        "text": "Minimise a differentiable function of one real variable"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A TSP solution is a permutation of cities, not a point that changes continuously through real values.",
+    "source": "theory optimization search · Cells 5–7",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cells 5–7"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-002",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "What does the target function describe in an optimization problem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Number of times to visit the solution"
+      },
+      {
+        "id": "b",
+        "text": "How good a candidate is according to the selected criterion"
+      },
+      {
+        "id": "c",
+        "text": "Which computer to use"
+      },
+      {
+        "id": "d",
+        "text": "That all candidates are equally good"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The object function returns a value to be minimised or maximised. It defines what better means.",
+    "source": "theory optimization search · Cell 3",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cell 3"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-003",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "boolean",
+    "prompt": "A local optimum must also be the best point in the entire search space.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "A local optimism is best in a designated neighbourhood. A global optimism is best throughout the search space.",
+    "source": "theory optimization search · Cell 17",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cell 17"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-004",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "Which direction does gradient descent follow to minimise a differentiable function?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Always towards larger parameter values"
+      },
+      {
+        "id": "b",
+        "text": "Opposite gradient"
+      },
+      {
+        "id": "c",
+        "text": "Always Against Origo"
+      },
+      {
+        "id": "d",
+        "text": "Direction of gradient"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The gradient points in the direction of steepest local increase. A sufficiently small step in the opposite direction reduces the function locally.",
+    "source": "theory optimization search · Cell 22",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cell 22"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-005",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "How does greedy nearest-neighbour search for the TSP differ from hill climbing on complete tours?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The greedy method guarantees the optimal tour. Hill climbing never does."
+      },
+      {
+        "id": "b",
+        "text": "The greedy method builds a tour step by step. Hill climbing improves an existing complete tour."
+      },
+      {
+        "id": "c",
+        "text": "Hill climbing requires no neighbourhood."
+      },
+      {
+        "id": "d",
+        "text": "Both always examine all routes"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The greedy method chooses the next local step while constructing the tour. Hill climbing compares neighbouring versions of a complete tour.",
+    "source": "theory optimization search · Cells 11–13",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cells 11–13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-006",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "Why can several random starting points help hill climbing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They guarantee global optimism after two start-ups"
+      },
+      {
+        "id": "b",
+        "text": "They remove the need to evaluate candidates"
+      },
+      {
+        "id": "c",
+        "text": "They're making all the target functions convex"
+      },
+      {
+        "id": "d",
+        "text": "They can lead the search to different local optimism"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Different startings can be found in different Attractor basins. This increases the exploration, but is no guarantee of global optimization.",
+    "source": "theory optimization search · Cells 13–17",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cells 13–17"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-007",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "boolean",
+    "prompt": "A larger neighbourhood in hill climbing can provide more opportunities for improvement, but may also require more evaluations.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "To investigate several candidates may make the search find improvements that a small neighborhood overlooks, at higher calculation costs.",
+    "source": "theory optimization search · Cell 13",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cell 13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-008",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "boolean",
+    "prompt": "No Free Lunch means algorithm choices do not matter for concrete problem classes.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Algorithms exploit different assumptions. In particular, the method selection needs to be adapted to the structure of the problem.",
+    "source": "theory optimization search · Cell 24",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cell 24"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-009",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "What usually happens to simulated annealing when the temperature gets lower, with the same positive cost increase \\(\\Delta\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Temperature affects only good moves"
+      },
+      {
+        "id": "b",
+        "text": "The probability will always be 1"
+      },
+      {
+        "id": "c",
+        "text": "The probability of accepting the worse move will be lower"
+      },
+      {
+        "id": "d",
+        "text": "Probability increases"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "For a worse move, \\(p=\\exp\\!\\left(-\\frac{\\Delta}{T}\\right)\\) is. Lower positive \\(T\\) gives more negative exponent and lower \\(p\\).",
+    "source": "theory optimization search · Cell 19",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cell 19"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-010",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "\\(L(w)=(w-3)^2\\). From \\(w=-1\\) we use \\(\\eta=0.2\\). What is \\(w\\) after one gradient descent step?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(-2.6\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(1.6\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.6\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(-0.2\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "\\(L^{\\prime}(-1)=2(-1-3)=-8\\). This update returns \\(w=-1-0.2\\cdot(-8)=0.6\\).",
+    "source": "theory optimization search · Cell 22",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cell 22"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-011",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "In simulated annealing, \\(\\Delta=2\\) and \\(T=2\\) are for a worse move. About how large is the acceptance probability \\(\\exp\\!\\left(-\\frac{\\Delta}{T}\\right)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.500\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.368\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.135\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(1.000\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "\\(-\\frac{\\Delta}{T}=-1\\), then \\(p=e^{-1}\\approx0.3679\\). The probability is between 0 and 1.",
+    "source": "theory optimization search · Cell 19",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cell 19"
+      }
+    ]
+  },
+  {
+    "id": "in3050-opt-012",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "You enumerate TSP tours for 7 different cities. The starting city is fixed, and a tour and its reverse count separately. How many city orders do you consider?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(5\\,040\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(49\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(720\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(360\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "With the city of origin fixed, the other six cities can be arranged in \\(6!=720\\) ways. We're not dividing by 2 because the directions are counted separately.",
+    "source": "theory optimization search · Cells 7–9",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Cells 7–9"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-001",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "What does a training kit contain for the guided classification?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only one target function without data"
+      },
+      {
+        "id": "b",
+        "text": "Feature vectors with known class labels"
+      },
+      {
+        "id": "c",
+        "text": "Only unmarked feature vectors"
+      },
+      {
+        "id": "d",
+        "text": "only phase without input"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Each example consists of input \\(x\\) and a corresponding known class \\(y\\).",
+    "source": "theory supervised learning knn · Cell 3",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cell 3"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-002",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "What sequence describes the standard CNN classification?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Train hidden layers - > calculate distances - > ignore labels"
+      },
+      {
+        "id": "b",
+        "text": "Sort Tags alphabetically - > select first class"
+      },
+      {
+        "id": "c",
+        "text": "Fainting -- > calculate gradient -- > remove neighbours"
+      },
+      {
+        "id": "d",
+        "text": "Calculate distances -- > find \\(k\\) nearest -- > frames in class"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The CNN uses the distances to select the neighbors and their labels to make the prediction.",
+    "source": "theory supervised learning knn · Cell 9",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cell 9"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-003",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "boolean",
+    "prompt": "KNN is called lazy learning because most of the work is usually done during preaching.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The training mainly stores the examples; distance calculation and neighbouring choices occur when a new observation is to be classified.",
+    "source": "theory supervised learning knn · Cell 9",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cell 9"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-004",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "An image with \\(28\\times28\\) greyscale pixels is flattened to a vector without additional features. How long is the vector?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(2\\,352\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(56\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(28\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(784\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Each pixel becomes one feature: \\(28\\cdot28=784\\). Color channels are not included in a greyscale image.",
+    "source": "theory supervised learning knn · Cell 27",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cell 27"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-005",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "The five nearest neighbors' classes are \\([A,B,A,A,B]\\). What does normal majority voting give?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(A\\) class with voting share \\(\\frac25\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(B\\) class with voting share \\(\\frac35\\)"
+      },
+      {
+        "id": "c",
+        "text": "No class can be selected without gradient descent"
+      },
+      {
+        "id": "d",
+        "text": "\\(A\\) class with voting share \\(\\frac35\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(A\\) has three votes and \\(B\\) two. The local voting rate for \\(A\\) is \\(\\frac35\\).",
+    "source": "theory supervised learning knn · Cells 9 and 19",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cells 9 and 19"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-006",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "One feature is measured in crowns (0-1,000,000), another on the 0-1 scale. What is a risk of unscaled Euclid distance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All observations automatically get the same close"
+      },
+      {
+        "id": "b",
+        "text": "kNN turns into logistic regression"
+      },
+      {
+        "id": "c",
+        "text": "Scaling always changes all tags"
+      },
+      {
+        "id": "d",
+        "text": "The feature measured in kroner can dominate the distance because of its scale."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Large numerical differences get large squared contributions. Relevant scaling may prevent proximity to the unit of measurement alone.",
+    "source": "theory supervised learning knn · Cells 13 and 30",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cells 13 and 30"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-007",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "boolean",
+    "prompt": "Using squared Euclid distance instead of Euclid distance always changes the order of the neighbours.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The square root is strictly growing for non-negative numbers, so the order is preserved. This applies to the neighbouring choice, not necessarily the distance weights.",
+    "source": "theory supervised learning knn · Cell 15",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cell 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-008",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "boolean",
+    "prompt": "It is good practice to select \\(k\\) from what value gives the highest accuracy on the final test set.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Then the test set affects the model selection. Select \\(k\\) with validation/CV and use the test set for final evaluation.",
+    "source": "theory supervised learning knn · Cells 38–40",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cells 38–40"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-009",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "What is a common consequence of increasing \\(k\\) very much?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The prediction will be independent of all training labels"
+      },
+      {
+        "id": "b",
+        "text": "The model is always more sensitive to a noisy point"
+      },
+      {
+        "id": "c",
+        "text": "Decision-making becomes smoother and can undermine local patterns"
+      },
+      {
+        "id": "d",
+        "text": "The generalization error will be guaranteed zero"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Several neighbors make the preaching work less local. Too large \\(k\\) can erase useful local structures.",
+    "source": "theory supervised learning knn · Cell 38",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cell 38"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-010",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "Three neighbours have (class, distance): \\((A,1),\\ (B,2),\\ (B,2)\\). With weights \\(\\frac1d\\), what are the normalized class corps?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(P(A)=0.80\\) and \\(P(B)=0.20\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(P(A)=\\frac13\\) and \\(P(B)=\\frac23\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(P(A)=0.25\\) and \\(P(B)=0.75\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(P(A)=0.50\\) and \\(P(B)=0.50\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(A\\) receives weight 1. \\(B\\) receives \\(\\frac12+\\frac12=1\\). The total is 2, giving both classes 0.5. A separate tie-breaking rule determines which class to predict.",
+    "source": "theory supervised learning knn · Cell 21",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cell 21"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-011",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "For \\(q=(0,0)\\), \\(A=(3,0)\\) and \\(B=(2,2)\\) are available. Which statement is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(L_1\\) prefers \\(B\\), while \\(L_2\\) prefers \\(A\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(L_1\\) prefers \\(A\\), while \\(L_2\\) prefers \\(B\\)"
+      },
+      {
+        "id": "c",
+        "text": "Both distance measures prefer \\(B\\)"
+      },
+      {
+        "id": "d",
+        "text": "Both distance measures prefer \\(A\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "\\(L_1\\): \\(A=3\\) and \\(B=4\\). \\(L_2\\): \\(A=3\\) and \\(B=\\sqrt8\\approx2.83\\). The distance target can therefore change the nearest neighbour.",
+    "source": "theory supervised learning knn · Cell 13",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cell 13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-knn-012",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "Neighbors have distances 1 and 2. What statement is correct if you replace \\(d\\) with \\(d^2\\) both at neighboring and in weight \\(\\frac1d\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both order and weights are unchanged"
+      },
+      {
+        "id": "b",
+        "text": "Keeping the neighbour order, the ratio between the weights changes from \\(2:1\\) to \\(4:1\\)"
+      },
+      {
+        "id": "c",
+        "text": "Both weights double the same amount"
+      },
+      {
+        "id": "d",
+        "text": "The nesting order is turned, but the weights are unchanged"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "With \\(\\frac1d\\), the weights are 1 and \\(\\frac12\\). With \\(\\frac1{d^2}\\), they are 1 and \\(\\frac14\\). It's not the same distance weighted classification.",
+    "source": "theory supervised learning knn · Cells 15 and 21",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Cells 15 and 21"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-001",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "What is the main difference between the exit of a perceptron and the normal linear regression?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The receiver has no weights"
+      },
+      {
+        "id": "b",
+        "text": "Both always give the same type of class label"
+      },
+      {
+        "id": "c",
+        "text": "Perceptron thresholds for a class; regression gives a numerical prediction"
+      },
+      {
+        "id": "d",
+        "text": "Regression can't have bias"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Both use a linear score, but the perceptron uses a threshold while regression retains a continuous value.",
+    "source": "theory perceptron linear regression · Cells 1–2",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cells 1–2"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-002",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "What does the bias term do when the weight vector stays fixed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It necessarily rotates the boundary 90 degrees."
+      },
+      {
+        "id": "b",
+        "text": "It removes all negative weights."
+      },
+      {
+        "id": "c",
+        "text": "It always changes the number of features."
+      },
+      {
+        "id": "d",
+        "text": "It moves the decision boundary parallel to itself."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The weight vector gives the direction of the normal. The bias determines the position of the boundary along that normal.",
+    "source": "theory perceptron linear regression · Cells 10–12",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cells 10–12"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-003",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "boolean",
+    "prompt": "A linear classifier can always distinguish XOR data perfectly by increasing the learning rate.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "XOR is not linearly separable in the original representation. The learning rate does not change the expressivity of the model class.",
+    "source": "theory perceptron linear regression · Cell 20",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 20"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-004",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "What is MSE for the 1, −2 and 2 residuals?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(9\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(3\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(5\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\sqrt{3}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "\\(\\mathrm{MSE}=\\frac{1^2+(-2)^2+2^2}{3}=\\frac{1+4+4}{3}=3\\).",
+    "source": "theory perceptron linear regression · Cell 25",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 25"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-005",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "With \\(w=(2,-1)\\), \\(b=-1\\) and \\(x=(1,3)\\), what does the Perceptron \\(\\hat y=1\\) give if \\(z>0\\), otherwise 0?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(z=0\\) and \\(\\hat y=1\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(z=-2\\) and \\(\\hat y=1\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(z=-2\\) and \\(\\hat y=0\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(z=2\\) and \\(\\hat y=1\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "\\(z=2\\cdot1-1\\cdot3-1=-2\\). Since \\(z\\) is not positive, the prediction 0 becomes positive.",
+    "source": "theory perceptron linear regression · Cells 8–10",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cells 8–10"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-006",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "For a properly classified practice example, what does the perceptron rule \\(w\\leftarrow w+\\eta(t-\\hat y)x\\) do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Resets all weights to zero"
+      },
+      {
+        "id": "b",
+        "text": "Changes weights proportionally with \\(t\\) regardless of \\(\\hat y\\)"
+      },
+      {
+        "id": "c",
+        "text": "Leave the weights unchanged"
+      },
+      {
+        "id": "d",
+        "text": "Doubles All Weights"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "When \\(t=\\hat y\\) is \\(t-\\hat y=0\\), the entire update link will be zero.",
+    "source": "theory perceptron linear regression · Cell 14",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 14"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-007",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "boolean",
+    "prompt": "Linear regression with MSE has a convex target function in the weights.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "MSE for a linear model is a convex quadratic function. A local minimum is global, but the solution doesn't have to be unique.",
+    "source": "theory perceptron linear regression · Cell 29",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 29"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-008",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "boolean",
+    "prompt": "If all the residuals add up to zero, the MSE must be zero.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Opposite-signed residuals can cancel out in the sum. MSE sums up squares, which just becomes zero when all the residuals are zero.",
+    "source": "theory perceptron linear regression · Cell 25",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 25"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-009",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "What error measure has the same unit of measurement as the regression measure?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SSE"
+      },
+      {
+        "id": "b",
+        "text": "RMSE"
+      },
+      {
+        "id": "c",
+        "text": "Sum of squared weights"
+      },
+      {
+        "id": "d",
+        "text": "MSE"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "RMSE takes the square root of an average squared error and gets the unit of measure back to the measure.",
+    "source": "theory perceptron linear regression · Cell 27",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 27"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-010",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A perceptron features \\(w=(0,0)\\), \\(b=0\\), \\(x=(2,-1)\\), \\(t=1\\) and \\(\\hat y=0\\). With \\(\\eta=0.5\\), what will new \\(w\\) and \\(b\\) become?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(w=(1;-0.5)\\), \\(b=0.5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(w=(-1;0.5)\\), \\(b=-0.5\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(w=(0.5;0.5)\\), \\(b=0.5\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(w=(2,-1)\\), \\(b=0\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "\\(t-\\hat y=1\\). Thus \\(\\Delta w=0.5\\cdot(2,-1)=(1;-0.5)\\), and \\(\\Delta b=0.5\\).",
+    "source": "theory perceptron linear regression · Cell 14",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 14"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-011",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "For \\(\\hat y=wx+b\\) and MSE without factor \\(\\frac12\\) we have \\(x=[1,2]\\), \\(y=[2,4]\\), \\(w=1\\) and \\(b=0\\). What is the gradient \\(\\left(\\frac{\\partial\\mathrm{MSE}}{\\partial w},\\frac{\\partial\\mathrm{MSE}}{\\partial b}\\right)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((-5; -3)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((-2.5; -1.5)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((5; 3)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((-3; -5)\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The predictions are \\([1,2]\\), so the errors \\(\\hat y-y=[-1,-2]\\). \\(\\frac{\\partial\\mathrm{MSE}}{\\partial w}=\\frac22(-1\\cdot1-2\\cdot2)=-5\\); \\(\\frac{\\partial\\mathrm{MSE}}{\\partial b}=\\frac22(-1-2)=-3\\).",
+    "source": "theory perceptron linear regression · Cell 31",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 31"
+      }
+    ]
+  },
+  {
+    "id": "in3050-per-012",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "Two models use \\((w,b)\\) and \\((-2w,-2b)\\) respectively, with 1 class at a positive score. What is going on outside the limit itself?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The same geometric boundary, but the classes on the two sides are replaced"
+      },
+      {
+        "id": "b",
+        "text": "Both boundary and classes are unchanged"
+      },
+      {
+        "id": "c",
+        "text": "The second model has a non-linear decision boundary."
+      },
+      {
+        "id": "d",
+        "text": "The limit is moved parallel to the distance 2"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Multiplying the equation by a non-zero scalar leaves its zero set unchanged. A negative factor reverses the sign of every non-zero score.",
+    "source": "theory perceptron linear regression · Cell 18",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Cell 18"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-001",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "What is an individual in an evolutionary algorithm?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Whole amount of training data"
+      },
+      {
+        "id": "b",
+        "text": "One candidate for a solution"
+      },
+      {
+        "id": "c",
+        "text": "The stopping criterion itself"
+      },
+      {
+        "id": "d",
+        "text": "Always a biological organism"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "An individual is a candidate; a population contains several individuals. The representation describes how the candidates are coded.",
+    "source": "theory evolutionary algorithms · Cell 7",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 7"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-002",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "What is the role of the fitness function?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Removing the need for selection"
+      },
+      {
+        "id": "b",
+        "text": "Ensure that all offspring are valid"
+      },
+      {
+        "id": "c",
+        "text": "Determine all operators automatically"
+      },
+      {
+        "id": "d",
+        "text": "Assessing the quality of candidates"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Fitness provides a basis for comparing candidates to the criterion of the problem. It's one component of the EA.",
+    "source": "theory evolutionary algorithms · Cell 9",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 9"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-003",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "boolean",
+    "prompt": "Mutation usually uses one parent, while recombination combines several parents.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "This is the distinction in the operator's arity: mutation has an arity of 1, recombination greater than 1.",
+    "source": "theory evolutionary algorithms · Cell 15",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-004",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "What representation is natural when each city is to appear once in a route?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A permutation of cities"
+      },
+      {
+        "id": "b",
+        "text": "A list that allows randomly many copies of each city"
+      },
+      {
+        "id": "c",
+        "text": "A bit string with no decoding rules"
+      },
+      {
+        "id": "d",
+        "text": "One Floating Point"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A permutation expresses both the order and the requirement for one sample of each element.",
+    "source": "theory evolutionary algorithms · Cell 25",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 25"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-005",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "What is the difference between genotype and phenotype?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Genotype is always the fitness value"
+      },
+      {
+        "id": "b",
+        "text": "The phenotype is always a binary string"
+      },
+      {
+        "id": "c",
+        "text": "The concepts mean parent and child"
+      },
+      {
+        "id": "d",
+        "text": "The genotype is the encoding; the phenotype is the interpreted solution"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A genotype can be decoded into a solution considered by the fitness function. They can be almost identical in simple problems.",
+    "source": "theory evolutionary algorithms · Cell 7",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 7"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-006",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "Why do the variation operators have to adapt to the representation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because permutations cannot be optimised"
+      },
+      {
+        "id": "b",
+        "text": "In order for changes to be meaningful and to maintain the solution requirements,"
+      },
+      {
+        "id": "c",
+        "text": "Because all representations need the same bit-flip operator"
+      },
+      {
+        "id": "d",
+        "text": "Because real values cannot be mutated"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "An operator acting for bits may produce invalid permutations or meaningless changes in other representations.",
+    "source": "theory evolutionary algorithms · Cells 21–25",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cells 21–25"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-007",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "boolean",
+    "prompt": "A single very good EA mode is sufficient to conclude that the setting is best in general.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "EAs are stochastic. Several driving and statistics on the results are needed for a more reliable comparison.",
+    "source": "theory evolutionary algorithms · Cell 20",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 20"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-008",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "boolean",
+    "prompt": "A mutation rate on 1 gives independent, totally random binary offspring when each piece is turned with this probability.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "With \\(p=1\\) spin every bit deterministic. The offspring will be bitcomplemented; random results per bit are available at \\(p=0.5\\).",
+    "source": "theory evolutionary algorithms · Cell 16",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-009",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "What is a risk of very strong selection combined with little variation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That all individuals become independent of their parents"
+      },
+      {
+        "id": "b",
+        "text": "Early loss of diversity and premature convergence"
+      },
+      {
+        "id": "c",
+        "text": "That fitness function can no longer be evaluated"
+      },
+      {
+        "id": "d",
+        "text": "Automatic Global Optimization"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Strong selection concentrates the population around few solutions. Without sufficient variation, other good areas may be ignored.",
+    "source": "theory evolutionary algorithms · Cells 13–16",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cells 13–16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-010",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "A bit string has length 80. Each piece is mutated independently with probability 0.025. What is the expected number of turned bits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.025\\)"
+      },
+      {
+        "id": "b",
+        "text": "None, since the probability is below 0.5"
+      },
+      {
+        "id": "c",
+        "text": "\\(2\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(20\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The estimate is the sum of 80 Bernoulli expectations: \\(80\\cdot0.025=2\\). This is an average, not a fixed number per offspring.",
+    "source": "theory evolutionary algorithms · Cell 16",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-011",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "On a single point check, the parents cut 110011 and 001100 after the third bit. Which child takes his head from the first parent and his tail from the second?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(110100\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(110011\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(111100\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(001011\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The head is 110 and the tail is 100, so the child becomes 110100.",
+    "source": "theory evolutionary algorithms · Cell 16",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-ea-012",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "Arithmetic recombination uses \\(z=\\alpha x+(1-\\alpha)y\\). With \\(x=(2,6)\\), \\(y=(10,2)\\) and \\(\\alpha=0.25\\), what is \\(z\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((4;5)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((12;8)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((8;3)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((3;8)\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "First coordinate: \\(0.25\\cdot2+0.75\\cdot10=8\\). Other: \\(0.25\\cdot6+0.75\\cdot2=3\\).",
+    "source": "theory evolutionary algorithms · Cell 23",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Cell 23"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-001",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "What does parent selection select?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Which features are always deleted"
+      },
+      {
+        "id": "b",
+        "text": "What individuals are allowed to contribute to offspring"
+      },
+      {
+        "id": "c",
+        "text": "Only which individual is globally optimal"
+      },
+      {
+        "id": "d",
+        "text": "Which gradient descent implementation is used"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Parental selection determines reproductive potential; survival choices determine who actually gets on with it.",
+    "source": "evolutionary applications flight lab · Cell 6",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-002",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "What does elitism mean in an EA?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Keeping one or more of the best individuals unchanged"
+      },
+      {
+        "id": "b",
+        "text": "That mutation is never used"
+      },
+      {
+        "id": "c",
+        "text": "That all offspring must be better than all parents"
+      },
+      {
+        "id": "d",
+        "text": "That only random individuals survive"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Elitism already protects good solutions against being lost by variation and substitution.",
+    "source": "evolutionary applications flight lab · Cell 9",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 9"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-003",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "boolean",
+    "prompt": "Differential Evolution is particularly suited to real parameter vectors.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "They use arithmetic on differences between population vectors to create variation in a continuous search space.",
+    "source": "evolutionary applications flight lab · Cells 4 and 13",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cells 4 and 13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-004",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "What is neurovolution?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Training that never uses a population"
+      },
+      {
+        "id": "b",
+        "text": "A guarantee for better results than back-propagation"
+      },
+      {
+        "id": "c",
+        "text": "Use of evolutionary algorithms to search for network weights or architectures"
+      },
+      {
+        "id": "d",
+        "text": "Another word for the core rule"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Neuroevolution is an application of EAs, not a requirement to use gradient-based learning.",
+    "source": "evolutionary applications flight lab · Cell 4",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 4"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-005",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "What does \\((\\mu,\\lambda)\\) separate from \\((\\mu+\\lambda)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Comma selects only from among offspring; plus selects from parents and offspring"
+      },
+      {
+        "id": "b",
+        "text": "Both must always keep all parents"
+      },
+      {
+        "id": "c",
+        "text": "The note only describes the mutation rate"
+      },
+      {
+        "id": "d",
+        "text": "Comma only selects from parents; plus only from offspring"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The candidate basis for the next \\(\\mu\\) individuals is different. In the presence of a comma, old parents cannot survive directly.",
+    "source": "evolutionary applications flight lab · Cell 9",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 9"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-006",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "What usually happens when the tournament size is increased and the best candidate in each tournament is selected?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Selective pressure increases"
+      },
+      {
+        "id": "b",
+        "text": "Mutation probability changes automatically"
+      },
+      {
+        "id": "c",
+        "text": "All individuals have the exact same chance"
+      },
+      {
+        "id": "d",
+        "text": "The select pressure will always be zero"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A larger tournament gives a higher probability of a strong candidate participating and winning. This can reduce diversity more quickly.",
+    "source": "evolutionary applications flight lab · Cell 8",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 8"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-007",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "boolean",
+    "prompt": "Fitness shearing can prevent all individuals from collecting in the same area of the search space.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "Effective fitness is reduced in densely populated areas, so that more niches can be maintained.",
+    "source": "evolutionary applications flight lab · Cell 11",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 11"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-008",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "boolean",
+    "prompt": "A feature-selection wrapper should use the final test set to calculate fitness in order to avoid overfitting.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Then the search is adapted to the test set. Use an internal validation/CV and keep the end test out of the search.",
+    "source": "evolutionary applications flight lab · Cells 12 and 15",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cells 12 and 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-009",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "An EA gets better best fitness, but unchanged average fitness. What does this most directly support?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All individuals must be better"
+      },
+      {
+        "id": "b",
+        "text": "At least one candidate has been improved, but the population as a whole is not necessarily improved"
+      },
+      {
+        "id": "c",
+        "text": "Global optimism proved"
+      },
+      {
+        "id": "d",
+        "text": "The multiple must be zero"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The best value and population mean describe different things. A particularly good individual can lift only the best value.",
+    "source": "evolutionary applications flight lab · Cell 22",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 22"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-010",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "The DE variant \\(v=x_{\\mathrm{best}}+F(x_{r1}-x_{r2})\\) uses \\(x_{\\mathrm{best}}=(2,3)\\), \\(x_{r1}=(6,1)\\), \\(x_{r2}=(2,5)\\) and \\(F=0.5\\). What is \\(v\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((4;5)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((6;-1)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((4;1)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((3;2)\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The difference is \\((4,-4)\\), half is \\((2,-2)\\), and the sum of \\((2,3)\\) becomes \\((4,1)\\).",
+    "source": "evolutionary applications flight lab · Cell 13",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-011",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "For a maximizing problem, \\(\\mu=2\\) and \\(\\lambda=3\\) are available. The fitness of the parents is \\([10,7]\\), the \\([9,8,6]\\) will be lost. With deterministic choice of the two best, what is retained by commas and plus?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both keep \\([9,8]\\)."
+      },
+      {
+        "id": "b",
+        "text": "Comma: \\([9,8]\\). Plus: \\([10,9]\\)."
+      },
+      {
+        "id": "c",
+        "text": "Comma: \\([10,9]\\). Plus: \\([9,8]\\)."
+      },
+      {
+        "id": "d",
+        "text": "Both keep \\([10,7]\\)."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Comma only assesses \\([9,8,6]\\). Plus evaluates the entire \\([10,7,9,8,6]\\). The two largest are selected in each candidate set.",
+    "source": "evolutionary applications flight lab · Cell 9",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 9"
+      }
+    ]
+  },
+  {
+    "id": "in3050-app-012",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "A wrapper candidate uses 4-fold CV and provides accuracy \\([0.75;0.80;0.85;0.80]\\). Fitness is the average accuracy minus 0.01 per selected feature. With 6 features, what's fitness?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.80\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.74\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.86\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.20\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The average is \\(\\frac{3.20}{4}=0.80\\). The feature penalty is \\(6\\cdot0.01=0.06\\). Fitness becomes \\(0.80-0.06=0.74\\).",
+    "source": "evolutionary applications flight lab · Cell 15",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Cell 15"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-001",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "What is the Sigmoid value \\(\\sigma(0)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(1\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(-1\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.5\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(\\sigma(0)=\\frac1{1+e^0}=\\frac12\\). This is the probability of the model at logit 0.",
+    "source": "theory logistic regression · Cell 6",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cell 6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-002",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "What models binary logistical regression most directly?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An arbitrary continuous target value without restrictions"
+      },
+      {
+        "id": "b",
+        "text": "Probability of one of two classes of given input"
+      },
+      {
+        "id": "c",
+        "text": "Number of hidden layers to use"
+      },
+      {
+        "id": "d",
+        "text": "The distance between all pairs of training observations"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Sigmoid converts a linear score to a value between 0 and 1 used for binary classification.",
+    "source": "theory logistic regression · Cells 6 and 8",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cells 6 and 8"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-003",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "What problem is common multi-class classification with mutually exclusive classes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Select one of the 0-9 digits for an image"
+      },
+      {
+        "id": "b",
+        "text": "To give an image more independent subject links"
+      },
+      {
+        "id": "c",
+        "text": "Preaching the Temperature Next Hour"
+      },
+      {
+        "id": "d",
+        "text": "Finding the number of observations in the data set"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A digit image gets one class from ten. However, several simultaneous topic links are multilabel classifications.",
+    "source": "theory logistic regression · Cell 28",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cell 28"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-004",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "boolean",
+    "prompt": "A logistical model without hidden layers automatically gets a non-linear decision boundary in the input space because sigmoid is non-linear.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "At threshold 0.5 the limit is \\(w\\cdot x+b=0\\). Sigmoid changes the probabilities, but this limit is still linear in the selected input features.",
+    "source": "theory logistic regression · Cells 8 and 25",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cells 8 and 25"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-005",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "For example, with true class \\(y=1\\), what is the predictive probability of leading binary cross-entropy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(p=0.01\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(p=0.75\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(p=0.99\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(p=0.25\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "For \\(y=1\\) the wallpaper is \\(-\\ln(p)\\). A very low probability of the true class is punished most.",
+    "source": "theory logistic regression · Cell 13",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cell 13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-006",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "One-vs-Rest is used for a problem with 5 classes. How many binary classifiers are trained?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(4\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(10\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(2\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "One model per class is trained: this class against all the others.",
+    "source": "theory logistic regression · Cell 29",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cell 29"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-007",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "boolean",
+    "prompt": "If the same constant is added to all logins in a softmax, the probabilities are unchanged.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "\\(e^{z_j+c}\\) has a common factor \\(e^c\\) in both the numerator and the denominator. So we can subtract the largest log for better numerical stability.",
+    "source": "theory logistic regression · Cell 30",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cell 30"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-008",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "boolean",
+    "prompt": "In case of softmax with cross-entropy, only the weights of the correct class are updated.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "For class \\(j\\), the logit gradient is \\(p_j-t_j\\). Also wrong class \\(p_j\\) is usually greater than zero, so more classes get gradients.",
+    "source": "theory logistic regression · Cell 32",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cell 32"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-009",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "Why is negative log-likelihood used as loss function?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Maximising peerhood becomes an equivalent minimization task"
+      },
+      {
+        "id": "b",
+        "text": "It removes the need for training labels"
+      },
+      {
+        "id": "c",
+        "text": "It always gives zero losses after one update"
+      },
+      {
+        "id": "d",
+        "text": "It guarantees perfect probabilities of new data"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Logarithm is monotonous; a minus sign spins maximization to minimise. Sums of log values are also easier to handle than products.",
+    "source": "theory logistic regression · Cells 12 and 13",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cells 12 and 13"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-010",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "A binary model provides logit \\(z=\\ln(3)\\). What is \\(p=\\sigma(z)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(3.00\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.75\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.50\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.25\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "\\(e^{-\\ln3}=\\frac13\\), then \\(p=\\frac1{1+\\frac13}=\\frac34\\).",
+    "source": "theory logistic regression · Cell 6",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cell 6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-011",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "For example, \\(x=2\\), \\(y=1\\), \\(w=0\\), and \\(b=0\\) are. Use binary cross-entropy and learning rate 0.1, without regularization. What will \\(w\\) and \\(b\\) become after one gradient update?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(w=-0.1\\) and \\(b=-0.05\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(w=0.2\\) and \\(b=0.1\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(w=0.1\\) and \\(b=0.05\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(w=0\\) and \\(b=0\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "\\(p=0.5\\). \\(\\frac{dL}{dw}=(p-y)x=-1\\) and \\(\\frac{dL}{db}=-0.5\\). Subtract 0.1 times every gradient: \\(w=0.1\\) and \\(b=0.05\\).",
+    "source": "theory logistic regression · Cell 17",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cell 17"
+      }
+    ]
+  },
+  {
+    "id": "in3050-log-012",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "Softmax logs are \\([\\ln2,\\ln3,\\ln5]\\). What is the cross-entropy when the third class is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(\\ln(10)\\), approximately 2.303"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.5\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(\\ln(2)\\), approximately 0.693"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\ln(5)\\), approximately 1.609"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Exponentials are \\([2,3,5]\\), with sum 10. True class gets \\(p=\\frac5{10}=0.5\\); wallpaper is \\(-\\ln(0.5)=\\ln2\\).",
+    "source": "theory logistic regression · Cells 30 and 32",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Cells 30 and 32"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-001",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "Why do neural networks use non-linear activations between linear layers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Without them, the whole network can be written as one affine transformation"
+      },
+      {
+        "id": "b",
+        "text": "They make training labels unnecessary"
+      },
+      {
+        "id": "c",
+        "text": "They always reduce the number of parameters to zero."
+      },
+      {
+        "id": "d",
+        "text": "They guarantee that all local minima will disappear"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A composition of affine transformations is still affine. Non-linear activations allow the network to learn more complex functions.",
+    "source": "theory backpropagation · Cell 10",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 10"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-002",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "What makes a forward pass?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Updates all weights without calculating a loss"
+      },
+      {
+        "id": "b",
+        "text": "Automatically Selects Valid Tags"
+      },
+      {
+        "id": "c",
+        "text": "Calculates activation and prediction from input through layers"
+      },
+      {
+        "id": "d",
+        "text": "Deleting neurons with a small gradient"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Forward pass uses the current parameters to calculate model output; then, the loss can be calculated.",
+    "source": "theory backpropagation · Cell 12",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 12"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-003",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "What is the key challenge of XOR for one linear classifier?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Classes cannot be separated by one straight line"
+      },
+      {
+        "id": "b",
+        "text": "XOR has only one class"
+      },
+      {
+        "id": "c",
+        "text": "A bias always makes XOR linearly separable"
+      },
+      {
+        "id": "d",
+        "text": "Input values cannot be represented numerically"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The positive corners are diagonally opposite. A network with a suitable non-linear hidden layer can represent XOR.",
+    "source": "theory backpropagation · Cells 6 and 8",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cells 6 and 8"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-004",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "boolean",
+    "prompt": "Backpropagation calculates gradients, while an optimizer uses them to update parameters.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "Gradient calculation and parameter update are different steps. Normal gradient descent is one possible optimizer.",
+    "source": "theory backpropagation · Cell 17",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 17"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/week8.pdf",
+        "location": "PDF page 29"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-005",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A dense network has 2 input, 3 hidden neurons and 1 output. All hidden neurons and outputs have their own bias. How many trainable parameters are there?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(9\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(10\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(16\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(13\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The first layer has \\(2\\cdot3\\) weights and 3 biases. The last layer has \\(3\\cdot1\\) weights and 1 biases. Total \\(6+3+3+1=13\\).",
+    "source": "theory backpropagation · Cell 8",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 8"
+      }
+    ],
+    "figure": "dense-network"
+  },
+  {
+    "id": "in3050-bp-006",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "If a parameter affects the loss through several branches of the calculation graph, how do the gradient contributions combine?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The contributions from the branches are summarised"
+      },
+      {
+        "id": "b",
+        "text": "The contributions are always multiplied by each other"
+      },
+      {
+        "id": "c",
+        "text": "Only the maximum absolute value branch is used"
+      },
+      {
+        "id": "d",
+        "text": "All except the first branch is ignored"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The core rule sums up the impact through alternative paths. Along one path, local derivative is multiplied.",
+    "source": "theory backpropagation · Cells 14, 16 and 21",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cells 14, 16 and 21"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-007",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "boolean",
+    "prompt": "Universal approximation means that the common gradient is guaranteed to find the desired function from any initialization.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The theory relates to representation under certain conditions, not to a guarantee of practice, data needs or generalisation.",
+    "source": "theory backpropagation · Cell 28",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 28"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-008",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "boolean",
+    "prompt": "When a batch-loss is the mean of the \\(N\\) example-loss, the gradient shall also be scaled with \\(\\frac1N\\).",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The derivative of a sum is the sum of the derivative. The constant factor \\(\\frac1N\\) is included.",
+    "source": "theory backpropagation · Cell 21",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 21"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-009",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "Why can numeric differences be used to control back-propagation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They do not require a calculation of the loss"
+      },
+      {
+        "id": "b",
+        "text": "They always train faster than backpropagation"
+      },
+      {
+        "id": "c",
+        "text": "They give an independent approximate gradient estimate for small parameter changes"
+      },
+      {
+        "id": "d",
+        "text": "They are exact for any step value"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A finite difference gradient can be compared to the analytical gradient of small examples. Step size and float errors affect precision.",
+    "source": "theory backpropagation · Cell 23",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 23"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-010",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A hidden sigmoid neuron has activation \\(h=0.5\\). The output weight from it is \\(v=2\\), the output is \\(p=0.8\\) and \\(y=1\\). For sigmoid output with binary cross-entropy and one example: what is \\(\\frac{dL}{dz_{\\mathrm{hidden}}}\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.1\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(-0.4\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(-0.025\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(-0.1\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The output log gradient is \\(p-y=-0.2\\). Furthermore, the gradient becomes \\(-0.2\\cdot v\\cdot h(1-h)=-0.2\\cdot2\\cdot0.25=-0.1\\).",
+    "source": "theory backpropagation · Cell 21",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 21"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-011",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "Along one chain is \\(\\frac{dL}{du}=2\\), \\(\\frac{du}{dv}=-3\\) and \\(\\frac{dv}{dw}=0.5\\). No other paths connect \\(w\\) to \\(L\\). What is \\(\\frac{dL}{dw}\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(-0.5\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(3\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(-3\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(-6\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The kernel rule gives \\(2\\cdot(-3)\\cdot0.5=-3\\). For more paths they had to add up their contributions.",
+    "source": "theory backpropagation · Cell 16",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-bp-012",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "\\(L(w)=1.20000\\) and \\(L(w+\\varepsilon)=1.20004\\) with \\(\\varepsilon=0.0001\\). What is the forward-looking numerical gradient?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(400\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.00004\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.4\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(4\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "\\(\\frac{L(w+\\varepsilon)-L(w)}{\\varepsilon}=\\frac{0.00004}{0.0001}=0.4\\). This is an approximation, not necessarily the exact derivative.",
+    "source": "theory backpropagation · Cell 23",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Cell 23"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-001",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "Which data set is used for the final independent estimate of model performance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Training kit after the model has seen all labels"
+      },
+      {
+        "id": "b",
+        "text": "The validation set that already selected the hyperparameter"
+      },
+      {
+        "id": "c",
+        "text": "That of all sets that give the highest accuracy"
+      },
+      {
+        "id": "d",
+        "text": "A test set that has been excluded from practice and model selection"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Training data adapts parameters, validation selects model settings, and an unmoved test set results in a final assessment.",
+    "source": "theory evaluation and generalization · Cells 4 and 6",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/01_theory_evaluation_and_generalization.ipynb",
+        "location": "Cells 4 and 6"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-002",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "What does recall mean for the positive class?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The proportion of negative found by the model"
+      },
+      {
+        "id": "b",
+        "text": "The rate of positive predicting that is actually positive"
+      },
+      {
+        "id": "c",
+        "text": "The proportion of all examples that are positive"
+      },
+      {
+        "id": "d",
+        "text": "The proportion of actual positive found by the model"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(\\mathrm{Recall}=\\frac{\\mathrm{TP}}{\\mathrm{TP}+\\mathrm{FN}}\\). The denominator is all examples that are actually positive.",
+    "source": "Exam Preparation · Paragraphs 13–19",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Notater/Exam preperation.docx",
+        "location": "Paragraphs 13–19"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-003",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A model has low training errors, but much higher validation errors. Which diagnosis best fits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Perfect Generalization"
+      },
+      {
+        "id": "b",
+        "text": "Overfitting"
+      },
+      {
+        "id": "c",
+        "text": "Underadaptation because both errors are high"
+      },
+      {
+        "id": "d",
+        "text": "Too small difference between practice and validation"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The model fits the training data well, but patterns are not transferred well. This is typically high variance/overfitting.",
+    "source": "theory evaluation and generalization · Cells 10 and 14",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/01_theory_evaluation_and_generalization.ipynb",
+        "location": "Cells 10 and 14"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-004",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "boolean",
+    "prompt": "Stratified cross-validation tries to maintain approximately the same class distribution in each fold.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "This is useful for class imbalance, so the folds don't get completely different proportions of the classes.",
+    "source": "More on supervised learning · Paragraphs 39–42",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 39–42"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-005",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "What's the precision in the table? The positive category is ‘sick’.",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.80\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.60\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.835\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.20\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "\\(\\mathrm{TP}=36\\) and \\(\\mathrm{FP}=9\\). \\(\\mathrm{Precision}=\\frac{36}{36+9}=\\frac{36}{45}=0.80\\). This describes how reliable the positive predictions are.",
+    "source": "Exam Preparation · Paragraphs 13–19",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Notater/Exam preperation.docx",
+        "location": "Paragraphs 13–19"
+      }
+    ],
+    "table": {
+      "caption": "Confusion matrix",
+      "columns": [
+        "Actual Class",
+        "Predicted Sick",
+        "Predicate fresh"
+      ],
+      "rows": [
+        [
+          "Sick",
+          "36",
+          "24"
+        ],
+        [
+          "Fresh",
+          "9",
+          "131"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-eval-006",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "What is the main point of nested cross-validation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both levels only train on the test set"
+      },
+      {
+        "id": "b",
+        "text": "The next CV removes the need for validation data"
+      },
+      {
+        "id": "c",
+        "text": "Outer CV selects labels and inner CV create features without data"
+      },
+      {
+        "id": "d",
+        "text": "Inner CV selects settings; extreme CV evaluates the entire procedure on data it has not selected from"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "External holdout folds are not used in the internal model selection. This is also the assessment of the effect of hyperparameter selection.",
+    "source": "More on supervised learning · Paragraphs 99–103",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 99–103"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-007",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "boolean",
+    "prompt": "A scaler that calculates the mean and standard deviation of the whole data set before CV can leak information from the validation folds.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "Preprocessation shall be taught from each training fold and then applied to the associated validation fold.",
+    "source": "More on supervised learning · Paragraphs 93–97",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 93–97"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-008",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "boolean",
+    "prompt": "High ROC-AUC guarantees that the positive predictions have high precision when positive examples are very rare.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "FPR may be small while the number of false positives is large. Precision depends on the class instance and selected threshold; AUC measures ranking above thresholds.",
+    "source": "Exam Preparation · Paragraphs 32–41",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Notater/Exam preperation.docx",
+        "location": "Paragraphs 32–41"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-009",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "What happens to TPR and FPR when the threshold for predicting positive is increased, while the scores are kept fixed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They are not altered because AUC is constant."
+      },
+      {
+        "id": "b",
+        "text": "Both can only decrease or remain unchanged"
+      },
+      {
+        "id": "c",
+        "text": "TPR must increase while FPR decreases"
+      },
+      {
+        "id": "d",
+        "text": "Both have to increase"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The same number of examples or fewer are predicted positive. Neither the true-positive count nor the false-positive count can increase.",
+    "source": "More on supervised learning · Paragraphs 157–159",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 157–159"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-010",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A model has high errors in both practice and validation, and the curves have almost met when increasing the amount of data. What is most relevant to study?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Whether the model or feature representation is too limited"
+      },
+      {
+        "id": "b",
+        "text": "Whether an even larger data set is guaranteed to eliminate this error"
+      },
+      {
+        "id": "c",
+        "text": "Whether to remove all practice and use the test set only"
+      },
+      {
+        "id": "d",
+        "text": "Whether a lower training error always means a worse model"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The pattern indicates high bias. Greater representation capacity or better features can help; more of the same data is not necessarily the solution.",
+    "source": "theory evaluation and generalization · Cell 18",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/01_theory_evaluation_and_generalization.ipynb",
+        "location": "Cell 18"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-011",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A grid search tries 3 values for the first hyperparameter, 4 for the second, and 2 for the third. Each combination uses 5-fold cross-validation. How many model fits are run, excluding the final refit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(120\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(24\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(125\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(45\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "There are \\(3\\cdot4\\cdot2=24\\) combinations, each fitted 5 times. The total is \\(24\\cdot5=120\\) fits, excluding the final refit.",
+    "source": "Exam Preparation · Paragraphs 3–10",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Notater/Exam preperation.docx",
+        "location": "Paragraphs 3–10"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-012",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A binary classifier has precision 0.75 and \\(F_1\\) score 0.60. What is recall?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(0.80\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0.45\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.50\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.675\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "\\(F_1=\\frac{2PR}{P+R}\\). Thus \\(R=\\frac{F_1P}{2P-F_1}=\\frac{0.60\\cdot0.75}{1.50-0.60}=\\frac{0.45}{0.90}=0.50\\).",
+    "source": "Exam Preparation · Paragraphs 22–29",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Notater/Exam preperation.docx",
+        "location": "Paragraphs 22–29"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-013",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A data set has 10,000 examples, of which 100 is positive. At a threshold, \\(\\mathrm{TPR}=0.80\\) and \\(\\mathrm{FPR}=0.02\\) are. What's precision, about?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(28.8 \\%\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(80.0 \\%\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2.0 \\%\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(98.0 \\%\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "\\(\\mathrm{TP}=0.80\\cdot100=80\\). \\(\\mathrm{FP}=0.02\\cdot9900=198\\). \\(\\mathrm{Precision}=\\frac{80}{80+198}\\approx0.288\\). A low FPR can give many false positives to rare positives.",
+    "source": "Exam Preparation · Paragraphs 32–41",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Notater/Exam preperation.docx",
+        "location": "Paragraphs 32–41"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-014",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "The next CV has 4 outer folds. In each, 3 internal folds and 6 parameter combinations are used, then one refit on the entire outer training section. How many total adaptations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(72\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(76\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(24\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(80\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Each outer fold needs \\(3\\cdot6=18\\) internal configuration and 1 reft. Four outer folds give \\(4\\cdot19=76\\).",
+    "source": "More on supervised learning · Paragraphs 99–103",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 99–103"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-015",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "boolean",
+    "prompt": "In a bootstrap sample with \\(n\\) independent draws with replacement from \\(n\\) observations, the expected fraction of distinct observations tends to \\(1-e^{-1}\\approx63.2\\,\\%\\) as \\(n\\) grows.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "A particular observation is missing with probability \\(\\left(1-\\frac1n\\right)^n\\to e^{-1}\\). The proportion that occurs at least once is therefore approaching \\(1-e^{-1}\\).",
+    "source": "More on supervised learning · Paragraphs 116–123",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Paragraphs 116–123"
+      }
+    ]
+  },
+  {
+    "id": "in3050-eval-016",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "For square losses on a given \\(x\\) has a model \\(\\mathrm{bias}^2=4\\), \\(\\mathrm{variance}=3\\) and irreducible \\(\\text{noise variance}=2\\). What is the expected test loss for the bias-Variance decomposition?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(29\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(7\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(9\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(5\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "For this quadratic loss decomposition, \\(\\mathrm{bias}^2\\), variance and noise are summarised: \\(4+3+2=9\\). The formula does not apply unchanged for any classification criterion.",
+    "source": "theory evaluation and generalization · Cell 16",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/01_theory_evaluation_and_generalization.ipynb",
+        "location": "Cell 16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-001",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "What regularization is especially known for being able to give exactly zero for any weights?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(L_2\\) alone in regular scratch regression"
+      },
+      {
+        "id": "b",
+        "text": "A constant added loss regardless of the weights"
+      },
+      {
+        "id": "c",
+        "text": "No Regularization"
+      },
+      {
+        "id": "d",
+        "text": "\\(L_1\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(L_1\\) can provide sparing solutions and hence implicit feature selection. \\(L_2\\) usually shrinks weights without making them exactly zero.",
+    "source": "theory regularization and ensembles · Cells 8 and 10",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cells 8 and 10"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-002",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "What is the characteristic of baking?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All features are deleted before practice"
+      },
+      {
+        "id": "b",
+        "text": "Several models are trained on bootstrap samples and combined"
+      },
+      {
+        "id": "c",
+        "text": "One model is only trained on the validation set"
+      },
+      {
+        "id": "d",
+        "text": "Each model must be trained solely on the previous model’s error"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Bootstrap involves drawbacks. For example, predictions are combined with a majority or an average.",
+    "source": "theory regularization and ensembles · Cell 22",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cell 22"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-003",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "What is used to select the stop point for normal ready stopping?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Validation data performance"
+      },
+      {
+        "id": "b",
+        "text": "Best score of the final test set through all epochs"
+      },
+      {
+        "id": "c",
+        "text": "Number of features alone"
+      },
+      {
+        "id": "d",
+        "text": "Maximum training error"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A common option is the checkpoint with the best validation loss. Selecting after the final test would mix model selection and final evaluation.",
+    "source": "theory regularization and ensembles · Cell 20",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cell 20"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-004",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "boolean",
+    "prompt": "If all the ensemble models give exactly the same predictions, then the majority vote in itself does not win over one of them.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The ensemble gain depends, among other things, on the fact that the defects are not entirely identical. Identical predictions are not changed by a vote.",
+    "source": "theory regularization and ensembles · Cell 28",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cell 28"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-005",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "What does \\(\\lambda\\) in \\(J=L_{\\mathrm{data}}+\\lambda\\sum_i w_i^2\\) involve when the remainder is kept equal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The loss from incorrect predictions is removed entirely"
+      },
+      {
+        "id": "b",
+        "text": "Weight size more punishable"
+      },
+      {
+        "id": "c",
+        "text": "Validation error decreases guaranteed"
+      },
+      {
+        "id": "d",
+        "text": "The Bias parameter must always be zero"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Stronger \\(L_2\\) favours smaller weights. It can reduce variance, but too strong regularization can result in underfitting.",
+    "source": "theory regularization and ensembles · Cells 6 and 8",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cells 6 and 8"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-006",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "What is combining elastic networks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "MSE and accuracy as same size"
+      },
+      {
+        "id": "b",
+        "text": "only baking and booster"
+      },
+      {
+        "id": "c",
+        "text": "\\(L_1\\) and \\(L_2\\) penalties"
+      },
+      {
+        "id": "d",
+        "text": "Only two different learning rates"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Elastic net combines the saving properties of \\(L_1\\) with the shrinkage from \\(L_2\\) and can be useful with correlated features.",
+    "source": "theory regularization and ensembles · Cell 16",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cell 16"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-007",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "boolean",
+    "prompt": "Feature selection can be done safely once on all labels before CV because only the model can be overfitted.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The feature selection can also adapt to the labels. It must be done within each training fold to avoid leakage.",
+    "source": "theory regularization and ensembles · Cell 18",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cell 18"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-008",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "boolean",
+    "prompt": "Boosting usually builds models sequentially so that later models respond to errors or residuals from the current ensemble.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "This differs from baking, where models can be trained independently. The actual error weight depends on the booster variant.",
+    "source": "theory regularization and ensembles · Cells 25 and 28",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cells 25 and 28"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-009",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "A deep decision tree model has high variance. Why can baking help?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bagging makes every three linear"
+      },
+      {
+        "id": "b",
+        "text": "Bootstrap guarantees that all models make different errors"
+      },
+      {
+        "id": "c",
+        "text": "Average or vote may dampen variation from unstable single models"
+      },
+      {
+        "id": "d",
+        "text": "Bagging makes all training examples independent of the labels"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "When the single models are not perfectly correlated, aggregation can reduce variance. It is a trend, not a guarantee of better scores in any situation.",
+    "source": "theory regularization and ensembles · Cells 22 and 28",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cells 22 and 28"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-010",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "The sentence is \\(\\frac\\lambda2\\sum_i w_i^2\\) and bias are not to be punished. The parameters are \\([\\mathrm{bias}=5,\\ w_1=1,\\ w_2=-2,\\ w_3=2]\\), \\(\\lambda=0.4\\). What is the regularization process?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(3.6\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(1.8\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(6.8\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(0.9\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Only the features masses count: \\(1^2+(-2)^2+2^2=9\\). \\(\\frac\\lambda2=0.2\\), so the punishment is \\(0.2\\cdot9=1.8\\).",
+    "source": "Exam Preparation · Paragraphs 68–77",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Notater/Exam preperation.docx",
+        "location": "Paragraphs 68–77"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-011",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "For \\(J=L_{\\mathrm{data}}+\\lambda w^2\\), \\(\\frac{dL_{\\mathrm{data}}}{dw}=-2\\), \\(w=3\\), \\(\\lambda=0.5\\) and learning rate \\(\\eta=0.1\\) are available. What is \\(w\\) after one gradient step?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(2.9\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(3.2\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2.5\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(2.8\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The gradient of the penalty is \\(2\\lambda w=3\\). The total gradient is \\(-2+3=1\\), so \\(w_{\\mathrm{new}}=3-0.1\\cdot1=2.9\\).",
+    "source": "theory regularization and ensembles · Cells 6 and 8",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cells 6 and 8"
+      }
+    ]
+  },
+  {
+    "id": "in3050-reg-012",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "Two models have weights \\(A=(2,0)\\) and \\(B=(1,1)\\), same data loss and no bias penalty. What do the \\(L_1\\) and \\(L_2\\) joints say about them?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(L_1\\) is similar; \\(L_2\\) favours \\(B\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(L_1\\) favours \\(B\\); \\(L_2\\) equals"
+      },
+      {
+        "id": "c",
+        "text": "Both penalties favour \\(A\\)"
+      },
+      {
+        "id": "d",
+        "text": "Both penalties are equal"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "\\(L_1\\): \\(\\lvert2\\rvert+0=\\lvert1\\rvert+\\lvert1\\rvert=2\\). \\(L_2\\): \\(2^2+0^2=4\\) against \\(1^2+1^2=2\\). Distributed weights get lower \\(L_2\\) in this example.",
+    "source": "theory regularization and ensembles · Cell 12",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Cell 12"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-001",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "What is \\(\\operatorname{ReLU}(z)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(z^2\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\min(0,z)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(\\max(0,z)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\frac1{1+e^{-z}}\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The ReLU provides 0 for negative inputs and keeps positive inputs. It's a regular non-linear activation in hidden layers.",
+    "source": "Deep learning · Paragraphs 170–177",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 170–177"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-002",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "What is the main idea of a convolution filter in a CNN for images?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The same set of weights is used in local areas above the image"
+      },
+      {
+        "id": "b",
+        "text": "The image is automatically converted to the correct tags"
+      },
+      {
+        "id": "c",
+        "text": "The filter must be the handle and cannot be learned"
+      },
+      {
+        "id": "d",
+        "text": "Each pixel needs to use a completely independent copy of all network weights"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Local connection and weight-sharing allow the same pattern to be recognised in several locations. The filter weights can be learned during practice.",
+    "source": "Deep learning · Paragraphs 186–195 and 224–242",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 186–195 and 224–242"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-003",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "What does a regular RNN transfer from one time to the next?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A new independent class label for the entire data set"
+      },
+      {
+        "id": "b",
+        "text": "A hidden state that sums up previously processed input"
+      },
+      {
+        "id": "c",
+        "text": "Only the number of epoch models"
+      },
+      {
+        "id": "d",
+        "text": "All future inputs before they have been observed"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The recurrent state allows the output to depend on the previous elements of the sequence.",
+    "source": "Deep learning · Paragraphs 245–267",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 245–267"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-004",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "What's an officeing for a word or token?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An answer key that makes training unnecessary"
+      },
+      {
+        "id": "b",
+        "text": "A unique text file with all previous predictions"
+      },
+      {
+        "id": "c",
+        "text": "A forced one-hot vector with exactly one digit"
+      },
+      {
+        "id": "d",
+        "text": "A learned, dense vector representation"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Embedment may represent similarities and context in fewer dimensions than one-hot vector throughout the vocabulary.",
+    "source": "Deep learning · Paragraphs 298–307",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 298–307"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-005",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "boolean",
+    "prompt": "In a regular feedforward model, the calculation from input to output without a recurrent connection goes back in time.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "This distinguishes feedforward networks from RNNs which reuse a state between sequence steps.",
+    "source": "Deep learning · Paragraphs 62–69 and 245–267",
+    "difficulty": "easy",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 62–69 and 245–267"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-006",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "Why can many sigmoid layers give vanishing gradients?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All bias values automatically become zero"
+      },
+      {
+        "id": "b",
+        "text": "Sigmoid has derivatived larger than one everywhere"
+      },
+      {
+        "id": "c",
+        "text": "The kernel rule always sums up the number of neurons without weights"
+      },
+      {
+        "id": "d",
+        "text": "Small derivative is multiplied through many layers"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The Sigmoid derivative is the maximum 0.25 and very small at saturation. Products through many layers can therefore become small, even depending on the weights.",
+    "source": "Deep learning · Paragraphs 161–168",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 161–168"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-007",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "A pooling window contains the values 1, 5, 3 and 7. What gives max pooling and average pooling?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Max: 5. Average: 4."
+      },
+      {
+        "id": "b",
+        "text": "Max: 7. Average: 3."
+      },
+      {
+        "id": "c",
+        "text": "Max: 7. Average: 4."
+      },
+      {
+        "id": "d",
+        "text": "Max: 16. Average: 7."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Max pooling selects the largest value. The average is \\(\\frac{1+5+3+7}{4}=\\frac{16}{4}=4\\).",
+    "source": "Deep learning · Paragraphs 186–195",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 186–195"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-008",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "boolean",
+    "prompt": "A residual connection \\(y=F(x)+x\\) guarantees that a network will never get worse generalisation when adding multiple layers.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The identity path can make optimisation easier, but does not provide a general guarantee of validation performance or successful practice.",
+    "source": "Deep learning · Paragraphs 197–202",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 197–202"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-009",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "boolean",
+    "prompt": "In a regular RNN, the recurrented weights are divided between the time points in the sequence.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The same transition function is used for each step. This means that longer sequences do not require a separate new set of weights per time.",
+    "source": "Deep learning · Paragraphs 245–267",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 245–267"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-010",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "How can a language model get training goals from normal text for next-token prediction?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All tokens get the same random class"
+      },
+      {
+        "id": "b",
+        "text": "The model must know the full text of the future when generating"
+      },
+      {
+        "id": "c",
+        "text": "Each word must always be given a manually-drawn bunding box"
+      },
+      {
+        "id": "d",
+        "text": "The next token in the text is used as a target for the previous context"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The text order gives input-target pairs. During autoregressive generation, the previous token is used and the model produces the next token.",
+    "source": "Deep learning · Paragraphs 269–285",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 269–285"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-011",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "What does that mean that a CNN learns features, without all feature engineering being done manually?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Training can be done without data or goal"
+      },
+      {
+        "id": "b",
+        "text": "The filters are adapted to data, but architecture still has assumptions like location and weight sharing"
+      },
+      {
+        "id": "c",
+        "text": "All data sets require the same CNN architecture"
+      },
+      {
+        "id": "d",
+        "text": "The model has no inductive bias"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Learned representations reduces the need for hand-designed filters. The architectural selection continues to promote what is easy to learn.",
+    "source": "Deep learning · Paragraphs 224–242",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 224–242"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-012",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "One convolution filter covers \\(3\\times3\\) pixels in an RGB image and uses all 3 channels. With one bias for the filter, how many trainable parameters does it have?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(10\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(9\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(82\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(28\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "It's \\(3\\cdot3\\cdot3=27\\) Filter Weights and 1 Bias. The same 28 parameters are reused over image positions.",
+    "source": "Deep learning · Paragraphs 186–195 and 224–242",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 186–195 and 224–242"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-013",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "A scalar RNN uses \\(h_t=0.5h_{t-1}+2x_t\\) without bias and with identity activation. \\(h_0=1\\), \\(x_1=1\\) and \\(x_2=-1\\). What is \\(h_2\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(-0.75\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(-1.5\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(0.75\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(2.5\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "First \\(h_1=0.5\\cdot1+2\\cdot1=2.5\\). So \\(h_2=0.5\\cdot2.5+2\\cdot(-1)=1.25-2=-0.75\\).",
+    "source": "Deep learning · Paragraphs 245–267",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 245–267"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-014",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "A scalar residual block is \\(y=F(x)+x\\). At a point, \\(F^{\\prime}(x)=2\\) is a point. What is \\(\\frac{dy}{dx}\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(1\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(0\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(3\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Derivation returns \\(F^{\\prime}(x)+1=2+1=3\\). The identity connection contributes 1 to the local gradient.",
+    "source": "Deep learning · Paragraphs 197–202",
+    "difficulty": "medium",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 197–202"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-015",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "boolean",
+    "prompt": "For a ReLU neuron with negative preactivation \\(z<0\\), the local derivative is 0. The gradient propagated back through this neuron can therefore be zero for this example.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "ReLU is constant 0 on the negative side. The nucleus rule is multiplying by this local zero derivative. The claim relates to \\(z<0\\); at the breakpoint \\(z=0\\) a convention must be chosen.",
+    "source": "Deep learning · Paragraphs 170–177",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 170–177"
+      }
+    ]
+  },
+  {
+    "id": "in3050-deep-016",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "An RNN has input dimension 2 and hidden dimension 3. It uses \\(W\\) for input, \\(U\\) for previous state and one hidden Bias vector. No output layers are included. How many parameters does this transition have, regardless of the sequence length?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(18\\)"
+      },
+      {
+        "id": "b",
+        "text": "18 times the sequence length"
+      },
+      {
+        "id": "c",
+        "text": "\\(12\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(15\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "\\(W\\) has \\(3\\cdot2=6\\) parameters, \\(U\\) has \\(3\\cdot3=9\\), and Bias has 3. Total 18. Weight division means that the parameter number is not multiplied by the sequence length.",
+    "source": "Deep learning · Paragraphs 245–267",
+    "difficulty": "hard",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Paragraphs 245–267"
+      }
+    ]
+  }
+]

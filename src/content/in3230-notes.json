@@ -1,0 +1,2654 @@
+[
+  {
+    "id": "in3230-extra-notes-001",
+    "courseId": "IN3230",
+    "topicId": "net-introduction",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A IPv4 datagram contains \\(4\\,000\\,\\mathrm{byte}\\) IP payload and a 20 byte header without options. On a link with MTU 1,500, the payload is divided into 1,480, 1,480 and \\(1\\,040\\,\\mathrm{byte}\\). How many bytes are sent at IP level for the three fragments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(4\\,060\\,\\mathrm{byte}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(4\\,020\\,\\mathrm{byte}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(4\\,000\\,\\mathrm{byte}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(4\\,500\\,\\mathrm{byte}\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Each fragment gets its own 20 byte IP header. Totally, it's going to be \\(4\\,000 + 3\\cdot 20 = 4\\,060\\,\\mathrm{byte}\\). Compared to the unfragmented datagram, this is the 40 extra header change.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 18–20",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 18–20"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_intro.pdf",
+        "location": "PDF page 8"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-002",
+    "courseId": "IN3230",
+    "topicId": "net-introduction",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A path has IP-MTU 1,500, 9,000 and \\(1\\,280\\,\\mathrm{byte}\\) on the three links. You will send one UDP datagram without fragmentation. Assume 20-byte IPv4-header without options, 8-byte UDP-header and no tunnels. What is the maximum UDP usage?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(8\\,972\\,\\mathrm{byte}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(1\\,252\\,\\mathrm{byte}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(1\\,472\\,\\mathrm{byte}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(1\\,280\\,\\mathrm{byte}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The path constraint is the smallest MTU, \\(1\\,280\\,\\mathrm{byte}\\). Both headers must be accommodated: \\(1\\,280-20-8 = 1\\,252\\,\\mathrm{byte}\\). The big MTU on the middle link does not increase the path's minimum.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 18–22",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 18–22"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_intro.pdf",
+        "location": "PDF page 8"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-003",
+    "courseId": "IN3230",
+    "topicId": "net-introduction",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Two unlimited large flows hashes to the same path on an ECMP network with two otherwise open roads on \\(10\\,\\mathrm{Gbit/s}\\) each. Each flow is kept on its chosen path, and the hash choice is not changed. What limits the overall rate of the two floats in this situation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(5\\,\\mathrm{Gbit/s}\\) because there are two flows"
+      },
+      {
+        "id": "b",
+        "text": "The rate is determined only by RTT, not by the link capacity"
+      },
+      {
+        "id": "c",
+        "text": "\\(10\\,\\mathrm{Gbit/s}\\) on selected path"
+      },
+      {
+        "id": "d",
+        "text": "\\(20\\,\\mathrm{Gbit/s}\\) because both ways exist"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Per-flow distribution can place several large flows on the same path. They then compete for \\(10\\,\\mathrm{Gbit/s}\\) while the other way is unused. ECMP does not automatically give equal byte distribution.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 27–33",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 27–33"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_intro.pdf",
+        "location": "PDF page 9"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-004",
+    "courseId": "IN3230",
+    "topicId": "net-introduction",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Packet A is sent by \\(t=0\\,\\mathrm{ms}\\) via a road with \\(30\\,\\mathrm{ms}\\) delay. Packet B is sent by \\(t=5\\,\\mathrm{ms}\\) via another route with \\(10\\,\\mathrm{ms}\\) delay. No packets are lost or delayed in line. What does the recipient observe?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A comes \\(5\\,\\mathrm{ms}\\) before B"
+      },
+      {
+        "id": "b",
+        "text": "A and B come at the same time"
+      },
+      {
+        "id": "c",
+        "text": "A comes \\(15\\,\\mathrm{ms}\\) before B"
+      },
+      {
+        "id": "d",
+        "text": "B comes \\(15\\,\\mathrm{ms}\\) before A"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A arrives at \\(30\\,\\mathrm{ms}\\) and B at \\(5+10=15\\,\\mathrm{ms}\\). B thus comes \\(15\\,\\mathrm{ms}\\) before A. Different road delay is enough to create reorganise, without package loss.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 24–30",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 24–30"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_intro.pdf",
+        "location": "PDF page 9"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-005",
+    "courseId": "IN3230",
+    "topicId": "net-introduction",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "A TCP flow held on one of two ECMP routes is automatically given the sum of the capacity of both roads.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "When the entire flow is kept on one road, it is this road’s capacity that is available to it. That other flows can use a different path does not mean that one float uses both.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 27–33",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 27–33"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_intro.pdf",
+        "location": "PDF page 9"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-006",
+    "courseId": "IN3230",
+    "topicId": "net-introduction",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "A path MTU found once remains valid after all route changes as long as the sender's own network card has unchanged MTU.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The Path MTU depends on all the links on the current path. A new route may contain a link with a lower MTU than the old one.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 18–22",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 18–22"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_intro.pdf",
+        "location": "PDF page 8"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-007",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A protocol detects that a PDU has the wrong checksum and rejects it, but does nothing more. What function is demonstrated and what is missing to restore data with ARQ?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Flow control is done; new receiver credit will recreate content"
+      },
+      {
+        "id": "b",
+        "text": "Duplicate detection has been performed; copy number two must be rejected"
+      },
+      {
+        "id": "c",
+        "text": "Bug detection done; a retransmission mechanism is needed"
+      },
+      {
+        "id": "d",
+        "text": "Bug correction complete; original successfully recreated"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Detecting and rejecting corrupt data is not the same as restoring them. ARQ uses feedback or timeout to get a new copy sent.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 56–65",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 56–65"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF pages 7–8"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-008",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "The recipient has delivered a PDU up, but the receipt is lost. The sender will send the PDU again. What protocol function prevents the same content from being delivered up twice?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Using a larger MTU"
+      },
+      {
+        "id": "b",
+        "text": "Re-distributing All Re-Transmissions"
+      },
+      {
+        "id": "c",
+        "text": "Removing the checksum field from receipts"
+      },
+      {
+        "id": "d",
+        "text": "Duplicate detection based on identity or sequence information"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The incorrect delivery of the new copy is not enough: the recipient must be able to recognise it as already provided. Sequence information can distinguish retransmissions from new data.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 60–65",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 60–65"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF pages 7–8"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-009",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A service shall be able to communicate with both a local and a remote process through the same interface. What should the application ideally fail to choose for itself?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The physical connection or interface used"
+      },
+      {
+        "id": "b",
+        "text": "Whether a response is correct for the application"
+      },
+      {
+        "id": "c",
+        "text": "What the message should contain"
+      },
+      {
+        "id": "d",
+        "text": "Whether to send a new application"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Communication service may hide the selection of local connection and physical interface. This provides the same service interface, but does not guarantee identical latency or faultless application logic.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 48–54",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 48–54"
+      },
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 73–87"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-010",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A communicates with D via B and C. Each of the three individual links has one local fault control loop, and A-D has one separate control loop over the whole path. How many control loops and scope are specified in the model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Six, because each link has to be counted twice"
+      },
+      {
+        "id": "b",
+        "text": "Four control loops: three link ranges and one A–D range"
+      },
+      {
+        "id": "c",
+        "text": "One, because all incorrect checks must be on the same layer"
+      },
+      {
+        "id": "d",
+        "text": "Three, because the A-D control is the same instance as the link control"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The three links each have their own state and their own range of communication. In addition, the end-to-end loop covers the whole A-D path. Equal function at different levels is not the same control body.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 78–87",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 78–87"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF pages 13–16"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-011",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "On a dedicated point-to-point link with exactly one neighbour, output interfaces can only identify the receiving neighbour; a shared medium may require addresses to select from among several neighbours.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The notes distinguish between one wire and one neighbour and multi-access. A local interface selects the neighbour of the first type, while for example MAC addresses separate the recipients from a shared medium.",
+    "source": "Networking Principles, Continued · Paragraphs 11–18",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Networking principles fortsettelse.docx",
+        "location": "Paragraphs 11–18"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-012",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "In a node-addressed model, the target node is H, regardless of the interface. One of the Hs two links fails, but the other one works and the routine finds a new path. What advantage does the name H have here?",
+    "options": [
+      {
+        "id": "a",
+        "text": "H must have one common IP address on all interfaces"
+      },
+      {
+        "id": "b",
+        "text": "All packets already on the corrupted link will be restored"
+      },
+      {
+        "id": "c",
+        "text": "Route tables are no longer necessary"
+      },
+      {
+        "id": "d",
+        "text": "The destination may retain the same identity even if the way in to it changes"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A node identity can be stable across interfaces and new paths. This is separate from restoring lost packets or finding the actual path.",
+    "source": "Networking Principles, Continued · Paragraphs 11–36",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Networking principles fortsettelse.docx",
+        "location": "Paragraphs 11–36"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF pages 29–37"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-013",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "An application uses a transport interface such as TAPS and specifies a service name rather than locking to one IP address. What choice will be easier to leave to the transport system?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Selecting from available service addresses and paths"
+      },
+      {
+        "id": "b",
+        "text": "Determines whether the user's password is correct"
+      },
+      {
+        "id": "c",
+        "text": "Determination of the content of all application responses"
+      },
+      {
+        "id": "d",
+        "text": "Removing the Need for Congestion Control"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The name-based binding allows the transport to select or change the underlying addresses and paths. The name does not determine the application's own authentication rules or response.",
+    "source": "Networking Principles, Continued · Paragraphs 5–9",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Networking principles fortsettelse.docx",
+        "location": "Paragraphs 5–9"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-014",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "If a recipient ignores reserved header fields, senders can in principle use these fields as a hidden channel even if the normal protocol processing works.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The notes point out that tolerance for reserved fields can have this backside. The fact that the normal recipient ignores a field does not prevent two cooperating parties from reading and writing additional information there.",
+    "source": "Networking Principles, Continued · Paragraphs 63–67",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Networking principles fortsettelse.docx",
+        "location": "Paragraphs 63–67"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF pages 40–41"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-015",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "An MPTCP connection has two subflows that share a bottleneck with one regular TCP connection. What goal motivates coupled congestion control over two independent, equally aggressive TCP controllers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both subflows should always use identical rates, including different bottlenecks"
+      },
+      {
+        "id": "b",
+        "text": "MPTCP should ignore losses as long as one subflow delivers"
+      },
+      {
+        "id": "c",
+        "text": "The MPTCP connection should collectively avoid acting as two competitors against one TCP flow"
+      },
+      {
+        "id": "d",
+        "text": "Each subflow should be fully independent and competed as one full TCP flow"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Coupling seeks to prevent multiple subflows from giving an MPTCP connection an unfair aggregate advantage at a shared bottleneck. When paths differ, it can also shift traffic towards the less congested path.",
+    "source": "Networking Principles, Continued · Paragraphs 38–42",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Networking principles fortsettelse.docx",
+        "location": "Paragraphs 38–42"
+      },
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 151–159"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 26"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-016",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A protocol reproduces a connection identifier while old PDUs may still be on the way. What problem must configuration and synchronization handle?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That all new PDUs necessarily get too big MTU"
+      },
+      {
+        "id": "b",
+        "text": "That old and new connection must use different physical cables"
+      },
+      {
+        "id": "c",
+        "text": "That checksum cannot be calculated when returning ports"
+      },
+      {
+        "id": "d",
+        "text": "That old PDUs may be taken for data in the new connection"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The state of the new connection must be distinguishable from delayed data in a former instance. This is a reason for coordinating the configuration, sequence information and service life of the condition.",
+    "source": "IN3230 course introduction and repetition · Paragraphs 61–66",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 61–66"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF page 8"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-017",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Sender 's timestamp increases once per milliseconds. A segment has timestamp 12,400. An ACK that unambiguously reflects this segment is received when the same sender clock shows 12,468. The receiver clock will fail 5 seconds. What is the RTT test?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(68\\,\\mathrm{ms}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(5\\,068\\,\\mathrm{ms}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(34\\,\\mathrm{ms}\\)"
+      },
+      {
+        "id": "d",
+        "text": "It cannot be measured without synchronised clocks"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The time stamp is reflected unchanged, and both times come from the transmitter's clock: \\(12\\,468-12\\,400=68\\,\\mathrm{ms}\\). The receiver's clock deviation is not included in this difference.",
+    "source": "The internet transport layer · Paragraphs 41–45",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 41–45"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF page 17"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-018",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A sender gets DSACK for byte it has recently returned. What conclusion is directly supported by DSACK information?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The sender's first timeout must have been too short in all cases"
+      },
+      {
+        "id": "b",
+        "text": "Recipients have observed overlapping or duplicated data"
+      },
+      {
+        "id": "c",
+        "text": "The network must be completely free of packet reordering"
+      },
+      {
+        "id": "d",
+        "text": "Both copies must have taken the same route"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "DSACK reports duplicate data in the recipient. It may help to detect unnecessary retransmissions, but the report alone does not determine all the cause details or the route that the copies took.",
+    "source": "The internet transport layer · Paragraphs 68–84",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 68–84"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF pages 20–21"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-019",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "During loss repair, the transmitter stops long and then sends a large brush. What idea in the notes is specifically aimed at allocating the consignments more evenly during recovery?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Switching off the recipient 's window"
+      },
+      {
+        "id": "b",
+        "text": "Increasing initial window on each duplicate ACK"
+      },
+      {
+        "id": "c",
+        "text": "Proportional Rate Reduction / Rate Half"
+      },
+      {
+        "id": "d",
+        "text": "Removing All Receipt Info"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The PRR and the precursor rate-halfing regulate transmission during recovery. The purpose in this context is to avoid the described combination of break and dense brush.",
+    "source": "The internet transport layer · Paragraphs 97–101",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 97–101"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF page 23"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-020",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Use the simplified RTOR rule in the lecture: the hour will be restarted using \\(\\mathrm{RTO}-t\\), where \\(t\\) is time since the current outstanding transmission. RTO is \\(240\\,\\mathrm{ms}\\) and an ACK comes after \\(70\\,\\mathrm{ms}\\). How much remaining wait with RTOR, and how much later would a full restart on \\(240\\,\\mathrm{ms}\\) trigger timeout?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(240\\,\\mathrm{ms}\\) remaining; full restart would be \\(170\\,\\mathrm{ms}\\) later"
+      },
+      {
+        "id": "b",
+        "text": "\\(310\\,\\mathrm{ms}\\) remaining; no difference"
+      },
+      {
+        "id": "c",
+        "text": "\\(70\\,\\mathrm{ms}\\) remaining; full restart would be \\(240\\,\\mathrm{ms}\\) later"
+      },
+      {
+        "id": "d",
+        "text": "\\(170\\,\\mathrm{ms}\\) remaining; full restart would be \\(70\\,\\mathrm{ms}\\) later"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "RTOR sets the specified remaining time to \\(240-70=170\\,\\mathrm{ms}\\). A restart with the entire \\(240\\,\\mathrm{ms}\\) from ACK time extends the wait with \\(70\\,\\mathrm{ms}\\).",
+    "source": "The internet transport layer · Paragraphs 129–136",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 129–136"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF page 29"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-021",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A service will send ‘load card with 100 kr’ as early data in TCP Fast Open. The operation has no duplicate protection. What is the risk that the application design has to address?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That early data may be processed more than once by repeated SYN"
+      },
+      {
+        "id": "b",
+        "text": "That TCP necessarily changes the amount of another number"
+      },
+      {
+        "id": "c",
+        "text": "That a TFO cookie automatically makes the payment operation idempotent"
+      },
+      {
+        "id": "d",
+        "text": "That the server cannot send a response after SYN"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "TCP Fast Open can deliver data early. A cookie does not make the application action idempotent. A unique operation ID and duplicate detection can help protect the action.",
+    "source": "The internet transport layer · Paragraphs 115–121",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 115–121"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF page 27"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-022",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "In a simplified slow-start model, regular ACK counts increase \\(\\mathit{cwnd}\\) by \\(1\\,\\mathrm{MSS}\\) per ACK. ABC increases instead by the number of newly signed MSS, not more than 2 per ACK. Four ACKs each receive 2 new MSS. How much does \\(\\mathit{cwnd}\\) increase in total by the two rules?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both: \\(16\\,\\mathrm{MSS}\\)"
+      },
+      {
+        "id": "b",
+        "text": "Normal ACK count: \\(4\\,\\mathrm{MSS}\\); ABC: \\(8\\,\\mathrm{MSS}\\)"
+      },
+      {
+        "id": "c",
+        "text": "Both: \\(4\\,\\mathrm{MSS}\\)"
+      },
+      {
+        "id": "d",
+        "text": "Normal ACK count: \\(8\\,\\mathrm{MSS}\\); ABC: \\(4\\,\\mathrm{MSS}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The normal count is \\(4\\cdot 1=4\\,\\mathrm{MSS}\\). The given ABC rule returns \\(4\\cdot\\min(2,2)=8\\,\\mathrm{MSS}\\). The difference is because each delayed ACK covers more than one segment.",
+    "source": "The internet transport layer · Paragraphs 87–92",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 87–92"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF page 22"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-023",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Use the simplified RCK criteria of the lecture: an unmatched packet is considered to be lost when a packet sent at least \\(\\mathit{reo\\_wnd}\\) later is acknowledged. \\(\\mathit{reo\\_wnd}=5\\,\\mathrm{ms}\\). A is sent by \\(0\\,\\mathrm{ms}\\), B by \\(3\\,\\mathrm{ms}\\) and C by \\(8\\,\\mathrm{ms}\\). Only C's signed. Which packets meet this criterion?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only B"
+      },
+      {
+        "id": "b",
+        "text": "None until three duplicate ACKs arrive"
+      },
+      {
+        "id": "c",
+        "text": "Both A and B"
+      },
+      {
+        "id": "d",
+        "text": "Only A"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "C sent \\(8\\,\\mathrm{ms}\\) after A and \\(5\\,\\mathrm{ms}\\) after B. Both differences are at least \\(5\\,\\mathrm{ms}\\). The task uses the explicitly simplified time criterion, not a claim for full implementation logic.",
+    "source": "The internet transport layer · Paragraphs 141–150",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 141–150"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF pages 31–32"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-024",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An established TCP connection shall send a response to \\(6\\,\\mathrm{MSS}\\). Assume that no data are outstanding, no packets are lost, that the receiving window is at least \\(10\\,\\mathrm{MSS}\\), and that \\(\\mathit{cwnd}\\) is equal to the initial window. Compare \\(\\mathrm{IW}=4\\,\\mathrm{MSS}\\) and \\(\\mathrm{IW}=10\\,\\mathrm{MSS}\\). How many MSSs can be sent before the first ACK with each setting?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All \\(6\\,\\mathrm{MSS}\\) in both cases"
+      },
+      {
+        "id": "b",
+        "text": "\\(4\\,\\mathrm{MSS}\\) with \\(\\mathrm{IW}=4\\); \\(10\\,\\mathrm{MSS}\\) with \\(\\mathrm{IW}=10\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(1\\,\\mathrm{MSS}\\) in both cases"
+      },
+      {
+        "id": "d",
+        "text": "\\(4\\,\\mathrm{MSS}\\) with \\(\\mathrm{IW}=4\\); all \\(6\\,\\mathrm{MSS}\\) with \\(\\mathrm{IW}=10\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The window limits outstanding data, but the sender does not generate additional data to fill it. With \\(\\mathrm{IW}=4\\), two out of six MSSs have to wait; with \\(\\mathrm{IW}=10\\), the whole answer will be given in the first broadcast.",
+    "source": "The internet transport layer · Paragraphs 104–112",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 104–112"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF page 26"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-025",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "An advertised TCP receiver window at zero is only proof that a route queue in the network is full.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The receiving window is flow control and relates to the capacity of the recipient. It can be zero even if the network is not overloaded.",
+    "source": "The internet transport layer · Paragraphs 23–28",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 23–28"
+      },
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 38–43"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-026",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "The TCP time stamp option can provide better RTT information without using space in the segment header.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The option is included in the header and thus uses space. The notes mention extra header space as a cost of the mechanism.",
+    "source": "The internet transport layer · Paragraphs 41–45",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 41–45"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF page 17"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-027",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A packet arrives behind 80 packets on \\(1\\,500\\,\\mathrm{byte}\\) in a FIFO queue. The link sends with \\(12\\,\\mathrm{Mbit/s}\\). Assume that no packet has already been partially sent, and ignore new arrivals and headers. How long must the packet wait before sending itself?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(800\\,\\mathrm{ms}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(1\\,\\mathrm{ms}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(80\\,\\mathrm{ms}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(8\\,\\mathrm{ms}\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The 80 packets form \\(80\\cdot 1\\,500\\cdot 8=960\\,000\\,\\mathrm{bit}\\). The waiting time will be \\(\\frac{960\\,000}{12\\,000\\,000}\\,\\mathrm{s}=0.08\\,\\mathrm{s}=80\\,\\mathrm{ms}\\). Your own transmission time is not included.",
+    "source": "Congestion control · Paragraphs 4–10",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 4–10"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 2"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-028",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Two networks have an average one-way delay \\(20\\,\\mathrm{ms}\\). In A, all measurements are close to \\(20\\,\\mathrm{ms}\\), while B switches between 5 and \\(35\\,\\mathrm{ms}\\). What is the direct characteristic of the measurements?",
+    "options": [
+      {
+        "id": "a",
+        "text": "B must have lower average delay"
+      },
+      {
+        "id": "b",
+        "text": "A must have higher package losses"
+      },
+      {
+        "id": "c",
+        "text": "The average fully determines the jitter"
+      },
+      {
+        "id": "d",
+        "text": "B has more variation in delay, i.e. more jitter"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Both can have average \\(20\\,\\mathrm{ms}\\), but the variation around the mean is greater in B. Trafficking variations can give jitters without indicating the average number alone.",
+    "source": "Congestion control · Paragraphs 8–10",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 8–10"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-029",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "A schedule that gives each flow equal proportion necessarily gives each user equal to the total share, even when users create a different number of flows.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Justice per float is not the same as justice per user. A user with multiple simultaneous flows can receive multiple shares.",
+    "source": "Congestion control · Paragraphs 105–111",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 105–111"
+      },
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 161–167"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF pages 19, 27"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-030",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Use the CoDel model in the notes: minimum queue delay must be above \\(5\\,\\mathrm{ms}\\) through a full range of \\(100\\,\\mathrm{ms}\\) to trigger dropping state. A has constant \\(6\\,\\mathrm{ms}\\) in \\(120\\,\\mathrm{ms}\\). B has \\(20\\,\\mathrm{ms}\\) in \\(40\\,\\mathrm{ms}\\) and then \\(1\\,\\mathrm{ms}\\). What case does the described persistent condition meet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "None, because \\(6\\,\\mathrm{ms}\\) is smaller than \\(100\\,\\mathrm{ms}\\)"
+      },
+      {
+        "id": "b",
+        "text": "Only A"
+      },
+      {
+        "id": "c",
+        "text": "Only B"
+      },
+      {
+        "id": "d",
+        "text": "Both, because both have had above \\(5\\,\\mathrm{ms}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A remains above the goal in more than a full 100-ms interval. B falls below the goal after \\(40\\,\\mathrm{ms}\\). CoDel's looking for continuous queues, not just one high sample.",
+    "source": "Congestion control · Paragraphs 101–104",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 101–104"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 19"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-031",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "When queues are selected with a hash of the float's femur, two different flows can in principle be in the same queue.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "A hash has a final number of possible queue indices, and different inputs may impact. \"Per float\" describes the objective of the breakdown, not a mathematical guarantee against all hash collisions.",
+    "source": "Congestion control · Paragraphs 105–107",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 105–107"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 19"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-032",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A large, timeless system update shall provide for interactive traffic on the same access link. What idea from the notes is particularly appropriate to this goal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Increasing the transmission rate every time RTT increases"
+      },
+      {
+        "id": "b",
+        "text": "Ignoring all overload signals"
+      },
+      {
+        "id": "c",
+        "text": "Opening as much as possible independent aggressive flows"
+      },
+      {
+        "id": "d",
+        "text": "A low priority regulator such as LEDBAT"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "LEDBAT is motivated by background traffic to accommodate others. It's a different goal from maximizing your own proportion independently of other applications.",
+    "source": "Congestion control · Paragraphs 78–85",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 78–85"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 14"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-033",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A test model uses \\(\\mathit{cwnd}_{\\text{new}}=0.8\\cdot\\mathit{cwnd}\\) for ECN marks and \\(0.5\\cdot\\mathit{cwnd}\\) for package losses. Both signals occur separately from \\(\\mathit{cwnd}=50\\,\\mathrm{MSS}\\). What difference in a new window gives the model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ECN returns \\(40\\,\\mathrm{MSS}\\), loss returns \\(25\\,\\mathrm{MSS}\\): difference \\(15\\,\\mathrm{MSS}\\)"
+      },
+      {
+        "id": "b",
+        "text": "ECN returns \\(25\\,\\mathrm{MSS}\\), loss returns \\(40\\,\\mathrm{MSS}\\): difference \\(15\\,\\mathrm{MSS}\\)"
+      },
+      {
+        "id": "c",
+        "text": "Both give \\(25\\,\\mathrm{MSS}\\)"
+      },
+      {
+        "id": "d",
+        "text": "ECN provides \\(50\\,\\mathrm{MSS}\\) because the packet appeared"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "\\(0.8\\cdot 50=40\\) and \\(0.5\\cdot 50=25\\), so the difference is \\(15\\,\\mathrm{MSS}\\). The factors are the problem's example, not universal TCP constants. ABE illustrates that ECN and losses can justify different reductions.",
+    "source": "Congestion control · Paragraphs 113–118",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 113–118"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 20"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-034",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "If an application only provides \\(2\\,\\mathrm{Mbit/s}\\) data and everything comes with \\(2\\,\\mathrm{Mbit/s}\\), the measurement alone shows that the maximum capacity of the path is \\(2\\,\\mathrm{Mbit/s}\\).",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "The measurement may be limited by the traffic offered. Capacity estimation must distinguish application limitations from a rate that flattens because the network is fully exploited.",
+    "source": "Congestion control · Paragraphs 125–133",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 125–133"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 21"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-035",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Three flows share one 12-Mbit/s link after max-min justice. A needs a maximum of \\(2\\,\\mathrm{Mbit/s}\\), B a maximum of \\(7\\,\\mathrm{Mbit/s}\\), and C has unlimited needs. No other restrictions apply. What assignment does \\((A,\\,B,\\,C)\\) fill the link fairly?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((2,\\,7,\\,3)\\) Mbps"
+      },
+      {
+        "id": "b",
+        "text": "\\((0,\\,6,\\,6)\\) Mbps"
+      },
+      {
+        "id": "c",
+        "text": "\\((2,\\,5,\\,5)\\) Mbps"
+      },
+      {
+        "id": "d",
+        "text": "\\((4,\\,4,\\,4)\\) Mbps"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "First all increase equally to A when 2. The remaining \\(10\\,\\mathrm{Mbit/s}\\) is equal to B and C. So 5 is equal to each. A doesn't need any more, and B and C have equal, limited shares.",
+    "source": "Congestion control · Paragraphs 161–167",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 161–167"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 27"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-036",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Two flows have rates 12 and \\(4\\,\\mathrm{Mbit/s}\\). In a simplified AIMD model both increase first by \\(2\\,\\mathrm{Mbit/s}\\), and at the next common overload signal both halves the rate. What are the rates and the difference after these two steps?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8 and \\(4\\,\\mathrm{Mbit/s}\\); difference is \\(4\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "b",
+        "text": "7 and \\(3\\,\\mathrm{Mbit/s}\\); difference is \\(8\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "c",
+        "text": "8 and \\(3\\,\\mathrm{Mbit/s}\\); difference is \\(5\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "d",
+        "text": "7 and \\(3\\,\\mathrm{Mbit/s}\\); difference is \\(4\\,\\mathrm{Mbit/s}\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Additive increase results in 14 and 6, and halving results in 7 and 3. The absolute difference was 8 before the reduction and becomes 4 afterwards. The model illustrates one common AIMD round.",
+    "source": "Congestion control · Paragraphs 44–55",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 44–55"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 9"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-037",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A satellite PEP shall repair losses locally by reading transport receipts and buffering data without cooperation from the end-points. What is an important obstacle if previous TCP traffic is replaced by QUIC with protected transport information?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The interchange box does not have the same transparency and control in the state of transport"
+      },
+      {
+        "id": "b",
+        "text": "All IP addresses disappear from the outside header"
+      },
+      {
+        "id": "c",
+        "text": "QUIC only transfers full application response in a single packet"
+      },
+      {
+        "id": "d",
+        "text": "QUIC stops managing package losses"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The lecture describes that such transparent TCP mechanisms cannot be used immediately for encrypted QUIC transport. This is a matter of transparency, not whether QUIC itself deals with losses.",
+    "source": "Congestion control · Paragraphs 179–190",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 179–190"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 36"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-038",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A \\(12\\,\\mathrm{Mbit}\\) video segment must be delivered every 4 seconds. An unpaced sender transmits at \\(12\\,\\mathrm{Mbit/s}\\) for 1 second, then stays idle for 3 seconds. What constant rate delivers the same amount of data every 4 seconds if overhead is ignored?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(48\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(3\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(4\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(12\\,\\mathrm{Mbit/s}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The average need is \\(\\frac{12\\,\\mathrm{Mbit}}{4\\,\\mathrm{s}}=3\\,\\mathrm{Mbit/s}\\). A smooth 3-Mbit/s stream provides the same volume with less burstiness, provided this delivery plan fits the playback buffer.",
+    "source": "Congestion control · Paragraphs 203–212",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+        "location": "Paragraphs 203–212"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 38"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-039",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A radio transmitter represents the bit values with two carrier waves of the same frequency and amplitude, but the phases 0 and \\(\\pi\\). Which modulation is described?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Binary FSK"
+      },
+      {
+        "id": "b",
+        "text": "16-QAM"
+      },
+      {
+        "id": "c",
+        "text": "BPSK"
+      },
+      {
+        "id": "d",
+        "text": "Binary ASK"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Two discrete phases with otherwise similar frequency and amplitude are binary phase shift modulation. ASK varies amplitude and FSK uses different frequencies.",
+    "source": "Wireless communications · Paragraphs 37–50",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 37–50"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+        "location": "PDF page 19"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-040",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "In a synchronous CDMA model, code \\(A=(1,\\,1,\\,-1,\\,-1)\\) and code \\(B=(1,\\,1,\\,1,\\,-1)\\) are used. What does the inner product tell us about these codes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The inner product is 0; they are orthogonal"
+      },
+      {
+        "id": "b",
+        "text": "The inner product is 4; they are identical"
+      },
+      {
+        "id": "c",
+        "text": "The inner product is −4; they are opposite"
+      },
+      {
+        "id": "d",
+        "text": "The inner product is 2; they are not orthogonal"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "\\(A\\cdot B=1+1-1+1=2\\). Therefore, the cross-submission does not disappear in the ideal correlation decoder, as it would for orthogonal codes.",
+    "source": "Wireless communications · Paragraphs 80–86",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 80–86"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+        "location": "PDF page 31"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-041",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "That two chips sequences have an internal product zero when properly adjusted, guarantees that the inner product is still zero at any relative time shift.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Orthogonality applies to the compared adjusted sequences. A time shift changes what chip values are multiplied, and zero by one adjustment does not guarantee zero by all.",
+    "source": "Wireless communications · Paragraphs 80–86",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 80–86"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+        "location": "PDF pages 31–33"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-042",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "Use \\(\\mathrm{SNR}_{\\mathrm{dB}}=10\\log_{10}\\left(\\frac{S}{N}\\right)\\) and \\(C=B\\log_2\\left(1+\\frac{S}{N}\\right)\\). A non-profit channel has a bandwidth of \\(B=1\\,\\mathrm{MHz}\\) and \\(\\mathrm{SNR}=20\\,\\mathrm{dB}\\). What capacity limit does it have? Use \\(\\log_2 (101)\\approx 6.66\\) and \\(\\log_2 (21)\\approx 4.39\\).",
+    "options": [
+      {
+        "id": "a",
+        "text": "About \\(4.39\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "b",
+        "text": "About \\(6.66\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "c",
+        "text": "About \\(20\\,\\mathrm{Mbit/s}\\)"
+      },
+      {
+        "id": "d",
+        "text": "About \\(2\\,\\mathrm{Mbit/s}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "\\(20\\,\\mathrm{dB}\\) means linear \\(\\frac{S}{N}=10^{\\frac{20}{10}}=100\\). This means \\(C=1\\,000\\,000\\cdot\\log_2(101)\\approx6.66\\,\\mathrm{Mbit/s}\\). Setting 20 directly as the linear ratio results in an incorrect \\(4.39\\,\\mathrm{Mbit/s}\\).",
+    "source": "Wireless communications · Paragraphs 18–25",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 18–25"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+        "location": "PDF page 54"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-043",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An FDMA system has given each of four users a fixed equal frequency band. One user is active and three are silent. The allocation does not change. What is the consequence for the active user?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It must wait for a separate slot before each shipment"
+      },
+      {
+        "id": "b",
+        "text": "It has to switch to the same chip code as the other three."
+      },
+      {
+        "id": "c",
+        "text": "It cannot automatically use the reserved bands of the three others"
+      },
+      {
+        "id": "d",
+        "text": "It automatically gets all bandwidth through the FDMA definition"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Fixed frequency allocation separates users by bands. The fact that others are quiet does not in itself transfer the rights of these bands; it would require a modified allocation mechanism.",
+    "source": "Wireless communications · Paragraphs 72–77",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 72–77"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-044",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A \\(4\\times 4\\)-MIMO connection has four transmitter and four receiver antennas. In a simplified model, the channel of rank 1 is, and the maximum number of independent data streams is \\(\\min\\)(the number of transmit antennas, the number of receiving antennas, the range). What is the limit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Four independent flows"
+      },
+      {
+        "id": "b",
+        "text": "Eight independent flows"
+      },
+      {
+        "id": "c",
+        "text": "Six independent flows"
+      },
+      {
+        "id": "d",
+        "text": "One independent stream"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The specified limit is \\(\\min(4,4,1)=1\\). Several antennas do not provide four independent flows when the ducts do not provide the necessary independent spatial dimensions.",
+    "source": "Wireless communications · Paragraphs 109–125",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 109–125"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+        "location": "PDF pages 40–43"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-045",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "Two channels with equal bandwidth and equal to linear \\(\\frac{S}{N}\\) get the same Shannon-Hartley limit, although the carrier frequencies are different.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "The reported capacity model includes bandwidth and \\(\\frac{S}{N}\\), not carrier frequency directly. In practice, higher frequency can provide access to wider bands, but it is kept equal here.",
+    "source": "Wireless communications · Paragraphs 18–25",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 18–25"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+        "location": "PDF page 54"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-046",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A measurement shows several delayed copies of exactly the same radio symbol from one transmitter. The copies follow different reflection paths. What's the most direct explanation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A TDMA schedule that assigns multiple users the same slot"
+      },
+      {
+        "id": "b",
+        "text": "Multipath propaganda"
+      },
+      {
+        "id": "c",
+        "text": "FDMA between multiple independent transmitters"
+      },
+      {
+        "id": "d",
+        "text": "An error in the IP Address Allocation"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Reflections may signal the same signal along different routes with different journey times. It's multipath, and it doesn't require multiple independent transmitters to compete.",
+    "source": "Wireless communications · Paragraphs 18–25",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 18–25"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+        "location": "PDF page 41"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-047",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A hears B send and therefore postpones its own transmission with CSMA. Assume that a separate measurement indicates that As consignment would not interfere with B’s receiver, and vice versa. What does the example show?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A must be a hidden terminal because it belongs to B"
+      },
+      {
+        "id": "b",
+        "text": "All users need to share one TCP connection to resolve the situation"
+      },
+      {
+        "id": "c",
+        "text": "Carrier sensing may be more conservative than the actual interference required by the recipients"
+      },
+      {
+        "id": "d",
+        "text": "Carrier sensation always shows exactly what recipients will have collision"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "CSMA observe the channel at the transmitter. It is not identical to measuring interference with all recipients. Under the explicit conditions, a possible simultaneous shipment is delayed.",
+    "source": "Wireless communications · Paragraphs 162–178",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 162–178"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF pages 5–7"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-048",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "A receipt for a local wireless link transfer is not only a confirmation that a remote application has received and processed the content.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "Local link control and end-to-end communications differ in scope. A packet may continue to be lost or wait for subsequent links, and application management requires its own assumptions.",
+    "source": "Wireless communications · Paragraphs 99–106",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 99–106"
+      },
+      {
+        "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+        "location": "Paragraphs 78–87"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-049",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A simplified model compares the waste airtime per experiment. Without RTS/CTS, the wallpaper is \\(p\\cdot2\\,000\\,\\mu\\mathrm{s}\\), where \\(p\\) is the collision probability. With reservation, the cost is always \\(100\\,\\mu\\mathrm{s}\\), and the model assumes no losses beyond this. For which \\(p\\) has reservation lower expected cost?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(p>0.05\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(p<0.05\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(p>0.50\\)"
+      },
+      {
+        "id": "d",
+        "text": "All \\(p\\), also \\(p=0\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Reservation is better when \\(100<p\\cdot2\\,000\\), i.e. \\(p>\\frac{100}{2\\,000}=0.05\\). This is an explicitly idealed balance between reservation cost and long collisions, not a full Wi-Fi model.",
+    "source": "Wireless communications · Paragraphs 181–190",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 181–190"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF pages 8–9"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-050",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "In a simple model, two transmitters choose independently and uniformly one of the 0, 1, 2 or 3 slots after the channel becomes free. Collision means they pick the same hatch. What is the probability of collision in this choice?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(\\frac{3}{4}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\frac{1}{4}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(\\frac{1}{16}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\frac{1}{2}\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "There are \\(4\\cdot 4=16\\) equally likely pairs. Four pairs have the same hatch: \\((0,\\,0)\\), \\((1,\\,1)\\), \\((2,\\,2)\\) and \\((3,\\,3)\\). The probability is \\(\\frac{4}{16}=\\frac{1}{4}\\).",
+    "source": "Wireless communications · Paragraphs 171–190",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 171–190"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF page 7"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-051",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A laptop is authenticated and associated with an access point, but does not get any IP configuration. What distinction is important in the debugging?",
+    "options": [
+      {
+        "id": "a",
+        "text": "DHCP must be finished before Beacons can be received"
+      },
+      {
+        "id": "b",
+        "text": "Missing IP address proves that the radio transmitter has been rejected"
+      },
+      {
+        "id": "c",
+        "text": "Wi-Fi connection and IP configuration are separate steps"
+      },
+      {
+        "id": "d",
+        "text": "Success association proves that DNS already works"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The notes distinguish association from the subsequent typical DHCP process. You should examine the IP configuration without assuming that all local radio connections have thus failed.",
+    "source": "Wireless communications · Paragraphs 151–160",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 151–160"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF page 4"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-052",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "A telephone that roams in another country may use radio resources, while at the same time having user traffic transmitted via the core network of the home country.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "This is just the distinction between visited radio networks and home-routed user traffic. The GTP tunnel can go to P-GW on its home network even if the radio is connected locally.",
+    "source": "Wireless communications · Paragraphs 277–283",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 277–283"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF page 49"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-053",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An operator assesses local breakout to reduce roaming delay, but is concerned about settlement and liability in case of errors. What is the relevant weighting in the notes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Shorter data route must be assessed against traffic control, clearing and debugging by operators"
+      },
+      {
+        "id": "b",
+        "text": "Local breakout slows radio signals in the air"
+      },
+      {
+        "id": "c",
+        "text": "Home routing always gives fewer kilometers than local breakout"
+      },
+      {
+        "id": "d",
+        "text": "Billing is determined solely by the antennas of the phone"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Home routing provides the home operator with an overall traffic point and easier access to billing information. A shorter data route may be attractive, but organisational and operational conditions affect the choice.",
+    "source": "Wireless communications · Paragraphs 295–300",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 295–300"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF pages 49–52"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-054",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Two mobile subscriptions use the same radio base station, but receive different rates and different roaming delay. What explanation is technically reasonable without assuming measurement errors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Radio base station alone decides all the way to the application server"
+      },
+      {
+        "id": "b",
+        "text": "Subscription policy and further core network routing may differ"
+      },
+      {
+        "id": "c",
+        "text": "Equal base station makes all end-to-end performance identical"
+      },
+      {
+        "id": "d",
+        "text": "Equal signal strength guarantees the same priority in the core network"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The radio resources are only one part of the way. Service and subscriber policies may affect the rate, but, among other things, the roaming procedure may affect delay.",
+    "source": "Wireless communications · Paragraphs 260–265",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 260–265"
+      },
+      {
+        "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+        "location": "Paragraphs 277–300"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF pages 36–37, 49"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-055",
+    "courseId": "IN3230",
+    "topicId": "net-cloud",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A provider describes a product as cloud computing. The customer must reserve fixed capacity for a year at a time and pays the same at zero and full usage. Which core cloud computing characteristic does this description support least?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That services may have a documented level of quality"
+      },
+      {
+        "id": "b",
+        "text": "That multiple components can communicate"
+      },
+      {
+        "id": "c",
+        "text": "Consumption-based utility computing"
+      },
+      {
+        "id": "d",
+        "text": "That the service uses networks"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Utility computing is about resources when needed and payment related to use. The product name alone doesn't say that this particular price model meets the idea.",
+    "source": "Cloud computing · Paragraphs 4–9",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 4–9"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cloud_computing.pdf",
+        "location": "PDF pages 12–13"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-056",
+    "courseId": "IN3230",
+    "topicId": "net-cloud",
+    "type": "boolean",
+    "difficulty": "easy",
+    "prompt": "Therefore, when a cloud solution is scalable, it automatically adjusts capacity up and down with the current load.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Scalability and elasticity are related, but elasticity focuses on dynamic adaptation. A capacity may be possible to increase even if manual planning is required.",
+    "source": "Cloud computing · Paragraphs 9–14",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 9–14"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cloud_computing.pdf",
+        "location": "PDF page 17"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-057",
+    "courseId": "IN3230",
+    "topicId": "net-cloud",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A service requires both front end and database access. Each is available with probability 0.99 at any time and the error modes are assumed to be independent. What is the availability of the service in this model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.9801, that is \\(98.01\\,\\%\\)"
+      },
+      {
+        "id": "b",
+        "text": "0.9999, that is \\(99.99\\,\\%\\)"
+      },
+      {
+        "id": "c",
+        "text": "0.99, that is \\(99\\,\\%\\)"
+      },
+      {
+        "id": "d",
+        "text": "0.02, that is \\(2\\,\\%\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Both components must act simultaneously. During the independence assumption, the probabilities are multiplied: \\(0.99\\cdot 0.99=0.9801\\). A serial dependence requirement is not the same as reserve capacity.",
+    "source": "Cloud computing · Paragraphs 9–14",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 9–14"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cloud_computing.pdf",
+        "location": "PDF pages 23–24"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-058",
+    "courseId": "IN3230",
+    "topicId": "net-cloud",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A service has two independent replicas. Each works with probability 0.99, one working replica is enough, and error detection and switch is assumed to be perfect. What is the availability of the service in this model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.98, that is \\(198\\,\\%\\)"
+      },
+      {
+        "id": "b",
+        "text": "0.9999, that is \\(99.99\\,\\%\\)"
+      },
+      {
+        "id": "c",
+        "text": "0.9801, that is \\(98.01\\,\\%\\)"
+      },
+      {
+        "id": "d",
+        "text": "0.99, that is \\(99\\,\\%\\)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Service is down only if both are down. It happens with probability \\(0.01\\cdot 0.01=0.0001\\). Therefore, the availability is \\(1-0.0001=0.9999\\). The assumptions exclude common errors and conversion problems.",
+    "source": "Cloud computing · Paragraphs 9–14",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 9–14"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cloud_computing.pdf",
+        "location": "PDF pages 23–26"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-059",
+    "courseId": "IN3230",
+    "topicId": "net-cloud",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "Two cloud solutions with the same total downtime per month may have different ability to run a long job without interruption.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "One long event and many short events can result in the same total downtime. The pattern of events affects the likelihood of continuous, uninterruptible driving, which is something different from the proportion of time available.",
+    "source": "Cloud computing · Paragraphs 9–14",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 9–14"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cloud_computing.pdf",
+        "location": "PDF page 23"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-060",
+    "courseId": "IN3230",
+    "topicId": "net-cloud",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A database replicates all changes immediately into a reserve, including incorrect deletions. What can a separate, older backup contribute to in such a deletion?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That deletion never reaches primary database"
+      },
+      {
+        "id": "b",
+        "text": "That incorrect data automatically gets correct only because they have two copies"
+      },
+      {
+        "id": "c",
+        "text": "That reserve capacity alone replaces all recovery planning"
+      },
+      {
+        "id": "d",
+        "text": "Restore to a state before deletion"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A replica can copy the same logical error. A preserved copy before the event provides another restore point. The amount of data that can be lost depends on the time and the recovery system.",
+    "source": "Cloud computing · Paragraphs 9–14",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 9–14"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cloud_computing.pdf",
+        "location": "PDF pages 25–26"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-061",
+    "courseId": "IN3230",
+    "topicId": "net-interconnects",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A direct interconnection network shall connect to 48 calculation nodes. Each switch has space for exact 3 calculation nodes, as well as the ports used between the switch. How many such suites are needed at least?",
+    "options": [
+      {
+        "id": "a",
+        "text": "16 Switch"
+      },
+      {
+        "id": "b",
+        "text": "3 Switch"
+      },
+      {
+        "id": "c",
+        "text": "48 Switch"
+      },
+      {
+        "id": "d",
+        "text": "144 Switch"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "If each switch serves three compute nodes, \\(\\frac{48}{3}=16\\) switches are needed. In this bristling model, multiple compute nodes share a switch, and inter-switch ports are excluded from the count of three.",
+    "source": "Cloud computing · Paragraphs 25–28",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 25–28"
+      },
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF page 53"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-062",
+    "courseId": "IN3230",
+    "topicId": "net-interconnects",
+    "type": "choice",
+    "difficulty": "hard",
+    "prompt": "A network has 16 nodes with injection capacity \\(10\\,\\mathrm{Gbit/s}\\) each. A balanced average has four links on \\(10\\,\\mathrm{Gbit/s}\\) in each direction. All eight nodes on the left hand side send only to the right hand side. What is the upper limit over the cut from left to right, and is this full secondary aspect bandwidth relative to the nodes injection?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\(40\\,\\mathrm{Gbit/s}\\); yes, number of nodes does not matter"
+      },
+      {
+        "id": "b",
+        "text": "\\(40\\,\\mathrm{Gbit/s}\\); no, left side can inject \\(80\\,\\mathrm{Gbit/s}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(80\\,\\mathrm{Gbit/s}\\); yes, both directions can be summed for the same data path"
+      },
+      {
+        "id": "d",
+        "text": "\\(160\\,\\mathrm{Gbit/s}\\); yes, all nodes are counted on both sides"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "One direction over the average is \\(4\\cdot 10=40\\,\\mathrm{Gbit/s}\\). Eight sending nodes can inject \\(8\\cdot 10=80\\,\\mathrm{Gbit/s}\\), so the average cannot carry the entire load at the same time.",
+    "source": "Cloud computing · Paragraphs 25–28",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 25–28"
+      },
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF pages 32–35"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-063",
+    "courseId": "IN3230",
+    "topicId": "net-interconnects",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A 2D-mesh uses dimension-order routing: first, the \\(x\\) coordinates change to the target \\(x\\), then \\(y\\). A packet must be from \\((0,\\,0)\\) to \\((2,\\,1)\\). Which of these paths follows the rule?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((0,\\,0) \\to (1,\\,0) \\to (1,\\,1) \\to (2,\\,1)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((0,\\,0) \\to (1,\\,1) \\to (2,\\,1)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((0,\\,0) \\to (1,\\,0) \\to (2,\\,0) \\to (2,\\,1)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((0,\\,0) \\to (0,\\,1) \\to (1,\\,1) \\to (2,\\,1)\\)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The specified \\(x\\) pre-\\(y\\) rule completes both \\(x\\) jumps before the \\(y\\) jump. The other two three-hop paths change dimension too early; the diagonal jump is not found in this messy.",
+    "source": "Cloud computing · Paragraphs 25–28",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 25–28"
+      },
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF pages 58–61"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-064",
+    "courseId": "IN3230",
+    "topicId": "net-interconnects",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "Any physical cycle in a connecting network means that the packets in the network are currently locked in a deadlock.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "false",
+    "explanation": "Deadlock is about dependencies: packets hold resources and wait for other resources in a cycle. Route and resource rules can prevent such dependence even if the physical topology has cycles.",
+    "source": "Cloud computing · Paragraphs 25–28",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 25–28"
+      },
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF pages 56–60"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-065",
+    "courseId": "IN3230",
+    "topicId": "net-interconnects",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Four equal packets are kept in separate buffers. Each waits for the next buffer in a closed cycle, and no one can release its buffer until it can proceed. The recovery rule is to remove one packet and re-inject it later. What does the removal get first?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It breaks at least one of the circular resource dependencies"
+      },
+      {
+        "id": "b",
+        "text": "It makes all the paths shorter in number of jumps"
+      },
+      {
+        "id": "c",
+        "text": "It guarantees that no packet must ever wait again"
+      },
+      {
+        "id": "d",
+        "text": "It automatically increases the physical link capacity"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "When one packet releases its resources, another packet in the cycle can acquire the resource it needs. This is abort-and-retry recovery, which differs from preventing deadlock in advance.",
+    "source": "Cloud computing · Paragraphs 25–28",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 25–28"
+      },
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF pages 56–60"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-066",
+    "courseId": "IN3230",
+    "topicId": "net-interconnects",
+    "type": "choice",
+    "difficulty": "easy",
+    "prompt": "A sender on a credit-based network has zero credits, although the link is currently free. What is the correct interpretation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All previously sent packets must have been lost"
+      },
+      {
+        "id": "b",
+        "text": "The free link is not sufficient; the sender does not have permission to represent the receiver buffer"
+      },
+      {
+        "id": "c",
+        "text": "The sender should ignore the credits because free link proves free buffer"
+      },
+      {
+        "id": "d",
+        "text": "The receiver must have crashed"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Credits protect buffer resources at the receiver. The momentary state of the extension does not say only whether these resources are available or whether a new credit has been re-started.",
+    "source": "Cloud computing · Paragraphs 25–28",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 25–28"
+      },
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF pages 15–17"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-067",
+    "courseId": "IN3230",
+    "topicId": "net-mpls",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An ingress-PE adds packets from two different IP prefixes to the same LSP because they should receive the same forward processing. Is such an FEC grouping possible in the lecture model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, an FEC must always correspond exactly to one single IP address"
+      },
+      {
+        "id": "b",
+        "text": "No, packets of the same FEC must have identical payload"
+      },
+      {
+        "id": "c",
+        "text": "Yes, an FEC may group different packets to be treated equally"
+      },
+      {
+        "id": "d",
+        "text": "Only if all label values are the same on each jump"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The FEC indicates the re-dispatching equivalence, not identical content. The lecture shows several possible groupings, including groups of addresses and VPN locations. Therefore, the Ingress policy can bring together several prefixes during appropriate joint processing.",
+    "source": "Cloud computing · Paragraphs 29–31",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 29–31"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_mpls_lecture.pdf",
+        "location": "PDF page 17"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-068",
+    "courseId": "IN3230",
+    "topicId": "net-mpls",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "Two customers have overlapping IP addresses, and the PE routes have to be able to make different IP route listings for them. What mechanism provides separate routing and forwarding contexts on the PE?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A common global routing table without customer context"
+      },
+      {
+        "id": "b",
+        "text": "One common default route to replace all customer prefixes"
+      },
+      {
+        "id": "c",
+        "text": "Identical route import into one common table for all customers"
+      },
+      {
+        "id": "d",
+        "text": "VRF instance"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A VRF provides its own routing and forwarding context. It's the context that lets the same customer prefix get different meaning; a larger packet or checksum doesn't create such separation.",
+    "source": "Cloud computing · Paragraphs 29–31",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 29–31"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_mpls_lecture.pdf",
+        "location": "PDF pages 50–52"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-069",
+    "courseId": "IN3230",
+    "topicId": "net-mpls",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "Two core switches can use different local MPLS label values for the same FEC, provided their label bindings and forwarding rules are consistent.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "MPLS is based on label bindings and operations as swaps between neighbours. Therefore, the label value does not need to be one global, unchanging identifier throughout the path.",
+    "source": "Cloud computing · Paragraphs 29–31",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+        "location": "Paragraphs 29–31"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_mpls_lecture.pdf",
+        "location": "PDF pages 18, 22–25"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-070",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "An observer sees that QUIC uses UDP and concludes that application data on reliable QUIC streams can never be returned. What's the error in the reasoning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the IP Team can implement retransmission"
+      },
+      {
+        "id": "b",
+        "text": "UDP does not provide confidence, but QUIC can implement it over UDP"
+      },
+      {
+        "id": "c",
+        "text": "UDP automatically repeats all lost datagrams"
+      },
+      {
+        "id": "d",
+        "text": "HTTP/3 is actually always using TCP and never UDP"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A feature missing in an underlying service may be offered by the above layer. QUIC implements transport functions, including reliable delivery for its reliable flows, over UDP.",
+    "source": "The internet transport layer · Paragraphs 7–9",
+    "sourceRefs": [
+      {
+        "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+        "location": "Paragraphs 7–9"
+      },
+      {
+        "path": "In3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 70–75, 80"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-071",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "boolean",
+    "difficulty": "medium",
+    "prompt": "If all necessary QUIC data for stream B have been received but the application requires a result from stream A before B can be used, A may continue to delay the application's use of B.",
+    "options": [
+      {
+        "id": "true",
+        "text": "True"
+      },
+      {
+        "id": "false",
+        "text": "False"
+      }
+    ],
+    "correctOptionId": "true",
+    "explanation": "Independent transport delivery does not remove dependencies that the application itself has. QUIC can avoid TCP inter-flow blocking without making all application operations independent.",
+    "source": "HTTP/2, HTTP/3 and QUIC · PDF pages 74–75",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 74–75"
+      }
+    ]
+  },
+  {
+    "id": "in3230-extra-notes-072",
+    "courseId": "IN3230",
+    "topicId": "net-network-operations",
+    "type": "choice",
+    "difficulty": "medium",
+    "prompt": "A campus needs at least \\(10\\,\\mathrm{Gbit/s}\\) even when one uplink falls out. Option A has one 40-Gbit/s-uplink; option B has two independent 10-Gbit/s-uplinks. Both are in the budget. Which choice meets the declared error requirement, if other errors are kept outside the model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A, because \\(40\\,\\mathrm{Gbit/s}\\) before the error compensates for zero afterwards"
+      },
+      {
+        "id": "b",
+        "text": "Both, because the capacity without errors is at least \\(10\\,\\mathrm{Gbit/s}\\)"
+      },
+      {
+        "id": "c",
+        "text": "None, because every uplink needs \\(20\\,\\mathrm{Gbit/s}\\) to give \\(10\\,\\mathrm{Gbit/s}\\) on error"
+      },
+      {
+        "id": "d",
+        "text": "B, because one remaining uplink still returns \\(10\\,\\mathrm{Gbit/s}\\)"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The requirement concerns capacity after a specific failure. A loses its uplink in that failure, while B retains one 10-Gbit/s link. Normal capacity and capacity after failure are distinct.",
+    "source": "Networking in the Real World · PDF page 8",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_guest-lecture.pdf",
+        "location": "PDF page 8"
+      }
+    ]
+  }
+]

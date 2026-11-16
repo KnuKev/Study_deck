@@ -1,0 +1,660 @@
+[
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+    "title": "theory linear algebra",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "410fa12ce0e5e8de9c3e131c5967e8468e806afc49403880043e87043270e301"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/02_practice_linear_algebra.ipynb",
+    "title": "practice linear algebra",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "6fa042b7b54b559063d97915b7a266279c5c8e568331e6ac90a9be35ed9d55b5"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+    "title": "theory optimization search",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "107b56cefdbb111a163d34eda575281004dccc2af8b9728a3b5ba97a1a21343a"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/02_practice_optimization_search.ipynb",
+    "title": "practice optimization search",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "681885bf2e9d97679d45805cca048b70c6918e4ba3c04384fa9ea9cb383e8291"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+    "title": "theory supervised learning knn",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "accbd8d621c51fb8bae4ad9a08c335f31919fd0185458ffe9a5f0a6b58fb39c9"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/02_practice_build_knn_classifier.ipynb",
+    "title": "practice build knn classifier",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "8c6f41f7f57d8379188e6d1025a5142d866fe3cebd9f10658ab4afe03fe816a1"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/week3.pdf",
+    "title": "Supervised Learning and kNN – week 3",
+    "courseId": "IN3050",
+    "kind": "Lecture slides",
+    "sha256": "fb59e07b9ef6809335be6e4811a8fe2aa57b7d211eb3a9b9b51266a26bb5d4fe"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+    "title": "theory perceptron linear regression",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "1ac116c77c289ea5f41884f68a68dcd9630fc6672b5f4cbb81ea460fdb3ba008"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/02_practice_perceptron_linear_regression.ipynb",
+    "title": "practice perceptron linear regression",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "50fbf9f740278c9d129a85dbc2d532db02aab1a1471729031e613686d1c90b5b"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/week4.pdf",
+    "title": "Perceptron and Linear Regression – week 4",
+    "courseId": "IN3050",
+    "kind": "Lecture slides",
+    "sha256": "b6130c35ed0ed208be91eba32656372f21ddef7d71a214a5e9c4af893467edee"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+    "title": "theory evolutionary algorithms",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "903707ef79ea6184bb5a28f332b955d09fc08e9e3f20cf1770970e5803db8fdc"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/02_practice_binary_evolutionary_algorithm.ipynb",
+    "title": "practice binary evolutionary algorithm",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "7427d497923fc8c338470e8ddb356ecbd94b0024e85c313774ff2fc0b157d303"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/03_survivor_selection_example.ipynb",
+    "title": "survivor selection example",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "84fbf3cd0723a36eddc530b27a47eddeae25f6d9ae3ac82e7283c5eb3a0d2a18"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/week5.pdf",
+    "title": "Evolutionary Algorithms – week 5",
+    "courseId": "IN3050",
+    "kind": "Lecture slides",
+    "sha256": "3d7fadacdae169131be850164a49f285891c781851b6962e633718d8d473cb4e"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+    "title": "evolutionary applications flight lab",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "f400ac16a552cc83db424b4fd6ff69370bf1a03ffe90cfb82ea60e2503a2ad03"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/week6.pdf",
+    "title": "Evolutionary Applications – week 6",
+    "courseId": "IN3050",
+    "kind": "Lecture slides",
+    "sha256": "6f68c3589cf031a5a7e5994f7c1681a53c483ba22a6697542da2072ff105c4af"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+    "title": "theory logistic regression",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "8c33eecf3c4b9c76bdd87e4b4b59aa9c0994ec43b97af103f241f16dfe7d9582"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/02_practice_logistic_regression.ipynb",
+    "title": "practice logistic regression",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "322502462e79d7d657e4fbcaedd9f1aac6052a0923f0ad853f616a1316001b35"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/03_solutions_logistic_regression.ipynb",
+    "title": "solutions logistic regression",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "42b877fbf23645eb285bb17a4bf812854bc89dcbdc0d7567400fa8d1a25ec44b"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+    "title": "theory backpropagation",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "2edd5b4cc7d5aac03f75bec3b714eded5949bac3203a5c0ae5ddbb4845953bcd"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/02_practice_backpropagation.ipynb",
+    "title": "practice backpropagation",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "aaa1fd56f40866133e60bd17e58bcc8785482dd3efcb10abe14b77680b3d176f"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/03_solutions_backpropagation.ipynb",
+    "title": "solutions backpropagation",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "457ec2f448c2b7c049187713e5e67a19acf0c56916a90c66bb6c06c347c3a4e7"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/week8.pdf",
+    "title": "Backpropagation – week 8",
+    "courseId": "IN3050",
+    "kind": "Lecture slides",
+    "sha256": "898c24eb77755dd437192cd657273498c18bc5fb227012123497109a42515a08"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/01_theory_evaluation_and_generalization.ipynb",
+    "title": "theory evaluation and generalization",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "57830e34594392be97ccf9a69c8bf6d6a1c9b2bf0a4f11aa34cb9ec0c880dc44"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/02_practice_generalization_and_regularization.ipynb",
+    "title": "practice generalization and regularization",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "0b72d373ab34e269a5efdf5f460c4fa01b665930cbe4753d1b4df9c8ec2cdb73"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/03_solutions_generalization_and_regularization.ipynb",
+    "title": "solutions generalization and regularization",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "7b22ae9b21e07ae82cd0f929038401ece7102b5a1178ea93a2c9d0d16916b140"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+    "title": "theory regularization and ensembles",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "2b96c2621d5d5188812db2ccd974fbfd7892d4e71aa28140cad9d8f2d65f54e7"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/02_practice_regularization_and_ensembles.ipynb",
+    "title": "practice regularization and ensembles",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "1a39e8e404fac029bf3191118058031ed4b80ab4378852dbfa5bb7f083cd3ecd"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/03_solutions_regularization_and_ensembles.ipynb",
+    "title": "solutions regularization and ensembles",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "9ab3809b5b26127de7ffd2c1ced403134c15d3a9b588f1bc2a89d70d45fc5121"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/week10.pdf",
+    "title": "Regularization and Ensembles – week 10",
+    "courseId": "IN3050",
+    "kind": "Lecture slides",
+    "sha256": "21057d2b3ca5bc9f9a54fd73c34ce2e95f89a8f4c67625a4a93cc5c03362cf3a"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/README.md",
+    "title": "IN3050-main – group session",
+    "courseId": "IN3050",
+    "kind": "Group exercise",
+    "sha256": "807fc1222ede4aeef0bde819bfa0522f0b01905a933f4be5c7ffab02434f5560"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+    "title": "Deep learning",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "c5842ed33f2cdb6a2967140b91af8dc71401c78944dd637742d007f0f19bc0e2"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 1.docx",
+    "title": "Evolutionary algorithms 1",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "2c28bb6bf4e78bda5397d23e0fd17842efe8423239324fd1ebf62b255c6ae23f"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Evolutionary algorithms 2.docx",
+    "title": "Evolutionary algorithms 2",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "c9d6d344906b9f723c695e85a2d8275d8fddd66f4cedbb1bdeabafd29a7f9701"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Logistic Regression and Multi-class Classification.docx",
+    "title": "Logistic Regression and Multi-class Classification",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "113d012198be89c47c2da5d0d23207f73c9e4643f7e73eb637c74e107de90ae0"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+    "title": "More on supervised learning",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "247ba3f735e743c76778ae93a6d6eeca6819317b6dc3e422960155c2c133c970"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Neural Networks and Black Propagation.docx",
+    "title": "Neural Networks and Backpropagation",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "15aed6fcc1275931251a7c6e337123e49a297459c512de27bb7939dcbd4f6867"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Optimization and Search.docx",
+    "title": "Optimization and Search",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "7e780459e64ecfe094246c879970da05b5a00b5dacb1e821cb485f15788d4dc5"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Perceptron and Linear Regression.docx",
+    "title": "Perceptron and Linear Regression",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "43c6d9331db4ebc48ef9b4d15104da7e40fd1fd051fdd664a622405714fe0ddc"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Supervised Learning.docx",
+    "title": "Supervised Learning",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "45059da10dea8ac9b4890fec7b7e0608b6d3f519664ed2b8cd9b988d706b1d84"
+  },
+  {
+    "path": "IN3050/personal_notes/Gruppetimer/Plenary - evolutionary algorithms.docx",
+    "title": "Plenary - evolutionary algorithms",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "fda8a0ddd98eadfcb437f2e70b64572043a126455fbcb6b1e2710b30c086b333"
+  },
+  {
+    "path": "IN3050/personal_notes/Gruppetimer/Plenary session 6.docx",
+    "title": "Plenary session 6",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "6676a4cd4eb3a74c84f816621f9305258559ea055261fd6f654f6caa733a620a"
+  },
+  {
+    "path": "IN3050/personal_notes/Notater/Exam preperation.docx",
+    "title": "Exam Preparation",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "f1d4cf116b2a393277564d0f12b0bea5592403ae0d7244072b25d347da170186"
+  },
+  {
+    "path": "IN3050/personal_notes/Notater/Forberedelser til IN3050.docx",
+    "title": "Preparing for IN3050",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "aad549f49d19121a2c8c6a60931bdf25306aa492f2052485840712f7234b2475"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/README.md",
+    "title": "plenaries-in3230-in4230-h26-main – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "13e113adcb1dd32a130b4b6f45c1229efa56aeadeae4f7b324468c332f782d0e"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p1_26-08-2026/MentiResults_in3230-in4230-h26.pdf",
+    "title": "MentiResults_in3230-in4230-h26",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "255cb9bbbe9979b92fd2e01063aac82a24cf39e4a89072c1d0717a8340f703ee"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p1_26-08-2026/README.md",
+    "title": "p1_26-08-2026 – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "49dafefe7816fb1ba5c7df930fa6b7216ead2f801ae773436123baecd5c13a7f"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p2_02-09-2026/README.md",
+    "title": "p2_02-09-2026 – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "947e63bf30adebe5414707c858c6fe3c9a4c204b32ee6e2664a439b5e45de67c"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p2_02-09-2026/greet-your-neighbor/README.md",
+    "title": "greet-your-neighbor – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "a766b4c369b8adb3e7a139e446f311fa5e2bc382bcdd478ce6491c33d8904958"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p2_02-09-2026/sockets/README.md",
+    "title": "sockets – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "15ce78729f6bfe6bce782820e6fa60f8355f9bcdc44f97fb1a31e234580f65b6"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p2_02-09-2026/sockets/raw_sockets/README.md",
+    "title": "raw_sockets – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "fbc91fc8a05a028a93d0231d42157a1a6da680107ebb933219c7b7d99c78b90b"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p2_02-09-2026/sockets/unix_sockets/README.md",
+    "title": "unix_sockets – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "e975102c33051641a8a824d3ada0ed691b8033f09df8b58fdcbf4d0956d6711c"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p3_11-09-2026/HiP/README.md",
+    "title": "HiP – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "b717da212a1037be95867cca2fe851662d2345abedde6dbf7fba75cd0dc6e897"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p3_11-09-2026/README.md",
+    "title": "p3_11-09-2026 – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "cb7807fb8cca84356d46bffe4785db023d8c6ae8ddaa0d6639f0b6ef09ca032e"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p3_11-09-2026/full-hip/README.md",
+    "title": "full-hip – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "c4e56b79d296e6b740dfbd78f04dbf20cf7a91fb1ca6ed11fbafe987ada55000"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p3_11-09-2026/ping-pong/README.md",
+    "title": "ping-pong – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "fab3bc39d14b1dec102fd9bf76afebf46f9864763003797373844300bc85c606"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p4_30-09-2026/README.md",
+    "title": "p4_30-09-2026 – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "71c65866047c745bef14371d9b63a1f28b84436872e55dd3f1645fda27dc78a5"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p5_14-10-2026/README.md",
+    "title": "p5_14-10-2026 – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "3b070c52d04af0cfc5644a2e515edfc44b1b90234dabd2dc7ef0c73aaf184585"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p5_14-10-2026/bird/bird_topology.pdf",
+    "title": "bird_topology",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "ac0b2dca03dea0d5932099c7a637bcff4d1439c45558c47ddefaa5548cacd3be"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p6_21-10-2026/README.md",
+    "title": "p6_21-10-2026 – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "d277a951ecafecd7cbc8cfd076bfcdfe50a1ed92e4a63acaecc063f5911bf5db"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p7_28-10-2026/README.md",
+    "title": "p7_28-10-2026 – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "c0b48cfc8b18d36571b4d3a54c9d4c5d97d8616d70ec2c87e40f56c608a49ab7"
+  },
+  {
+    "path": "In3230/Github/plenaries-in3230-in4230-h26-main/p8_04-11-2026/README.md",
+    "title": "p8_04-11-2026 – group session",
+    "courseId": "IN3230",
+    "kind": "Group exercise",
+    "sha256": "c0b48cfc8b18d36571b4d3a54c9d4c5d97d8616d70ec2c87e40f56c608a49ab7"
+  },
+  {
+    "path": "In3230/lecture_slides/http2-and-quic.pdf",
+    "title": "HTTP/2, HTTP/3 and QUIC",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "0463798b22d932e0c1f76021c38dc18fff5dd9f886e4d72f3367a2654b0f9872"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+    "title": "Wireless Communications I",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "8a140e1d396b2c85def802cf4949cf4aad4998a62dfa4ce21ea3ea4e19e7ea73"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+    "title": "Wireless Communications II",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "067894741048959f6b1c34065befd02cd5aa4d809faf29b15c7e4c875b2b5ded"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_arch.pdf",
+    "title": "Networking principles",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "a405a1ce9973f7c3452e9d5471598a7c99420ac3e82214fa04e2ffdd54f08d90"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_cc.pdf",
+    "title": "Congestion control",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "f28cb2d25c2f6475986cba348e9d04ee3117daba079e22849ff31e3e095b319c"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_cloud_computing.pdf",
+    "title": "Cloud Computing",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "51e054c74ff04b466838a983bc09ea190edac360c7d148c5a5095ff000c55ce9"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_guest-lecture.pdf",
+    "title": "Networking in the Real World",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "6a8c4e5ed2b2a145f935d372303e63db240cd846f23511eb0fd0c37e05e60828"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_intro.pdf",
+    "title": "Course introduction and repetition",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "35cdbd0752ec6a9b7d61cf147d6ee5be3d356d71c0056589ad872a774a891202"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_mpls_lecture.pdf",
+    "title": "Introduction to MPLS",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "942dc95d3cdd5cae620d4f34181e2f9a02b43cfb1a9b7a5f420b12f047e5beaf"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+    "title": "The Internet Transport Layer",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "a52a4a06c4419a5ccd9fb8d7d3da2a6e866bb3c7f7a1d6d135fe6d41deead565"
+  },
+  {
+    "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+    "title": "Interconnection Networks",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "8a75c22e204ece0b81387af97a69fe6cb46832b34c252e12d950591a03d5a0ab"
+  },
+  {
+    "path": "In3230/personal_notes/Forelesning/Cloud computing.docx",
+    "title": "Cloud computing",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "06c046bfa1ed09fb2b72fff21e74ee1021989a4ea7c3afabf41cee0e7a17eb98"
+  },
+  {
+    "path": "In3230/personal_notes/Forelesning/Congestion control.docx",
+    "title": "Congestion control",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "36d4a7de52e198f8dabfaccf9a0f8505051e07402effad761366f277d2dbcc93"
+  },
+  {
+    "path": "In3230/personal_notes/Forelesning/IN3230 course introduction and repetition.docx",
+    "title": "IN3230 course introduction and repetition",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "05174a29a50e056bc299b8b4f57eee04386e33cda0c64f0fea9387088f85952b"
+  },
+  {
+    "path": "In3230/personal_notes/Forelesning/Networking principles fortsettelse.docx",
+    "title": "Networking Principles, Continued",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "b037c35c017f6fc61862caf8547e27cf151c4c4f02537fd924718f50e333f638"
+  },
+  {
+    "path": "In3230/personal_notes/Forelesning/The internet transport layer.docx",
+    "title": "The internet transport layer",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "f4441b10bebdd1f1b3b547c2989440fe6545ff308e48e0e10ac1c9ab5f5f8a74"
+  },
+  {
+    "path": "In3230/personal_notes/Forelesning/Wireless communications.docx",
+    "title": "Wireless communications",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "198d880a4a1427df9608bdad5bb61d387a7ccbb86b97c0364900e1234a7106a5"
+  },
+  {
+    "path": "In3230/personal_notes/Gruppetimer/Plenary session 7. October.docx",
+    "title": "Plenary Session, 7 October",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "56e5534f69321929af1ac489cf1dd7e677feeca095bce2c95ac92bd0da250793"
+  },
+  {
+    "path": "In3230/personal_notes/Gruppetimer/plenary 11.sep.docx",
+    "title": "Plenary Session, 11 September",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "2656ee6ee0fb9a5cd5713e8da916d2dfbd4f99e98dc7f490a8dac4a47d1aea28"
+  },
+  {
+    "path": "IN3050/old_exams/in3050_4050_trial_exam_2020_solutions.pdf",
+    "title": "2020 Mock Exam with Suggested Solutions",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "678ee31bba67b6f038c7f7d62ac43333c2721f5c0dd185cb637b23205bc72567"
+  },
+  {
+    "path": "IN3050/old_exams/in3050_4050_exam_2020_solutions.pdf",
+    "title": "2020 Exam with Suggested Solutions",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "802e95bd0550ade28fbaa1a199831fd3cf4bfa854797d989da2529107fe6e25d"
+  },
+  {
+    "path": "IN3050/old_exams/in3050_2021_exam_with_solutions.pdf",
+    "title": "2021 Exam with Suggested Solutions",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "218bab3494deb8eb3caae3cb390d2cd9d9a3985cb975f173730039d5bb370118"
+  },
+  {
+    "path": "IN3050/old_exams/trial-exam-2021-combined-without-solutions.pdf",
+    "title": "2021 Mock Exam",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "69d06fdd55958b64bb569469b712ed4cbec2015a76f36e649205b8bffa85aea3"
+  },
+  {
+    "path": "IN3050/old_exams/in3050_2022_exam.pdf",
+    "title": "2022 Exam",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "1636f5ee995ff53c1acb07b35272820a594312d0f11c78c01ff59b83e3046d6f"
+  },
+  {
+    "path": "IN3050/old_exams/in3050-2022-solutions_take2.pdf",
+    "title": "Suggested Solutions for the 2022 Exam",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "dac4c23999c7300d4b3e6d56e048d147211a9f7d493a4c504afe6d33831296fd"
+  },
+  {
+    "path": "IN3050/old_exams/in3050_in4050_exam_2023_solutions_guide.pdf",
+    "title": "2023 Exam Solutions Guide",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "b077feb2ffe824d35c449ac6d75cdb9ba3c904cc6e5eb9d165323734baa952d9"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+    "title": "Lecture 12 – Unsupervised Learning",
+    "courseId": "IN3050",
+    "kind": "Notebook",
+    "sha256": "e78ff07cbe991a3b7cb444b9bdc8ac0991e3d9f64f774cb7463ee34b1cc7493f"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Unsupervised learning.docx",
+    "title": "Unsupervised Learning – Personal Lecture Notes",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "46d5dc20cdedff25469bcfbbc32c52e45af3da678a81f7669385a9e36906a92f"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_mentimeter_clustering.pdf",
+    "title": "Mentimeter – Hierarchical Clustering and k-Means",
+    "courseId": "IN3050",
+    "kind": "Group exercise",
+    "sha256": "9c04bb39a60871ff84fc3fb73fb04db79a59f6fa670735e0facc1034a4023855"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/02_mentimeter_autoencoders.pdf",
+    "title": "Mentimeter – Autoencoders",
+    "courseId": "IN3050",
+    "kind": "Group exercise",
+    "sha256": "97524c22fc261fb1e99ef4a8c48be1858dd4b910722fe528874c535e0d46d570"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/03_mentimeter_pca_and_tsne.pdf",
+    "title": "Mentimeter – PCA and t-SNE",
+    "courseId": "IN3050",
+    "kind": "Group exercise",
+    "sha256": "7ff71b0bf5123e6b0dab96db251fc95f6668b2a048c3398ee7394bfd738727a1"
+  },
+  {
+    "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+    "title": "Wireless Communications III – Massive IoT",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "9bffc81db199ba134fbf95974f2ff1a4747f90a1ed57d398c1f4e69da9337c73"
+  }
+]
