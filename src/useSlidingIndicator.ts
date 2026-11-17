@@ -12,7 +12,11 @@ export function useSlidingIndicator<T extends HTMLElement>(
 
     const measure = () => {
       const selected = group.querySelector(selector)
-      if (!selected || !group.offsetWidth) return
+      if (!selected) {
+        group.removeAttribute('data-indicator-ready')
+        return
+      }
+      if (!group.offsetWidth) return
 
       const bounds = selected.getBoundingClientRect()
       const offset = bounds.left - group.getBoundingClientRect().left - group.clientLeft + group.scrollLeft

@@ -1,4 +1,21 @@
 export type CourseId = 'IN3050' | 'IN3230'
+export type DeckId = `deck-${string}`
+export type StudySetId = CourseId | DeckId
+
+export interface DeckQuestion {
+  id: string
+  prompt: string
+  options: string[]
+  correctIndex: number
+  explanation: string
+}
+
+export interface Deck {
+  id: DeckId
+  title: string
+  questions: DeckQuestion[]
+}
+
 export type SessionMode = 'practice' | 'exam'
 export type EndReason = 'completed' | 'manual' | 'timeout'
 
@@ -10,7 +27,7 @@ export interface SourceDocument { path: string; title: string; courseId: CourseI
 export interface QuestionTable { caption: string; columns: string[]; rows: string[][] }
 export interface Question {
   id: string
-  courseId: CourseId
+  courseId: StudySetId
   topicId: string
   type: 'choice' | 'boolean'
   prompt: string
@@ -26,7 +43,7 @@ export interface Question {
 }
 export interface Session {
   id: string
-  courseId: CourseId
+  courseId: StudySetId
   mode: SessionMode
   questionIds: string[]
   answers: Record<string, string>
@@ -35,6 +52,7 @@ export interface Session {
   deadline: number | null
   finishedAt: number | null
   endReason: EndReason | null
+  deck?: Deck
 }
 export interface Progress { active: Session | null; history: Session[] }
 export interface SessionSummary {

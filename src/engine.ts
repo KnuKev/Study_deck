@@ -1,6 +1,6 @@
-import type { CourseId, Difficulty, EndReason, Question, Session, SessionMode, SessionSummary } from './model.ts'
+import type { StudySetId, Difficulty, EndReason, Question, Session, SessionMode, SessionSummary } from './model.ts'
 
-export function getPracticePool(questions: readonly Question[], courseId: CourseId, topicIds: readonly string[], difficulty: Difficulty | 'all' = 'all') {
+export function getPracticePool(questions: readonly Question[], courseId: StudySetId, topicIds: readonly string[], difficulty: Difficulty | 'all' = 'all') {
   const topics = new Set(topicIds)
   return questions.filter(question => !question.isDemo && question.courseId === courseId && (!topics.size || topics.has(question.topicId)) && (difficulty === 'all' || question.difficulty === difficulty))
 }
@@ -19,12 +19,12 @@ export function getOrderedOptions(question: Question, sessionId: string) {
   return options
 }
 
-export function filterQuestions(questions: readonly Question[], courseId: CourseId, topicIds: readonly string[]) {
+export function filterQuestions(questions: readonly Question[], courseId: StudySetId, topicIds: readonly string[]) {
   const selected = new Set(topicIds)
   return questions.filter(question => question.courseId === courseId && selected.has(question.topicId))
 }
 
-export function createSession(input: { courseId: CourseId; mode: SessionMode; questionIds: string[]; durationMinutes: number | null }, now = Date.now()): Session {
+export function createSession(input: { courseId: StudySetId; mode: SessionMode; questionIds: string[]; durationMinutes: number | null }, now = Date.now()): Session {
   const questionIds = [...new Set(input.questionIds)]
   if (!questionIds.length || questionIds.some(id => typeof id !== 'string' || !id)) throw new Error('Choose at least one question.')
   if (!Number.isFinite(now) || now < 0) throw new Error('Invalid start time.')

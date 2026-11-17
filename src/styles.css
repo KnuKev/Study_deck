@@ -473,3 +473,68 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 4px; }
 .option-content, .review-item summary > span:nth-child(2) { min-width: 0; }
 .question-table .math-inline { vertical-align: middle; }
 .course-figure .math-node-label { font-family: 'KaTeX_Math', 'Times New Roman', serif; font-style: italic; font-weight: 400; font-size: 17px; }
+
+.deck-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  margin-top: 12px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  text-align: left;
+}
+.deck-link > .ui-icon:last-child { margin-left: auto; width: 14px; }
+.deck-link:hover { background: var(--surface-muted); color: var(--text); }
+.deck-link.selected { color: var(--accent); background: var(--accent-soft); border-color: var(--accent-border); }
+
+.deck-list, .deck-editor { display: grid; gap: 16px; }
+.deck-list { margin-top: 18px; }
+.deck-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.deck-card .panel-heading, .score-chart .panel-heading { margin-bottom: 10px; }
+.deck-card h2, .overview-feature h2 { overflow-wrap: anywhere; }
+.deck-message { margin: 14px 0 0; }
+.deck-question { display: grid; min-width: 0; gap: 14px; }
+.deck-question legend { padding-inline: 7px; font-weight: 600; }
+.deck-question .text-button { justify-self: start; }
+.deck-answer { min-width: 0; }
+.deck-answer label { font-weight: 400; color: var(--text-secondary); }
+.feature-error { margin: 14px 0; color: var(--text); border-inline-start: 3px solid var(--accent); padding: 8px 12px; font-size: 13px; }
+
+.form-field { display: grid; gap: 6px; min-width: 0; font-size: 13px; font-weight: 500; }
+.form-field :is(input, select, textarea) {
+  min-width: 0;
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-muted);
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+}
+.form-field :is(select, textarea):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.form-field textarea { resize: vertical; }
+
+.results-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 16px; }
+.score-chart { margin-bottom: 16px; }
+.chart-layout { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 8px; row-gap: 12px; margin-top: 24px; }
+.chart-scale, .chart-plot { position: relative; height: clamp(138px, 20vw, 210px); }
+.chart-scale span { position: absolute; right: 0; transform: translateY(-50%); }
+.chart-dates { grid-column: 2; display: flex; justify-content: space-between; gap: 8px; }
+.chart-dates time:only-child { margin-inline: auto; }
+.chart-scale, .chart-dates { color: var(--text-secondary); font-size: 11px; font-variant-numeric: tabular-nums; }
+.chart-gridline { position: absolute; inset-inline: 0; height: 1px; background: var(--border); }
+.chart-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.chart-plot polyline { fill: none; stroke: var(--accent); stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round; }
+.chart-dot { position: absolute; width: 9px; height: 9px; border: 1px solid var(--surface); border-radius: 50%; background: var(--accent); transform: translate(-50%, -50%); }
+.chart-dot:hover { z-index: 1; scale: 1.35; transform-origin: top left; }
+
+@media (max-width: 440px) {
+  .results-filters { grid-template-columns: minmax(0, 1fr); }
+  .form-field :is(input, select, textarea) { font-size: 16px; }
+}
