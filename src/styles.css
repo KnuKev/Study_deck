@@ -539,8 +539,21 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 4px; }
   .form-field :is(input, select, textarea) { font-size: 16px; }
 }
 
-.question-focus { margin: 0 0 24px; }
-.question-focus .field-hint { margin-top: 8px; }
+.question-focus { margin-block: 24px; }
+.question-focus > .form-field { gap: 10px; }
+.question-focus .field-hint { min-height: 0; margin-top: 8px; }
+.question-focus-control { position: relative; display: block; }
+.question-focus-control > select { display: block; appearance: none; padding-inline: 12px 40px; }
+.question-focus-control > .ui-icon {
+  position: absolute;
+  inset-inline-end: 13px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transform: translateY(-50%) rotate(90deg);
+}
 .question-code {
   margin: 0 0 20px;
   padding: 14px;

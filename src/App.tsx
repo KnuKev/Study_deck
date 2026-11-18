@@ -305,19 +305,22 @@ export default function App() {
             <fieldset><legend>Mode</legend><div className="mode-options"><button className={mode === 'practice' ? 'selected' : ''} aria-pressed={mode === 'practice'} onClick={() => setMode('practice')}><Icon name="book" /><strong>Practice</strong><span>See the answer and explanation after each question.</span>{mode === 'practice' && <Icon name="checkCircle" />}</button><button className={mode === 'exam' ? 'selected' : ''} aria-pressed={mode === 'exam'} onClick={() => setMode('exam')}><Icon name="flag" /><strong>Mock exam</strong><span>Answer the questions and review the answers at the end.</span>{mode === 'exam' && <Icon name="checkCircle" />}</button></div></fieldset>
             {!deck && <div className="question-focus">
               <label className="form-field">Question focus
-                <select value={focus} onChange={event => {
-                  const value = event.target.value
-                  const selectedPaper = PAST_PAPERS.find(item => String(item.focus) === value)
-                  chooseFocus(selectedPaper?.focus ?? (value === 'prep' ? 'prep' : 'mixed'))
-                }}>
-                  <option value="mixed">Mixed practice</option>
-                  <option value="prep">{courseId === 'IN3050' ? 'Recent exams and prep' : 'Application-layer exam prep'}</option>
-                  {courseId === 'IN3050' && PAST_PAPERS.map(item =>
-                    <option key={item.focus} value={item.focus}>{item.label}</option>
-                  )}
-                </select>
+                <span className="question-focus-control">
+                  <select aria-describedby="question-focus-hint" value={focus} onChange={event => {
+                    const value = event.target.value
+                    const selectedPaper = PAST_PAPERS.find(item => String(item.focus) === value)
+                    chooseFocus(selectedPaper?.focus ?? (value === 'prep' ? 'prep' : 'mixed'))
+                  }}>
+                    <option value="mixed">Mixed practice</option>
+                    <option value="prep">{courseId === 'IN3050' ? 'Recent exams and prep' : 'Application-layer exam prep'}</option>
+                    {courseId === 'IN3050' && PAST_PAPERS.map(item =>
+                      <option key={item.focus} value={item.focus}>{item.label}</option>
+                    )}
+                  </select>
+                  <Icon name="chevron" />
+                </span>
               </label>
-              <p className="field-hint">{trialPaper
+              <p id="question-focus-hint" className="field-hint">{trialPaper
                 ? 'Includes all 35 quiz questions and 5 written prompts adapted to multiple choice.'
                 : pastPaper
                   ? 'Includes every question from this paper, including topics outside the current exam scope.'

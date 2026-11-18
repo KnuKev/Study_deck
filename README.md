@@ -12,6 +12,8 @@ The questions draw on my notes, lectures, group exercises, GitHub course materia
 
 In **Practice**, use **Question focus** to choose a full IN3050 paper from 2024 or 2025, the 2025 trial exam, and recent exam variants. The 2025 trial exam includes 35 quiz questions and five written prompts adapted to multiple choice. Full papers include historical topics that may fall outside current exam prep.
 
+To focus on one topic, open **Syllabus** for your course and select **Practise this topic** on the topic you want. This opens the practice setup with that topic selected.
+
 ## Create and share your own decks
 
 1. In **My decks**, choose **Create deck**. Name your deck, add questions and answer options, mark the correct answer for each question, and select **Save deck**.
