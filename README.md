@@ -4,9 +4,13 @@ I built Study Deck primarily for my own exam preparation in **IN3050** and **IN3
 
 The questions draw on my notes, lectures, group exercises, GitHub course materials, and past exams. I built the app with AI assistance. I can't guarantee full syllabus coverage or good grades.
 
+## Try it
+
+[Open Study Deck](https://knukev.github.io/Study_deck/)
+
 ## Prepare for the exams
 
-In **Practice**, use **Question focus** to choose a full IN3050 paper from 2024 or 2025, the 2025 trial exam, recent exam variants, or IN3230 application-layer practice. The 2025 trial exam includes 35 quiz questions and five written prompts adapted to multiple choice. Full papers include historical topics that may fall outside current exam prep.
+In **Practice**, use **Question focus** to choose a full IN3050 paper from 2024 or 2025, the 2025 trial exam, and recent exam variants. The 2025 trial exam includes 35 quiz questions and five written prompts adapted to multiple choice. Full papers include historical topics that may fall outside current exam prep.
 
 ## Create and share your own decks
 
@@ -19,7 +23,3 @@ Decks are saved in the browser you use. The JSON file contains the deck itself. 
 ## Run locally
 
 With Node.js 24 or later, run `npm ci` and `npm run dev`, then open [the local app](http://127.0.0.1:5174/).
-
-## Try it
-
-[Open Study Deck](https://knukev.github.io/Study_deck/)
