@@ -271,7 +271,7 @@ export default function App() {
 
     <div className="workspace">
     <aside className="sidebar" aria-label="Courses and topics">
-      <div className="sidebar-title"><h2>Your courses</h2><span className="quiet-badge">2 courses</span></div>
+      <div className="sidebar-title"><h2>Courses</h2></div>
       <div className="course-options">
         {COURSES.map(item => <button key={item.id} disabled={Boolean(active)} className={'course-option' + (!deck && courseId === item.id ? ' selected' : '')} onClick={() => chooseCourse(item.id)} aria-pressed={!deck && courseId === item.id}><span className="course-symbol"><Icon name={item.id === 'IN3050' ? 'brain' : 'network'} /></span><span><strong>{item.id}</strong><small>{item.shortTitle}</small></span><Icon name="chevron" /></button>)}
       </div>
@@ -279,34 +279,35 @@ export default function App() {
         <Icon name="layers" />My decks<Icon name="chevron" />
       </button>
       {!deck && (view === 'practice' || view === 'syllabus') && <>
-      <div className="sidebar-section-heading"><h3>Topics</h3><span>{practiceTopics.length}</span></div>
+      <div className="sidebar-section-heading"><h3>Topics</h3></div>
       <button className={'all-topics' + (!topicIds.length ? ' selected' : '')} onClick={() => setTopicIds([])} disabled={Boolean(active) || pastPaper} aria-pressed={!topicIds.length}><Icon name="layers" />All topics<span>{courseQuestions.length}</span></button>
       <div className="topic-options">{practiceTopics.map(topic => <label key={topic.id} className={topicIds.includes(topic.id) ? 'selected' : ''}><input type="checkbox" checked={topicIds.includes(topic.id)} disabled={Boolean(active) || pastPaper} onChange={() => toggleTopic(topic.id)} /><span>{topic.title}</span><small>{courseQuestions.filter(question => question.topicId === topic.id).length}</small></label>)}</div>
-      <p className="sidebar-hint">{active ? 'Course and topic selection are locked during a session.' : pastPaper ? 'A past paper includes all its topics.' : 'Choose one or more topics, or practise the whole course.'}</p>
-      <div className="sidebar-bottom"><span className="sample-pill"><span />Course-based practice</span><p>Questions from lectures, group exercises, and notes, with explanations and references.</p><button className="text-button" onClick={() => navigate('syllabus')}>Browse syllabus<Icon name="arrow" /></button></div>
+      {(active || pastPaper) && <p className="sidebar-hint">
+        {active ? 'Topics are locked during a session.' : 'Topics are fixed for this paper.'}
+      </p>}
       </>}
     </aside>
 
     <main id="main-content" className="main-content">
-      {!storageAvailable && <div className="storage-notice" role="alert"><Icon name="info" /><span>Your browser could not save your progress. You can continue, but closing the page may lose this session.</span></div>}
+      {!storageAvailable && <div className="storage-notice" role="alert"><Icon name="info" /><span>Your progress could not be saved. Closing this page may lose your session.</span></div>}
       {active && view !== 'practice' && <button className="resume-banner" onClick={() => setView('practice')}><Icon name="play" /><span>Session in progress for {sessionTitle(active)}</span><strong>{remaining === null ? 'No time limit' : time(remaining)}</strong><span>Resume<Icon name="arrow" /></span></button>}
 
       {view === 'decks' && <DeckLibrary decks={decks} sessionActive={Boolean(active)} onChange={updateDecks} onPractice={practiseDeck} />}
 
       {showSetup && <>
-        <div className="page-heading"><div><h1>Practice</h1><p>{deck ? 'Practise with your own questions.' : 'Multiple-choice, multiple-answer, and true-or-false questions.'}</p></div><span className="page-tag">{deck ? 'Custom deck' : courseId}</span></div>
+        <div className="page-heading"><h1>Practice</h1></div>
         <div className="overview-grid">
-          <div className="overview-feature"><span><Icon name={deck ? 'layers' : courseId === 'IN3050' ? 'brain' : 'network'} />{deck ? 'Selected deck' : 'Selected course'}</span><h2>{deck?.title ?? courseId}</h2>{!deck && <p>{course.title}</p>}</div>
-          <div className="metric-card"><Icon name="book" /><strong aria-live="polite" aria-atomic="true"><span className="sr-only">Available questions </span>{pool.length}</strong><span>available questions</span><small>{deck ? 'Custom questions' : paper ? paper.label : difficulty === 'all' ? 'All difficulty levels' : DIFFICULTY_LABELS[difficulty]}</small></div>
-          <div className="metric-card"><Icon name="checkCircle" /><strong>{courseHistory.length ? number(courseHistory.length) : '—'}</strong><span>completed sessions</span><small>{courseHistory.length ? 'Saved on this device' : 'Start your first session'}</small></div>
+          <div className="overview-feature"><Icon name={deck ? 'layers' : courseId === 'IN3050' ? 'brain' : 'network'} /><h2>{deck?.title ?? courseId}</h2>{!deck && <p>{course.title}</p>}</div>
+          <div className="metric-card"><Icon name="book" /><strong aria-live="polite" aria-atomic="true"><span className="sr-only">Available questions </span>{pool.length}</strong><span>available questions</span></div>
+          <div className="metric-card"><Icon name="checkCircle" /><strong>{number(courseHistory.length)}</strong><span>completed sessions</span></div>
         </div>
         <div className="setup-grid">
           <section className="panel session-setup"><div className="panel-heading"><h2>Set up a session</h2><Icon name="target" /></div>
-            <fieldset><legend>Mode</legend><div className="mode-options"><button className={mode === 'practice' ? 'selected' : ''} aria-pressed={mode === 'practice'} onClick={() => setMode('practice')}><Icon name="book" /><strong>Practice</strong><span>See the answer and explanation after each question.</span>{mode === 'practice' && <Icon name="checkCircle" />}</button><button className={mode === 'exam' ? 'selected' : ''} aria-pressed={mode === 'exam'} onClick={() => setMode('exam')}><Icon name="flag" /><strong>Mock exam</strong><span>Answer the questions and review the answers at the end.</span>{mode === 'exam' && <Icon name="checkCircle" />}</button></div></fieldset>
+            <fieldset><legend>Mode</legend><div className="mode-options"><button className={mode === 'practice' ? 'selected' : ''} aria-pressed={mode === 'practice'} onClick={() => setMode('practice')}><Icon name="book" /><strong>Practice</strong><span>See answers and explanations as you go.</span>{mode === 'practice' && <Icon name="checkCircle" />}</button><button className={mode === 'exam' ? 'selected' : ''} aria-pressed={mode === 'exam'} onClick={() => setMode('exam')}><Icon name="flag" /><strong>Mock exam</strong><span>Review your answers at the end.</span>{mode === 'exam' && <Icon name="checkCircle" />}</button></div></fieldset>
             {!deck && <div className="question-focus">
               <label className="form-field">Question focus
                 <span className="question-focus-control">
-                  <select aria-describedby="question-focus-hint" value={focus} onChange={event => {
+                  <select aria-describedby={pastPaper ? 'question-focus-hint' : undefined} value={focus} onChange={event => {
                     const value = event.target.value
                     const selectedPaper = PAST_PAPERS.find(item => String(item.focus) === value)
                     chooseFocus(selectedPaper?.focus ?? (value === 'prep' ? 'prep' : 'mixed'))
@@ -320,25 +321,20 @@ export default function App() {
                   <Icon name="chevron" />
                 </span>
               </label>
-              <p id="question-focus-hint" className="field-hint">{trialPaper
-                ? 'Includes all 35 quiz questions and 5 written prompts adapted to multiple choice.'
-                : pastPaper
-                  ? 'Includes every question from this paper, including topics outside the current exam scope.'
-                : focus === 'prep'
-                  ? courseId === 'IN3050' ? 'Recent exam questions and new variants aligned with the wrap-up notes.' : 'Principles and scenarios on HTTP/2, QUIC, and connection reuse.'
-                  : 'Recent exam material and prep questions appear more often in short sessions.'}</p>
+              {pastPaper && <p id="question-focus-hint" className="field-hint">{trialPaper
+                ? '35 quiz questions and 5 adapted written prompts.'
+                : 'Includes topics outside the current exam scope.'}</p>}
             </div>}
-            <fieldset><legend><Icon name="clock" />Duration</legend><div ref={durationOptions} className="segmented duration-options sliding-indicator">{[15, 30, 45, 60, null].map(minutes => <button key={minutes ?? 'none'} aria-pressed={duration === minutes} onClick={() => setDuration(minutes)}>{minutes === null ? 'Untimed' : `${minutes} min`}</button>)}</div><p className="field-hint">{duration ? 'The session ends when you finish or time runs out. The timer keeps running if you leave the page.' : 'Work at your own pace. You can resume the session after reloading the page.'}</p></fieldset>
-            {!deck && !pastPaper && <fieldset><legend>Difficulty</legend><div ref={difficultyOptions} className="segmented difficulty-options sliding-indicator">{(['all', 'easy', 'medium', 'hard'] as const).map(level => <button key={level} aria-pressed={difficulty === level} onClick={() => setDifficulty(level)}>{level === 'all' ? 'Mixed' : DIFFICULTY_LABELS[level]}</button>)}</div><p className="field-hint">{difficulty === 'hard' ? 'Multi-step problems, calculations, and applied concepts.' : difficulty === 'easy' ? 'Core concepts and principles from the lectures.' : difficulty === 'medium' ? 'Interpretation, comparisons, and short calculations.' : 'A mix of basic, intermediate, and challenging questions.'}</p></fieldset>}
+            <fieldset><legend><Icon name="clock" />Duration</legend><div ref={durationOptions} className="segmented duration-options sliding-indicator">{[15, 30, 45, 60, null].map(minutes => <button key={minutes ?? 'none'} aria-pressed={duration === minutes} onClick={() => setDuration(minutes)}>{minutes === null ? 'Untimed' : `${minutes} min`}</button>)}</div>{duration !== null && <p className="field-hint">The timer keeps running if you leave.</p>}</fieldset>
+            {!deck && !pastPaper && <fieldset><legend>Difficulty</legend><div ref={difficultyOptions} className="segmented difficulty-options sliding-indicator">{(['all', 'easy', 'medium', 'hard'] as const).map(level => <button key={level} aria-pressed={difficulty === level} onClick={() => setDifficulty(level)}>{level === 'all' ? 'Mixed' : DIFFICULTY_LABELS[level]}</button>)}</div></fieldset>}
             <fieldset><legend>Number of questions</legend><div ref={countOptions} className="segmented count-options sliding-indicator">{[5, 10, 20, 40, 0].map(amount => <button key={amount} disabled={amount > pool.length} aria-pressed={amount === countOption} onClick={() => setCount(amount)}>{amount === 0 ? 'All' : amount}</button>)}</div></fieldset>
             <div className="session-start"><span><strong>{countLabel(selectedCount, 'question')}</strong><small>{deck ? 'Custom deck' : paper ? paper.label : topicIds.length ? `${countLabel(topicIds.length, 'topic')} selected` : 'All topics'} · {duration ? `${duration} minutes` : 'No time limit'}</small></span><button className="primary-button" disabled={!selectedCount} onClick={() => start()}>Start session<Icon name="arrow" /></button></div>
           </section>
           <div className="setup-aside">
             <section className="panel selection-panel">
-              <div className="panel-heading"><h2 ref={selectionHeading} tabIndex={-1}>Question pool</h2><span className="quiet-badge">{deck ? 'Custom deck' : courseId}</span></div>
+              <div className="panel-heading"><h2 ref={selectionHeading} tabIndex={-1}>Question pool</h2></div>
               <div className="selection-counts"><span><Icon name="layers" />Multiple choice<strong>{pool.filter(question => question.type !== 'boolean').length}</strong></span>{!deck && <span><Icon name="checkCircle" />True or false<strong>{pool.filter(question => question.type === 'boolean').length}</strong></span>}</div>
-              <p className="small-copy">{pastPaper ? 'Questions are drawn from the selected past paper.' : 'Questions are drawn from the pool above.'}</p>
-              {!deck && !pastPaper && (selectedTopics.length ? <div className="selected-topics">
+              {!deck && !pastPaper && selectedTopics.length > 0 && <div className="selected-topics">
                 <div className="selected-topics-heading"><h3>Selected topics</h3><button type="button" className="text-button" onClick={() => { setTopicIds([]); selectionHeading.current?.focus() }}>Show all topics</button></div>
                 <ul className="selected-topic-list">{selectedTopics.map(topic => <li key={topic.id}>
                   <button type="button" aria-label={'Remove topic ' + topic.title} onClick={event => {
@@ -351,23 +347,25 @@ export default function App() {
                     {topic.title}<Icon name="close" />
                   </button>
                 </li>)}</ul>
-              </div> : <details className="selected-topics">
-                <summary>All topics <span>{practiceTopics.length}</span></summary>
-                <ul className="available-topic-list">{practiceTopics.map(topic => <li key={topic.id}>{topic.title}</li>)}</ul>
-              </details>)}
+              </div>}
             </section>
-          <section className="panel last-session"><div className="panel-heading"><h2>Last session</h2><Icon name="chart" /></div>{courseHistory.length ? <><strong className="last-score">{summarizeSession(courseHistory[0]!, questionsFor(courseHistory[0]!)).percentage}%<small>correct</small></strong><p>{dateFormat.format(courseHistory[0]!.finishedAt!)}</p><button className="text-button" onClick={() => { setResultId(courseHistory[0]!.id); window.scrollTo(0, 0) }}>Review answers<Icon name="arrow" /></button></> : <><div className="empty-icon"><Icon name="chart" /></div><p>Your results will appear here when you finish a session.</p></>}</section></div>
+            {courseHistory[0] && <section className="panel last-session">
+              <div className="panel-heading"><h2>Last session</h2><Icon name="chart" /></div>
+              <strong className="last-score">{summarizeSession(courseHistory[0], questionsFor(courseHistory[0])).percentage}%<small>correct</small></strong>
+              <p>{dateFormat.format(courseHistory[0].finishedAt!)}</p>
+              <button className="text-button" onClick={() => { setResultId(courseHistory[0]!.id); window.scrollTo(0, 0) }}>Review answers<Icon name="arrow" /></button>
+            </section>}
+          </div>
         </div>
-        <p className="page-footnote"><Icon name="shield" />Progress is saved in this browser. No account required.</p>
       </>}
 
       {view === 'practice' && active && current && <>
         <div className="page-heading"><div><h1>{active.mode === 'practice' ? 'Practice session' : 'Mock exam'}</h1><p>{sessionTitle(active)}{!active.deck && ` · ${topicTitle(current.topicId)}`}</p></div><div className={'timer-chip' + (remaining !== null && remaining < 60 ? ' urgent' : '')} role="timer" aria-label="Time remaining"><Icon name="clock" /><strong>{remaining === null ? 'Untimed' : time(remaining)}</strong></div></div>
         <div className="session-progress"><span>Question <strong>{active.currentIndex + 1}</strong> of {active.questionIds.length}</span><span>{Object.keys(active.answers).length} answered</span><progress value={Object.keys(active.answers).length} max={active.questionIds.length} aria-label="Answered questions" /></div>
-        <article className="panel question-panel"><div className="question-meta">{!active.deck && <span className={'sample-pill difficulty-' + current.difficulty}>{current.isDemo ? 'Legacy sample question' : DIFFICULTY_LABELS[current.difficulty]}</span>}{current.trial2025 && current.examYear === 2024 ? <span>2024 exam · 2025 trial</span> :
+        <article className="panel question-panel">{!active.deck && <div className="question-meta"><span className={'sample-pill difficulty-' + current.difficulty}>{current.isDemo ? 'Legacy sample question' : DIFFICULTY_LABELS[current.difficulty]}</span>{current.trial2025 && current.examYear === 2024 ? <span>2024 exam · 2025 trial</span> :
             current.trial2025 ? <span>2025 trial exam</span> : current.examYear && <span>{current.examYear} exam</span>}
           {current.writtenAdaptation && <span>Adapted written prompt</span>}{current.examPrep && <span>Exam prep</span>}
-          <span>{current.type === 'boolean' ? 'True or false' : current.type === 'multi' ? `Choose ${answerCount} answers` : 'One correct answer'}</span></div><h2 ref={questionHeading} tabIndex={-1}><MathText>{current.prompt}</MathText></h2><QuestionMaterial question={current} />
+          {current.type === 'multi' && <span>Choose {answerCount} answers</span>}</div>}<h2 ref={questionHeading} tabIndex={-1}><MathText>{current.prompt}</MathText></h2><QuestionMaterial question={current} />
           <fieldset className="answer-options"><legend className="sr-only">{current.type === 'multi' ? `Choose ${answerCount} answers` : 'Choose an answer'}</legend>{getOrderedOptions(current, active.id).map((option, index) => {
             const chosen = (recorded ? answerIds(recorded) : selected).includes(option.id)
             const correct = isFeedback && answerIds(current.correctOptionId).includes(option.id)
@@ -384,13 +382,13 @@ export default function App() {
           {isFeedback && <div className={'answer-feedback' + (recorded === current.correctOptionId ? ' is-correct' : '')} role="status"><h3><Icon name={recorded === current.correctOptionId ? 'checkCircle' : 'info'} />{recorded === current.correctOptionId ? 'Correct!' : 'Incorrect'}</h3>{current.explanation && <p><MathText>{current.explanation}</MathText></p>}{!active.deck && <QuestionSources question={current} />}</div>}
           <div className="question-actions"><button className="secondary-button" disabled={active.currentIndex === 0} onClick={() => setProgress(previous => ({ ...previous, active: { ...active, currentIndex: active.currentIndex - 1 } }))}><Icon name="chevron" className="rotate-back" />Previous</button><div>{!recorded && <button className="text-button skip-button" onClick={() => advance(active)}>Skip</button>}{recorded ? <button className="primary-button" onClick={() => advance(active)}>{active.currentIndex === active.questionIds.length - 1 ? 'View results' : 'Next question'}<Icon name="arrow" /></button> : <button className="primary-button" disabled={!canSubmit} onClick={submit}>{active.mode === 'practice' ? 'Check answer' : active.currentIndex === active.questionIds.length - 1 ? 'Submit and view results' : 'Submit and continue'}<Icon name="arrow" /></button>}</div></div>
         </article>
-        <div className="session-bottom"><p>Answers are locked after submission. {active.mode === 'exam' ? 'Review the answers when the session ends.' : 'You can revisit questions to read the explanations.'}</p><button className="text-button" onClick={() => setConfirmEnd(true)}>End session</button></div>
+        <div className="session-bottom"><button className="text-button" onClick={() => setConfirmEnd(true)}>End session</button></div>
         <div className="question-navigation" aria-label="Questions in this session">{active.questionIds.map((id, index) => <button key={id} aria-label={`Question ${index + 1}${active.answers[id] ? ', answered' : ', unanswered'}`} aria-current={active.currentIndex === index ? 'step' : undefined} className={active.answers[id] ? 'answered' : ''} onClick={() => setProgress(previous => ({ ...previous, active: { ...active, currentIndex: index } }))}>{index + 1}</button>)}</div>
       </>}
 
       {view === 'practice' && !active && result && summary && <>
         <div className="page-heading"><div><h1>Session complete</h1><p>{sessionTitle(result)} · {dateFormat.format(result.finishedAt!)}{result.endReason === 'timeout' ? ' · Time ran out' : ''}</p></div><button className="secondary-button" onClick={() => setResultId(null)}>New session<Icon name="arrow" /></button></div>
-        <section className="panel result-overview"><div className="score-ring" style={{ '--score': `${summary.percentage}%` } as React.CSSProperties}><div><strong>{summary.percentage}%</strong><span>correct</span></div></div><div className="result-copy"><span className="sample-pill">{result.deck ? 'Custom deck' : hasLegacyQuestions(result) ? 'Legacy sample content' : 'Course-based practice'}</span><h2>{summary.correct} of {summary.total} correct</h2><p>{summary.answered} answered · {summary.total - summary.answered} unanswered · {time(summary.elapsedSeconds)} elapsed</p><p className="small-copy">Your score includes all questions, including unanswered ones.</p>{summary.correct < summary.total && <button className="primary-button" onClick={() => start(result)}><Icon name="refresh" />Retry missed and unanswered questions</button>}</div></section>
+        <section className="panel result-overview"><div className="score-ring" style={{ '--score': `${summary.percentage}%` } as React.CSSProperties}><div><strong>{summary.percentage}%</strong><span>correct</span></div></div><div className="result-copy">{hasLegacyQuestions(result) && <span className="sample-pill">Legacy sample content</span>}<h2>{summary.correct} of {summary.total} correct</h2><p>{summary.answered} answered · {summary.total - summary.answered} unanswered · {time(summary.elapsedSeconds)} elapsed</p>{summary.correct < summary.total && <button className="primary-button" onClick={() => start(result)}><Icon name="refresh" />Retry missed and unanswered questions</button>}</div></section>
         <section className="panel topic-results"><div className="panel-heading"><h2>Results by topic</h2><span>Correct / total</span></div>{summary.topics.map(topic => <div key={topic.topicId} className="topic-result-row"><span>{sessionTopic(result, topic.topicId)}</span><progress value={topic.correct} max={topic.total} aria-label={`${sessionTopic(result, topic.topicId)}: ${topic.correct} of ${topic.total} correct`} /><strong>{topic.correct} / {topic.total}</strong></div>)}</section>
         <section className="answer-review"><div className="section-heading"><h2>Answers and explanations</h2><span>{countLabel(summary.total, 'question')}</span></div>{result.questionIds.map((id, index) => {
           const question = resultIndex.get(id)!, answer = result.answers[id], correct = answer === question.correctOptionId
@@ -418,20 +416,20 @@ export default function App() {
         onReview={session => { setResultId(session.id); setView('practice'); window.scrollTo(0, 0) }}
       />}
 
-      {view === 'syllabus' && deck && <div className="page-heading"><div><h1>Syllabus</h1><p>Choose a course to see its topics and sources, or edit your custom questions in My decks.</p></div></div>}
+      {view === 'syllabus' && deck && <div className="page-heading"><div><h1>Syllabus</h1><p>Select a course to view its syllabus.</p></div></div>}
       {view === 'syllabus' && !deck && <>
-        <div className="page-heading"><div><h1>Syllabus</h1><p>{countLabel(practiceTopics.length, 'topic')} · {courseQuestions.length} questions · {countLabel(courseSources.length, 'source')}</p></div><span className="sample-pill">{courseId}</span></div>
-        <section className="panel content-notice"><span className="notice-icon"><Icon name="book" /></span><div><h2>Lectures, group exercises, and notes</h2><p>Practice questions include answers and references to the relevant pages or sections of the course material.</p><small>{courseId === 'IN3230' ? 'The midterm C programming material is outside the scope of this question bank.' : 'The bank also includes multiple-choice and true-or-false questions adapted from past and mock exams through 2025. Full 2024 and 2025 papers and the 2025 trial exam are available under Question focus.'}</small></div></section>
-        <div className="syllabus-grid">{practiceTopics.map((topic, index) => {
+        <div className="page-heading"><div><h1>Syllabus</h1><p>{countLabel(practiceTopics.length, 'topic')} · {courseQuestions.length} questions</p></div></div>
+        {courseId === 'IN3230' && <p className="syllabus-scope">Midterm C programming is outside this question bank.</p>}
+        <div className="syllabus-grid">{practiceTopics.map(topic => {
           const topicQuestions = courseQuestions.filter(question => question.topicId === topic.id)
-          return <section key={topic.id} className="panel syllabus-card"><span className="topic-index">{String(index + 1).padStart(2, '0')}</span><h2>{topic.title}</h2><p>{topic.description}</p>
-            {topic.objectives?.length ? <ul className="topic-objectives">{topic.objectives.map(objective => <li key={objective}>{objective}</li>)}</ul> : null}
+          return <section key={topic.id} className="panel syllabus-card"><h2>{topic.title}</h2>
+            {topic.objectives?.length ? <ul className="topic-objectives">{topic.objectives.map(objective => <li key={objective}>{objective}</li>)}</ul> : <p>{topic.description}</p>}
             <div className="difficulty-counts">{(['easy', 'medium', 'hard'] as const).map(level => <span key={level} className={'difficulty-' + level}>{DIFFICULTY_LABELS[level]}<strong>{topicQuestions.filter(question => question.difficulty === level).length}</strong></span>)}</div>
             <footer><span>{countLabel(topicQuestions.length, 'question')}</span><button className="text-button" disabled={Boolean(active)} onClick={() => { setTopicIds([topic.id]); setFocus('mixed'); setDifficulty('all'); navigate('practice') }}>Practise this topic<Icon name="arrow" /></button></footer>
             {topic.sourcePaths?.length ? <details className="topic-source-list"><summary>Topic sources <span>{topic.sourcePaths.length}</span></summary><ul>{topic.sourcePaths.map(path => <li key={path}><strong>{SOURCE_INDEX.get(path)?.title ?? path.split('/').at(-1)}</strong><small>{path}</small></li>)}</ul></details> : null}
           </section>
         })}</div>
-        <section className="panel sources-panel"><div className="panel-heading"><h2>Source library</h2><span className="quiet-badge">{countLabel(courseSources.length, 'document')}</span></div><p>Use these filenames to find the original course materials.</p><details className="source-catalog"><summary>Show sources</summary><ul>{courseSources.map(source => <li key={source.path}><span className="quiet-badge">{source.kind}</span><div><strong>{source.title}</strong><small>{source.path}</small></div></li>)}</ul></details></section>
+        <section className="panel sources-panel"><div className="panel-heading"><h2>Source library</h2></div><details className="source-catalog"><summary>Show sources</summary><ul>{courseSources.map(source => <li key={source.path}><span className="quiet-badge">{source.kind}</span><div><strong>{source.title}</strong><small>{source.path}</small></div></li>)}</ul></details></section>
       </>}
     </main>
     </div>

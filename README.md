@@ -1,26 +1,21 @@
 # Study Deck
 
-I built Study Deck primarily for my own exam preparation in **IN3050** and **IN3230**. Anyone who wants to try it is welcome to use it.
-
-The questions draw on my notes, lectures, group exercises, GitHub course materials, and past exams. I built the app with AI assistance. I can't guarantee full syllabus coverage or good grades.
-
-## Try it
+I built Study Deck with AI assistance to revise for **IN3050** and **IN3230**. Anyone is welcome to use it. Questions draw on my notes, lectures, group exercises, course repositories, and past papers. Coverage and grades aren't guaranteed.
 
 [Open Study Deck](https://knukev.github.io/Study_deck/)
 
-## Prepare for the exams
+## Practise
 
-In **Practice**, use **Question focus** to choose a full IN3050 paper from 2024 or 2025, the 2025 trial exam, and recent exam variants. The 2025 trial exam includes 35 quiz questions and five written prompts adapted to multiple choice. Full papers include historical topics that may fall outside current exam prep.
+- In **Practice**, use **Question focus** to pick a past paper or focus on recent exam material. The 2025 trial includes five written prompts adapted to multiple choice.
+- In **Syllabus**, choose **Practise this topic** to study one topic.
 
-To focus on one topic, open **Syllabus** for your course and select **Practise this topic** on the topic you want. This opens the practice setup with that topic selected.
+## Create and share decks
 
-## Create and share your own decks
+1. In **My decks**, select **Create deck**. Add questions and answers, mark the correct options, and save.
+2. Select **Export JSON** to download a copy of a deck.
+3. Select **Import JSON** and choose the file to open the deck in another browser or on another device.
 
-1. In **My decks**, choose **Create deck**. Name your deck, add questions and answer options, mark the correct answer for each question, and select **Save deck**.
-2. Choose **Export JSON** on a saved deck to download its questions and answers for backup or sharing.
-3. To restore a deck or use it on another device, open **My decks**, choose **Import JSON**, and select the exported file. It appears as a new deck.
-
-Decks are saved in the browser you use. The JSON file contains the deck itself. Quiz results stay in the browser where you earned them.
+Decks and results are stored in your browser. Exports contain the deck's questions and answers.
 
 ## Run locally
 

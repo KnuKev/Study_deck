@@ -92,7 +92,7 @@ export default function DeckLibrary({ decks, sessionActive, onChange, onPractice
   }
 
   return <>
-    <div className="page-heading"><div><h1>My decks</h1><p>Create question sets for any subject.</p></div></div>
+    <div className="page-heading"><h1>My decks</h1></div>
     {draft ? <form className="deck-editor" onSubmit={save}>
       <section className="panel deck-editor-header">
         <label className="form-field">Deck name
@@ -160,7 +160,6 @@ export default function DeckLibrary({ decks, sessionActive, onChange, onPractice
           </div>
         </section>)}
       </div>
-      <p className="page-footnote"><Icon name="shield" />Decks are saved in this browser. Export JSON to back up questions and answers or move them to another device.</p>
     </>}
   </>
 }

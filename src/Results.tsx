@@ -40,7 +40,6 @@ function ScoreChart({ rows }: { rows: Row[] }) {
 
   return <section className="panel score-chart">
     <div className="panel-heading"><h2>Score over time</h2><Icon name="chart" /></div>
-    <p className="small-copy">Each dot is a completed session. Exact scores are listed below.</p>
     <div className="chart-layout" aria-hidden="true">
       <div className="chart-scale">{[100, 75, 50, 25, 0].map(value => <span key={value} style={{ top: `${100 - value}%` }}>{value}%</span>)}</div>
       <div className="chart-plot">
@@ -70,7 +69,7 @@ export default function Results({ rows, sources, sourceId, onSource, period, fro
   const answered = visible.reduce((sum, row) => sum + row.score.answered, 0)
 
   return <>
-    <div className="page-heading"><div><h1>Results</h1><p>Track your quiz scores across sessions.</p></div></div>
+    <div className="page-heading"><h1>Results</h1></div>
     <section className="panel results-filters" aria-label="Filter results">
       <label className="form-field">Course or deck
         <select value={sourceId} onChange={event => onSource(event.target.value as StudySetId)}>
@@ -99,7 +98,7 @@ export default function Results({ rows, sources, sourceId, onSource, period, fro
       </div>
       <ScoreChart rows={[...visible].reverse()} />
       <section className="panel history-panel">
-        <div className="panel-heading"><h2>Past sessions</h2><span>Most recent first</span></div>
+        <div className="panel-heading"><h2>Past sessions</h2></div>
         {visible.map(({ session, score, legacy }) => <button className="history-row" key={session.id} disabled={sessionActive} onClick={() => onReview(session)}>
           <span className="history-icon"><Icon name={session.mode === 'practice' ? 'book' : 'flag'} /></span>
           <span><strong>{session.mode === 'practice' ? 'Practice' : 'Mock exam'} · {score.total} {score.total === 1 ? 'question' : 'questions'}</strong>
@@ -111,8 +110,7 @@ export default function Results({ rows, sources, sourceId, onSource, period, fro
     </> : <section className="panel empty-state" aria-live="polite">
       <span className="empty-icon large"><Icon name="chart" /></span>
       <h2>{invalidRange ? 'Check the date range' : rows.length ? 'No sessions in this period' : 'No sessions yet'}</h2>
-      <p>{invalidRange ? 'The start date must be on or before the end date.' : rows.length ? 'Choose a different period to see more results.' : 'Finish a session to see your score and answers here.'}</p>
+      {invalidRange && <p>The start date must be on or before the end date.</p>}
     </section>}
-    <p className="page-footnote"><Icon name="shield" />Your history is stored in this browser.</p>
   </>
 }
