@@ -656,5 +656,47 @@
     "courseId": "IN3230",
     "kind": "Lecture slides",
     "sha256": "9bffc81db199ba134fbf95974f2ff1a4747f90a1ed57d398c1f4e69da9337c73"
+  },
+  {
+    "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
+    "title": "IN3050/IN4050 final exam, 2024",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "e9ec165cbf02b91641cb592df7ab1561c8124645297bef56c6f51d0f75990f7e"
+  },
+  {
+    "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+    "title": "IN3050/IN4050 final exam, 2025",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "fd66bffc59581d4ddca167694770372fedb0fe388a37124f44c384aac0dd23ca"
+  },
+  {
+    "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+    "title": "Exam preparation wrap-up",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "b9e3d14632d7824a83eff99c941bc5d2305596b3d66db7f9d24942379e0b9fb2"
+  },
+  {
+    "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+    "title": "Last plenary session: exam preparation",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "631922d1dc7d84516ae0114bbf251aa0b89172635448856734e2672f6c0884cd"
+  },
+  {
+    "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+    "title": "HTTP/2 and QUIC",
+    "courseId": "IN3230",
+    "kind": "Lecture slides",
+    "sha256": "0463798b22d932e0c1f76021c38dc18fff5dd9f886e4d72f3367a2654b0f9872"
+  },
+  {
+    "path": "IN3050/old_exams/trial-exam-2025.pdf",
+    "title": "IN3050 trial exam, 2025",
+    "courseId": "IN3050",
+    "kind": "Exam",
+    "sha256": "25de9f6a57db2f854705da3f569a41c5292d77da762b48a83e55cbc5499572c6"
   }
 ]

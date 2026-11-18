@@ -1,0 +1,642 @@
+[
+  {
+    "id": "in3230-exam-prep-01",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "A client fetches several small resources from one host. Why can reusing a TCP connection reduce latency?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Later requests avoid repeating the TCP handshake."
+      },
+      {
+        "id": "b",
+        "text": "Each request bypasses congestion control."
+      },
+      {
+        "id": "c",
+        "text": "The server sends every response without receiving a request."
+      },
+      {
+        "id": "d",
+        "text": "Reusing a connection eliminates network propagation delay."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A persistent connection lets the client reuse established transport state. The initial handshake still occurred, and propagation delay and congestion control remain.",
+    "difficulty": "easy",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 29–36"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-02",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Assume sequential plaintext HTTP requests, 60 ms RTT, and negligible transfer time. How many milliseconds of TCP setup does one persistent connection save over opening a fresh one for each of four requests?",
+    "options": [
+      {
+        "id": "a",
+        "text": "180 ms"
+      },
+      {
+        "id": "b",
+        "text": "60 ms"
+      },
+      {
+        "id": "c",
+        "text": "240 ms"
+      },
+      {
+        "id": "d",
+        "text": "120 ms"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Each fresh connection adds one handshake RTT. Four separate handshakes versus one persistent handshake save three RTTs, or \\(3\\times60=180\\) ms.",
+    "difficulty": "medium",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 32–36"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-03",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "A browser opens several TCP connections to one origin to fetch page assets in parallel. What is the main trade-off?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It can overlap responses, at the cost of extra handshakes and transport state."
+      },
+      {
+        "id": "b",
+        "text": "It eliminates transport loss, at the cost of slower DNS."
+      },
+      {
+        "id": "c",
+        "text": "It prevents HTTP head-of-line blocking on every connection without overhead."
+      },
+      {
+        "id": "d",
+        "text": "It forces the server to serialize all responses across those connections."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Separate connections can carry responses independently, but each has setup and congestion state. They also compete with other flows at shared bottlenecks.",
+    "difficulty": "medium",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 37–42"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-04",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Which relationship describes the three main units of HTTP/2?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A connection has streams; each message on a stream is made of one or more frames."
+      },
+      {
+        "id": "b",
+        "text": "A frame contains several TCP connections; each one transports one message."
+      },
+      {
+        "id": "c",
+        "text": "A stream is one frame, and a message is one connection."
+      },
+      {
+        "id": "d",
+        "text": "Only one stream can exist per connection, regardless of the frame format."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A stream is a bidirectional logical channel. HTTP messages carry requests or responses, and frames are the smaller units used to encode them.",
+    "difficulty": "easy",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 48–52"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-05",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Which information lets an HTTP/2 endpoint tell interleaved frames for two requests apart?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The stream identifier in the frame header."
+      },
+      {
+        "id": "b",
+        "text": "The destination IP address of each frame."
+      },
+      {
+        "id": "c",
+        "text": "The TLS certificate serial number."
+      },
+      {
+        "id": "d",
+        "text": "The HTTP method in every data frame."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Both requests can use the same connection and network endpoints. The stream ID identifies which logical stream a frame belongs to.",
+    "difficulty": "easy",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 48–55"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-06",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "An API moves to HTTP/2. Which aspect can remain unchanged while the wire representation switches to binary frames?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The meaning of GET, status codes, and headers."
+      },
+      {
+        "id": "b",
+        "text": "The order of every byte in the original HTTP/1.x text stream."
+      },
+      {
+        "id": "c",
+        "text": "The rule requiring one TCP connection per resource."
+      },
+      {
+        "id": "d",
+        "text": "The reliance on opening a separate stream for every individual frame."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "HTTP/2 preserves HTTP semantics while changing encoding and multiplexing at the framing layer.",
+    "difficulty": "medium",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 49–55"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-07",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "One HTTP/2 stream carries a large download and another carries a small response needed to render the page. How can multiplexing and prioritization help?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The sender can interleave frames and give the critical stream earlier service."
+      },
+      {
+        "id": "b",
+        "text": "TCP delivers a later segment around a gap if it is from the critical stream."
+      },
+      {
+        "id": "c",
+        "text": "The browser must finish the large download because streams cannot interleave."
+      },
+      {
+        "id": "d",
+        "text": "Prioritization opens a separate UDP socket for each HTTP/2 request."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "At the HTTP layer, interleaving prevents one whole response from needing to finish before another starts. Prioritization is a scheduling signal, while TCP still delivers a single ordered byte stream.",
+    "difficulty": "medium",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 54–59"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-08",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Two browsers load the same page but give different priority hints for the same resources. What is the likely consequence when bandwidth is limited?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The order of service and time to render can differ."
+      },
+      {
+        "id": "b",
+        "text": "HTTP status codes have different meanings in the browsers."
+      },
+      {
+        "id": "c",
+        "text": "Lower-priority resources are automatically dropped."
+      },
+      {
+        "id": "d",
+        "text": "TLS chooses different cryptographic keys for each priority level."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Priority can influence scheduling under competition. Different browser policies and server implementations can therefore lead to different performance.",
+    "difficulty": "medium",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 57–60"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-09",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "What saves bytes when HTTP/2 repeatedly sends the same header field values?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Header compression can refer to previously indexed fields."
+      },
+      {
+        "id": "b",
+        "text": "TLS stops encrypting headers on reuse."
+      },
+      {
+        "id": "c",
+        "text": "TCP acknowledges repeated fields instead of carrying them."
+      },
+      {
+        "id": "d",
+        "text": "The HTTP/2 server discards all repeated headers."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "HPACK can encode repeated fields with indexed representations maintained by both endpoints, reducing header overhead.",
+    "difficulty": "easy",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 63–64"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-10",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "A TCP segment carrying HTTP/2 stream A data is lost. Later bytes containing stream B data arrive before retransmission. Why can stream B still stall?",
+    "options": [
+      {
+        "id": "a",
+        "text": "TCP cannot deliver past a gap in its ordered byte stream even though HTTP/2 has separate logical streams."
+      },
+      {
+        "id": "b",
+        "text": "The HTTP/2 frame header has no stream ID."
+      },
+      {
+        "id": "c",
+        "text": "Both streams always share one application request."
+      },
+      {
+        "id": "d",
+        "text": "The HTTP/2 scheduler cannot transmit a frame until all earlier responses finish."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The transport withholds bytes behind the missing segment. HTTP/2 removes response-order coupling at its own layer but cannot bypass TCP’s in-order delivery.",
+    "difficulty": "hard",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 65–75"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-11",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Which stack correctly places HTTP/3 above its underlying protocols, from highest to lowest here?",
+    "options": [
+      {
+        "id": "a",
+        "text": "HTTP/3 → QUIC → UDP → IP"
+      },
+      {
+        "id": "b",
+        "text": "HTTP/3 → UDP → QUIC → IP"
+      },
+      {
+        "id": "c",
+        "text": "HTTP/3 → TLS → TCP → IP"
+      },
+      {
+        "id": "d",
+        "text": "QUIC → HTTP/3 → TCP → IP"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "HTTP/3 uses QUIC streams. QUIC runs over UDP datagrams and integrates its TLS 1.3 handshake.",
+    "difficulty": "medium",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 70–75"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-12",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "multi",
+    "prompt": "Two independent HTTP/3 streams use one QUIC connection. A packet carrying only stream A data is lost. Select two correct statements.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Already received data on stream B can be delivered without waiting for A’s retransmission."
+      },
+      {
+        "id": "b",
+        "text": "Congestion control can still reduce the shared sending rate after the loss."
+      },
+      {
+        "id": "c",
+        "text": "QUIC must withhold all stream B deliveries until stream A is complete."
+      },
+      {
+        "id": "d",
+        "text": "QUIC does not retransmit reliable stream data because it uses UDP."
+      }
+    ],
+    "correctOptionId": "a,b",
+    "explanation": "In-order delivery is enforced per stream, so missing bytes in A do not create a delivery gap in B. The streams still share congestion control and available connection capacity.",
+    "difficulty": "hard",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 74–80"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-13",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Why does using UDP under QUIC not imply that QUIC sends without congestion control?",
+    "options": [
+      {
+        "id": "a",
+        "text": "QUIC implements congestion control itself above UDP."
+      },
+      {
+        "id": "b",
+        "text": "UDP implements TCP-style congestion windows by default."
+      },
+      {
+        "id": "c",
+        "text": "HTTP headers specify how many UDP packets the routers may forward."
+      },
+      {
+        "id": "d",
+        "text": "QUIC leaves rate control entirely to the receiving application."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "UDP provides datagrams. QUIC implements transport functions such as congestion control, acknowledgments, and recovery.",
+    "difficulty": "easy",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 75–80"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-14",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "When can QUIC use TLS 0-RTT to send application data in the first flight?",
+    "options": [
+      {
+        "id": "a",
+        "text": "On resumption when the client has suitable prior connection state and the server allows early data."
+      },
+      {
+        "id": "b",
+        "text": "On every first connection to any server, before negotiating cryptographic parameters."
+      },
+      {
+        "id": "c",
+        "text": "Only after sending a new TCP SYN and receiving SYN-ACK."
+      },
+      {
+        "id": "d",
+        "text": "Whenever congestion control reports no packet loss."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "0-RTT is conditional on resumption state and early-data policy. It is not the normal handshake guarantee for a new peer, and early data can face replay constraints.",
+    "difficulty": "medium",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 76–79"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-15",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Which statement best compares handshake latency for a fresh QUIC connection and a resumed connection that accepts 0-RTT data?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The fresh connection normally needs a handshake round trip before the client sends ordinary application data; resumption can put early data in the first flight."
+      },
+      {
+        "id": "b",
+        "text": "The fresh connection never sends a handshake; only resumed connections do."
+      },
+      {
+        "id": "c",
+        "text": "Both need a separate TCP handshake before TLS can begin."
+      },
+      {
+        "id": "d",
+        "text": "Resumption eliminates propagation delay for the eventual response."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "QUIC integrates transport establishment and TLS. The 0-RTT option removes a setup wait for eligible early data, but its response still must travel across the network.",
+    "difficulty": "hard",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 76–80"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3230-exam-prep-16",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Why can distinct QUIC packet numbers help a sender obtain more precise RTT samples after retransmission?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An acknowledgment identifies the specific packet transmission, even if that transmission carried data sent before."
+      },
+      {
+        "id": "b",
+        "text": "QUIC reuses packet numbers so retransmitted packets have an identical timestamp."
+      },
+      {
+        "id": "c",
+        "text": "Only the application acknowledges packets and records transfer times."
+      },
+      {
+        "id": "d",
+        "text": "Connection IDs report the current RTT directly."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "QUIC retransmits lost information in a newly numbered packet. The ACK can identify which packet actually arrived, reducing the ambiguity caused by reused transmission identifiers.",
+    "difficulty": "hard",
+    "source": "Exam preparation: application-layer question styles",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Exam preparation: application-layer question styles"
+      },
+      {
+        "path": "IN3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 80"
+      }
+    ],
+    "examPrep": true
+  }
+]

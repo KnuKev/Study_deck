@@ -4,6 +4,31 @@ import type { Question } from './model'
 /** Original, small teaching diagrams that remain sharp at any screen size. */
 export default function QuestionFigure({ kind }: { kind: NonNullable<Question['figure']> }) {
   const id = useId()
+  if (kind === 'trial-learning-curves') return <figure className="question-figure course-figure">
+    <svg viewBox="0 0 370 220" role="img" aria-labelledby={id} style={{ maxWidth: 440 }}>
+      <title id={id}>Training loss keeps falling. Validation loss falls, reaches its minimum at the marked step, then rises.</title>
+      <path d="M40 31V174H348" fill="none" stroke="var(--text-tertiary)" strokeWidth="1.5" />
+      <path d="M174 90V174" fill="none" stroke="var(--text-tertiary)" strokeDasharray="4 4" />
+      <path d="M48 51C101 128 160 158 334 158" fill="none" stroke="var(--text-secondary)" strokeWidth="2.5" strokeDasharray="6 4" />
+      <path d="M48 36C91 96 140 94 174 94S269 42 334 66" fill="none" stroke="var(--accent)" strokeWidth="2.5" />
+      <circle cx="174" cy="94" r="5" fill="var(--accent)" />
+      <g fill="var(--text-secondary)" fontSize="13" fontFamily="inherit">
+        <text x="26" y="23">Loss</text>
+        <text x="193" y="201" textAnchor="middle">Training steps</text>
+        <text x="262" y="39">Validation</text>
+        <text x="270" y="145">Training</text>
+      </g>
+    </svg>
+  </figure>
+  if (kind === 'exam-dendrogram') return <figure className="question-figure course-figure">
+    <svg viewBox="0 0 280 150" role="img" aria-labelledby={id} style={{ maxWidth: 280 }}>
+      <title id={id}>Dendrogram. Items 1 and 2 merge first, then 4 and 5 merge. Item 3 joins the branch containing 4 and 5. The two remaining branches merge at the root.</title>
+      <path d="M28 124V106H84V124 M196 124V94H252V124 M140 124V44H224V94 M56 106V20H182V44"
+        fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinejoin="round" />
+      {[1, 2, 3, 4, 5].map((item, index) => <text key={item} x={28 + index * 56} y="145"
+        textAnchor="middle" fill="var(--text)" fontSize="13">{item}</text>)}
+    </svg>
+  </figure>
   if (kind === 'dense-network' || kind === 'mpls-network' || kind === 'campus-network') return <CourseFigure kind={kind} id={id} />
   const isNetwork = kind === 'network'
   const title = isNetwork ? 'A client connects to a server through a router.' : 'Training data is used to fit a model that makes predictions.'

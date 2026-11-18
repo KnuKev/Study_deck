@@ -1,6 +1,7 @@
 export type CourseId = 'IN3050' | 'IN3230'
 export type DeckId = `deck-${string}`
 export type StudySetId = CourseId | DeckId
+export type ExamYear = 2024 | 2025
 
 export interface DeckQuestion {
   id: string
@@ -29,9 +30,10 @@ export interface Question {
   id: string
   courseId: StudySetId
   topicId: string
-  type: 'choice' | 'boolean'
+  type: 'choice' | 'boolean' | 'multi'
   prompt: string
   options: { id: string; text: string }[]
+  // Multiple selections use sorted option IDs joined by commas.
   correctOptionId: string
   explanation: string
   source: string
@@ -39,7 +41,14 @@ export interface Question {
   sourceRefs?: SourceReference[]
   table?: QuestionTable
   isDemo?: boolean
-  figure?: 'network' | 'pipeline' | 'dense-network' | 'mpls-network' | 'campus-network'
+  examYear?: ExamYear
+  trial2025?: boolean
+  writtenAdaptation?: boolean
+  examPrep?: boolean
+  historicalOnly?: boolean
+  code?: string
+  codeOptions?: boolean
+  figure?: 'network' | 'pipeline' | 'dense-network' | 'mpls-network' | 'campus-network' | 'exam-dendrogram' | 'trial-learning-curves'
 }
 export interface Session {
   id: string

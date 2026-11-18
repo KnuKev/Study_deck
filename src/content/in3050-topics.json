@@ -173,5 +173,17 @@
       "Perform assignment and update steps in k-means and calculate WCSS.",
       "Explain reconstruction in autoencoders and choose between PCA and t-SNE."
     ]
+  },
+  {
+    "id": "ai-reinforcement-learning",
+    "title": "Reinforcement Learning",
+    "description": "Trial-exam questions on reward, Q-learning, and action selection.",
+    "sourcePaths": [
+      "IN3050/old_exams/trial-exam-2025.pdf"
+    ],
+    "objectives": [
+      "Explain delayed rewards and cumulative return.",
+      "Compare Q-learning, epsilon-greedy exploration, and softmax action selection."
+    ]
   }
 ]

@@ -69,3 +69,21 @@ test('old demo sessions remain available alongside the curriculum bank', async (
   saveProgress({ active: null, history })
   assert.deepEqual(loadProgress(ALL_QUESTIONS).history, history)
 })
+
+test('multiple-answer exam questions require the full set and survive reload in canonical order', async () => {
+  const { ALL_QUESTIONS } = await import('../src/data.ts')
+  const { summarizeSession } = await import('../src/engine.ts')
+  useStorage()
+  const question = ALL_QUESTIONS.find(item => item.id === 'in3050-2024-26')!
+  const session = createSession({ courseId: question.courseId, mode: 'practice', questionIds: [question.id], durationMinutes: null }, 1000)
+  const [first, second] = question.correctOptionId.split(',')
+  assert.throws(() => answerQuestion(session, question.id, first!, ALL_QUESTIONS, 1500), /Invalid answer/)
+  assert.throws(() => answerQuestion(session, question.id, `${first},${first}`, ALL_QUESTIONS, 1500), /Invalid answer/)
+  const incorrect = answerQuestion(session, question.id, `${first},a`, ALL_QUESTIONS, 1500)
+  assert.equal(summarizeSession(incorrect, ALL_QUESTIONS, 2000).correct, 0)
+  const active = answerQuestion(session, question.id, `${second},${first}`, ALL_QUESTIONS, 1500)
+  assert(saveProgress({ active, history: [] }))
+  const restored = loadProgress(ALL_QUESTIONS).active!
+  assert.equal(restored.answers[question.id], question.correctOptionId)
+  assert.equal(summarizeSession(restored, ALL_QUESTIONS, 2000).correct, 1)
+})

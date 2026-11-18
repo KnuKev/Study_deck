@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { ALL_QUESTIONS, COURSES, QUESTIONS, QUESTION_INDEX, SOURCE_INDEX, SOURCES, LEGACY_TOPICS, DIFFICULTY_LABELS } from './data'
-import { answerQuestion, createSession, finishSession, getRemainingSeconds, getOrderedOptions, getPracticePool, summarizeSession } from './engine'
-import type { CourseId, Deck, DeckId, Difficulty, Session, StudySetId } from './model'
+import { answerIds, answerQuestion, createSession, finishSession, getRemainingSeconds, getOrderedOptions, getPracticePool, requiredAnswerCount, summarizeSession } from './engine'
+import type { QuestionFocus } from './engine'
+import type { CourseId, Deck, DeckId, Difficulty, Question, Session, StudySetId } from './model'
 import { loadProgress, saveProgress } from './storage'
 import Icon from './Icon'
 import QuestionFigure from './QuestionFigure'
@@ -15,6 +16,12 @@ import Results from './Results'
 import type { Period } from './resultsPeriod'
 
 type View = 'practice' | 'history' | 'syllabus' | 'decks'
+
+const PAST_PAPERS = [
+  { focus: 2025, label: '2025 past exam' },
+  { focus: 'trial-2025', label: '2025 trial exam' },
+  { focus: 2024, label: '2024 past exam' },
+] as const
 const dateFormat = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
 const number = (value: number) => value.toLocaleString('en-GB')
 const countLabel = (count: number, noun: string) => `${number(count)} ${noun}${count === 1 ? '' : 's'}`
@@ -24,6 +31,28 @@ const questionsFor = (session: Session) => session.deck ? deckQuestions(session.
 const sessionTitle = (session: Session) => session.deck?.title ?? session.courseId
 const sessionTopic = (session: Session, id: string) => session.deck ? 'Custom questions' : topicTitle(id)
 const hasLegacyQuestions = (session: Session) => session.questionIds.some(id => QUESTION_INDEX.get(id)?.isDemo)
+
+function AnswerText({ text, code }: { text: string; code?: boolean }) {
+  if (code) return <code className="answer-code">{text}</code>
+  return <MathText>{text}</MathText>
+}
+
+function AnswerReview({ question, answer }: { question: Question; answer?: string }) {
+  const ids = answerIds(answer)
+  const selected = question.options.filter(option => ids.includes(option.id))
+  if (!selected.length) return <>Unanswered</>
+  return selected.map((option, index) => <span key={option.id}>
+    {index > 0 && ' · '}<AnswerText text={option.text} code={question.codeOptions} />
+  </span>)
+}
+
+function QuestionMaterial({ question }: { question: Question }) {
+  return <>
+    {question.code && <pre className="question-code" tabIndex={0} aria-label="Code example"><code>{question.code}</code></pre>}
+    {question.figure && <QuestionFigure kind={question.figure} />}
+    {question.table && <QuestionTable table={question.table} />}
+  </>
+}
 
 function readTheme(): 'light' | 'dark' {
   try {
@@ -47,12 +76,13 @@ export default function App() {
   const [through, setThrough] = useState('')
   const [topicIds, setTopicIds] = useState<string[]>([])
   const [difficulty, setDifficulty] = useState<Difficulty | 'all'>('all')
+  const [focus, setFocus] = useState<QuestionFocus>('mixed')
   const [mode, setMode] = useState<'practice' | 'exam'>('practice')
   const [duration, setDuration] = useState<number | null>(15)
   const [count, setCount] = useState(10)
   const [theme, setTheme] = useState(readTheme)
   const [now, setNow] = useState(Date.now)
-  const [selected, setSelected] = useState<string | null>(null)
+  const [selected, setSelected] = useState<string[]>([])
   const [resultId, setResultId] = useState<string | null>(null)
   const [storageAvailable, setStorageAvailable] = useState(true)
   const [confirmEnd, setConfirmEnd] = useState(false)
@@ -63,7 +93,13 @@ export default function App() {
   const selectedTopics = course.topics.filter(topic => topicIds.includes(topic.id))
   const deck = decks.find(item => item.id === deckId)
   const studySetId = deck?.id ?? courseId
-  const pool = deck ? deckQuestions(deck) : getPracticePool(QUESTIONS, courseId, topicIds, difficulty)
+  const courseQuestions = getPracticePool(QUESTIONS, courseId, [])
+  const pool = deck ? deckQuestions(deck) : getPracticePool(QUESTIONS, courseId, topicIds, difficulty, focus)
+  const paper = deck ? undefined : PAST_PAPERS.find(item => item.focus === focus)
+  const pastPaper = Boolean(paper)
+  const trialPaper = paper?.focus === 'trial-2025'
+  const availableTopicIds = new Set(courseQuestions.map(question => question.topicId))
+  const practiceTopics = course.topics.filter(topic => availableTopicIds.has(topic.id))
   const courseSources = SOURCES.filter(source => source.courseId === courseId)
   const countOption = count > pool.length ? 0 : count
   const selectedCount = countOption === 0 ? pool.length : countOption
@@ -74,7 +110,7 @@ export default function App() {
   const showSetup = view === 'practice' && !active && !result
   const mainNav = useSlidingIndicator<HTMLElement>(view === 'decks' ? null : view, '[aria-current="page"]')
   const durationOptions = useSlidingIndicator<HTMLDivElement>(showSetup ? duration ?? 'untimed' : null)
-  const difficultyOptions = useSlidingIndicator<HTMLDivElement>(showSetup && !deck ? difficulty : null)
+  const difficultyOptions = useSlidingIndicator<HTMLDivElement>(showSetup && !deck && !pastPaper ? difficulty : null)
   const countOptions = useSlidingIndicator<HTMLDivElement>(showSetup ? countOption : null)
   const summary = result ? summarizeSession(result, resultQuestions) : null
   const remaining = active ? getRemainingSeconds(active, now) : null
@@ -82,6 +118,8 @@ export default function App() {
   const current = active ? activeQuestions.find(question => question.id === active.questionIds[active.currentIndex]) : null
   const recorded = active && current ? active.answers[current.id] : undefined
   const isFeedback = Boolean(active?.mode === 'practice' && recorded)
+  const answerCount = current ? requiredAnswerCount(current) : 1
+  const canSubmit = selected.length === answerCount && remaining !== 0
 
   useEffect(() => {
     setStorageAvailable(saveProgress(progress))
@@ -114,7 +152,7 @@ export default function App() {
   }, [active])
 
   useEffect(() => {
-    setSelected(null)
+    setSelected([])
     if (current) questionHeading.current?.focus()
   }, [current?.id])
 
@@ -129,8 +167,19 @@ export default function App() {
     setResultsSource(null)
     if (view === 'decks') setView('practice')
     setTopicIds([])
+    setFocus('mixed')
     setDifficulty('all')
     setResultId(null)
+  }
+
+  function chooseFocus(next: QuestionFocus) {
+    setFocus(next)
+    if (PAST_PAPERS.some(item => item.focus === next)) {
+      setTopicIds([])
+      setDifficulty('all')
+      setCount(0)
+      setDuration(null)
+    }
   }
 
   function toggleTopic(id: string) {
@@ -160,6 +209,9 @@ export default function App() {
       mode: retry ? 'practice' : mode,
       questionIds: ids ?? pool.map(question => question.id),
       durationMinutes: retry ? null : duration,
+      priority: !retry && !deck && !pastPaper
+        ? new Map(pool.map(question => [question.id, question.examPrep || question.examYear === 2025 ? 4 : question.trial2025 ? 3 : question.examYear === 2024 ? 2 : 1]))
+        : undefined,
     })
     const session = retry ? shuffled : { ...shuffled, questionIds: shuffled.questionIds.slice(0, selectedCount) }
     if (sourceDeck) {
@@ -168,7 +220,7 @@ export default function App() {
     }
     setProgress(previous => ({ ...previous, active: session }))
     setResultId(null)
-    setSelected(null)
+    setSelected([])
     setNow(Date.now())
     setView('practice')
   }
@@ -187,8 +239,8 @@ export default function App() {
   }
 
   function submit() {
-    if (!active || !current || !selected || recorded || remaining === 0) return
-    const updated = answerQuestion(active, current.id, selected, activeQuestions)
+    if (!active || !current || !canSubmit || recorded) return
+    const updated = answerQuestion(active, current.id, selected.join(','), activeQuestions)
     if (updated.finishedAt !== null) finish(updated, 'timeout')
     else if (active.mode === 'exam') advance(updated)
     else setProgress(previous => ({ ...previous, active: updated }))
@@ -227,10 +279,10 @@ export default function App() {
         <Icon name="layers" />My decks<Icon name="chevron" />
       </button>
       {!deck && (view === 'practice' || view === 'syllabus') && <>
-      <div className="sidebar-section-heading"><h3>Topics</h3><span>{course.topics.length}</span></div>
-      <button className={'all-topics' + (!topicIds.length ? ' selected' : '')} onClick={() => setTopicIds([])} disabled={Boolean(active)} aria-pressed={!topicIds.length}><Icon name="layers" />All topics<span>{QUESTIONS.filter(question => question.courseId === courseId).length}</span></button>
-      <div className="topic-options">{course.topics.map(topic => <label key={topic.id} className={topicIds.includes(topic.id) ? 'selected' : ''}><input type="checkbox" checked={topicIds.includes(topic.id)} disabled={Boolean(active)} onChange={() => toggleTopic(topic.id)} /><span>{topic.title}</span><small>{QUESTIONS.filter(question => question.topicId === topic.id).length}</small></label>)}</div>
-      <p className="sidebar-hint">{active ? 'Course and topic selection are locked during a session.' : 'Choose one or more topics, or practise the whole course.'}</p>
+      <div className="sidebar-section-heading"><h3>Topics</h3><span>{practiceTopics.length}</span></div>
+      <button className={'all-topics' + (!topicIds.length ? ' selected' : '')} onClick={() => setTopicIds([])} disabled={Boolean(active) || pastPaper} aria-pressed={!topicIds.length}><Icon name="layers" />All topics<span>{courseQuestions.length}</span></button>
+      <div className="topic-options">{practiceTopics.map(topic => <label key={topic.id} className={topicIds.includes(topic.id) ? 'selected' : ''}><input type="checkbox" checked={topicIds.includes(topic.id)} disabled={Boolean(active) || pastPaper} onChange={() => toggleTopic(topic.id)} /><span>{topic.title}</span><small>{courseQuestions.filter(question => question.topicId === topic.id).length}</small></label>)}</div>
+      <p className="sidebar-hint">{active ? 'Course and topic selection are locked during a session.' : pastPaper ? 'A past paper includes all its topics.' : 'Choose one or more topics, or practise the whole course.'}</p>
       <div className="sidebar-bottom"><span className="sample-pill"><span />Course-based practice</span><p>Questions from lectures, group exercises, and notes, with explanations and references.</p><button className="text-button" onClick={() => navigate('syllabus')}>Browse syllabus<Icon name="arrow" /></button></div>
       </>}
     </aside>
@@ -242,26 +294,48 @@ export default function App() {
       {view === 'decks' && <DeckLibrary decks={decks} sessionActive={Boolean(active)} onChange={updateDecks} onPractice={practiseDeck} />}
 
       {showSetup && <>
-        <div className="page-heading"><div><h1>Practice</h1><p>{deck ? 'Practise with your own questions.' : 'Multiple-choice and true-or-false questions.'}</p></div><span className="page-tag">{deck ? 'Custom deck' : courseId}</span></div>
+        <div className="page-heading"><div><h1>Practice</h1><p>{deck ? 'Practise with your own questions.' : 'Multiple-choice, multiple-answer, and true-or-false questions.'}</p></div><span className="page-tag">{deck ? 'Custom deck' : courseId}</span></div>
         <div className="overview-grid">
           <div className="overview-feature"><span><Icon name={deck ? 'layers' : courseId === 'IN3050' ? 'brain' : 'network'} />{deck ? 'Selected deck' : 'Selected course'}</span><h2>{deck?.title ?? courseId}</h2>{!deck && <p>{course.title}</p>}</div>
-          <div className="metric-card"><Icon name="book" /><strong aria-live="polite" aria-atomic="true"><span className="sr-only">Available questions </span>{pool.length}</strong><span>available questions</span><small>{deck ? 'Custom questions' : difficulty === 'all' ? 'All difficulty levels' : DIFFICULTY_LABELS[difficulty]}</small></div>
+          <div className="metric-card"><Icon name="book" /><strong aria-live="polite" aria-atomic="true"><span className="sr-only">Available questions </span>{pool.length}</strong><span>available questions</span><small>{deck ? 'Custom questions' : paper ? paper.label : difficulty === 'all' ? 'All difficulty levels' : DIFFICULTY_LABELS[difficulty]}</small></div>
           <div className="metric-card"><Icon name="checkCircle" /><strong>{courseHistory.length ? number(courseHistory.length) : '—'}</strong><span>completed sessions</span><small>{courseHistory.length ? 'Saved on this device' : 'Start your first session'}</small></div>
         </div>
         <div className="setup-grid">
           <section className="panel session-setup"><div className="panel-heading"><h2>Set up a session</h2><Icon name="target" /></div>
             <fieldset><legend>Mode</legend><div className="mode-options"><button className={mode === 'practice' ? 'selected' : ''} aria-pressed={mode === 'practice'} onClick={() => setMode('practice')}><Icon name="book" /><strong>Practice</strong><span>See the answer and explanation after each question.</span>{mode === 'practice' && <Icon name="checkCircle" />}</button><button className={mode === 'exam' ? 'selected' : ''} aria-pressed={mode === 'exam'} onClick={() => setMode('exam')}><Icon name="flag" /><strong>Mock exam</strong><span>Answer the questions and review the answers at the end.</span>{mode === 'exam' && <Icon name="checkCircle" />}</button></div></fieldset>
+            {!deck && <div className="question-focus">
+              <label className="form-field">Question focus
+                <select value={focus} onChange={event => {
+                  const value = event.target.value
+                  const selectedPaper = PAST_PAPERS.find(item => String(item.focus) === value)
+                  chooseFocus(selectedPaper?.focus ?? (value === 'prep' ? 'prep' : 'mixed'))
+                }}>
+                  <option value="mixed">Mixed practice</option>
+                  <option value="prep">{courseId === 'IN3050' ? 'Recent exams and prep' : 'Application-layer exam prep'}</option>
+                  {courseId === 'IN3050' && PAST_PAPERS.map(item =>
+                    <option key={item.focus} value={item.focus}>{item.label}</option>
+                  )}
+                </select>
+              </label>
+              <p className="field-hint">{trialPaper
+                ? 'Includes all 35 quiz questions and 5 written prompts adapted to multiple choice.'
+                : pastPaper
+                  ? 'Includes every question from this paper, including topics outside the current exam scope.'
+                : focus === 'prep'
+                  ? courseId === 'IN3050' ? 'Recent exam questions and new variants aligned with the wrap-up notes.' : 'Principles and scenarios on HTTP/2, QUIC, and connection reuse.'
+                  : 'Recent exam material and prep questions appear more often in short sessions.'}</p>
+            </div>}
             <fieldset><legend><Icon name="clock" />Duration</legend><div ref={durationOptions} className="segmented duration-options sliding-indicator">{[15, 30, 45, 60, null].map(minutes => <button key={minutes ?? 'none'} aria-pressed={duration === minutes} onClick={() => setDuration(minutes)}>{minutes === null ? 'Untimed' : `${minutes} min`}</button>)}</div><p className="field-hint">{duration ? 'The session ends when you finish or time runs out. The timer keeps running if you leave the page.' : 'Work at your own pace. You can resume the session after reloading the page.'}</p></fieldset>
-            {!deck && <fieldset><legend>Difficulty</legend><div ref={difficultyOptions} className="segmented difficulty-options sliding-indicator">{(['all', 'easy', 'medium', 'hard'] as const).map(level => <button key={level} aria-pressed={difficulty === level} onClick={() => setDifficulty(level)}>{level === 'all' ? 'Mixed' : DIFFICULTY_LABELS[level]}</button>)}</div><p className="field-hint">{difficulty === 'hard' ? 'Multi-step problems, calculations, and applied concepts.' : difficulty === 'easy' ? 'Core concepts and principles from the lectures.' : difficulty === 'medium' ? 'Interpretation, comparisons, and short calculations.' : 'A mix of basic, intermediate, and challenging questions.'}</p></fieldset>}
+            {!deck && !pastPaper && <fieldset><legend>Difficulty</legend><div ref={difficultyOptions} className="segmented difficulty-options sliding-indicator">{(['all', 'easy', 'medium', 'hard'] as const).map(level => <button key={level} aria-pressed={difficulty === level} onClick={() => setDifficulty(level)}>{level === 'all' ? 'Mixed' : DIFFICULTY_LABELS[level]}</button>)}</div><p className="field-hint">{difficulty === 'hard' ? 'Multi-step problems, calculations, and applied concepts.' : difficulty === 'easy' ? 'Core concepts and principles from the lectures.' : difficulty === 'medium' ? 'Interpretation, comparisons, and short calculations.' : 'A mix of basic, intermediate, and challenging questions.'}</p></fieldset>}
             <fieldset><legend>Number of questions</legend><div ref={countOptions} className="segmented count-options sliding-indicator">{[5, 10, 20, 40, 0].map(amount => <button key={amount} disabled={amount > pool.length} aria-pressed={amount === countOption} onClick={() => setCount(amount)}>{amount === 0 ? 'All' : amount}</button>)}</div></fieldset>
-            <div className="session-start"><span><strong>{countLabel(selectedCount, 'question')}</strong><small>{deck ? 'Custom deck' : topicIds.length ? `${countLabel(topicIds.length, 'topic')} selected` : 'All topics'} · {duration ? `${duration} minutes` : 'No time limit'}</small></span><button className="primary-button" disabled={!selectedCount} onClick={() => start()}>Start session<Icon name="arrow" /></button></div>
+            <div className="session-start"><span><strong>{countLabel(selectedCount, 'question')}</strong><small>{deck ? 'Custom deck' : paper ? paper.label : topicIds.length ? `${countLabel(topicIds.length, 'topic')} selected` : 'All topics'} · {duration ? `${duration} minutes` : 'No time limit'}</small></span><button className="primary-button" disabled={!selectedCount} onClick={() => start()}>Start session<Icon name="arrow" /></button></div>
           </section>
           <div className="setup-aside">
             <section className="panel selection-panel">
               <div className="panel-heading"><h2 ref={selectionHeading} tabIndex={-1}>Question pool</h2><span className="quiet-badge">{deck ? 'Custom deck' : courseId}</span></div>
-              <div className="selection-counts"><span><Icon name="layers" />Multiple choice<strong>{pool.filter(question => question.type === 'choice').length}</strong></span>{!deck && <span><Icon name="checkCircle" />True or false<strong>{pool.filter(question => question.type === 'boolean').length}</strong></span>}</div>
-              <p className="small-copy">Questions are drawn at random from the pool.</p>
-              {!deck && (selectedTopics.length ? <div className="selected-topics">
+              <div className="selection-counts"><span><Icon name="layers" />Multiple choice<strong>{pool.filter(question => question.type !== 'boolean').length}</strong></span>{!deck && <span><Icon name="checkCircle" />True or false<strong>{pool.filter(question => question.type === 'boolean').length}</strong></span>}</div>
+              <p className="small-copy">{pastPaper ? 'Questions are drawn from the selected past paper.' : 'Questions are drawn from the pool above.'}</p>
+              {!deck && !pastPaper && (selectedTopics.length ? <div className="selected-topics">
                 <div className="selected-topics-heading"><h3>Selected topics</h3><button type="button" className="text-button" onClick={() => { setTopicIds([]); selectionHeading.current?.focus() }}>Show all topics</button></div>
                 <ul className="selected-topic-list">{selectedTopics.map(topic => <li key={topic.id}>
                   <button type="button" aria-label={'Remove topic ' + topic.title} onClick={event => {
@@ -275,8 +349,8 @@ export default function App() {
                   </button>
                 </li>)}</ul>
               </div> : <details className="selected-topics">
-                <summary>All topics <span>{course.topics.length}</span></summary>
-                <ul className="available-topic-list">{course.topics.map(topic => <li key={topic.id}>{topic.title}</li>)}</ul>
+                <summary>All topics <span>{practiceTopics.length}</span></summary>
+                <ul className="available-topic-list">{practiceTopics.map(topic => <li key={topic.id}>{topic.title}</li>)}</ul>
               </details>)}
             </section>
           <section className="panel last-session"><div className="panel-heading"><h2>Last session</h2><Icon name="chart" /></div>{courseHistory.length ? <><strong className="last-score">{summarizeSession(courseHistory[0]!, questionsFor(courseHistory[0]!)).percentage}%<small>correct</small></strong><p>{dateFormat.format(courseHistory[0]!.finishedAt!)}</p><button className="text-button" onClick={() => { setResultId(courseHistory[0]!.id); window.scrollTo(0, 0) }}>Review answers<Icon name="arrow" /></button></> : <><div className="empty-icon"><Icon name="chart" /></div><p>Your results will appear here when you finish a session.</p></>}</section></div>
@@ -287,15 +361,25 @@ export default function App() {
       {view === 'practice' && active && current && <>
         <div className="page-heading"><div><h1>{active.mode === 'practice' ? 'Practice session' : 'Mock exam'}</h1><p>{sessionTitle(active)}{!active.deck && ` · ${topicTitle(current.topicId)}`}</p></div><div className={'timer-chip' + (remaining !== null && remaining < 60 ? ' urgent' : '')} role="timer" aria-label="Time remaining"><Icon name="clock" /><strong>{remaining === null ? 'Untimed' : time(remaining)}</strong></div></div>
         <div className="session-progress"><span>Question <strong>{active.currentIndex + 1}</strong> of {active.questionIds.length}</span><span>{Object.keys(active.answers).length} answered</span><progress value={Object.keys(active.answers).length} max={active.questionIds.length} aria-label="Answered questions" /></div>
-        <article className="panel question-panel"><div className="question-meta">{!active.deck && <span className={'sample-pill difficulty-' + current.difficulty}>{current.isDemo ? 'Legacy sample question' : DIFFICULTY_LABELS[current.difficulty]}</span>}<span>{current.type === 'boolean' ? 'True or false' : 'One correct answer'}</span></div><h2 ref={questionHeading} tabIndex={-1}><MathText>{current.prompt}</MathText></h2>{current.figure && <QuestionFigure kind={current.figure} />}{current.table && <QuestionTable table={current.table} />}
-          <fieldset className="answer-options"><legend className="sr-only">Choose an answer</legend>{getOrderedOptions(current, active.id).map((option, index) => {
-            const chosen = (recorded ?? selected) === option.id
-            const correct = isFeedback && option.id === current.correctOptionId
+        <article className="panel question-panel"><div className="question-meta">{!active.deck && <span className={'sample-pill difficulty-' + current.difficulty}>{current.isDemo ? 'Legacy sample question' : DIFFICULTY_LABELS[current.difficulty]}</span>}{current.trial2025 && current.examYear === 2024 ? <span>2024 exam · 2025 trial</span> :
+            current.trial2025 ? <span>2025 trial exam</span> : current.examYear && <span>{current.examYear} exam</span>}
+          {current.writtenAdaptation && <span>Adapted written prompt</span>}{current.examPrep && <span>Exam prep</span>}
+          <span>{current.type === 'boolean' ? 'True or false' : current.type === 'multi' ? `Choose ${answerCount} answers` : 'One correct answer'}</span></div><h2 ref={questionHeading} tabIndex={-1}><MathText>{current.prompt}</MathText></h2><QuestionMaterial question={current} />
+          <fieldset className="answer-options"><legend className="sr-only">{current.type === 'multi' ? `Choose ${answerCount} answers` : 'Choose an answer'}</legend>{getOrderedOptions(current, active.id).map((option, index) => {
+            const chosen = (recorded ? answerIds(recorded) : selected).includes(option.id)
+            const correct = isFeedback && answerIds(current.correctOptionId).includes(option.id)
             const wrong = isFeedback && chosen && !correct
-            return <label key={option.id} className={'answer-option' + (chosen ? ' chosen' : '') + (correct ? ' correct' : '') + (wrong ? ' wrong' : '')}><input type="radio" name={current.id} checked={chosen} disabled={Boolean(recorded) || remaining === 0} onChange={() => setSelected(option.id)} value={option.id} /><span className="option-letter">{String.fromCharCode(65 + index)}</span><span className="option-content"><MathText>{option.text}</MathText></span>{correct ? <Icon name="checkCircle" /> : wrong ? <Icon name="close" /> : <span className="option-radio" />}</label>
+            return <label key={option.id} className={'answer-option' + (chosen ? ' chosen' : '') + (correct ? ' correct' : '') + (wrong ? ' wrong' : '')}><input type={current.type === 'multi' ? 'checkbox' : 'radio'} name={current.id} checked={chosen}
+              disabled={Boolean(recorded) || remaining === 0 || (current.type === 'multi' && !chosen && selected.length === answerCount)}
+              onChange={event => {
+                const { checked } = event.currentTarget
+                setSelected(previous => current.type === 'multi'
+                  ? checked ? [...previous, option.id] : previous.filter(id => id !== option.id)
+                  : [option.id])
+              }} value={option.id} /><span className="option-letter">{String.fromCharCode(65 + index)}</span><span className="option-content"><AnswerText text={option.text} code={current.codeOptions} /></span>{correct ? <Icon name="checkCircle" /> : wrong ? <Icon name="close" /> : <span className={current.type === 'multi' ? 'option-radio option-checkbox' : 'option-radio'} />}</label>
           })}</fieldset>
           {isFeedback && <div className={'answer-feedback' + (recorded === current.correctOptionId ? ' is-correct' : '')} role="status"><h3><Icon name={recorded === current.correctOptionId ? 'checkCircle' : 'info'} />{recorded === current.correctOptionId ? 'Correct!' : 'Incorrect'}</h3>{current.explanation && <p><MathText>{current.explanation}</MathText></p>}{!active.deck && <QuestionSources question={current} />}</div>}
-          <div className="question-actions"><button className="secondary-button" disabled={active.currentIndex === 0} onClick={() => setProgress(previous => ({ ...previous, active: { ...active, currentIndex: active.currentIndex - 1 } }))}><Icon name="chevron" className="rotate-back" />Previous</button><div>{!recorded && <button className="text-button skip-button" onClick={() => advance(active)}>Skip</button>}{recorded ? <button className="primary-button" onClick={() => advance(active)}>{active.currentIndex === active.questionIds.length - 1 ? 'View results' : 'Next question'}<Icon name="arrow" /></button> : <button className="primary-button" disabled={!selected || remaining === 0} onClick={submit}>{active.mode === 'practice' ? 'Check answer' : active.currentIndex === active.questionIds.length - 1 ? 'Submit and view results' : 'Submit and continue'}<Icon name="arrow" /></button>}</div></div>
+          <div className="question-actions"><button className="secondary-button" disabled={active.currentIndex === 0} onClick={() => setProgress(previous => ({ ...previous, active: { ...active, currentIndex: active.currentIndex - 1 } }))}><Icon name="chevron" className="rotate-back" />Previous</button><div>{!recorded && <button className="text-button skip-button" onClick={() => advance(active)}>Skip</button>}{recorded ? <button className="primary-button" onClick={() => advance(active)}>{active.currentIndex === active.questionIds.length - 1 ? 'View results' : 'Next question'}<Icon name="arrow" /></button> : <button className="primary-button" disabled={!canSubmit} onClick={submit}>{active.mode === 'practice' ? 'Check answer' : active.currentIndex === active.questionIds.length - 1 ? 'Submit and view results' : 'Submit and continue'}<Icon name="arrow" /></button>}</div></div>
         </article>
         <div className="session-bottom"><p>Answers are locked after submission. {active.mode === 'exam' ? 'Review the answers when the session ends.' : 'You can revisit questions to read the explanations.'}</p><button className="text-button" onClick={() => setConfirmEnd(true)}>End session</button></div>
         <div className="question-navigation" aria-label="Questions in this session">{active.questionIds.map((id, index) => <button key={id} aria-label={`Question ${index + 1}${active.answers[id] ? ', answered' : ', unanswered'}`} aria-current={active.currentIndex === index ? 'step' : undefined} className={active.answers[id] ? 'answered' : ''} onClick={() => setProgress(previous => ({ ...previous, active: { ...active, currentIndex: index } }))}>{index + 1}</button>)}</div>
@@ -307,7 +391,7 @@ export default function App() {
         <section className="panel topic-results"><div className="panel-heading"><h2>Results by topic</h2><span>Correct / total</span></div>{summary.topics.map(topic => <div key={topic.topicId} className="topic-result-row"><span>{sessionTopic(result, topic.topicId)}</span><progress value={topic.correct} max={topic.total} aria-label={`${sessionTopic(result, topic.topicId)}: ${topic.correct} of ${topic.total} correct`} /><strong>{topic.correct} / {topic.total}</strong></div>)}</section>
         <section className="answer-review"><div className="section-heading"><h2>Answers and explanations</h2><span>{countLabel(summary.total, 'question')}</span></div>{result.questionIds.map((id, index) => {
           const question = resultIndex.get(id)!, answer = result.answers[id], correct = answer === question.correctOptionId
-          return <details className="panel review-item" key={id}><summary><span className={'review-marker' + (correct ? ' correct' : '')}><Icon name={correct ? 'check' : answer ? 'close' : 'info'} /></span><span><small>Question {index + 1} · {sessionTopic(result, question.topicId)}</small><strong><MathText>{question.prompt}</MathText></strong></span><Icon name="chevron" /></summary><div className="review-body">{question.figure && <QuestionFigure kind={question.figure} />}{question.table && <QuestionTable table={question.table} />}<p><strong>Your answer:</strong> <MathText>{question.options.find(option => option.id === answer)?.text ?? 'Unanswered'}</MathText></p><p><strong>Correct answer:</strong> <MathText>{question.options.find(option => option.id === question.correctOptionId)?.text ?? ''}</MathText></p>{question.explanation && <p><MathText>{question.explanation}</MathText></p>}{!result.deck && <QuestionSources question={question} />}</div></details>
+          return <details className="panel review-item" key={id}><summary><span className={'review-marker' + (correct ? ' correct' : '')}><Icon name={correct ? 'check' : answer ? 'close' : 'info'} /></span><span><small>Question {index + 1} · {sessionTopic(result, question.topicId)}</small><strong><MathText>{question.prompt}</MathText></strong></span><Icon name="chevron" /></summary><div className="review-body"><QuestionMaterial question={question} /><p><strong>Your answer:</strong> <AnswerReview question={question} answer={answer} /></p><p><strong>{question.type === 'multi' ? 'Correct answers:' : 'Correct answer:'}</strong> <AnswerReview question={question} answer={question.correctOptionId} /></p>{question.explanation && <p><MathText>{question.explanation}</MathText></p>}{!result.deck && <QuestionSources question={question} />}</div></details>
         })}</section>
       </>}
 
@@ -333,14 +417,14 @@ export default function App() {
 
       {view === 'syllabus' && deck && <div className="page-heading"><div><h1>Syllabus</h1><p>Choose a course to see its topics and sources, or edit your custom questions in My decks.</p></div></div>}
       {view === 'syllabus' && !deck && <>
-        <div className="page-heading"><div><h1>Syllabus</h1><p>{countLabel(course.topics.length, 'topic')} · {QUESTIONS.filter(question => question.courseId === courseId).length} questions · {countLabel(courseSources.length, 'source')}</p></div><span className="sample-pill">{courseId}</span></div>
-        <section className="panel content-notice"><span className="notice-icon"><Icon name="book" /></span><div><h2>Lectures, group exercises, and notes</h2><p>Practice questions include answers and references to the relevant pages or sections of the course material.</p><small>{courseId === 'IN3230' ? 'The midterm C programming material is outside the scope of this question bank.' : 'The bank also includes multiple-choice and true-or-false questions adapted from past and mock exams from 2020 to 2023.'}</small></div></section>
-        <div className="syllabus-grid">{course.topics.map((topic, index) => {
-          const topicQuestions = QUESTIONS.filter(question => question.topicId === topic.id)
+        <div className="page-heading"><div><h1>Syllabus</h1><p>{countLabel(practiceTopics.length, 'topic')} · {courseQuestions.length} questions · {countLabel(courseSources.length, 'source')}</p></div><span className="sample-pill">{courseId}</span></div>
+        <section className="panel content-notice"><span className="notice-icon"><Icon name="book" /></span><div><h2>Lectures, group exercises, and notes</h2><p>Practice questions include answers and references to the relevant pages or sections of the course material.</p><small>{courseId === 'IN3230' ? 'The midterm C programming material is outside the scope of this question bank.' : 'The bank also includes multiple-choice and true-or-false questions adapted from past and mock exams through 2025. Full 2024 and 2025 papers and the 2025 trial exam are available under Question focus.'}</small></div></section>
+        <div className="syllabus-grid">{practiceTopics.map((topic, index) => {
+          const topicQuestions = courseQuestions.filter(question => question.topicId === topic.id)
           return <section key={topic.id} className="panel syllabus-card"><span className="topic-index">{String(index + 1).padStart(2, '0')}</span><h2>{topic.title}</h2><p>{topic.description}</p>
             {topic.objectives?.length ? <ul className="topic-objectives">{topic.objectives.map(objective => <li key={objective}>{objective}</li>)}</ul> : null}
             <div className="difficulty-counts">{(['easy', 'medium', 'hard'] as const).map(level => <span key={level} className={'difficulty-' + level}>{DIFFICULTY_LABELS[level]}<strong>{topicQuestions.filter(question => question.difficulty === level).length}</strong></span>)}</div>
-            <footer><span>{countLabel(topicQuestions.length, 'question')}</span><button className="text-button" disabled={Boolean(active)} onClick={() => { setTopicIds([topic.id]); setDifficulty('all'); navigate('practice') }}>Practise this topic<Icon name="arrow" /></button></footer>
+            <footer><span>{countLabel(topicQuestions.length, 'question')}</span><button className="text-button" disabled={Boolean(active)} onClick={() => { setTopicIds([topic.id]); setFocus('mixed'); setDifficulty('all'); navigate('practice') }}>Practise this topic<Icon name="arrow" /></button></footer>
             {topic.sourcePaths?.length ? <details className="topic-source-list"><summary>Topic sources <span>{topic.sourcePaths.length}</span></summary><ul>{topic.sourcePaths.map(path => <li key={path}><strong>{SOURCE_INDEX.get(path)?.title ?? path.split('/').at(-1)}</strong><small>{path}</small></li>)}</ul></details> : null}
           </section>
         })}</div>

@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "in3050-trial-2025-06",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "multi",
+    "prompt": "Which two statements are true for permutation representations in evolutionary algorithms?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They fit problems where each item must appear once."
+      },
+      {
+        "id": "b",
+        "text": "Ordinary bit-flip mutation preserves validity."
+      },
+      {
+        "id": "c",
+        "text": "Swapping two positions preserves validity."
+      },
+      {
+        "id": "d",
+        "text": "They fit encodings where an item may appear arbitrarily many times."
+      }
+    ],
+    "correctOptionId": "a,c",
+    "explanation": "A permutation is an ordering of a fixed set of items. Swapping positions changes the ordering while preserving exactly one copy of each item.",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 1, question 6 · PDF page 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 6 · PDF page 2"
+      }
+    ],
+    "trial2025": true
+  },
+  {
+    "id": "in3050-trial-2025-14",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "When is a classifier’s macro F1 score most likely to be much lower than its accuracy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The classes have exactly equal support."
+      },
+      {
+        "id": "b",
+        "text": "The classifier does well on both classes."
+      },
+      {
+        "id": "c",
+        "text": "The dataset is highly imbalanced and the classifier succeeds mostly on the majority class."
+      },
+      {
+        "id": "d",
+        "text": "The classifier predicts every class equally often."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Accuracy counts correct examples, so the majority class can dominate it. Macro F1 gives the rare class the same weight as the majority class, exposing poor performance on the rare class.",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 1, question 14 · PDF page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 14 · PDF page 3"
+      }
+    ],
+    "trial2025": true
+  },
+  {
+    "id": "in3050-trial-2025-17",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "Ridge adds \\(\\alpha\\sum_j w_j^2\\) using feature weights only. If \\(\\alpha=0.5\\) and their squared sum is 10, how much is added to the loss?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2.5"
+      },
+      {
+        "id": "b",
+        "text": "5.0"
+      },
+      {
+        "id": "c",
+        "text": "10.0"
+      },
+      {
+        "id": "d",
+        "text": "0.5"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Use the stated penalty convention: multiply the sum of squared feature weights by the regularization coefficient. The contribution is \\(0.5\\times10=5\\).",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 1, question 17 · PDF page 4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 17 · PDF page 4"
+      }
+    ],
+    "trial2025": true
+  },
+  {
+    "id": "in3050-trial-2025-21",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "In the classical bias–variance trade-off, what risk often increases when a model becomes very flexible and has low bias?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It necessarily generalizes well."
+      },
+      {
+        "id": "b",
+        "text": "It underfits the training data."
+      },
+      {
+        "id": "c",
+        "text": "It can become sensitive to the particular training sample and overfit."
+      },
+      {
+        "id": "d",
+        "text": "It performs nearly identically across training samples."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Low bias means the model class can capture complex relationships. It can also fit noise or idiosyncrasies of a particular sample, increasing variance.",
+    "difficulty": "easy",
+    "source": "IN3050 2025 trial exam · Part 1, question 21 · PDF page 5",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 21 · PDF page 5"
+      }
+    ],
+    "trial2025": true
+  },
+  {
+    "id": "in3050-trial-2025-23",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A bias-free neural layer computes \\(\\operatorname{ReLU}(xW)\\). The row input is \\(x=(1,2,-2,1)\\), and the weight matrix \\(W\\) is shown below. What is the output?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[1, 5, 3, 1]"
+      },
+      {
+        "id": "b",
+        "text": "[1, 0, 3, 1]"
+      },
+      {
+        "id": "c",
+        "text": "[1, −5, 3, 1]"
+      },
+      {
+        "id": "d",
+        "text": "[1, 0, −3, 1]"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Dot the input with each column. The pre-activation values are \\((1,-5,3,1)\\). ReLU keeps positive values and replaces negative values with zero.",
+    "difficulty": "hard",
+    "source": "IN3050 2025 trial exam · Part 1, question 23 · PDF page 5",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 23 · PDF page 5"
+      }
+    ],
+    "trial2025": true,
+    "table": {
+      "caption": "First-layer weight matrix W",
+      "columns": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "rows": [
+        [
+          "-1",
+          "1",
+          "-2",
+          "2"
+        ],
+        [
+          "1",
+          "-1",
+          "1",
+          "1"
+        ],
+        [
+          "1",
+          "1",
+          "-1",
+          "1"
+        ],
+        [
+          "2",
+          "-2",
+          "1",
+          "-1"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-trial-2025-24",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "The bias-free output layer of a three-class network applies softmax to \\(hW\\). If \\(h=(4,0,2,0)\\), which class has the highest probability?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The class cannot be determined."
+      },
+      {
+        "id": "b",
+        "text": "Class 1"
+      },
+      {
+        "id": "c",
+        "text": "Class 2"
+      },
+      {
+        "id": "d",
+        "text": "Class 3"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The class logits are \\((10,8,8)\\). Softmax preserves the ranking of logits, so the first class has the largest predicted probability.",
+    "difficulty": "hard",
+    "source": "IN3050 2025 trial exam · Part 1, question 24 · PDF page 5–6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 24 · PDF page 5–6"
+      }
+    ],
+    "trial2025": true,
+    "table": {
+      "caption": "Output-layer weight matrix W",
+      "columns": [
+        "1",
+        "2",
+        "3"
+      ],
+      "rows": [
+        [
+          "2",
+          "1",
+          "1"
+        ],
+        [
+          "2",
+          "2",
+          "1"
+        ],
+        [
+          "1",
+          "2",
+          "2"
+        ],
+        [
+          "1",
+          "1",
+          "2"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-trial-2025-25",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "After k-means assigns examples to their nearest centers, how does it update a center with at least one assigned example?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It places the center randomly again each iteration."
+      },
+      {
+        "id": "b",
+        "text": "It keeps the original center fixed."
+      },
+      {
+        "id": "c",
+        "text": "It moves the center toward neighboring clusters."
+      },
+      {
+        "id": "d",
+        "text": "It replaces the center with the mean of the examples assigned to it."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "For a fixed cluster under the squared Euclidean objective, the mean minimizes the sum of squared distances to its members.",
+    "difficulty": "easy",
+    "source": "IN3050 2025 trial exam · Part 1, question 25 · PDF page 6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 25 · PDF page 6"
+      }
+    ],
+    "trial2025": true
+  },
+  {
+    "id": "in3050-trial-2025-29",
+    "courseId": "IN3050",
+    "topicId": "ai-reinforcement-learning",
+    "type": "choice",
+    "prompt": "Which statement about rewards in reinforcement learning is true?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A reward explicitly tells the agent what action it should have taken."
+      },
+      {
+        "id": "b",
+        "text": "A reward can never be delayed."
+      },
+      {
+        "id": "c",
+        "text": "Rewards must be positive."
+      },
+      {
+        "id": "d",
+        "text": "An episode can have zero rewards until the terminal step."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Sparse or delayed rewards are possible. For example, a task may give a score only when the episode ends. A reward evaluates an outcome without prescribing the correct action.",
+    "difficulty": "easy",
+    "source": "IN3050 2025 trial exam · Part 1, question 29 · PDF page 6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 29 · PDF page 6"
+      }
+    ],
+    "trial2025": true,
+    "historicalOnly": true
+  },
+  {
+    "id": "in3050-trial-2025-30",
+    "courseId": "IN3050",
+    "topicId": "ai-reinforcement-learning",
+    "type": "choice",
+    "prompt": "What does the one-step Q-learning update use to estimate the value of the next state, when that state is non-terminal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The highest estimated action value in the next state."
+      },
+      {
+        "id": "b",
+        "text": "The mean of all estimated action values in the next state."
+      },
+      {
+        "id": "c",
+        "text": "Only the action actually selected next by the behavior policy."
+      },
+      {
+        "id": "d",
+        "text": "The lowest action value to avoid optimistic estimates."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The Q-learning target is \\(r + \\gamma\\max_{a\\prime} Q(s\\prime,a\\prime)\\). This is a greedy bootstrap target even when the behavior policy explores. SARSA uses the action actually selected next.",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 1, question 30 · PDF page 7",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 30 · PDF page 7"
+      }
+    ],
+    "trial2025": true,
+    "historicalOnly": true
+  },
+  {
+    "id": "in3050-trial-2025-31",
+    "courseId": "IN3050",
+    "topicId": "ai-reinforcement-learning",
+    "type": "choice",
+    "prompt": "What is the usual objective of a reinforcement learning agent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Minimize supervised prediction error for a fixed set of labels."
+      },
+      {
+        "id": "b",
+        "text": "Maximize classification accuracy."
+      },
+      {
+        "id": "c",
+        "text": "Maximize expected cumulative return."
+      },
+      {
+        "id": "d",
+        "text": "Minimize computational resources regardless of performance."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The agent aims to choose actions that maximize expected return, typically a sum of future rewards with discounting. An action with a small immediate reward can still be best in the long run.",
+    "difficulty": "easy",
+    "source": "IN3050 2025 trial exam · Part 1, question 31 · PDF page 7",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 31 · PDF page 7"
+      }
+    ],
+    "trial2025": true,
+    "historicalOnly": true
+  },
+  {
+    "id": "in3050-trial-2025-35",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "Which approach is most closely associated with connectionism in AI?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Rule-based expert systems"
+      },
+      {
+        "id": "b",
+        "text": "Symbolic logic and reasoning"
+      },
+      {
+        "id": "c",
+        "text": "Neural networks"
+      },
+      {
+        "id": "d",
+        "text": "Autonomous robotics"
+      },
+      {
+        "id": "e",
+        "text": "Genetic algorithms"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Connectionist approaches model information processing using networks of connected computational units. Neural networks are the main example.",
+    "difficulty": "easy",
+    "source": "IN3050 2025 trial exam · Part 1, question 35 · PDF page 7",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 35 · PDF page 7"
+      }
+    ],
+    "trial2025": true,
+    "historicalOnly": true
+  },
+  {
+    "id": "in3050-trial-2025-36",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "Intermediate (arithmetic) crossover is used in evolutionary algorithms. Which description correctly explains how it works and what representation it fits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "For real-valued vectors, a child uses weighted averages of corresponding parent values."
+      },
+      {
+        "id": "b",
+        "text": "For bit strings, every bit is flipped with the same probability."
+      },
+      {
+        "id": "c",
+        "text": "For permutations, arithmetic averaging always preserves the original item set."
+      },
+      {
+        "id": "d",
+        "text": "For real-valued vectors, the child copies one entire parent without mixing."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "With real-valued parents \\(p\\) and \\(q\\), one child can be \\(\\alpha p+(1-\\alpha)q\\), with \\(\\alpha\\) between 0 and 1. For example, with \\(\\alpha=0.25\\), parent values 2 and 6 produce 5. Averaging city IDs would not preserve a tour permutation.",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 2, written prompt 1 · PDF page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, written prompt 1 · PDF page 8"
+      }
+    ],
+    "trial2025": true,
+    "writtenAdaptation": true
+  },
+  {
+    "id": "in3050-trial-2025-37",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "What does the marked point on the training and validation loss curves indicate, and what should you do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Generalization is beginning to get worse. Use early stopping and restore the checkpoint with the lowest validation loss."
+      },
+      {
+        "id": "b",
+        "text": "The model is underfitting more as training loss falls. Keep training until both curves cross."
+      },
+      {
+        "id": "c",
+        "text": "The validation set has become part of the training data. Select the checkpoint with the smallest training loss."
+      },
+      {
+        "id": "d",
+        "text": "The improvement in training loss proves the later checkpoints generalize better."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The model keeps fitting the training data while its validation performance degrades, a typical sign of overfitting. Monitor validation loss, allow a patience window if it is noisy, then restore the best checkpoint. Keep the test split for final evaluation.",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 2, written prompt 2 · PDF page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, written prompt 2 · PDF page 8"
+      }
+    ],
+    "trial2025": true,
+    "writtenAdaptation": true,
+    "figure": "trial-learning-curves"
+  },
+  {
+    "id": "in3050-trial-2025-38",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "Why do MLPs need nonlinear hidden activations, and which problem illustrates their role?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Stacked affine layers collapse to a single affine map. Nonlinear hidden activations can create a nonlinear boundary, for example to solve XOR."
+      },
+      {
+        "id": "b",
+        "text": "Additional affine layers alone make every Boolean function linearly separable."
+      },
+      {
+        "id": "c",
+        "text": "Nonlinear activations merely rescale the learning rate; their output boundaries are always linear."
+      },
+      {
+        "id": "d",
+        "text": "XOR can be solved by making a purely linear network sufficiently deep without changing its activations."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A composition such as \\(W_2(W_1x+b_1)+b_2\\) is still affine. XOR has two positive corners on one diagonal and two negative corners on the other. Nonlinear hidden units can form features that allow the final layer to separate those cases.",
+    "difficulty": "hard",
+    "source": "IN3050 2025 trial exam · Part 2, written prompt 3 · PDF page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, written prompt 3 · PDF page 8"
+      }
+    ],
+    "trial2025": true,
+    "writtenAdaptation": true
+  },
+  {
+    "id": "in3050-trial-2025-39",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "Why are deep networks called representation learners, and how do embeddings relate to those representations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They learn internal feature vectors from data; a learned vector representing a token or another input item is an example of an embedding."
+      },
+      {
+        "id": "b",
+        "text": "They store only a dictionary of hand-written input features, and an embedding is the final predicted label."
+      },
+      {
+        "id": "c",
+        "text": "Representations are gradients, and embeddings are the optimizer’s weight updates."
+      },
+      {
+        "id": "d",
+        "text": "Every hidden layer must reproduce the raw input exactly to learn a representation."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Each layer transforms inputs into activations the next layer can use. For example, later image layers can build on edge and texture features to recognize shapes. An embedding maps an item to a vector in a learned space, such as a dense vector for a word token.",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 2, written prompt 4 · PDF page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, written prompt 4 · PDF page 8"
+      }
+    ],
+    "trial2025": true,
+    "writtenAdaptation": true
+  },
+  {
+    "id": "in3050-trial-2025-40",
+    "courseId": "IN3050",
+    "topicId": "ai-reinforcement-learning",
+    "type": "choice",
+    "prompt": "Given learned Q-values, how do epsilon-greedy and softmax action selection balance exploration and exploitation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Epsilon-greedy usually chooses the best action but sometimes samples uniformly. Softmax samples according to Q-values and uses temperature to control how concentrated the distribution is."
+      },
+      {
+        "id": "b",
+        "text": "Both methods always select the action with the maximum Q-value."
+      },
+      {
+        "id": "c",
+        "text": "Epsilon-greedy assigns higher random exploration probability to better actions, while softmax explores uniformly at every temperature."
+      },
+      {
+        "id": "d",
+        "text": "Higher temperature and larger epsilon both make selection more greedy."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Epsilon-greedy chooses a greedy action with probability \\(1-\\varepsilon\\) and samples an action uniformly otherwise. Softmax uses probabilities proportional to \\(e^{Q(s,a)/T}\\); low positive temperature favors the best action strongly, and higher temperature flattens the distribution.",
+    "difficulty": "hard",
+    "source": "IN3050 2025 trial exam · Part 2, written prompt 5 · PDF page 9",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, written prompt 5 · PDF page 9"
+      }
+    ],
+    "trial2025": true,
+    "writtenAdaptation": true,
+    "historicalOnly": true
+  },
+  {
+    "id": "in3050-trial-2025-06-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "A candidate tour lists cities A, B, C, and D exactly once. Which mutation changes the tour while guaranteeing it still lists the same four cities exactly once?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Swap the cities at two distinct positions."
+      },
+      {
+        "id": "b",
+        "text": "Replace the first city with a random city from the same list."
+      },
+      {
+        "id": "c",
+        "text": "Append the first city to the chromosome without removing anything."
+      },
+      {
+        "id": "d",
+        "text": "Increment the numerical ID of one city."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Swapping two positions changes the order while keeping the multiset of entries. Replacement can create a duplicate and drop a city.",
+    "difficulty": "easy",
+    "source": "IN3050 2025 trial exam · Part 1, question 6 · PDF page 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 6 · PDF page 2"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-trial-2025-14-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A dataset has 90 negatives and 10 positives. The classifier predicts negative for every example. What are its accuracy and macro F1? Use F1 = 0 for a class with no true positives.",
+    "options": [
+      {
+        "id": "a",
+        "text": "90% and about 47.4%"
+      },
+      {
+        "id": "b",
+        "text": "90% and 90%"
+      },
+      {
+        "id": "c",
+        "text": "50% and 50%"
+      },
+      {
+        "id": "d",
+        "text": "100% and about 94.7%"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Accuracy is 90/100. Positive-class F1 is 0. Treating negative as the target class gives \\(F_1=180/(180+10)=0.947\\); the unweighted mean over the two classes is about 0.474.",
+    "difficulty": "hard",
+    "source": "IN3050 2025 trial exam · Part 1, question 14 · PDF page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 14 · PDF page 3"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-trial-2025-17-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "A ridge objective adds \\(\\lambda\\sum_j w_j^2\\) to the data loss. For \\(\\lambda=0.25\\) and feature weights \\((-4,2,0)\\), with an unpenalized intercept of 3, what is the penalty?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5.00"
+      },
+      {
+        "id": "b",
+        "text": "7.25"
+      },
+      {
+        "id": "c",
+        "text": "1.50"
+      },
+      {
+        "id": "d",
+        "text": "20.00"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Square the feature weights and multiply by the penalty coefficient: \\(0.25(16+4+0)=5\\). The intercept does not contribute.",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 1, question 17 · PDF page 4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 17 · PDF page 4"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-trial-2025-23-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A layer applies \\(\\operatorname{ReLU}(xW+b)\\). Use row input \\(x=(2,-1)\\), bias \\(b=(-1,1,0)\\), and the weights shown. What output does it return?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[0, 5, 2]"
+      },
+      {
+        "id": "b",
+        "text": "[0, 4, 2]"
+      },
+      {
+        "id": "c",
+        "text": "[−1, 5, 2]"
+      },
+      {
+        "id": "d",
+        "text": "[0, 5, 0]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The logits before adding the bias are \\((0,4,2)\\). Adding the bias gives \\((-1,5,2)\\). ReLU clamps the first value to zero.",
+    "difficulty": "hard",
+    "source": "IN3050 2025 trial exam · Part 1, question 23 · PDF page 5",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 23 · PDF page 5"
+      }
+    ],
+    "examPrep": true,
+    "table": {
+      "caption": "Weight matrix W",
+      "columns": [
+        "1",
+        "2",
+        "3"
+      ],
+      "rows": [
+        [
+          "1",
+          "1",
+          "0"
+        ],
+        [
+          "2",
+          "-2",
+          "-2"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "in3050-trial-2025-24-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "The logits for a three-class classifier are \\((2,5,3)\\). After adding 7 to all three logits, what changes in the softmax output?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The probabilities remain identical."
+      },
+      {
+        "id": "b",
+        "text": "The argmax is unchanged but all probabilities decrease."
+      },
+      {
+        "id": "c",
+        "text": "The third class becomes most likely."
+      },
+      {
+        "id": "d",
+        "text": "The distribution becomes uniform."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Adding a common constant \\(c\\) multiplies each numerator and their sum by \\(e^c\\), which cancels. Both the predicted class and the probabilities stay the same.",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 1, question 24 · PDF page 5–6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 24 · PDF page 5–6"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-trial-2025-25-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "In k-means, three points are assigned to the same nonempty cluster: \\((0,2),(2,4),(4,0)\\). Where is the updated centroid?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(2, 2)"
+      },
+      {
+        "id": "b",
+        "text": "(6, 6)"
+      },
+      {
+        "id": "c",
+        "text": "(2, 4)"
+      },
+      {
+        "id": "d",
+        "text": "(4, 2)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Average each coordinate across the three points. The x-coordinates sum to 6 and the y-coordinates sum to 6, so each mean is 2.",
+    "difficulty": "easy",
+    "source": "IN3050 2025 trial exam · Part 1, question 25 · PDF page 6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 25 · PDF page 6"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-trial-2025-36-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "Arithmetic crossover uses \\(0.75p+0.25q\\) on real-valued vectors. If \\(p=(2,6)\\) and \\(q=(10,2)\\), what child is produced?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(4, 5)"
+      },
+      {
+        "id": "b",
+        "text": "(8, 3)"
+      },
+      {
+        "id": "c",
+        "text": "(6, 4)"
+      },
+      {
+        "id": "d",
+        "text": "(3, 5)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Combine corresponding entries: \\(0.75(2)+0.25(10)=4\\) and \\(0.75(6)+0.25(2)=5\\).",
+    "difficulty": "medium",
+    "source": "IN3050 2025 trial exam · Part 2, written prompt 1 · PDF page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, written prompt 1 · PDF page 8"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-trial-2025-37-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "Validation losses across four saved checkpoints are 0.61, 0.49, 0.47, and 0.52. Which checkpoint should early stopping restore if validation loss is the only selection criterion?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The third checkpoint."
+      },
+      {
+        "id": "b",
+        "text": "The fourth checkpoint."
+      },
+      {
+        "id": "c",
+        "text": "The first checkpoint."
+      },
+      {
+        "id": "d",
+        "text": "The second checkpoint."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The third checkpoint has the smallest observed validation loss. Restoring the last checkpoint would discard a better validation result.",
+    "difficulty": "easy",
+    "source": "IN3050 2025 trial exam · Part 2, written prompt 2 · PDF page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, written prompt 2 · PDF page 8"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-trial-2025-38-variant-1",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "An MLP replaces all hidden activations with the identity. It still uses a sigmoid at the output and a threshold of 0.5. Which statement about its decision boundary is true?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It is still an affine hyperplane in input space."
+      },
+      {
+        "id": "b",
+        "text": "It becomes nonlinear because the sigmoid itself is nonlinear."
+      },
+      {
+        "id": "c",
+        "text": "It makes an XOR boundary possible whenever the input has two features."
+      },
+      {
+        "id": "d",
+        "text": "It is nonlinear if the hidden layer is wider than the input."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The hidden affine transformations collapse into one affine logit. The sigmoid is monotone and crosses 0.5 at zero, so the classifier only tests the sign of that affine logit.",
+    "difficulty": "hard",
+    "source": "IN3050 2025 trial exam · Part 2, written prompt 3 · PDF page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, written prompt 3 · PDF page 8"
+      }
+    ],
+    "examPrep": true
+  }
+]

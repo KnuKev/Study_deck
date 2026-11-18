@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "in3050-prep-01",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "A search algorithm tests a distant region after many improving local steps. How should the distant move and local steps be classified?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The distant move is exploration; the local steps are exploitation."
+      },
+      {
+        "id": "b",
+        "text": "The distant move is exploitation; the local steps are exploration."
+      },
+      {
+        "id": "c",
+        "text": "Both are exploitation since they use the same objective."
+      },
+      {
+        "id": "d",
+        "text": "Both are exploration since they change the candidate."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Exploration samples unfamiliar parts of the search space. Improving a current solution by testing nearby candidates is exploitation.",
+    "difficulty": "easy",
+    "source": "Question 1(d) · page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(d) · page 3"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-02",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "A simulated annealer compares two candidate moves that worsen the objective by the same amount. One is considered at a high temperature and the other after cooling. Which is more likely to be accepted?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The move considered at the higher temperature."
+      },
+      {
+        "id": "b",
+        "text": "The move considered after cooling."
+      },
+      {
+        "id": "c",
+        "text": "Both are equally likely because the objective change is the same."
+      },
+      {
+        "id": "d",
+        "text": "Neither can be accepted in annealing."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "For a positive cost increase, the factor \\(e^{-\\Delta/T}\\) is larger at higher temperature. Cooling makes uphill moves less frequent.",
+    "difficulty": "medium",
+    "source": "Question 1(g) · page 4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(g) · page 4"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-03",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "Let \\(g(x,y)=(3-2x+4y)^2\\). What is \\(\\nabla g(0,0)\\)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "\\((-12,24)\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\((12,-24)\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\((-4,8)\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\((0,0)\\)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The chain rule gives \\(\\nabla g=2(3-2x+4y)(-2,4)\\). At the origin the factor is 6.",
+    "difficulty": "hard",
+    "source": "Question 16 · page 4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
+        "location": "Question 16 · page 4"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-04",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "The derivative at the current weight 2 is 6. What does this code print after one update with learning rate 0.1?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.4"
+      },
+      {
+        "id": "b",
+        "text": "2.6"
+      },
+      {
+        "id": "c",
+        "text": "0.6"
+      },
+      {
+        "id": "d",
+        "text": "1.94"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Subtract \\(0.1(6)=0.6\\) from the current weight, giving \\(2-0.6=1.4\\).",
+    "difficulty": "medium",
+    "source": "Question 2(d) · page 31",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 2(d) · page 31"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true,
+    "code": "weight = 2.0\nweight -= 0.1 * loss_gradient(weight)\nprint(weight)"
+  },
+  {
+    "id": "in3050-prep-05",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "A photo classifier must independently flag whether a photo contains a road, a car, and a cyclist. A photo can contain any subset. What is the problem type?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Multi-label classification"
+      },
+      {
+        "id": "b",
+        "text": "Multiclass classification"
+      },
+      {
+        "id": "c",
+        "text": "Clustering"
+      },
+      {
+        "id": "d",
+        "text": "Numerical regression"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "More than one tag can be true for the same example. Multiclass classification chooses exactly one class.",
+    "difficulty": "easy",
+    "source": "Question 1(l) · page 7",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(l) · page 7"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-06",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "Training accuracy is near perfect with 1-NN, but validation accuracy improves once k is increased from 1 to 7. What is a plausible explanation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Seven-neighbor voting reduces sensitivity to individual noisy points."
+      },
+      {
+        "id": "b",
+        "text": "Larger k activates the gradient at more training points."
+      },
+      {
+        "id": "c",
+        "text": "The larger neighborhood makes the boundary more jagged."
+      },
+      {
+        "id": "d",
+        "text": "Seven neighbors guarantee the Bayes optimal decision."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Increasing k can smooth the decision boundary and lower variance. If k becomes too large, the neighborhood may mix classes and increase bias.",
+    "difficulty": "medium",
+    "source": "Question 1(m) · page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(m) · page 8"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-07",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "Given labels of the four nearest neighbors in increasing distance order, what does this code print for k = 3?",
+    "options": [
+      {
+        "id": "a",
+        "text": "red"
+      },
+      {
+        "id": "b",
+        "text": "blue"
+      },
+      {
+        "id": "c",
+        "text": "red and blue"
+      },
+      {
+        "id": "d",
+        "text": "It cannot choose because all four neighbors tie."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Only the first three labels participate. Red appears twice and blue once.",
+    "difficulty": "medium",
+    "source": "Question 1(m) · page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(m) · page 8"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true,
+    "code": "from collections import Counter\nlabels = [\"red\", \"blue\", \"red\", \"blue\"]\nk = 3\nprint(Counter(labels[:k]).most_common(1)[0][0])"
+  },
+  {
+    "id": "in3050-prep-08",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "A binary logistic model returns 0.82 for an example. What does this number represent before applying a decision threshold?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The estimated probability of class 1."
+      },
+      {
+        "id": "b",
+        "text": "The estimated probability of whichever label is correct."
+      },
+      {
+        "id": "c",
+        "text": "The cross-entropy loss."
+      },
+      {
+        "id": "d",
+        "text": "The change in the weights on the next update."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The sigmoid output is interpreted as the model’s conditional probability of the positive label.",
+    "difficulty": "easy",
+    "source": "Question 1(n) · page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(n) · page 8"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-09",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "Two models assign probability 0.60 and 0.30 to the true class of the same example. Which statement about categorical cross-entropy is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The model assigning 0.60 has lower loss."
+      },
+      {
+        "id": "b",
+        "text": "Both models have the same loss if they predict the same label."
+      },
+      {
+        "id": "c",
+        "text": "The model assigning 0.30 has lower loss."
+      },
+      {
+        "id": "d",
+        "text": "The loss cannot be compared without all other class probabilities."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "With a one-hot target, cross-entropy is the negative logarithm of the probability of the correct class. That quantity decreases as the probability increases.",
+    "difficulty": "medium",
+    "source": "Question 2(a) · page 28",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 2(a) · page 28"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-10",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "This code should compute one scalar loss averaged over examples. What does the existing expression actually return for N examples and C classes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A vector of N losses, one for each example."
+      },
+      {
+        "id": "b",
+        "text": "A scalar averaged across the batch."
+      },
+      {
+        "id": "c",
+        "text": "A vector of C losses, one for each class."
+      },
+      {
+        "id": "d",
+        "text": "The matrix of gradients of size N by C."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Summing over axis 1 combines the class entries within each row. A separate mean over the resulting length-N vector gives the desired scalar.",
+    "difficulty": "hard",
+    "source": "Question 2(a) · page 28",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 2(a) · page 28"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true,
+    "code": "loss = -np.sum(T * np.log(Y), axis=1)"
+  },
+  {
+    "id": "in3050-prep-11",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A mini-batch has 8 examples, 4 input features, 5 hidden units, and 3 outputs. A bias column is already included in H_bias. What is the shape of H_bias.T @ output_delta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 by 3"
+      },
+      {
+        "id": "b",
+        "text": "8 by 3"
+      },
+      {
+        "id": "c",
+        "text": "5 by 3"
+      },
+      {
+        "id": "d",
+        "text": "3 by 6"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "H_bias has shape 8 by 6, including the bias column, and output_delta has shape 8 by 3. Transposing the former aligns the batch dimensions.",
+    "difficulty": "hard",
+    "source": "Question 2(b) · page 29",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 2(b) · page 29"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-12",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "A convolutional network replaces a 2×2 max-pooling layer with 2×2 average pooling. How does that affect the number of trainable parameters in the pooling layer?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It remains zero."
+      },
+      {
+        "id": "b",
+        "text": "It adds four learned weights per window."
+      },
+      {
+        "id": "c",
+        "text": "It adds one learned bias per channel."
+      },
+      {
+        "id": "d",
+        "text": "It depends on the number of training examples."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Both ordinary pooling operations use a fixed rule per window. The mean uses fixed coefficients, so no parameters are optimized.",
+    "difficulty": "easy",
+    "source": "Question 1(x) · page 13",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(x) · page 13"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-13",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "A filter detects a vertical edge near the upper left. What aspect of convolution lets the same trained filter respond when the edge appears near the lower right?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The same weights are applied at different spatial locations."
+      },
+      {
+        "id": "b",
+        "text": "Each location learns an independent set of weights."
+      },
+      {
+        "id": "c",
+        "text": "Softmax duplicates edge detections across space."
+      },
+      {
+        "id": "d",
+        "text": "Average pooling trains a separate edge template."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Spatial weight sharing applies the same local pattern detector throughout the input.",
+    "difficulty": "medium",
+    "source": "Question 1(w) · page 13",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(w) · page 13"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-14",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "Four individuals have positive fitness values 4, 8, 12, and 16. What is the roulette-wheel selection probability of the individual with fitness 12?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.30"
+      },
+      {
+        "id": "b",
+        "text": "0.25"
+      },
+      {
+        "id": "c",
+        "text": "0.40"
+      },
+      {
+        "id": "d",
+        "text": "0.75"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The total fitness is 40. Fitness-proportionate selection gives \\(12/40=0.30\\).",
+    "difficulty": "medium",
+    "source": "Question 28 · page 8",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
+        "location": "Question 28 · page 8"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-15",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "In a population of ten, a tournament samples four distinct individuals uniformly and the best sampled individual wins. What is the chance that the best individual overall wins?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.40"
+      },
+      {
+        "id": "b",
+        "text": "0.10"
+      },
+      {
+        "id": "c",
+        "text": "0.25"
+      },
+      {
+        "id": "d",
+        "text": "1.00"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Rank 1 wins exactly when sampled. Each of the ten individuals has probability \\(4/10\\) of being included in a uniform four-person sample.",
+    "difficulty": "hard",
+    "source": "Question 31 · page 9",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
+        "location": "Question 31 · page 9"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-16",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "multi",
+    "prompt": "Apply PMX using the marked segments of P1 = (1, 2 | 3, 4 | 5, 6) and P2 = (4, 6 | 1, 5 | 2, 3). Select both offspring.",
+    "options": [
+      {
+        "id": "a",
+        "text": "(5, 6, 3, 4, 2, 1)"
+      },
+      {
+        "id": "b",
+        "text": "(3, 2, 1, 5, 4, 6)"
+      },
+      {
+        "id": "c",
+        "text": "(4, 6, 3, 4, 2, 3)"
+      },
+      {
+        "id": "d",
+        "text": "(2, 6, 3, 4, 5, 1)"
+      },
+      {
+        "id": "e",
+        "text": "(3, 2, 1, 4, 5, 6)"
+      }
+    ],
+    "correctOptionId": "a,b",
+    "explanation": "For the child retaining 3 and 4, repair 4→5 and 3→1. For the child retaining 1 and 5, repair 1→3 and 5→4. The outside order otherwise comes from the other parent.",
+    "difficulty": "hard",
+    "source": "Question 1(ac) · page 16",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(ac) · page 16"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-17",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "Two offspring and two parents are compared in deterministic crowding. Why pair each offspring with the more similar parent before deciding replacements?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It confines competition to similar individuals and helps preserve different niches."
+      },
+      {
+        "id": "b",
+        "text": "It ensures the fittest individual always replaces every parent."
+      },
+      {
+        "id": "c",
+        "text": "It increases selection pressure equally across all niches."
+      },
+      {
+        "id": "d",
+        "text": "It removes the need to measure fitness."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Similarity-based pairing means that candidates compete locally rather than eliminating unrelated niches.",
+    "difficulty": "medium",
+    "source": "Question 1(ay) · page 27",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(ay) · page 27"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-18",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A classifier records TP = 24, FP = 6, TN = 54, and FN = 16. What are its positive-class precision and recall?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Precision 0.80, recall 0.60"
+      },
+      {
+        "id": "b",
+        "text": "Precision 0.60, recall 0.80"
+      },
+      {
+        "id": "c",
+        "text": "Precision 0.78, recall 0.90"
+      },
+      {
+        "id": "d",
+        "text": "Precision 0.80, recall 0.40"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Precision is \\(24/(24+6)=0.80\\). Recall is \\(24/(24+16)=0.60\\).",
+    "difficulty": "medium",
+    "source": "Question 1(ad) · page 17",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(ad) · page 17"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-19",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A classifier’s exact F1 is 0.60. It has 30 true positives and 20 false negatives. How many false positives does it have?",
+    "options": [
+      {
+        "id": "a",
+        "text": "20"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "30"
+      },
+      {
+        "id": "d",
+        "text": "50"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Recall is 0.60. An F1 of 0.60 then implies precision is also 0.60. Thus \\(30/(30+FP)=0.60\\) and \\(FP=20\\).",
+    "difficulty": "hard",
+    "source": "Question 1(ae) · page 17",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(ae) · page 17"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-20",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A grid search tries 3 learning rates, 4 values for the penalty, and 2 choices of feature scaling. With 5-fold CV, how many model fits are made before the optional final refit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "120"
+      },
+      {
+        "id": "b",
+        "text": "24"
+      },
+      {
+        "id": "c",
+        "text": "45"
+      },
+      {
+        "id": "d",
+        "text": "60"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "There are \\(3\\times4\\times2=24\\) full configurations, each fit five times.",
+    "difficulty": "medium",
+    "source": "Question 1(af) · page 18",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(af) · page 18"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-21",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "Two L2 strengths have validation scores within noise: 0.5 and 2.0. If the goal is to favor the simpler fit at equal validation performance, which should you choose?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2.0, because it penalizes large weights more strongly."
+      },
+      {
+        "id": "b",
+        "text": "0.5, because it always generalizes better."
+      },
+      {
+        "id": "c",
+        "text": "Whichever performs best after tuning on the test set."
+      },
+      {
+        "id": "d",
+        "text": "The average, because CV requires interpolating hyperparameters."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "When predictions generalize similarly in CV, the stronger penalty is a defensible choice if you prefer the simpler fit. Keep test data for final evaluation.",
+    "difficulty": "medium",
+    "source": "Question 1(aj) · page 20",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(aj) · page 20"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-22",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "Ridge uses \\(\\lambda\\sum_{j=1}^3 w_j^2\\) with \\(\\lambda=0.2\\). The bias is 5, and the feature weights are \\((-3,0,4)\\). What is the penalty?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "1.4"
+      },
+      {
+        "id": "d",
+        "text": "25"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Ignore the intercept: \\(0.2(9+0+16)=5\\).",
+    "difficulty": "hard",
+    "source": "Question 1(al) · page 21",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(al) · page 21"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-23",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "X contains samples as rows and features as columns. This expression runs without an error. What does it center?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Each sample around its own mean across features."
+      },
+      {
+        "id": "b",
+        "text": "Each feature around its mean across samples."
+      },
+      {
+        "id": "c",
+        "text": "Both sample and feature means simultaneously."
+      },
+      {
+        "id": "d",
+        "text": "Nothing; keepdims prevents subtraction."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Axis 1 computes a mean for each row. Column-wise PCA centering should take means over axis 0 instead.",
+    "difficulty": "medium",
+    "source": "Question 2(c) · page 30",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 2(c) · page 30"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true,
+    "code": "Y = X - X.mean(axis=1, keepdims=True)"
+  },
+  {
+    "id": "in3050-prep-24",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "Distances from the points in one cluster to the points in a second cluster are 0.2, 0.4, 0.6, and 0.8. Which linkage assigns distance 0.8 between these clusters?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Complete linkage"
+      },
+      {
+        "id": "b",
+        "text": "Single linkage"
+      },
+      {
+        "id": "c",
+        "text": "Average linkage"
+      },
+      {
+        "id": "d",
+        "text": "All three linkages"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Complete linkage takes the largest cross-cluster pair distance. Single takes the smallest, and average here gives 0.5.",
+    "difficulty": "hard",
+    "source": "Question 1(ao) · page 22",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(ao) · page 22"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  },
+  {
+    "id": "in3050-prep-25",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "An autoencoder compresses unlabeled inputs before reconstructing them. What provides the target during training?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The original input for each example."
+      },
+      {
+        "id": "b",
+        "text": "A manually assigned label for each example."
+      },
+      {
+        "id": "c",
+        "text": "The embedding of a randomly chosen second example."
+      },
+      {
+        "id": "d",
+        "text": "The class predicted by k-means."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "For an ordinary autoencoder the reconstruction is compared with the example itself, so external labels are unnecessary.",
+    "difficulty": "easy",
+    "source": "Question 1(ar) · page 24",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(ar) · page 24"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam format and question styles"
+      }
+    ],
+    "examPrep": true
+  }
+]

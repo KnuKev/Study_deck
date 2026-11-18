@@ -4,6 +4,10 @@ I built Study Deck primarily for my own exam preparation in **IN3050** and **IN3
 
 The questions draw on my notes, lectures, group exercises, GitHub course materials, and past exams. I built the app with AI assistance. I can't guarantee full syllabus coverage or good grades.
 
+## Prepare for the exams
+
+In **Practice**, use **Question focus** to choose a full IN3050 paper from 2024 or 2025, the 2025 trial exam, recent exam variants, or IN3230 application-layer practice. The 2025 trial exam includes 35 quiz questions and five written prompts adapted to multiple choice. Full papers include historical topics that may fall outside current exam prep.
+
 ## Create and share your own decks
 
 1. In **My decks**, choose **Create deck**. Name your deck, add questions and answer options, mark the correct answer for each question, and select **Save deck**.

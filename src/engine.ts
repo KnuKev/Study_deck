@@ -1,8 +1,17 @@
-import type { StudySetId, Difficulty, EndReason, Question, Session, SessionMode, SessionSummary } from './model.ts'
+import type { StudySetId, Difficulty, EndReason, ExamYear, Question, Session, SessionMode, SessionSummary } from './model.ts'
 
-export function getPracticePool(questions: readonly Question[], courseId: StudySetId, topicIds: readonly string[], difficulty: Difficulty | 'all' = 'all') {
+export type QuestionFocus = 'mixed' | 'prep' | 'trial-2025' | ExamYear
+
+export function getPracticePool(questions: readonly Question[], courseId: StudySetId, topicIds: readonly string[], difficulty: Difficulty | 'all' = 'all', focus: QuestionFocus = 'mixed') {
   const topics = new Set(topicIds)
-  return questions.filter(question => !question.isDemo && question.courseId === courseId && (!topics.size || topics.has(question.topicId)) && (difficulty === 'all' || question.difficulty === difficulty))
+  return questions.filter(question => {
+    if (question.isDemo || question.courseId !== courseId) return false
+    if (focus === 'trial-2025') return Boolean(question.trial2025)
+    if (typeof focus === 'number') return question.examYear === focus
+    if (question.historicalOnly || (topics.size && !topics.has(question.topicId))) return false
+    if (difficulty !== 'all' && question.difficulty !== difficulty) return false
+    return focus === 'mixed' || Boolean(question.examPrep || question.examYear || question.trial2025)
+  })
 }
 
 /** Stable per session, including after reload; prevents learning an answer's letter. */
@@ -19,21 +28,38 @@ export function getOrderedOptions(question: Question, sessionId: string) {
   return options
 }
 
+export function answerIds(answer?: string): string[] {
+  return answer ? answer.split(',') : []
+}
+
+export function requiredAnswerCount(question: Question): number {
+  return question.type === 'multi' ? answerIds(question.correctOptionId).length : 1
+}
+
+export function isValidAnswer(question: Question, answer: string): boolean {
+  const ids = answerIds(answer)
+  return ids.length === requiredAnswerCount(question)
+    && new Set(ids).size === ids.length
+    && ids.every(id => question.options.some(option => option.id === id))
+}
+
 export function filterQuestions(questions: readonly Question[], courseId: StudySetId, topicIds: readonly string[]) {
   const selected = new Set(topicIds)
   return questions.filter(question => question.courseId === courseId && selected.has(question.topicId))
 }
 
-export function createSession(input: { courseId: StudySetId; mode: SessionMode; questionIds: string[]; durationMinutes: number | null }, now = Date.now()): Session {
+export function createSession(input: { courseId: StudySetId; mode: SessionMode; questionIds: string[]; durationMinutes: number | null; priority?: ReadonlyMap<string, number> }, now = Date.now()): Session {
   const questionIds = [...new Set(input.questionIds)]
   if (!questionIds.length || questionIds.some(id => typeof id !== 'string' || !id)) throw new Error('Choose at least one question.')
   if (!Number.isFinite(now) || now < 0) throw new Error('Invalid start time.')
   if (input.durationMinutes !== null && (!Number.isFinite(input.durationMinutes) || input.durationMinutes <= 0 || input.durationMinutes > 1440)) throw new Error('Invalid session duration.')
-  for (let i = questionIds.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[questionIds[i], questionIds[j]] = [questionIds[j]!, questionIds[i]!]
-  }
-  return { id: crypto.randomUUID(), courseId: input.courseId, mode: input.mode, questionIds, answers: {}, currentIndex: 0, startedAt: now, deadline: input.durationMinutes === null ? null : now + input.durationMinutes * 60_000, finishedAt: null, endReason: null }
+  // Independent exponential draws rank questions without replacement. Higher weights
+  // make a question more likely to appear early when the list is cut to session size.
+  const rankedIds = questionIds.map(id => ({
+    id,
+    draw: -Math.log(1 - Math.random()) / (input.priority?.get(id) ?? 1),
+  })).sort((a, b) => a.draw - b.draw).map(({ id }) => id)
+  return { id: crypto.randomUUID(), courseId: input.courseId, mode: input.mode, questionIds: rankedIds, answers: {}, currentIndex: 0, startedAt: now, deadline: input.durationMinutes === null ? null : now + input.durationMinutes * 60_000, finishedAt: null, endReason: null }
 }
 
 export function getRemainingSeconds(session: Session, now = Date.now()): number | null {
@@ -51,9 +77,9 @@ export function answerQuestion(session: Session, questionId: string, optionId: s
   if (session.finishedAt !== null) return session
   if (session.deadline !== null && now >= session.deadline) return finishSession(session, 'timeout', now)
   const question = questions.find(candidate => candidate.id === questionId)
-  if (!session.questionIds.includes(questionId) || !question || question.courseId !== session.courseId || !question.options.some(option => option.id === optionId)) throw new Error('Invalid answer.')
+  if (!session.questionIds.includes(questionId) || !question || question.courseId !== session.courseId || !isValidAnswer(question, optionId)) throw new Error('Invalid answer.')
   if (Object.hasOwn(session.answers, questionId)) return session
-  return { ...session, answers: { ...session.answers, [questionId]: optionId } }
+  return { ...session, answers: { ...session.answers, [questionId]: answerIds(optionId).sort().join(',') } }
 }
 
 export function summarizeSession(session: Session, questions: readonly Question[], now = Date.now()): SessionSummary {

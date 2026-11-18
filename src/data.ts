@@ -1,4 +1,8 @@
 import type { Course, Question, SourceDocument, Topic } from './model.ts'
+import in3050Trial from './content/in3050-trial-2025.json' with { type: 'json' }
+import in3050RecentExams from './content/in3050-recent-exams.json' with { type: 'json' }
+import in3050ExamPrep from './content/in3050-exam-preparation.json' with { type: 'json' }
+import in3230ExamPrep from './content/in3230-exam-preparation.json' with { type: 'json' }
 import in3050Questions from './content/in3050.json' with { type: 'json' }
 import in3050ExamFoundations from './content/in3050-exam-foundations.json' with { type: 'json' }
 import in3050ExamLearning from './content/in3050-exam-learning.json' with { type: 'json' }
@@ -14,9 +18,9 @@ import sources from './content/sources.json' with { type: 'json' }
 import archived from './content/archived.json' with { type: 'json' }
 import { LEGACY_COURSES, LEGACY_QUESTIONS } from './legacyDemo.ts'
 
-export const CONTENT_UPDATED = '2026-11-15'
+export const CONTENT_UPDATED = '2026-11-18'
 export const DIFFICULTY_LABELS = { easy: 'Basic', medium: 'Intermediate', hard: 'Challenging' } as const
-export const QUESTIONS = [...in3050Questions, ...in3050ExamFoundations, ...in3050ExamLearning, ...in3050Unsupervised, ...in3230CoreQuestions, ...in3230AdvancedQuestions, ...in3230Notes, ...in3230WirelessIoT] as Question[]
+export const QUESTIONS = [...in3050Questions, ...in3050ExamFoundations, ...in3050ExamLearning, ...in3050Unsupervised, ...in3230CoreQuestions, ...in3230AdvancedQuestions, ...in3230Notes, ...in3230WirelessIoT, ...in3050RecentExams, ...in3050Trial, ...in3050ExamPrep, ...in3230ExamPrep] as Question[]
 export const ALL_QUESTIONS = [...QUESTIONS, ...(archived as Question[]), ...LEGACY_QUESTIONS]
 export const QUESTION_INDEX = new Map(ALL_QUESTIONS.map(question => [question.id, question]))
 export const LEGACY_TOPICS = LEGACY_COURSES.flatMap(course => course.topics)
