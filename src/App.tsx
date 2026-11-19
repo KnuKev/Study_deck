@@ -13,10 +13,12 @@ import { useSlidingIndicator } from './useSlidingIndicator'
 import { deckQuestions, loadDecks, saveDecks } from './decks'
 import DeckLibrary from './DeckLibrary'
 import Results from './Results'
+import KeyTerms from './KeyTerms'
+import type { TermFilters } from './glossary'
 import TopicSummaryDialog from './TopicSummaryDialog'
 import type { Period } from './resultsPeriod'
 
-type View = 'practice' | 'history' | 'syllabus' | 'decks'
+type View = 'practice' | 'history' | 'syllabus' | 'decks' | 'terms'
 
 const PAST_PAPERS = [
   { focus: 2025, label: '2025 past exam' },
@@ -67,6 +69,9 @@ export default function App() {
   const [progress, setProgress] = useState(() => loadProgress(ALL_QUESTIONS))
   const { active, history } = progress
   const [view, setView] = useState<View>('practice')
+  const [termFilters, setTermFilters] = useState<TermFilters>({
+    courseId: 'all', topicId: 'all', query: '', order: 'topic',
+  })
   const [courseId, setCourseId] = useState<CourseId>(() => active?.courseId === 'IN3230' ? 'IN3230' : 'IN3050')
   const [decks, setDecks] = useState(loadDecks)
   const savedDecks = useRef(decks)
@@ -111,7 +116,7 @@ export default function App() {
   const resultQuestions = result ? questionsFor(result) : ALL_QUESTIONS
   const resultIndex = result?.deck ? new Map(resultQuestions.map(question => [question.id, question])) : QUESTION_INDEX
   const showSetup = view === 'practice' && !active && !result
-  const mainNav = useSlidingIndicator<HTMLElement>(view === 'decks' ? null : view, '[aria-current="page"]')
+  const mainNav = useSlidingIndicator<HTMLElement>(view === 'decks' || view === 'terms' ? null : view, '[aria-current="page"]')
   const durationOptions = useSlidingIndicator<HTMLDivElement>(showSetup ? duration ?? 'untimed' : null)
   const difficultyOptions = useSlidingIndicator<HTMLDivElement>(showSetup && !deck && !pastPaper ? difficulty : null)
   const countOptions = useSlidingIndicator<HTMLDivElement>(showSetup ? countOption : null)
@@ -169,6 +174,7 @@ export default function App() {
     setDeckId(null)
     setResultsSource(null)
     if (view === 'decks') setView('practice')
+    if (view === 'terms') setTermFilters(previous => ({ ...previous, courseId: id, topicId: 'all' }))
     setTopicIds([])
     setFocus('mixed')
     setDifficulty('all')
@@ -260,7 +266,7 @@ export default function App() {
   function navigate(next: View) {
     setView(next)
     setResultId(null)
-    if (next === 'decks') window.scrollTo(0, 0)
+    if (next === 'decks' || next === 'terms') window.scrollTo(0, 0)
   }
 
   const resultsSources = new Map<StudySetId, string>(COURSES.map(item => [item.id, `${item.id} · ${item.shortTitle}`]))
@@ -286,6 +292,9 @@ export default function App() {
       <div className="course-options">
         {COURSES.map(item => <button key={item.id} disabled={Boolean(active)} className={'course-option' + (!deck && courseId === item.id ? ' selected' : '')} onClick={() => chooseCourse(item.id)} aria-pressed={!deck && courseId === item.id}><span className="course-symbol"><Icon name={item.id === 'IN3050' ? 'brain' : 'network'} /></span><span><strong>{item.id}</strong><small>{item.shortTitle}</small></span><Icon name="chevron" /></button>)}
       </div>
+      <button className={'deck-link' + (view === 'terms' ? ' selected' : '')} onClick={() => navigate('terms')} aria-current={view === 'terms' ? 'page' : undefined}>
+        <Icon name="book" />Key terms<Icon name="chevron" />
+      </button>
       <button className={'deck-link' + (view === 'decks' ? ' selected' : '')} onClick={() => navigate('decks')} aria-current={view === 'decks' ? 'page' : undefined}>
         <Icon name="layers" />My decks<Icon name="chevron" />
       </button>
@@ -302,6 +311,8 @@ export default function App() {
     <main id="main-content" className="main-content">
       {!storageAvailable && <div className="storage-notice" role="alert"><Icon name="info" /><span>Your progress could not be saved. Closing this page may lose your session.</span></div>}
       {active && view !== 'practice' && <button className="resume-banner" onClick={() => setView('practice')}><Icon name="play" /><span>Session in progress for {sessionTitle(active)}</span><strong>{remaining === null ? 'No time limit' : time(remaining)}</strong><span>Resume<Icon name="arrow" /></span></button>}
+
+      {view === 'terms' && <KeyTerms filters={termFilters} onChange={setTermFilters} />}
 
       {view === 'decks' && <DeckLibrary decks={decks} sessionActive={Boolean(active)} onChange={updateDecks} onPractice={practiseDeck} />}
 

@@ -1,0 +1,1693 @@
+[
+  {
+    "topicId": "ai-linear-algebra",
+    "terms": [
+      {
+        "term": "Feature vector",
+        "aliases": [],
+        "definition": "Numerical values representing one observation. Each coordinate corresponds to an input feature."
+      },
+      {
+        "term": "Norm",
+        "aliases": [],
+        "definition": "A measure of a vector’s length. The Euclidean norm is the square root of the sum of squared coordinates."
+      },
+      {
+        "term": "Dot product",
+        "aliases": [
+          "Inner product"
+        ],
+        "definition": "The sum of products of corresponding coordinates. It gives a weighted score and relates to the angle between vectors."
+      },
+      {
+        "term": "Euclidean distance",
+        "aliases": [
+          "L2 distance"
+        ],
+        "definition": "Straight-line distance between two points, computed from the squared coordinate differences."
+      },
+      {
+        "term": "Manhattan distance",
+        "aliases": [
+          "L1 distance"
+        ],
+        "definition": "The sum of absolute coordinate differences. It can produce different nearest neighbors from Euclidean distance."
+      },
+      {
+        "term": "Projection",
+        "aliases": [],
+        "definition": "The component of a vector along a chosen direction. It connects geometric alignment to regression and dimensionality reduction."
+      },
+      {
+        "term": "Decision boundary",
+        "aliases": [
+          "Hyperplane"
+        ],
+        "definition": "The surface where a classifier changes its prediction. An affine classifier uses a boundary of the form wᵀx + b = 0."
+      },
+      {
+        "term": "Matrix multiplication",
+        "aliases": [],
+        "definition": "A row–column dot-product operation. An N by D input matrix multiplied by D by K weights produces N by K scores."
+      },
+      {
+        "term": "Bias term",
+        "aliases": [
+          "Intercept"
+        ],
+        "definition": "An input-independent offset in a model’s score. It lets an affine decision boundary move away from the origin."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-optimization-search",
+    "terms": [
+      {
+        "term": "Objective function",
+        "aliases": [
+          "Loss function",
+          "Fitness function"
+        ],
+        "definition": "A rule that assigns a quality value to a candidate. State whether the search should minimize or maximize it."
+      },
+      {
+        "term": "Search space",
+        "aliases": [],
+        "definition": "The set of possible candidates. Constraints determine which candidates are valid."
+      },
+      {
+        "term": "Local optimum",
+        "aliases": [],
+        "definition": "A candidate at least as good as its permitted neighbors, but potentially worse than a distant candidate."
+      },
+      {
+        "term": "Global optimum",
+        "aliases": [],
+        "definition": "A candidate with the best objective value across the entire feasible search space."
+      },
+      {
+        "term": "Greedy search",
+        "aliases": [],
+        "definition": "Construction of a solution by choosing the best immediate next part, without generally considering all long-term consequences."
+      },
+      {
+        "term": "Hill climbing",
+        "aliases": [
+          "Local search"
+        ],
+        "definition": "Repeated replacement of a complete candidate by a better neighbor. It can become trapped at a local optimum."
+      },
+      {
+        "term": "Exploration",
+        "aliases": [],
+        "definition": "Trying unfamiliar regions of the search space, potentially accepting short-term loss of quality to find better alternatives."
+      },
+      {
+        "term": "Exploitation",
+        "aliases": [],
+        "definition": "Refining candidates in a promising region using information already found."
+      },
+      {
+        "term": "Simulated annealing",
+        "aliases": [],
+        "definition": "Local search that sometimes accepts worse moves. Cooling reduces that acceptance probability and increases exploitation."
+      },
+      {
+        "term": "Gradient descent",
+        "aliases": [
+          "Gradient ascent"
+        ],
+        "definition": "Updates that move against the gradient to decrease an objective, or with it to increase one. The gradient is the vector of partial derivatives."
+      },
+      {
+        "term": "Learning rate",
+        "aliases": [
+          "Step size",
+          "Eta"
+        ],
+        "definition": "The multiplier controlling the size of a gradient update. Too small can be slow; too large can overshoot or diverge."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-supervised-knn",
+    "terms": [
+      {
+        "term": "Supervised learning",
+        "aliases": [],
+        "definition": "Learning a mapping from example inputs to supplied targets, with the aim of making useful predictions on unseen inputs."
+      },
+      {
+        "term": "Regression",
+        "aliases": [],
+        "definition": "Prediction of a numerical target, such as temperature or travel time."
+      },
+      {
+        "term": "Classification",
+        "aliases": [],
+        "definition": "Prediction of a category or label. The meaning of the target determines the task, even when the input features are numbers."
+      },
+      {
+        "term": "k-nearest neighbors",
+        "aliases": [
+          "kNN",
+          "k-NN"
+        ],
+        "definition": "A method that finds the k closest stored examples and aggregates their targets, often by majority vote for classification."
+      },
+      {
+        "term": "Distance metric",
+        "aliases": [],
+        "definition": "The rule used to decide which inputs are close. Its choice affects neighbor selection and clustering."
+      },
+      {
+        "term": "Feature scaling",
+        "aliases": [
+          "Normalization",
+          "Standardization"
+        ],
+        "definition": "Changing feature magnitudes so their units do not unintentionally dominate distances or penalties. Learn scaling statistics from training data only."
+      },
+      {
+        "term": "Hyperparameter",
+        "aliases": [],
+        "definition": "A setting chosen outside ordinary parameter fitting, such as k or regularization strength. Select it using validation or cross-validation."
+      },
+      {
+        "term": "Lazy learning",
+        "aliases": [
+          "Instance-based learning"
+        ],
+        "definition": "A strategy that stores training examples and performs much of the work at prediction time, as basic kNN does."
+      },
+      {
+        "term": "Distance-weighted voting",
+        "aliases": [],
+        "definition": "Neighbor voting in which closer examples have more influence than distant examples."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-perceptron-regression",
+    "terms": [
+      {
+        "term": "Perceptron",
+        "aliases": [],
+        "definition": "A binary classifier that applies a threshold to an affine score and updates its weights when it misclassifies an example."
+      },
+      {
+        "term": "Linear separability",
+        "aliases": [],
+        "definition": "The existence of one affine hyperplane that correctly separates the training classes."
+      },
+      {
+        "term": "XOR",
+        "aliases": [
+          "Exclusive OR"
+        ],
+        "definition": "A Boolean function true when exactly one input is true. Its two positive corners cannot be separated from its negatives by one line."
+      },
+      {
+        "term": "Perceptron update",
+        "aliases": [],
+        "definition": "For 0/1 labels, adding learning_rate × (target − prediction) × input to the weights. Correct predictions cause no update."
+      },
+      {
+        "term": "Linear regression",
+        "aliases": [],
+        "definition": "A model that predicts a numerical target using an affine combination of input features."
+      },
+      {
+        "term": "Residual",
+        "aliases": [
+          "Prediction error"
+        ],
+        "definition": "The difference between an observed target and a prediction. Check the sign convention before using it in an update."
+      },
+      {
+        "term": "Mean squared error",
+        "aliases": [
+          "MSE"
+        ],
+        "definition": "The average of squared prediction errors. Squaring prevents positive and negative errors from canceling."
+      },
+      {
+        "term": "Root mean squared error",
+        "aliases": [
+          "RMSE"
+        ],
+        "definition": "The square root of MSE, expressed in the same units as the target."
+      },
+      {
+        "term": "Sum of squared errors",
+        "aliases": [
+          "SSE",
+          "SE"
+        ],
+        "definition": "The total squared prediction error. On a fixed dataset it has the same minimizing parameters as MSE and RMSE."
+      },
+      {
+        "term": "Inductive bias",
+        "aliases": [],
+        "definition": "Assumptions that restrict the relationships a learner can represent or prefer, such as choosing an affine model."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-evolutionary-algorithms",
+    "terms": [
+      {
+        "term": "Evolutionary algorithm",
+        "aliases": [
+          "EA"
+        ],
+        "definition": "A stochastic search that evaluates a population and repeatedly applies selection, variation, and replacement."
+      },
+      {
+        "term": "Genotype",
+        "aliases": [
+          "Genome"
+        ],
+        "definition": "The encoded candidate manipulated by the algorithm, such as a bit string, real-valued vector, or permutation."
+      },
+      {
+        "term": "Phenotype",
+        "aliases": [],
+        "definition": "The candidate’s interpreted solution or behavior in the problem being solved."
+      },
+      {
+        "term": "Fitness",
+        "aliases": [],
+        "definition": "The quality used to compare candidates and guide evolutionary search. It must reflect the intended task."
+      },
+      {
+        "term": "Mutation",
+        "aliases": [],
+        "definition": "A variation operation that changes one candidate, such as flipping a bit or swapping two positions."
+      },
+      {
+        "term": "Crossover",
+        "aliases": [
+          "Recombination"
+        ],
+        "definition": "Combining information from parents to create offspring. The operation must respect the representation’s validity constraints."
+      },
+      {
+        "term": "Permutation representation",
+        "aliases": [],
+        "definition": "An ordering of distinct items, with each item appearing exactly once. Duplicate entries invalidate a tour encoded this way."
+      },
+      {
+        "term": "Partially mapped crossover",
+        "aliases": [
+          "PMX"
+        ],
+        "definition": "Permutation crossover that preserves a selected segment and uses mappings between parents to repair conflicting outside entries."
+      },
+      {
+        "term": "Order crossover",
+        "aliases": [
+          "OX"
+        ],
+        "definition": "Permutation crossover that retains a segment and fills the remaining positions while preserving the other parent’s relative order."
+      },
+      {
+        "term": "Arithmetic crossover",
+        "aliases": [
+          "Intermediate crossover"
+        ],
+        "definition": "Recombination of real-valued vectors using weighted averages of corresponding entries."
+      },
+      {
+        "term": "Selection pressure",
+        "aliases": [],
+        "definition": "How strongly selection favors high-fitness candidates. Higher pressure can speed improvement but also remove diversity."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-evolutionary-applications",
+    "terms": [
+      {
+        "term": "Parent selection",
+        "aliases": [],
+        "definition": "Choosing which individuals reproduce. This can use a different rule from selection of the next population."
+      },
+      {
+        "term": "Survivor selection",
+        "aliases": [
+          "Replacement"
+        ],
+        "definition": "Choosing which candidates remain in the population after offspring have been generated."
+      },
+      {
+        "term": "Elitism",
+        "aliases": [],
+        "definition": "Preserving one or more of the best candidates so variation cannot discard them by chance."
+      },
+      {
+        "term": "Fitness-proportionate selection",
+        "aliases": [
+          "Roulette-wheel selection"
+        ],
+        "definition": "Selection probabilities proportional to suitable nonnegative fitness values. A dominant value can quickly reduce diversity."
+      },
+      {
+        "term": "Rank-based selection",
+        "aliases": [],
+        "definition": "Selection based on ordering by fitness rather than its raw magnitude, making pressure less sensitive to scale."
+      },
+      {
+        "term": "Tournament selection",
+        "aliases": [],
+        "definition": "Sampling a group and selecting its best candidate. Larger tournaments generally increase selection pressure."
+      },
+      {
+        "term": "Population diversity",
+        "aliases": [],
+        "definition": "The degree to which candidates differ. It keeps alternatives available when the current best region is only locally promising."
+      },
+      {
+        "term": "Fitness sharing",
+        "aliases": [],
+        "definition": "Reducing effective fitness in crowded regions to encourage the population to occupy several niches."
+      },
+      {
+        "term": "Crowding",
+        "aliases": [],
+        "definition": "Making offspring compete mainly with similar individuals, helping preserve different parts of the population."
+      },
+      {
+        "term": "Differential evolution",
+        "aliases": [
+          "DE"
+        ],
+        "definition": "Real-vector evolutionary search that uses scaled differences between population members to generate trial candidates."
+      },
+      {
+        "term": "Wrapper feature selection",
+        "aliases": [],
+        "definition": "Searching feature subsets by fitting and validating a model for each subset. Selection must respect the training and validation splits."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-logistic-regression",
+    "terms": [
+      {
+        "term": "Logistic regression",
+        "aliases": [],
+        "definition": "An affine model with a probability output, commonly sigmoid for binary classification and softmax for exclusive multiclass classification."
+      },
+      {
+        "term": "Logit",
+        "aliases": [],
+        "definition": "A raw score before a sigmoid or softmax converts scores to probabilities."
+      },
+      {
+        "term": "Sigmoid",
+        "aliases": [
+          "Logistic function"
+        ],
+        "definition": "A function mapping a real score to a value between 0 and 1. A score of zero maps to 0.5."
+      },
+      {
+        "term": "Softmax",
+        "aliases": [],
+        "definition": "Normalization of exponentiated logits into a probability distribution over mutually exclusive classes."
+      },
+      {
+        "term": "Cross-entropy",
+        "aliases": [
+          "Negative log-likelihood"
+        ],
+        "definition": "A loss penalizing low predicted probability for the observed label. For a one-hot target, it is the negative log of the true-class probability."
+      },
+      {
+        "term": "One-hot encoding",
+        "aliases": [],
+        "definition": "A vector with one active entry identifying a category and zero elsewhere. It can encode an exclusive target or index a learned embedding."
+      },
+      {
+        "term": "Multiclass classification",
+        "aliases": [],
+        "definition": "Selecting exactly one label from more than two possible classes."
+      },
+      {
+        "term": "Multilabel classification",
+        "aliases": [],
+        "definition": "Assigning any applicable subset of labels to an example, often with independent sigmoid outputs."
+      },
+      {
+        "term": "One-vs-rest",
+        "aliases": [
+          "OvR"
+        ],
+        "definition": "Fitting one binary classifier per class against all remaining classes, then comparing their outputs."
+      },
+      {
+        "term": "Decision threshold",
+        "aliases": [],
+        "definition": "The cutoff used to turn a probability or score into a label. Changing it trades false alarms against missed positives."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-backpropagation",
+    "terms": [
+      {
+        "term": "Hidden layer",
+        "aliases": [],
+        "definition": "An intermediate set of units transforming inputs into features used by later layers."
+      },
+      {
+        "term": "Activation function",
+        "aliases": [],
+        "definition": "A transformation applied to a unit’s pre-activation score. Nonlinear hidden activations let a network express nonlinear relationships."
+      },
+      {
+        "term": "Forward pass",
+        "aliases": [
+          "Forward propagation"
+        ],
+        "definition": "Computing layer outputs in sequence to obtain a prediction and its loss."
+      },
+      {
+        "term": "Backpropagation",
+        "aliases": [
+          "Backward pass"
+        ],
+        "definition": "Efficiently computing loss derivatives by applying the chain rule backward through the network."
+      },
+      {
+        "term": "Chain rule",
+        "aliases": [],
+        "definition": "Computing a derivative through composed operations by combining their local derivatives."
+      },
+      {
+        "term": "Gradient",
+        "aliases": [],
+        "definition": "The vector of partial derivatives with respect to parameters. It describes local sensitivity of the objective."
+      },
+      {
+        "term": "Optimizer",
+        "aliases": [],
+        "definition": "The rule that uses gradients or other information to update parameters. Backpropagation supplies gradients rather than performing the update itself."
+      },
+      {
+        "term": "Mini-batch",
+        "aliases": [],
+        "definition": "A subset of training examples used for one gradient estimate or update. Averaging examples can reduce sampling noise."
+      },
+      {
+        "term": "Gradient checking",
+        "aliases": [],
+        "definition": "Comparing an analytic gradient with a small finite-difference estimate to help find implementation errors."
+      },
+      {
+        "term": "Universal approximation theorem",
+        "aliases": [],
+        "definition": "An existence result for sufficiently wide networks with suitable nonlinear activations. It does not guarantee easy training or generalization."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-evaluation-generalization",
+    "terms": [
+      {
+        "term": "Generalization",
+        "aliases": [],
+        "definition": "Performance on unseen examples from the intended task, rather than fit to the training sample alone."
+      },
+      {
+        "term": "Training, validation, and test sets",
+        "aliases": [],
+        "definition": "Training fits parameters, validation selects settings, and the final held-out test evaluates the selected procedure."
+      },
+      {
+        "term": "Data leakage",
+        "aliases": [],
+        "definition": "Held-out information influencing training or model selection, including fitting preprocessing on all data before cross-validation."
+      },
+      {
+        "term": "Cross-validation",
+        "aliases": [
+          "CV",
+          "k-fold CV"
+        ],
+        "definition": "Repeated fitting with different held-out folds to compare models or estimate performance."
+      },
+      {
+        "term": "Bias–variance trade-off",
+        "aliases": [
+          "Underfitting",
+          "Overfitting"
+        ],
+        "definition": "Restricted models can miss structure through high bias; overly flexible fits can be sensitive to sample noise through high variance."
+      },
+      {
+        "term": "Confusion matrix",
+        "aliases": [
+          "TP",
+          "FP",
+          "TN",
+          "FN"
+        ],
+        "definition": "Counts of true positives, false positives, true negatives, and false negatives for a stated positive class and decision threshold."
+      },
+      {
+        "term": "Accuracy",
+        "aliases": [],
+        "definition": "The fraction of all examples correctly classified. A majority class can dominate this measure."
+      },
+      {
+        "term": "Precision",
+        "aliases": [],
+        "definition": "The fraction of predicted positives that are truly positive: TP/(TP + FP)."
+      },
+      {
+        "term": "Recall",
+        "aliases": [
+          "Sensitivity",
+          "True positive rate",
+          "TPR"
+        ],
+        "definition": "The fraction of actual positives detected: TP/(TP + FN)."
+      },
+      {
+        "term": "F1 score",
+        "aliases": [
+          "F1"
+        ],
+        "definition": "The harmonic mean of precision and recall. It is high only when both are sufficiently high."
+      },
+      {
+        "term": "Macro averaging",
+        "aliases": [
+          "Macro F1"
+        ],
+        "definition": "Giving each class equal weight when combining per-class metric values, regardless of its number of examples."
+      },
+      {
+        "term": "ROC curve",
+        "aliases": [
+          "Receiver operating characteristic",
+          "TPR versus FPR"
+        ],
+        "definition": "Plotting true-positive rate against false-positive rate as a classifier’s decision threshold changes."
+      },
+      {
+        "term": "Precision–recall curve",
+        "aliases": [
+          "PR curve"
+        ],
+        "definition": "Plotting precision against recall across decision thresholds, useful for inspecting rare-positive detection."
+      },
+      {
+        "term": "Area under the curve",
+        "aliases": [
+          "AUC",
+          "AUROC"
+        ],
+        "definition": "A summary of a curve over thresholds. AUROC summarizes score ranking, rather than calibration or performance at a specific threshold."
+      },
+      {
+        "term": "False-positive rate",
+        "aliases": [
+          "FPR"
+        ],
+        "definition": "The fraction of actual negatives classified positive: FP/(FP + TN). With many negatives, a small FPR can still mean many false alarms."
+      },
+      {
+        "term": "Specificity",
+        "aliases": [
+          "True negative rate",
+          "TNR"
+        ],
+        "definition": "The fraction of actual negatives correctly classified: TN/(TN + FP). It equals one minus the false-positive rate."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-regularization-ensembles",
+    "terms": [
+      {
+        "term": "Regularization",
+        "aliases": [],
+        "definition": "Constraining a model’s fit through penalties, stopping rules, or other preferences to reduce sensitivity to training-specific detail."
+      },
+      {
+        "term": "Ridge",
+        "aliases": [
+          "L2 regularization"
+        ],
+        "definition": "A squared-weight penalty that typically shrinks coefficients without setting many exactly to zero."
+      },
+      {
+        "term": "Lasso",
+        "aliases": [
+          "L1 regularization"
+        ],
+        "definition": "An absolute-weight penalty that can set coefficients exactly to zero, selecting a sparse subset of original features."
+      },
+      {
+        "term": "Elastic net",
+        "aliases": [],
+        "definition": "Combining L1 and L2 penalties to balance sparsity with more stable treatment of correlated features."
+      },
+      {
+        "term": "Early stopping",
+        "aliases": [],
+        "definition": "Selecting a checkpoint using validation performance before continued fitting worsens generalization."
+      },
+      {
+        "term": "Bootstrap sample",
+        "aliases": [],
+        "definition": "A training sample drawn with replacement, so some observations repeat and others are omitted."
+      },
+      {
+        "term": "Bagging",
+        "aliases": [
+          "Bootstrap aggregation"
+        ],
+        "definition": "Fitting models independently on bootstrap samples and averaging or voting. It often reduces variance when their errors differ."
+      },
+      {
+        "term": "Boosting",
+        "aliases": [],
+        "definition": "Fitting models sequentially so later rounds respond to earlier errors, then combining their predictions."
+      },
+      {
+        "term": "Feature selection",
+        "aliases": [],
+        "definition": "Keeping a subset of original input features. Select using only the training side of each evaluation split."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-deep-learning",
+    "terms": [
+      {
+        "term": "Representation learning",
+        "aliases": [],
+        "definition": "Learning internal feature vectors from data rather than relying entirely on hand-designed input features."
+      },
+      {
+        "term": "ReLU",
+        "aliases": [
+          "Rectified linear unit"
+        ],
+        "definition": "The activation max(0, z). Positive inputs pass through; negative inputs become zero."
+      },
+      {
+        "term": "Vanishing gradients",
+        "aliases": [],
+        "definition": "Gradient signals shrinking through repeated chain-rule factors, making early layers learn slowly."
+      },
+      {
+        "term": "Convolution",
+        "aliases": [
+          "CNN",
+          "Convolutional neural network"
+        ],
+        "definition": "Applying learned local filters across input positions. Shared weights reduce parameter count and detect recurring patterns."
+      },
+      {
+        "term": "Pooling",
+        "aliases": [],
+        "definition": "Fixed local aggregation, such as a maximum or mean, often reducing spatial size without learned parameters."
+      },
+      {
+        "term": "Residual connection",
+        "aliases": [
+          "Skip connection",
+          "ResNet"
+        ],
+        "definition": "Adding a learned transformation to an identity path, making small corrections and gradient propagation easier."
+      },
+      {
+        "term": "Recurrent neural network",
+        "aliases": [
+          "RNN"
+        ],
+        "definition": "A sequence model updating hidden state from the current input and previous state while sharing weights over time."
+      },
+      {
+        "term": "Embedding",
+        "aliases": [],
+        "definition": "A dense vector representation of an item such as a token, often learned jointly with the model."
+      },
+      {
+        "term": "Autoregressive generation",
+        "aliases": [
+          "Language model"
+        ],
+        "definition": "Generating a sequence one item at a time by feeding chosen outputs into later predictions."
+      }
+    ]
+  },
+  {
+    "topicId": "ai-unsupervised-learning",
+    "terms": [
+      {
+        "term": "Unsupervised learning",
+        "aliases": [],
+        "definition": "Learning structure or representations from inputs without supplied target labels for the task."
+      },
+      {
+        "term": "K-means",
+        "aliases": [
+          "Centroid",
+          "WCSS"
+        ],
+        "definition": "Clustering that alternates nearest-center assignment with mean updates to reduce within-cluster squared distances for a chosen K."
+      },
+      {
+        "term": "Hierarchical clustering",
+        "aliases": [
+          "Agglomerative clustering"
+        ],
+        "definition": "Building nested groups by repeatedly merging clusters, with linkage defining which merge is closest."
+      },
+      {
+        "term": "Dendrogram",
+        "aliases": [],
+        "definition": "A tree recording hierarchical cluster merges. Cutting across higher merges generally gives fewer clusters."
+      },
+      {
+        "term": "Single, complete, and average linkage",
+        "aliases": [],
+        "definition": "Cluster distances defined by the minimum, maximum, or mean cross-cluster pair distance, respectively."
+      },
+      {
+        "term": "Ward linkage",
+        "aliases": [],
+        "definition": "Merging the pair that gives the smallest increase in within-cluster sum of squared deviations."
+      },
+      {
+        "term": "Principal component analysis",
+        "aliases": [
+          "PCA",
+          "Principal component"
+        ],
+        "definition": "Finding orthogonal directions of high variance in centered data and projecting onto selected directions."
+      },
+      {
+        "term": "Centering",
+        "aliases": [],
+        "definition": "Subtracting each feature’s mean. With examples as rows, PCA subtracts column means rather than row means."
+      },
+      {
+        "term": "Explained variance",
+        "aliases": [],
+        "definition": "The amount of observed variation captured by a component or a set of components, rather than a guarantee of predictive relevance."
+      },
+      {
+        "term": "Autoencoder",
+        "aliases": [
+          "Encoder",
+          "Decoder",
+          "Latent code"
+        ],
+        "definition": "A model encoding an input into a representation and decoding it to reconstruct that input."
+      },
+      {
+        "term": "t-SNE",
+        "aliases": [],
+        "definition": "A low-dimensional visualization method emphasizing local neighbors. Large displayed distances and cluster sizes need not reflect global geometry."
+      }
+    ]
+  },
+  {
+    "topicId": "net-introduction",
+    "terms": [
+      {
+        "term": "Maximum transmission unit",
+        "aliases": [
+          "MTU"
+        ],
+        "definition": "The largest packet size a link can carry without fragmentation at that layer. Encapsulation overhead can reduce the space available to an inner packet."
+      },
+      {
+        "term": "IP fragmentation",
+        "aliases": [],
+        "definition": "Splitting an IP packet into fragments. Reassembly needs every fragment, so one missing part prevents delivery of the whole packet."
+      },
+      {
+        "term": "Path MTU Discovery",
+        "aliases": [
+          "PMTUD"
+        ],
+        "definition": "Finding a usable packet size by reacting to feedback about packets too large for the path. Filtered ICMP can break that feedback."
+      },
+      {
+        "term": "Packetization-layer PMTUD",
+        "aliases": [
+          "PLPMTUD"
+        ],
+        "definition": "Using probes and delivery confirmation to discover usable packet sizes without relying solely on ICMP errors."
+      },
+      {
+        "term": "Multipath transfer",
+        "aliases": [],
+        "definition": "Sending traffic along several paths to use capacity or improve resilience, potentially introducing reordering."
+      },
+      {
+        "term": "Per-flow load balancing",
+        "aliases": [
+          "ECMP",
+          "LAG"
+        ],
+        "definition": "Keeping packets of a flow on a selected path to reduce reordering. Unequal flow sizes can still make path loads uneven."
+      },
+      {
+        "term": "Packet reordering",
+        "aliases": [],
+        "definition": "Packets arriving in a different order from transmission. A receiver’s gap reports can resemble the signals of loss."
+      },
+      {
+        "term": "Protocol ossification",
+        "aliases": [],
+        "definition": "Deployed assumptions and middleboxes making protocol changes difficult, even when endpoints could support them."
+      }
+    ]
+  },
+  {
+    "topicId": "net-architecture",
+    "terms": [
+      {
+        "term": "Protocol data unit",
+        "aliases": [
+          "PDU"
+        ],
+        "definition": "The unit exchanged by peer protocol entities, carrying that layer’s control information and payload."
+      },
+      {
+        "term": "Service data unit",
+        "aliases": [
+          "SDU"
+        ],
+        "definition": "Data handed from an upper layer to a lower layer for transport. The lower layer adds its own protocol information."
+      },
+      {
+        "term": "Encapsulation",
+        "aliases": [],
+        "definition": "Carrying one protocol’s data unit as payload inside another protocol’s unit."
+      },
+      {
+        "term": "Multiplexing",
+        "aliases": [
+          "Demultiplexing"
+        ],
+        "definition": "Combining logical flows onto shared resources, then separating received data into the intended flows or applications."
+      },
+      {
+        "term": "Communication scope",
+        "aliases": [
+          "Recursive layering"
+        ],
+        "definition": "The set of entities cooperating through a layer. Similar functions can recur at hop-local and end-to-end scopes."
+      },
+      {
+        "term": "End-to-end principle",
+        "aliases": [],
+        "definition": "Placing functions needing complete application knowledge at endpoints, even when network mechanisms can help performance."
+      },
+      {
+        "term": "Identifier and locator",
+        "aliases": [],
+        "definition": "An identifier says which entity is intended; a locator indicates where it can be reached. Combining them complicates mobility."
+      },
+      {
+        "term": "Routing and forwarding",
+        "aliases": [],
+        "definition": "Routing develops reachability or path information; forwarding uses installed state to choose each packet’s next action."
+      },
+      {
+        "term": "Network address translation",
+        "aliases": [
+          "NAT",
+          "NAPT"
+        ],
+        "definition": "Maintaining mappings between internal and external addresses or ports so packets can cross addressing realms."
+      },
+      {
+        "term": "Multipath TCP",
+        "aliases": [
+          "MPTCP",
+          "Multihoming"
+        ],
+        "definition": "MPTCP presents one logical connection over several TCP subflows. Multiple attachments can provide capacity or resilience but may share bottlenecks."
+      }
+    ]
+  },
+  {
+    "topicId": "net-transport",
+    "terms": [
+      {
+        "term": "Transmission Control Protocol",
+        "aliases": [
+          "TCP"
+        ],
+        "definition": "An ordered reliable byte-stream transport. Applications must define their own message boundaries."
+      },
+      {
+        "term": "User Datagram Protocol",
+        "aliases": [
+          "UDP"
+        ],
+        "definition": "A datagram transport with ports and checksum support, without built-in reliable ordered delivery or congestion control."
+      },
+      {
+        "term": "Cumulative acknowledgement",
+        "aliases": [
+          "ACK"
+        ],
+        "definition": "Feedback confirming all earlier TCP bytes and naming the next expected byte."
+      },
+      {
+        "term": "Receive window",
+        "aliases": [
+          "rwnd",
+          "Flow control"
+        ],
+        "definition": "Receiver-advertised capacity limiting outstanding data to protect the receiver from overload."
+      },
+      {
+        "term": "Window scaling",
+        "aliases": [],
+        "definition": "Negotiating a larger interpretation of TCP’s advertised receive-window value so window limits need not throttle high-bandwidth, high-RTT paths."
+      },
+      {
+        "term": "Round-trip time",
+        "aliases": [
+          "RTT"
+        ],
+        "definition": "Time from sending data or a probe to receiving its corresponding response or acknowledgement."
+      },
+      {
+        "term": "Retransmission timeout",
+        "aliases": [
+          "RTO"
+        ],
+        "definition": "A timer used to infer loss when expected acknowledgement does not arrive. Its setting must allow for RTT and variation."
+      },
+      {
+        "term": "Karn’s rule",
+        "aliases": [
+          "Retransmission ambiguity"
+        ],
+        "definition": "Avoiding ambiguous RTT samples after retransmission, when an ACK cannot identify which transmission it acknowledges."
+      },
+      {
+        "term": "Fast retransmit and recovery",
+        "aliases": [],
+        "definition": "Using duplicate-ACK evidence to recover before a timeout, with congestion responses reflecting that some packets still arrived."
+      },
+      {
+        "term": "Selective acknowledgements",
+        "aliases": [
+          "SACK"
+        ],
+        "definition": "Reporting received blocks beyond a cumulative-ACK gap, helping the sender identify several missing regions."
+      },
+      {
+        "term": "Tail loss",
+        "aliases": [
+          "Tail loss probe",
+          "TLP"
+        ],
+        "definition": "Loss near the end of a transfer, where too few later packets may trigger fast retransmit. A probe can solicit earlier feedback."
+      },
+      {
+        "term": "RACK",
+        "aliases": [
+          "Recent acknowledgement"
+        ],
+        "definition": "Using delivery acknowledgements and transmission timing to infer losses while allowing a reordering interval."
+      }
+    ]
+  },
+  {
+    "topicId": "net-congestion",
+    "terms": [
+      {
+        "term": "Congestion control",
+        "aliases": [
+          "cwnd",
+          "Congestion window"
+        ],
+        "definition": "Adapting a sender’s outstanding data or rate to avoid overloading a shared network path."
+      },
+      {
+        "term": "ACK clocking",
+        "aliases": [],
+        "definition": "Using returning acknowledgements as feedback that data has left the path and more can be sent."
+      },
+      {
+        "term": "Slow start",
+        "aliases": [],
+        "definition": "Rapid congestion-window growth while probing capacity, roughly exponential per RTT under the idealized ACK pattern."
+      },
+      {
+        "term": "Congestion avoidance",
+        "aliases": [
+          "AIMD",
+          "Additive increase multiplicative decrease"
+        ],
+        "definition": "Cautious growth combined with proportional backoff after congestion signals, probing capacity while helping competing flows share it."
+      },
+      {
+        "term": "Bandwidth–delay product",
+        "aliases": [
+          "BDP"
+        ],
+        "definition": "Bandwidth multiplied by round-trip delay, estimating the data in flight needed to fill a path."
+      },
+      {
+        "term": "Bufferbloat",
+        "aliases": [],
+        "definition": "Excessive delay from persistent queues, even when packet loss is low and throughput is high."
+      },
+      {
+        "term": "Active queue management",
+        "aliases": [
+          "AQM",
+          "RED",
+          "CoDel"
+        ],
+        "definition": "Dropping or marking before a queue overflows to signal congestion. RED uses average occupancy; CoDel targets persistent queueing delay."
+      },
+      {
+        "term": "FQ-CoDel",
+        "aliases": [
+          "Fair queuing"
+        ],
+        "definition": "Combining flow scheduling with per-queue delay control, reducing interference from a single queue-dominating flow."
+      },
+      {
+        "term": "Explicit Congestion Notification",
+        "aliases": [
+          "ECN"
+        ],
+        "definition": "Marking packets to report congestion without dropping those packets, allowing responsive endpoints to reduce load."
+      },
+      {
+        "term": "BBR",
+        "aliases": [],
+        "definition": "Model-based congestion control estimating bottleneck delivery rate and propagation RTT, with probing needed to refresh those estimates."
+      },
+      {
+        "term": "Pacing",
+        "aliases": [],
+        "definition": "Spacing transmissions over time instead of sending large bursts. It complements rather than replaces control of average load."
+      },
+      {
+        "term": "Fairness",
+        "aliases": [],
+        "definition": "The way competing traffic shares resources. The result depends on whether the unit is a connection, user, application, or another grouping."
+      }
+    ]
+  },
+  {
+    "topicId": "net-wireless-1",
+    "terms": [
+      {
+        "term": "Attenuation",
+        "aliases": [
+          "Path loss"
+        ],
+        "definition": "Signal weakening across distance and obstacles, reducing the receiver’s ability to recover information."
+      },
+      {
+        "term": "Signal-to-noise ratio",
+        "aliases": [
+          "SNR"
+        ],
+        "definition": "Signal power relative to noise power. Together with interference and channel behavior, it affects reliable modulation choices."
+      },
+      {
+        "term": "Multipath propagation",
+        "aliases": [],
+        "definition": "Reflected signal copies reaching a receiver over different paths. It can distort signals or provide exploitable spatial diversity."
+      },
+      {
+        "term": "Modulation",
+        "aliases": [
+          "Constellation"
+        ],
+        "definition": "Encoding information through distinguishable carrier states. A constellation shows possible symbol states and their separation."
+      },
+      {
+        "term": "Symbol rate and bit rate",
+        "aliases": [],
+        "definition": "Symbols per second versus bits per second. M distinguishable states can encode log₂(M) raw bits per symbol, before coding and overhead."
+      },
+      {
+        "term": "TDMA and FDMA",
+        "aliases": [],
+        "definition": "Separating users into time slots or frequency bands so they can share a medium."
+      },
+      {
+        "term": "Code division multiple access",
+        "aliases": [
+          "CDMA"
+        ],
+        "definition": "Separating simultaneous transmissions through codes; matching-code correlation recovers a sender in the ideal orthogonal-code model."
+      },
+      {
+        "term": "OFDMA",
+        "aliases": [
+          "Orthogonal frequency division multiple access"
+        ],
+        "definition": "Allocating orthogonal subcarriers across time to different users."
+      },
+      {
+        "term": "Multiple-input multiple-output",
+        "aliases": [
+          "MIMO"
+        ],
+        "definition": "Using multiple antennas for spatial diversity or parallel streams, depending on channel conditions."
+      },
+      {
+        "term": "Beamforming",
+        "aliases": [],
+        "definition": "Combining antenna signals to reinforce transmission or reception in selected directions."
+      },
+      {
+        "term": "Millimeter-wave communication",
+        "aliases": [
+          "mmWave"
+        ],
+        "definition": "Use of high-frequency bands that can provide wide bandwidth but often need careful beam alignment and handling of blockage."
+      }
+    ]
+  },
+  {
+    "topicId": "net-wireless-2",
+    "terms": [
+      {
+        "term": "Wireless association",
+        "aliases": [
+          "Access point",
+          "AP",
+          "BSS"
+        ],
+        "definition": "Connecting a wireless client to an access point and its basic service set before using the network through it."
+      },
+      {
+        "term": "CSMA",
+        "aliases": [
+          "Carrier sensing"
+        ],
+        "definition": "Checking for local channel activity before transmitting. Hidden senders and propagation delay mean collisions remain possible."
+      },
+      {
+        "term": "Hidden terminal",
+        "aliases": [],
+        "definition": "A transmitter unable to hear another transmitter that can interfere at the same receiver."
+      },
+      {
+        "term": "Random backoff",
+        "aliases": [],
+        "definition": "Waiting a randomized interval before retrying access, reducing repeated simultaneous transmissions."
+      },
+      {
+        "term": "RTS/CTS",
+        "aliases": [
+          "Request to send",
+          "Clear to send"
+        ],
+        "definition": "Short reservation exchanges that can reduce costly data collisions but consume airtime themselves."
+      },
+      {
+        "term": "Rate adaptation",
+        "aliases": [],
+        "definition": "Changing transmission settings as radio conditions change, trading raw rate against errors and retransmission overhead."
+      },
+      {
+        "term": "Control plane and data plane",
+        "aliases": [],
+        "definition": "Control functions establish and manage state; the data plane carries user packets using that state."
+      },
+      {
+        "term": "Handover",
+        "aliases": [],
+        "definition": "Changing the serving radio access point or base station while maintaining connectivity where supported."
+      },
+      {
+        "term": "Home-routed roaming",
+        "aliases": [],
+        "definition": "Routing a visitor’s traffic through its home operator, providing control and accounting at a potential RTT cost."
+      },
+      {
+        "term": "Local breakout",
+        "aliases": [
+          "LBO"
+        ],
+        "definition": "Allowing roaming traffic to exit through the visited network rather than taking a home-network detour."
+      },
+      {
+        "term": "Mobile virtual network operator",
+        "aliases": [
+          "MVNO"
+        ],
+        "definition": "An operator selling mobile service using another operator’s radio resources, with varying ownership of core-network functions."
+      }
+    ]
+  },
+  {
+    "topicId": "net-wireless-3",
+    "terms": [
+      {
+        "term": "Massive IoT",
+        "aliases": [
+          "Internet of Things"
+        ],
+        "definition": "Many low-cost devices exchanging small amounts of data, often prioritizing battery life, coverage, and scale over peak throughput."
+      },
+      {
+        "term": "Low-power wide-area network",
+        "aliases": [
+          "LPWAN"
+        ],
+        "definition": "A network designed for low-rate communication across wide areas with energy-constrained devices."
+      },
+      {
+        "term": "LoRa and LoRaWAN",
+        "aliases": [],
+        "definition": "LoRa is the radio modulation; LoRaWAN defines networking and medium-access behavior around it, typically using shared unlicensed spectrum."
+      },
+      {
+        "term": "Spreading factor",
+        "aliases": [
+          "SF"
+        ],
+        "definition": "A LoRa setting increasing symbol duration and potential reception robustness at the cost of longer airtime."
+      },
+      {
+        "term": "Adaptive data rate",
+        "aliases": [
+          "ADR"
+        ],
+        "definition": "Adjusting radio settings such as rate and power to match link conditions and reduce unnecessary airtime or energy use."
+      },
+      {
+        "term": "NB-IoT",
+        "aliases": [
+          "Narrowband IoT"
+        ],
+        "definition": "A cellular IoT technology using narrowband radio resources and operator infrastructure, with mechanisms for coverage enhancement and power saving."
+      },
+      {
+        "term": "Coverage enhancement",
+        "aliases": [
+          "Repetitions"
+        ],
+        "definition": "Using mechanisms such as repeated transmissions and concentrated power to improve reception, with time and energy costs."
+      },
+      {
+        "term": "Power saving mode",
+        "aliases": [
+          "PSM"
+        ],
+        "definition": "Allowing a registered device to sleep without continuous receiver availability, delaying network-initiated communication until it wakes."
+      },
+      {
+        "term": "Extended discontinuous reception",
+        "aliases": [
+          "eDRx"
+        ],
+        "definition": "Spacing receiver listening opportunities farther apart to save energy, at the cost of downlink latency."
+      },
+      {
+        "term": "Network slicing",
+        "aliases": [],
+        "definition": "Using shared infrastructure to provide logically differentiated services with different resource and isolation requirements."
+      }
+    ]
+  },
+  {
+    "topicId": "net-http-quic",
+    "terms": [
+      {
+        "term": "Persistent connection",
+        "aliases": [
+          "Keepalive"
+        ],
+        "definition": "Reusing an established connection across requests, avoiding repeated setup and allowing transport state to carry forward."
+      },
+      {
+        "term": "Binary framing",
+        "aliases": [],
+        "definition": "Encoding messages as smaller structured frames that endpoints can identify and reassemble."
+      },
+      {
+        "term": "Stream, message, and frame",
+        "aliases": [],
+        "definition": "A stream is a logical bidirectional channel; a message carries a request or response; frames are the smaller units used to encode it."
+      },
+      {
+        "term": "HTTP/2 multiplexing",
+        "aliases": [],
+        "definition": "Interleaving frames from different logical streams over one connection, identified by stream IDs."
+      },
+      {
+        "term": "Head-of-line blocking",
+        "aliases": [
+          "HOL blocking"
+        ],
+        "definition": "Later data waiting behind an earlier unresolved item. HTTP/2 avoids response-order serialization but still inherits TCP’s ordered-byte-stream gaps."
+      },
+      {
+        "term": "Stream prioritization",
+        "aliases": [],
+        "definition": "Providing relative scheduling preferences for streams when resources are limited; actual behavior depends on endpoints and policy."
+      },
+      {
+        "term": "Header compression",
+        "aliases": [
+          "HPACK"
+        ],
+        "definition": "Reducing HTTP/2 metadata by using compact representations and indexes for repeated header fields."
+      },
+      {
+        "term": "QUIC",
+        "aliases": [],
+        "definition": "A transport over UDP integrating reliable streams, flow and congestion control, loss recovery, and a TLS 1.3 handshake."
+      },
+      {
+        "term": "HTTP/3",
+        "aliases": [],
+        "definition": "HTTP using QUIC streams instead of TCP as its transport."
+      },
+      {
+        "term": "0-RTT and 1-RTT",
+        "aliases": [
+          "TLS 1.3",
+          "Resumption"
+        ],
+        "definition": "A fresh QUIC connection normally uses a handshake RTT; suitable resumption state can permit early data in the first flight."
+      },
+      {
+        "term": "Connection ID",
+        "aliases": [
+          "Connection migration"
+        ],
+        "definition": "QUIC identifiers that associate packets with a logical connection across address changes, subject to path validation."
+      },
+      {
+        "term": "QUIC packet numbers",
+        "aliases": [],
+        "definition": "Identifiers unique to packet transmissions, helping acknowledgements distinguish retransmitted information and improve RTT measurement."
+      }
+    ]
+  },
+  {
+    "topicId": "net-cloud",
+    "terms": [
+      {
+        "term": "Infrastructure as a Service",
+        "aliases": [
+          "IaaS"
+        ],
+        "definition": "Renting infrastructure while managing operating systems and applications yourself."
+      },
+      {
+        "term": "Platform as a Service",
+        "aliases": [
+          "PaaS"
+        ],
+        "definition": "Deploying applications onto a provider-managed platform and runtime."
+      },
+      {
+        "term": "Software as a Service",
+        "aliases": [
+          "SaaS"
+        ],
+        "definition": "Using a provider-managed application, with less responsibility for its underlying stack."
+      },
+      {
+        "term": "Scalability",
+        "aliases": [],
+        "definition": "The ability to handle increasing workload by using suitable additional resources or capacity."
+      },
+      {
+        "term": "Elasticity",
+        "aliases": [],
+        "definition": "Dynamically adding and removing resources as demand changes, rather than relying solely on fixed provisioning."
+      },
+      {
+        "term": "Virtualization",
+        "aliases": [
+          "Hypervisor",
+          "Virtual machine",
+          "VM"
+        ],
+        "definition": "Presenting logical execution environments on shared physical hardware, with a hypervisor managing VM resources and isolation."
+      },
+      {
+        "term": "Multitenancy",
+        "aliases": [],
+        "definition": "Sharing infrastructure or a service among customers while separating their data, configuration, and resource use."
+      },
+      {
+        "term": "Availability, reliability, and resilience",
+        "aliases": [],
+        "definition": "Availability concerns usable service; reliability concerns correct operation over time; resilience concerns maintaining or recovering service through disruptions."
+      },
+      {
+        "term": "Service-level agreement",
+        "aliases": [
+          "SLA"
+        ],
+        "definition": "A contract describing measurable service commitments, such as uptime or response time, and how failures are handled."
+      },
+      {
+        "term": "Public, private, and hybrid clouds",
+        "aliases": [],
+        "definition": "Deployment models differing in access and ownership. Hybrid arrangements connect distinct cloud environments."
+      },
+      {
+        "term": "Load balancing",
+        "aliases": [],
+        "definition": "Distributing work across resources to reduce overload and use capacity, subject to downstream bottlenecks."
+      },
+      {
+        "term": "Disaster recovery",
+        "aliases": [
+          "Backup"
+        ],
+        "definition": "Plans and recoverable copies for restoring service or data after disruption. This serves a different purpose from live failover alone."
+      }
+    ]
+  },
+  {
+    "topicId": "net-mpls",
+    "terms": [
+      {
+        "term": "Multiprotocol Label Switching",
+        "aliases": [
+          "MPLS"
+        ],
+        "definition": "Forwarding packets using labels and installed mappings, separating forwarding operations from path and service decisions."
+      },
+      {
+        "term": "Forwarding equivalence class",
+        "aliases": [
+          "FEC"
+        ],
+        "definition": "Packets grouped for the same forwarding treatment, such as a destination, service, or engineered path."
+      },
+      {
+        "term": "Label-switched path",
+        "aliases": [
+          "LSP"
+        ],
+        "definition": "The path followed through an MPLS domain using label-based forwarding."
+      },
+      {
+        "term": "Push, swap, and pop",
+        "aliases": [],
+        "definition": "Adding a label, replacing the top label during forwarding, and removing a label."
+      },
+      {
+        "term": "Label Distribution Protocol",
+        "aliases": [
+          "LDP"
+        ],
+        "definition": "Exchanging label bindings used to build MPLS forwarding state, following routing reachability in the lecture’s basic example."
+      },
+      {
+        "term": "Traffic engineering",
+        "aliases": [
+          "TE"
+        ],
+        "definition": "Choosing paths using constraints and capacity needs rather than relying only on ordinary destination-based least cost."
+      },
+      {
+        "term": "Fast reroute",
+        "aliases": [
+          "FRR"
+        ],
+        "definition": "Using a prepared local detour around a failure while broader control-plane recovery proceeds."
+      },
+      {
+        "term": "Label stack",
+        "aliases": [],
+        "definition": "Multiple labels with different roles, such as an outer transport label and an inner VPN or service label."
+      },
+      {
+        "term": "Virtual routing and forwarding",
+        "aliases": [
+          "VRF",
+          "L3VPN"
+        ],
+        "definition": "Separate routing contexts supporting customer-specific IP connectivity over shared infrastructure."
+      },
+      {
+        "term": "L2VPN",
+        "aliases": [
+          "Pseudowire"
+        ],
+        "definition": "Emulating link-layer connectivity over a provider network, using labels to identify the transported service."
+      }
+    ]
+  },
+  {
+    "topicId": "net-interconnects",
+    "terms": [
+      {
+        "term": "Lossless flow control",
+        "aliases": [],
+        "definition": "Preventing buffer overflow under the design’s assumptions by limiting injection. It does not eliminate congestion or all possible losses."
+      },
+      {
+        "term": "Credit-based flow control",
+        "aliases": [],
+        "definition": "Sending only when credits indicate reserved receiver buffer capacity; returning credits permits further transmission."
+      },
+      {
+        "term": "Xon/Xoff",
+        "aliases": [],
+        "definition": "Stop/go feedback that pauses a sender before buffers overflow and resumes it when space becomes available."
+      },
+      {
+        "term": "Serialization and propagation delay",
+        "aliases": [],
+        "definition": "Time to put packet bits onto a link versus time for the signal to travel along it."
+      },
+      {
+        "term": "Bisection bandwidth",
+        "aliases": [],
+        "definition": "The capacity across a minimum-bandwidth cut dividing a network into roughly equal halves."
+      },
+      {
+        "term": "Crossbar",
+        "aliases": [],
+        "definition": "A switching fabric able to connect nonconflicting input–output pairs, with hardware cost growing rapidly with port count."
+      },
+      {
+        "term": "Direct and indirect networks",
+        "aliases": [],
+        "definition": "Direct networks distribute attached endpoints among switches; indirect networks connect endpoints through a fabric of intermediate switches."
+      },
+      {
+        "term": "Blocking",
+        "aliases": [],
+        "definition": "Waiting for a busy resource. A structurally blocking fabric can force otherwise independent transfers to share an internal path."
+      },
+      {
+        "term": "Deadlock",
+        "aliases": [],
+        "definition": "A set of packets unable to progress because each waits for resources held by another in a dependency cycle."
+      },
+      {
+        "term": "Livelock",
+        "aliases": [],
+        "definition": "Packets continuing to move without reaching their destination."
+      },
+      {
+        "term": "Dimension-order routing",
+        "aliases": [
+          "DOR"
+        ],
+        "definition": "Restricting routes to an ordered sequence of dimensions, preventing cyclic channel dependencies on suitable mesh designs."
+      },
+      {
+        "term": "Virtual channel",
+        "aliases": [
+          "VC"
+        ],
+        "definition": "Separately managed logical buffering and flow-control resources over a physical channel, useful for managing dependencies or traffic classes."
+      }
+    ]
+  },
+  {
+    "topicId": "net-network-operations",
+    "terms": [
+      {
+        "term": "Access and distribution network",
+        "aliases": [],
+        "definition": "The access network attaches devices; distribution aggregates their connectivity toward gateways and upstream links."
+      },
+      {
+        "term": "Default gateway",
+        "aliases": [],
+        "definition": "The router a host uses to reach destinations outside its directly connected network."
+      },
+      {
+        "term": "Redundancy",
+        "aliases": [],
+        "definition": "Duplicate resources or paths intended to preserve service when something fails."
+      },
+      {
+        "term": "Single point of failure",
+        "aliases": [
+          "SPOF"
+        ],
+        "definition": "A component or dependency whose failure can stop the service despite other functioning resources."
+      },
+      {
+        "term": "Shared failure domain",
+        "aliases": [
+          "Common-mode failure"
+        ],
+        "definition": "A dependency such as power, location, or conduit that can disable several supposedly independent components together."
+      },
+      {
+        "term": "Spanning tree",
+        "aliases": [
+          "STP"
+        ],
+        "definition": "Selecting a loop-free active layer-2 topology while redundant physical links exist."
+      },
+      {
+        "term": "Gateway redundancy",
+        "aliases": [
+          "HSRP"
+        ],
+        "definition": "Maintaining a usable default gateway when one router fails, protecting a different function from layer-2 loop prevention."
+      },
+      {
+        "term": "Failover capacity",
+        "aliases": [
+          "Headroom"
+        ],
+        "definition": "Spare capacity needed to absorb redirected traffic after failure, rather than merely providing an alternative path."
+      },
+      {
+        "term": "Wavelength multiplexing",
+        "aliases": [
+          "CWDM"
+        ],
+        "definition": "Carrying different optical channels on separate wavelengths over shared fiber."
+      },
+      {
+        "term": "UPS and generator",
+        "aliases": [],
+        "definition": "Power-resilience resources covering different timescales, with their independence and transfer behavior affecting service continuity."
+      }
+    ]
+  }
+]

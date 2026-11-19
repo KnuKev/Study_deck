@@ -602,3 +602,37 @@ body:has(.topic-summary-dialog[open]) { overflow: hidden; }
   .topic-summary-example { padding: 16px; }
   .topic-summary-footer { padding: 14px 18px; }
 }
+
+.glossary-filters { display: grid; grid-template-columns: minmax(100px, .8fr) minmax(0, 1.8fr) minmax(100px, .8fr); gap: 16px; }
+.glossary-search { grid-column: 1 / -1; }
+.select-control { position: relative; display: block; }
+.select-control > select { display: block; appearance: none; padding-inline: 12px 40px; }
+.select-control > .ui-icon {
+  position: absolute;
+  inset-inline-end: 13px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transform: translateY(-50%) rotate(90deg);
+}
+.glossary-count { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; margin: 8px 0; font-size: 12px; color: var(--text-secondary); }
+.glossary-groups { display: grid; gap: 18px; }
+.glossary-group-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 18px; }
+.glossary-group-heading > span { flex-shrink: 0; font-size: 11px; color: var(--text-secondary); }
+.glossary-list { margin: 0; }
+.glossary-entry { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px; padding: 18px 0; border-top: 1px solid var(--border); }
+.glossary-alphabetical .glossary-entry:first-child { padding-top: 0; border-top: 0; }
+.glossary-entry:last-child { padding-bottom: 0; }
+.glossary-entry dt { font-size: 14px; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
+.glossary-aliases { display: block; margin-top: 5px; color: var(--text-tertiary); font-size: 11px; font-weight: 400; }
+.glossary-entry dd { min-width: 0; margin: 0; }
+.glossary-entry p { margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.7; overflow-wrap: anywhere; }
+.glossary-topic { display: block; margin-top: 8px; font-size: 11px; color: var(--text-tertiary); }
+.glossary-empty { padding-block: 32px; }
+
+@media (max-width: 680px) {
+  .glossary-filters { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .glossary-entry { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+}
