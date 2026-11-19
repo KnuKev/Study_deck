@@ -636,3 +636,5 @@ body:has(.topic-summary-dialog[open]) { overflow: hidden; }
   .glossary-filters { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .glossary-entry { grid-template-columns: minmax(0, 1fr); gap: 8px; }
 }
+
+.question-source { margin-bottom: 20px; }

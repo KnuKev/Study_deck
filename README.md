@@ -6,7 +6,8 @@ I built Study Deck with AI to revise for **IN3050** and **IN3230**. Anyone is we
 
 ## Practise
 
-- In **Practice**, use **Question focus** to pick a past paper or focus on recent exam material. The 2025 trial includes five written prompts adapted to multiple choice.
+- In **Practice**, choose **Question source → Past exams** for IN3050. Select the 2024 final, 2025 final, 2025 trial, or **All past exams**, then choose the number of questions. This uses exam items, excluding generated variants and written prompts converted to multiple choice. Source errors have been clarified where needed.
+- Use **Question bank → Recent exams and prep** for exam-based practice including variants and adapted written prompts.
 - In **Syllabus**, choose **Practise this topic** to study one topic. Both courses have **Summary of this topic** with core concepts, a worked example, and self-check questions.
 
 - In **Key terms**, search short definitions for both courses, filter by course or topic, and sort A–Z or by topic.
