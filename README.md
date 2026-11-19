@@ -1,6 +1,6 @@
 # Study Deck
 
-I built Study Deck with AI to revise for **IN3050** and **IN3230**. Anyone is welcome to use it. Questions draw on my notes, lectures, group exercises, course repositories, and past papers. Cant guarantee full coverage or good grades :) 
+I built Study Deck with AI to revise for **IN3050** and **IN3230**. Anyone is welcome to use it. Questions draw on my notes, lectures, group exercises, course repositories, and past exams. Cant guarantee full coverage or good grades :) 
 
 [Open Study Deck](https://knukev.github.io/Study_deck/)
 
