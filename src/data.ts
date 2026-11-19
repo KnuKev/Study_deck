@@ -14,6 +14,7 @@ import in3230WirelessIoT from './content/in3230-wireless-iot.json' with { type: 
 import in3050Topics from './content/in3050-topics.json' with { type: 'json' }
 import in3230CoreTopics from './content/in3230-core-topics.json' with { type: 'json' }
 import in3230AdvancedTopics from './content/in3230-advanced-topics.json' with { type: 'json' }
+import in3050Summaries from './content/in3050-summaries.json' with { type: 'json' }
 import in3230Summaries from './content/in3230-summaries.json' with { type: 'json' }
 import sources from './content/sources.json' with { type: 'json' }
 import archived from './content/archived.json' with { type: 'json' }
@@ -25,7 +26,9 @@ export const QUESTIONS = [...in3050Questions, ...in3050ExamFoundations, ...in305
 export const ALL_QUESTIONS = [...QUESTIONS, ...(archived as Question[]), ...LEGACY_QUESTIONS]
 export const QUESTION_INDEX = new Map(ALL_QUESTIONS.map(question => [question.id, question]))
 export const LEGACY_TOPICS = LEGACY_COURSES.flatMap(course => course.topics)
-const summaryIndex = new Map((in3230Summaries as TopicSummary[]).map(summary => [summary.topicId, summary]))
+const summaryIndex = new Map(
+  ([...in3050Summaries, ...in3230Summaries] as TopicSummary[]).map(summary => [summary.topicId, summary]),
+)
 function withQuestionSources(topics: Topic[]): Topic[] {
   return topics.map(topic => ({
     ...topic,

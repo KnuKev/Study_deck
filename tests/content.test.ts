@@ -148,3 +148,28 @@ test('all IN3230 topics have complete summaries with registered course sources',
     }
   }
 })
+
+
+test('all current IN3050 syllabus topics have sourced summaries using the wrap-up priorities', () => {
+  const course = COURSES.find(course => course.id === 'IN3050')!
+  const currentTopics = course.topics.filter(topic =>
+    getPracticePool(QUESTIONS, 'IN3050', [topic.id]).length > 0,
+  )
+  assert.equal(currentTopics.length, 12)
+  for (const topic of currentTopics) {
+    const summary = topic.summary
+    assert(summary, topic.id)
+    assert.equal(summary.topicId, topic.id)
+    assert(summary.concepts.length >= 4, topic.id)
+    assert(summary.example.steps.length >= 3, topic.id)
+    assert(summary.checks.length >= 3, topic.id)
+    assert(summary.sourceRefs.some(reference => reference.path.endsWith('/Exam preperation - wrap up.docx')), topic.id)
+    for (const reference of summary.sourceRefs) {
+      const source = SOURCE_INDEX.get(reference.path)
+      assert(source, reference.path)
+      assert.equal(source.courseId, 'IN3050', topic.id)
+      assert(topic.sourcePaths?.includes(reference.path), reference.path)
+      assert(reference.location.trim(), reference.path)
+    }
+  }
+})

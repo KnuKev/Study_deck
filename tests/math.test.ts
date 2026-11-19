@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import MathText from '../src/MathText.tsx'
 import QuestionTable from '../src/QuestionTable.tsx'
 import { renderMath, splitMath } from '../src/math.ts'
-import { QUESTIONS } from '../src/data.ts'
+import { COURSES, QUESTIONS } from '../src/data.ts'
 
 const markup = (value: string) => renderToStaticMarkup(createElement(MathText, { children: value }))
 
@@ -54,6 +54,28 @@ test('all authored math in questions, answers, explanations and tables parses wi
       for (const part of splitMath(text)) {
         if (part.kind === 'math') assert.doesNotThrow(() => renderMath(part.value, part.display), `${question.id}: ${part.value}`)
         else assert(!/\\[()[\]]/.test(part.value), `${question.id}: unbalanced math delimiter in ${part.value}`)
+      }
+    }
+  }
+})
+
+
+test('math in both courses’ topic summaries renders without malformed delimiters', () => {
+  for (const topic of COURSES.flatMap(course => course.topics)) {
+    const summary = topic.summary
+    if (!summary) continue
+    const texts = [
+      summary.overview,
+      ...summary.concepts.flatMap(concept => [concept.title, concept.explanation]),
+      summary.example.situation,
+      ...summary.example.steps,
+      ...summary.checks.flatMap(check => [check.question, check.answer]),
+      summary.lowerPriority,
+    ]
+    for (const text of texts) {
+      for (const part of splitMath(text)) {
+        if (part.kind === 'math') assert.doesNotThrow(() => renderMath(part.value, part.display), `${topic.id}: ${part.value}`)
+        else assert(!/\\[()[\]]/.test(part.value), `${topic.id}: unbalanced delimiter in ${part.value}`)
       }
     }
   }

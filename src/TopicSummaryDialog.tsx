@@ -2,6 +2,7 @@ import { useEffect, useId, useRef } from 'react'
 import { SOURCE_INDEX } from './data'
 import type { Topic } from './model'
 import Icon from './Icon'
+import MathText from './MathText'
 
 interface Props {
   topic: Topic | null
@@ -44,28 +45,28 @@ export default function TopicSummaryDialog({ topic, sessionActive, onClose, onPr
         </button>
       </header>
       <div ref={bodyRef} className="topic-summary-body" key={topic.id}>
-        <p id={overviewId} className="topic-summary-overview">{summary.overview}</p>
+        <p id={overviewId} className="topic-summary-overview"><MathText>{summary.overview}</MathText></p>
         <section className="topic-summary-concepts" aria-label="Core concepts">
           {summary.concepts.map(concept => <section key={concept.title}>
             <h3>{concept.title}</h3>
-            <p>{concept.explanation}</p>
+            <p><MathText>{concept.explanation}</MathText></p>
           </section>)}
         </section>
         <section className="topic-summary-example">
           <h3>Work through an example</h3>
-          <p>{summary.example.situation}</p>
-          <ol>{summary.example.steps.map(step => <li key={step}>{step}</li>)}</ol>
+          <p><MathText>{summary.example.situation}</MathText></p>
+          <ol>{summary.example.steps.map(step => <li key={step}><MathText>{step}</MathText></li>)}</ol>
         </section>
         <section className="topic-summary-checks">
           <h3>Check your understanding</h3>
           {summary.checks.map(check => <details key={check.question}>
-            <summary>{check.question}</summary>
-            <p>{check.answer}</p>
+            <summary><MathText>{check.question}</MathText></summary>
+            <p><MathText>{check.answer}</MathText></p>
           </details>)}
         </section>
         <section className="topic-summary-priorities">
           <h3>Spend less time on</h3>
-          <p>{summary.lowerPriority}</p>
+          <p><MathText>{summary.lowerPriority}</MathText></p>
         </section>
         <details className="topic-summary-sources">
           <summary>Sources</summary>

@@ -1,0 +1,798 @@
+[
+  {
+    "topicId": "ai-linear-algebra",
+    "overview": "Read the shapes and geometry behind a model’s calculations. Dot products produce scores, matrix products process a batch, and a bias shifts a boundary.",
+    "concepts": [
+      {
+        "title": "Data as vectors",
+        "explanation": "A row of numerical features is a point in feature space. A vector’s norm describes its length; distances compare observations. Euclidean distance uses squared coordinate differences, while Manhattan distance adds their absolute values. Feature units can change which points count as close."
+      },
+      {
+        "title": "Dot products and projection",
+        "explanation": "A dot product combines corresponding coordinates into one score and measures directional alignment. Orthogonal nonzero vectors have dot product zero. Projecting onto a direction extracts the component along it, which helps explain regression and PCA."
+      },
+      {
+        "title": "Weights and boundaries",
+        "explanation": "A linear score is \\(w^T x+b\\). Its zero set is a line, plane, or hyperplane; the weight vector is normal to that boundary. The bias moves the boundary away from the origin. Changing the score is different from changing the predicted class."
+      },
+      {
+        "title": "Matrix shapes",
+        "explanation": "With N examples, D features, and K outputs, a row-oriented input matrix of shape N by D can multiply a D by K weight matrix to produce N by K scores. Every output entry is a row–column dot product. Transposing changes the roles of the dimensions."
+      },
+      {
+        "title": "Read the operation",
+        "explanation": "NumPy’s @ performs matrix multiplication; * is elementwise multiplication with broadcasting. A constant input column can represent a bias. Check whether the constant is +1 or −1 before interpreting its stored weight, and check shapes before doing arithmetic."
+      }
+    ],
+    "example": {
+      "situation": "A row input is \\(x=(2,-1)\\), weights are \\(w=(3,4)\\), and bias is −1. A classifier predicts class 1 only when its score is positive.",
+      "steps": [
+        "Compute the dot product: \\(2(3)+(-1)(4)=2\\).",
+        "Add the bias to get score 1, so this classifier predicts class 1.",
+        "The boundary is \\(3x_1+4x_2-1=0\\). Multiplying all weights and the bias by a positive constant changes score magnitude but preserves its sign and boundary."
+      ]
+    },
+    "checks": [
+      {
+        "question": "What is the output shape of a 20 by 4 batch multiplied by a 4 by 3 weight matrix?",
+        "answer": "20 by 3: one score per output for each example. The inner dimension 4 must match."
+      },
+      {
+        "question": "Does a zero dot product mean two vectors are equal?",
+        "answer": "No. For nonzero vectors it means their directions are perpendicular. A zero vector also has zero dot product with any vector."
+      },
+      {
+        "question": "Why can changing metres to millimetres affect a distance-based model?",
+        "answer": "That coordinate’s numerical differences become much larger and can dominate distances unless the feature scales are handled consistently."
+      }
+    ],
+    "lowerPriority": "Long algebraic proofs and large hand calculations. Prioritize score interpretation, shapes, and small matrix operations.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_01_Linear_Algebra/01_theory_linear_algebra.ipynb",
+        "location": "Sections 2–7: distances, projection, boundaries, and matrix operations"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 2(b)–2(c) · PDF pages 29–30"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-optimization-search",
+    "overview": "Choose a representation and objective, then explain how an algorithm proposes and accepts changes. The central trade-off is exploring new regions versus refining a promising solution.",
+    "concepts": [
+      {
+        "title": "Problem and search space",
+        "explanation": "A candidate is one complete possible solution. The objective says how good it is, and constraints say whether it is valid. A city ordering is discrete; a real-valued model weight is continuous. The available moves depend on that representation."
+      },
+      {
+        "title": "Greedy construction and local improvement",
+        "explanation": "A greedy construction chooses the best immediate next part, such as the nearest unvisited city. Hill climbing starts with a complete candidate and replaces it with a better neighbor. Neither generally guarantees the best global solution; the neighborhood and starting point matter."
+      },
+      {
+        "title": "Exploration and exploitation",
+        "explanation": "Exploitation improves within a promising region. Exploration tries other regions that may initially look worse. Restarts, larger moves, and population diversity can increase exploration. A local minimum can be best among its neighbors while worse than a distant candidate."
+      },
+      {
+        "title": "Simulated annealing",
+        "explanation": "For minimization, annealing accepts an improvement and sometimes accepts a worsening move of cost increase \\(\\Delta\\), often with probability \\(e^{-\\Delta/T}\\). Cooling reduces acceptance of worse moves, increasing exploitation. Too-rapid cooling can trap the search."
+      },
+      {
+        "title": "Gradient direction and learning rate",
+        "explanation": "The gradient points toward steepest local increase. Descent subtracts \\(\\eta\\nabla L\\); ascent adds it. The learning rate sets the step size. A small step may be slow, while a large one can overshoot. A zero gradient is not by itself proof of a global optimum."
+      }
+    ],
+    "example": {
+      "situation": "A weight starts at 2. The loss derivative there is 6, and the learning rate is 0.1. The code adds learning_rate × loss_gradient to the weight.",
+      "steps": [
+        "The code produces 2.6, a step in the local direction of increasing loss.",
+        "For minimization, subtract the gradient contribution instead: the new weight is 1.4.",
+        "This fixes the direction. Whether a finite step reduces the loss still depends on step size and the local shape of the objective."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why might hill climbing stop even though a better solution exists?",
+        "answer": "Every permitted neighboring candidate may be worse, while the better candidate lies beyond a region requiring an initially worse move."
+      },
+      {
+        "question": "What changes when annealing temperature falls, with proposals held fixed?",
+        "answer": "A given worsening move becomes less likely to be accepted. The algorithm behaves more like improvement-only local search."
+      },
+      {
+        "question": "For \\(h(x,y)=(a+bx+cy)^2\\), what is its gradient at the origin?",
+        "answer": "The chain rule gives \\(2(a+bx+cy)(b,c)\\), so the gradient at the origin is \\((2ab,2ac)\\)."
+      }
+    ],
+    "lowerPriority": "Extended convergence proofs, physical annealing history, and syntax trivia. Be able to trace a proposal, acceptance decision, or gradient update.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_02_Optimization_Search/01_theory_optimization_search.ipynb",
+        "location": "Sections 2, 5–10: search spaces, local search, annealing, and gradients"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(d)–1(i), 2(d) · PDF pages 3–5, 31"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-supervised-knn",
+    "overview": "Supervised learning uses example inputs paired with targets. kNN predicts by comparing a new input with stored examples, so its behavior depends directly on representation, distance, and neighborhood size.",
+    "concepts": [
+      {
+        "title": "What the target means",
+        "explanation": "Regression predicts a numerical quantity, while classification predicts a label. Supervised targets are provided with the training examples. This differs from finding groups in unlabeled data, where a cluster is not automatically a known class."
+      },
+      {
+        "title": "Predict with kNN",
+        "explanation": "Compute distances from the query to training examples, retain the k nearest, and aggregate their targets. Classification commonly uses a majority vote; distance-weighted voting gives closer examples more influence. Vote fractions are local probability estimates rather than raw neural-network logits."
+      },
+      {
+        "title": "Representation and scaling",
+        "explanation": "A large numerical scale can dominate a distance even when that feature is not important. Fit any learned scaler on the training data and apply it unchanged to held-out data. Changing the metric or selected features can change the neighbors and the prediction."
+      },
+      {
+        "title": "Choosing k",
+        "explanation": "Small k can follow noise and produce a flexible, high-variance boundary. Large k smooths decisions but can erase useful local distinctions and underfit. Select k and the distance rule with validation or cross-validation, using the final test set only after the choices are made."
+      },
+      {
+        "title": "Cost and assumptions",
+        "explanation": "Basic kNN does little fitting beyond storing data; finding neighbors at prediction time can be expensive. Its assumption is that chosen distances reflect relevant similarity. In a high-dimensional or poorly scaled representation, that assumption can fail."
+      }
+    ],
+    "example": {
+      "situation": "The five nearest labels in increasing distance order are red, blue, blue, red, red. Compare unweighted predictions for k = 1, 3, and 5.",
+      "steps": [
+        "With k = 1, the nearest example alone predicts red.",
+        "With k = 3, blue wins by two votes to one. With k = 5, red wins by three votes to two.",
+        "The training examples have not changed. Only the neighborhood rule changed. Validation, rather than this one example or the test score, should guide the choice of k."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why is saying that kNN is fast to train an incomplete performance claim?",
+        "answer": "Prediction still requires finding neighbors, which can involve distances to every stored training example in the basic implementation."
+      },
+      {
+        "question": "Can scaling affect kNN even when every feature contains useful information?",
+        "answer": "Yes. Scaling changes how feature differences combine into distance, which can change the selected neighbors."
+      },
+      {
+        "question": "What is leaked if k is chosen using the final test set?",
+        "answer": "Information from the held-out examples influences model selection. Its reported score is no longer an independent final estimate of that selected procedure."
+      }
+    ],
+    "lowerPriority": "Dataset dimensions, package APIs, and historical AI definitions. Focus on identifying the task and tracing distance, neighbor selection, and voting.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/01_theory_supervised_learning_knn.ipynb",
+        "location": "Sections 4, 6, 9–10, 14, 18–20"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(j)–1(m) · PDF pages 6–8"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-perceptron-regression",
+    "overview": "A perceptron and linear regression both begin with a weighted sum, but use different outputs and learning objectives. Understand the boundary or prediction, the error, and how an update changes it.",
+    "concepts": [
+      {
+        "title": "Score and threshold",
+        "explanation": "A perceptron thresholds \\(w^Tx+b\\) to assign a binary class. Its decision boundary is affine. A bias shifts the threshold without depending on an input feature. If a constant feature represents the bias, its sign convention must be included in an update."
+      },
+      {
+        "title": "Perceptron learning",
+        "explanation": "With 0/1 targets, an update is \\(w\\leftarrow w+\\eta(t-\\hat y)x\\) and \\(b\\leftarrow b+\\eta(t-\\hat y)\\). A correct classification produces no change. A missed positive raises its score; a false positive lowers it."
+      },
+      {
+        "title": "Linear separability",
+        "explanation": "A single thresholded affine score cannot represent XOR. Adjusting the learning rate cannot remove this representational limitation. On nonseparable data, ordinary perceptron training need not converge to a classifier with no training errors."
+      },
+      {
+        "title": "Numerical prediction and squared error",
+        "explanation": "Linear regression predicts a number directly from an affine score. Squaring residuals prevents positive and negative errors from canceling. MSE averages squared errors; RMSE takes the square root. For a fixed dataset, SSE, MSE, and RMSE have the same minimizing parameters."
+      },
+      {
+        "title": "Fitting and model limits",
+        "explanation": "Gradient descent changes parameters in the direction that locally reduces the regression loss. A least-squares solver can also fit linear regression. Fitting a straight-line model perfectly cannot recover a relationship that the selected features and model cannot express."
+      }
+    ],
+    "example": {
+      "situation": "For one example, a regression model predicts y = wx + b with w = 1, b = 0, input x = 2, and target 4. Use squared loss (prediction − target)² and learning rate 0.1.",
+      "steps": [
+        "The prediction is 2 and the error prediction − target is −2.",
+        "The loss gradients are 2 × (−2) × 2 = −8 for w and 2 × (−2) = −4 for b.",
+        "Subtract 0.1 times each gradient: w becomes 1.8 and b becomes 0.4. This example’s new prediction is 4. The factors would differ for a differently normalized loss."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why does a thresholded perceptron fail on XOR?",
+        "answer": "The positive examples occupy opposite corners of the input square, so one line cannot separate them from both negative examples."
+      },
+      {
+        "question": "Why does averaging signed regression errors hide mistakes?",
+        "answer": "Overestimates and underestimates can cancel even when every prediction is far from its target."
+      },
+      {
+        "question": "What does RMSE add when interpreting an error value?",
+        "answer": "It expresses the error in the same units as the target, whereas MSE uses squared target units."
+      }
+    ],
+    "lowerPriority": "Long least-squares derivations and proofs of perceptron convergence. Prioritize a small update, the sign convention, and linear separability.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_04_Perceptron_Linear_Regression/01_theory_perceptron_linear_regression.ipynb",
+        "location": "Sections 3–7, 9–14, 16–17"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Question 1(r) · PDF page 10"
+      },
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, questions 15–16 and 22 · PDF pages 3–5"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-evolutionary-algorithms",
+    "overview": "An evolutionary algorithm repeatedly generates and tests a population of candidates. Representation, fitness, selection, and variation must fit the same problem.",
+    "concepts": [
+      {
+        "title": "The search loop",
+        "explanation": "Initialize valid candidates, evaluate fitness, select parents, create offspring through variation, and decide which individuals survive. Fitness defines the preference, but does not itself create candidates. The process is stochastic and does not generally guarantee a global optimum."
+      },
+      {
+        "title": "Representation constrains variation",
+        "explanation": "Bit strings can use bit-flip mutation. Real-valued vectors can use small numerical perturbations or arithmetic crossover. A permutation must keep every item exactly once; ordinary cut-and-paste crossover or replacing a city can introduce duplicates."
+      },
+      {
+        "title": "Mutation and recombination",
+        "explanation": "Mutation changes one candidate, while recombination mixes information from parents. Increasing mutation can restore exploration, but excessive variation destroys useful structure. With independent per-locus mutation probability p and length n, the expected number of changed loci is np."
+      },
+      {
+        "title": "Selection pressure",
+        "explanation": "Fitness-proportionate selection uses relative fitness magnitudes, so one extremely large value can dominate. Rank selection depends on order. Larger tournaments generally favor fitter individuals more strongly. Excessive pressure can eliminate alternatives too early."
+      },
+      {
+        "title": "Permutation crossover",
+        "explanation": "PMX keeps a selected segment and uses the parent correspondence to repair conflicting entries outside it. Follow a mapping chain until the replacement no longer conflicts. Order crossover instead preserves relative ordering when filling positions; the operators preserve different aspects of the parents."
+      },
+      {
+        "title": "Compare runs fairly",
+        "explanation": "A single random seed shows one trajectory. Compare configurations across repeated runs with comparable evaluation budgets, and inspect both solution quality and variability. A rising best score can coexist with a stagnant or homogeneous population."
+      }
+    ],
+    "example": {
+      "situation": "Apply PMX to P1 = (1, 2 | 3, 4 | 5, 6) and P2 = (4, 6 | 1, 5 | 2, 3). Construct the child that keeps P1’s marked segment.",
+      "steps": [
+        "Start with P2’s outside entries and P1’s inside segment: (4, 6 | 3, 4 | 2, 3). The repeated 3 and 4 must be repaired.",
+        "The exchanged segments define mappings 3 ↔ 1 and 4 ↔ 5. Replace the outside 4 with 5 and the outside 3 with 1.",
+        "The result is (5, 6, 3, 4, 2, 1), a valid permutation containing each item once."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why is arithmetic crossover sensible for real weights but unsafe for city IDs?",
+        "answer": "Interpolating weights gives meaningful parameter values. Averaging city identifiers can create invalid values or duplicates and does not preserve a tour."
+      },
+      {
+        "question": "Does doubling tournament size necessarily improve the final answer?",
+        "answer": "No. It increases selection pressure, which can accelerate improvement but also remove diversity and cause premature convergence."
+      },
+      {
+        "question": "What is the chance of roulette-wheel selection for fitness 12 in a population with fitness 4, 8, 12, and 16?",
+        "answer": "The sum is 40, giving 12/40 = 0.30. The rule assumes suitable nonnegative fitness values."
+      }
+    ],
+    "lowerPriority": "Biological history, operator names without tracing their behavior, and long probability derivations. Practice validity checks and small selection calculations.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_05_Evolutionary_Algorithms/01_theory_evolutionary_algorithms.ipynb",
+        "location": "Sections 2–15: EA loop, fitness, variation, and representations"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(z), 1(ab)–1(ac), 2(e) · PDF pages 14–16, 32"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-evolutionary-applications",
+    "overview": "Population management determines which alternatives remain available. Connect selection and diversity to premature convergence, then apply the search to model settings or feature subsets.",
+    "concepts": [
+      {
+        "title": "Parents and survivors",
+        "explanation": "Parent selection decides who reproduces. Survivor selection decides who remains in the next population. Generational replacement creates a full new generation; steady-state schemes replace a few individuals at a time. These choices affect how quickly search information spreads."
+      },
+      {
+        "title": "Elitism and diversity",
+        "explanation": "Elitism protects strong candidates from being lost by chance. Too much focus on the current best can still crowd out alternatives. Diversity matters especially in landscapes with several promising peaks, where the first peak found may not be the best."
+      },
+      {
+        "title": "Niching mechanisms",
+        "explanation": "Fitness sharing lowers effective fitness in crowded regions. Crowding lets offspring compete locally with similar individuals. Island models separate subpopulations with occasional migration. Each preserves alternatives in a different way; none guarantees the global optimum."
+      },
+      {
+        "title": "Differential evolution",
+        "explanation": "DE operates on real-valued vectors. In the notebook’s best1bin example, a mutant is \\(x_{best}+F(x_{r1}-x_{r2})\\). Recombination mixes mutant and target components, and the resulting trial competes with the target. The population’s differences supply the variation scale."
+      },
+      {
+        "title": "Validation-based fitness",
+        "explanation": "An individual can encode hyperparameters or a binary feature mask. In wrapper search, evaluating a candidate means fitting and validating the underlying model. Put scaling and feature selection inside the training folds, use a suitable validation objective, and account for the cost of many model fits."
+      }
+    ],
+    "example": {
+      "situation": "A wrapper maximizes validation accuracy minus 0.01 times the number of selected features. Candidate A uses 4 features with accuracy 0.90; B uses 9 with accuracy 0.92.",
+      "steps": [
+        "A has penalized fitness 0.90 − 0.04 = 0.86. B has 0.92 − 0.09 = 0.83.",
+        "This stated objective prefers A despite B’s higher raw accuracy. The feature-count penalty expresses a deliberate preference, rather than a universal rule.",
+        "Evaluate both subsets using the same training/validation procedure. Keep test targets outside selection and use a final held-out evaluation to assess the chosen procedure."
+      ]
+    },
+    "checks": [
+      {
+        "question": "What does deterministic crowding try to preserve?",
+        "answer": "Offspring compete mainly with similar parents, helping different niches survive instead of letting one region take over every replacement."
+      },
+      {
+        "question": "How do the survivor pools differ for (μ, λ) and (μ + λ)?",
+        "answer": "The comma scheme chooses μ survivors from offspring only. The plus scheme chooses from parents and offspring together."
+      },
+      {
+        "question": "Why can the best fitness stay high while the population loses useful diversity?",
+        "answer": "Elitism can preserve one strong individual while the rest become very similar. The best score alone does not show how many alternatives remain."
+      }
+    ],
+    "lowerPriority": "Flight Lab controls and implementation-specific defaults. Focus on replacement, diversity, validation, and the evaluation budget.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_06_Evolutionary_Applications/01_evolutionary_applications_flight_lab.ipynb",
+        "location": "Sections 2–8, 11–12"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(aa), 1(ay) · PDF pages 15, 27"
+      },
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, questions 8–9 · PDF page 2"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-logistic-regression",
+    "overview": "Logistic regression turns an affine score into class probabilities. Understand the roles of logits, output activation, target encoding, loss, and the final decision rule.",
+    "concepts": [
+      {
+        "title": "Binary probability",
+        "explanation": "A logit is the raw score \\(z=w^Tx+b\\). Sigmoid maps it to \\(p=1/(1+e^{-z})\\), interpreted as the predicted probability of class 1. A threshold converts that probability to a label. At threshold 0.5, the boundary is still \\(w^Tx+b=0\\)."
+      },
+      {
+        "title": "Cross-entropy",
+        "explanation": "Negative log-likelihood penalizes assigning little probability to the observed label. For a one-hot target, categorical cross-entropy is the negative logarithm of the true class’s probability. Correct top-ranked classification can still have nonzero loss when that probability is below one."
+      },
+      {
+        "title": "The gradient signal",
+        "explanation": "For a sigmoid output with binary cross-entropy, the logit derivative is \\(p-t\\). Multiply by each input feature to get its weight contribution, and subtract the learning-rate-scaled gradient. Batch implementations often average over examples; read the normalization used."
+      },
+      {
+        "title": "Multiclass and multilabel",
+        "explanation": "Multiclass classification chooses one of several exclusive classes. Multilabel classification allows several labels per example. Independent sigmoid outputs can model multilabel targets; a softmax distribution assigns a total probability of one across exclusive classes."
+      },
+      {
+        "title": "Softmax and code reading",
+        "explanation": "Softmax normalizes exponentiated logits. Subtracting a common value such as the maximum logit preserves the probabilities while improving numerical stability. For batch categorical loss, sum \\(-t_j\\log p_j\\) across class columns, then average across examples. One-vs-rest instead fits separate binary classifiers."
+      }
+    ],
+    "example": {
+      "situation": "A binary model predicts p = 0.2 for an example with target 1. The single feature value is 3. Use an unregularized one-example loss and learning rate 0.1.",
+      "steps": [
+        "The logit error signal is p − t = −0.8.",
+        "The feature-weight gradient is −0.8 × 3 = −2.4. Its gradient-descent update adds 0.24 to the current weight; the bias update adds 0.08.",
+        "Both updates raise the score of this example, moving its predicted probability toward the positive target."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why does softmax preserve the identity of the largest logit?",
+        "answer": "Exponentiation is increasing, and every exponent is divided by the same positive sum. The ranking is therefore unchanged."
+      },
+      {
+        "question": "For true-class probabilities 0.8 and 0.4, which prediction has less cross-entropy?",
+        "answer": "The one assigning 0.8. Negative log-probability decreases as the probability of the observed class increases."
+      },
+      {
+        "question": "Why can one softmax over all labels be unsuitable for a photo with several independent tags?",
+        "answer": "Those outputs compete for a total probability of one. Several independent true labels call for a different output and target model, such as one sigmoid per label."
+      }
+    ],
+    "lowerPriority": "Long maximum-likelihood derivations and memorized library calls. Prioritize probability meaning, target shape, update direction, and the class-versus-batch axes.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_07_Logistic_Regression/01_theory_logistic_regression.ipynb",
+        "location": "Sections 2–7, 9–12"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(l), 1(n)–1(q), 2(a) · PDF pages 7–10, 28"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-backpropagation",
+    "overview": "A hidden layer learns features that a final layer can use. Trace the forward computation, then follow how the loss gradient reaches earlier parameters through the chain rule.",
+    "concepts": [
+      {
+        "title": "Expressive hidden layers",
+        "explanation": "Stacked affine maps collapse into one affine map. Nonlinear hidden activations make new decision boundaries possible, including XOR. A sigmoid only at the end does not fix the limitation of purely affine hidden layers."
+      },
+      {
+        "title": "Forward pass",
+        "explanation": "Each layer takes a weighted sum, adds bias, and applies its activation. The output activation and loss must match the task: a numeric output with regression loss, a sigmoid for a binary probability, or softmax for exclusive classes. Read which axis stores examples and which stores units."
+      },
+      {
+        "title": "Backpropagation and optimization",
+        "explanation": "Backpropagation computes loss derivatives efficiently by reusing intermediate gradients in reverse order. An optimizer uses those derivatives to change weights. A forward pass, backward pass, and parameter update are separate stages of the training loop."
+      },
+      {
+        "title": "Layer gradients",
+        "explanation": "With row batches, a weight gradient has the form \\(A^T\\Delta\\): layer inputs transposed, multiplied by that layer’s pre-activation error signal. To obtain a hidden-layer signal, propagate the later signal through the later weights and multiply elementwise by the hidden activation derivative. Exclude a synthetic bias unit from the hidden activation derivative."
+      },
+      {
+        "title": "Gradient checks and training behavior",
+        "explanation": "A small finite difference can check a computed derivative. Repeated small activation derivatives can weaken gradients in early layers. Random mini-batches reduce per-update computation, while averaging several examples often reduces gradient noise compared with one example."
+      },
+      {
+        "title": "Approximation is an existence result",
+        "explanation": "A sufficiently wide network with a suitable nonlinear hidden activation can approximate continuous functions on compact domains. This does not specify an efficient architecture, a successful optimization path, or how much training data is needed."
+      }
+    ],
+    "example": {
+      "situation": "A bias-free layer receives row input x = (2, −1). Its two weight columns are (1, 3) and (−2, 1), and it uses ReLU.",
+      "steps": [
+        "The two dot products are 2 × 1 − 3 = −1 and 2 × (−2) − 1 = −5.",
+        "ReLU maps both negative pre-activations to zero, so the layer output is (0, 0).",
+        "For this example, both ReLU derivatives are zero, so no gradient passes through those units into their incoming weights. Other examples can have different activation signs."
+      ]
+    },
+    "checks": [
+      {
+        "question": "What shape is A.T @ delta when A is 8 by 6 and delta is 8 by 3?",
+        "answer": "6 by 3, matching weights from six input coordinates to three units. A batch mean adds a normalization factor without changing that shape."
+      },
+      {
+        "question": "Why is the activation derivative multiplied elementwise?",
+        "answer": "It applies independently to each unit’s pre-activation, scaling that unit’s incoming gradient rather than combining units through a matrix product."
+      },
+      {
+        "question": "Can a very large loss coexist with a tiny gradient in an early layer?",
+        "answer": "Yes. The chain of derivatives can shrink the signal before it reaches that layer. Loss magnitude alone does not determine every parameter update."
+      }
+    ],
+    "lowerPriority": "Long recursive derivations across many layers and framework syntax. Practice a small forward pass, matrix dimensions, and locating the role of each gradient term.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_08_Backpropagation/01_theory_backpropagation.ipynb",
+        "location": "Sections 2–12"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(s)–1(u), 2(b) · PDF pages 11–12, 29"
+      },
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 23 and Part 2, MLP prompt · PDF pages 5, 8"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-evaluation-generalization",
+    "overview": "Evaluation asks how a chosen procedure performs on unseen data. Match the metric to the task and keep every model-selection choice separate from final testing.",
+    "concepts": [
+      {
+        "title": "Data roles and leakage",
+        "explanation": "Training fits parameters. Validation or cross-validation chooses settings such as k, feature subsets, thresholds, and regularization. The final test estimates performance after selection. Fit learned preprocessing within each training split; even unsupervised scaling or PCA can leak held-out information."
+      },
+      {
+        "title": "Cross-validation cost",
+        "explanation": "In k-fold CV, fit on k−1 folds and validate on the remaining fold, rotating that role. A grid with G configurations uses G × k fits before a final refit. Stratification helps preserve class proportions. Nested CV separates inner selection from outer evaluation of that selection procedure."
+      },
+      {
+        "title": "Confusion-matrix metrics",
+        "explanation": "Accuracy counts all correct examples. Precision asks how many predicted positives are truly positive; recall asks how many actual positives were found. F1 is their harmonic mean. State which class is positive before calculating, and distinguish macro averaging from sample-weighted summaries."
+      },
+      {
+        "title": "Thresholds, ROC, and PR",
+        "explanation": "For fixed scores, raising a positive threshold can only reduce or preserve the set of positive predictions. ROC plots true-positive rate against false-positive rate; PR plots precision against recall. With rare positives, many false positives can coexist with a small false-positive rate, so inspect precision as well. AUC measures ranking rather than probability calibration."
+      },
+      {
+        "title": "Bias, variance, and curves",
+        "explanation": "Poor training and validation performance can indicate underfitting. A large training–validation gap can indicate overfitting. More representative data can help high variance; it cannot make a linear model represent an inherently nonlinear pattern. Distinguish curves over training steps from curves over training-set size."
+      }
+    ],
+    "example": {
+      "situation": "A classifier has TP = 24, FP = 6, FN = 16, and TN = 54. Evaluate its positive-class performance.",
+      "steps": [
+        "Precision is 24/(24 + 6) = 0.80. Recall is 24/(24 + 16) = 0.60.",
+        "F1 is 2 × 0.80 × 0.60 / (0.80 + 0.60), about 0.686. Accuracy is (24 + 54)/100 = 0.78.",
+        "The classifier’s positive predictions are fairly reliable, but it misses 40% of actual positives. Whether this is acceptable depends on the cost of missed positives versus false alarms."
+      ]
+    },
+    "checks": [
+      {
+        "question": "How many CV fits do 3 learning rates, 4 penalties, and 5 folds require?",
+        "answer": "3 × 4 × 5 = 60 fits, before an optional final refit using the selected settings."
+      },
+      {
+        "question": "Why can high accuracy hide poor rare-class performance?",
+        "answer": "The majority class contributes most examples. Predicting it often can yield many correct predictions while detecting few or no rare positives."
+      },
+      {
+        "question": "If validation loss rises while training loss keeps falling, which checkpoint would you favor?",
+        "answer": "The one with the best validation performance under the chosen stopping rule, rather than automatically selecting the last or lowest-training-loss checkpoint."
+      }
+    ],
+    "lowerPriority": "Large confusion matrices, lengthy statistical derivations, and exact dataset statistics. Practice choosing a metric and explaining what the reported value does and does not establish.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_09_Evaluation_and_Generalization/01_theory_evaluation_and_generalization.ipynb",
+        "location": "Sections 1–9"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/More on supervised learning.docx",
+        "location": "Evaluation, cross-validation, leakage, confusion matrices, ROC, and precision–recall"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(ad)–1(ag) · PDF pages 17–18"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-regularization-ensembles",
+    "overview": "Control how strongly a model follows the training sample. Compare penalties, stopping rules, and combinations of models by their effects on bias, variance, and validation performance.",
+    "concepts": [
+      {
+        "title": "Regularized objective",
+        "explanation": "A common training objective is data loss plus a weighted parameter penalty. A larger penalty trades closer training fit for less extreme parameters. Excessive regularization can underfit. Read whether the loss is summed or averaged and whether the intercept is excluded before comparing numerical values."
+      },
+      {
+        "title": "L2, L1, and feature selection",
+        "explanation": "Ridge penalizes squared weights and usually shrinks them without selecting an exact subset. Lasso penalizes absolute weights and can set coefficients to zero. Elastic net combines both. Scale features consistently because coefficient sizes depend on their units; PCA creates new features rather than selecting original ones."
+      },
+      {
+        "title": "Select strength with validation",
+        "explanation": "Choose regularization using validation or CV, with preprocessing inside the folds. If errors are indistinguishable within the observed variability, a stronger penalty can be a reasonable simpler choice. A smaller training error alone is not a reason to weaken regularization."
+      },
+      {
+        "title": "Early stopping",
+        "explanation": "Monitoring validation performance can limit how long a flexible model fits training-specific detail. Keep the checkpoint selected by the validation rule. More representative training data can also stabilize a high-variance fit, but may not fix an overly restricted model."
+      },
+      {
+        "title": "Bagging",
+        "explanation": "Train base models independently on bootstrap samples drawn with replacement, then average or vote. The main benefit is reduced variance when model errors are not identical. Repeated and omitted observations are expected in each bootstrap sample."
+      },
+      {
+        "title": "Boosting",
+        "explanation": "Train successive models using information about earlier errors. In AdaBoost-style reasoning, misclassified examples gain relative influence and the models form a weighted combination. Boosting often improves weak fits, but noisy labels and excessive fitting can still harm generalization."
+      }
+    ],
+    "example": {
+      "situation": "A regression model uses feature weights (2, −1, 3), an unpenalized intercept of 4, L2 strength 0.5, and L1 strength 0.3.",
+      "steps": [
+        "Using penalty terms λ₂Σw² and λ₁Σ|w|, the L2 contribution is 0.5(4 + 1 + 9) = 7.",
+        "The L1 contribution is 0.3(2 + 1 + 3) = 1.8. The total penalty is 8.8; the intercept contributes nothing under the stated convention.",
+        "This penalty is added to the data loss. It is not itself the model’s error on held-out examples."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Which method directly supports selecting original features: lasso or PCA?",
+        "answer": "Lasso can zero coefficients of original features. PCA instead constructs linear combinations, so it transforms the representation."
+      },
+      {
+        "question": "Why does averaging identical predictors give little benefit?",
+        "answer": "Their errors are the same. Variance reduction needs enough variation among the base predictors for some errors to offset."
+      },
+      {
+        "question": "Why is it easier to parallelize ordinary bagging than boosting?",
+        "answer": "Bagged models can fit independently. A boosting round depends on information produced by earlier rounds."
+      }
+    ],
+    "lowerPriority": "Full coordinate-descent or boosting derivations and software defaults. Prioritize penalty conventions, leakage, and the reason each technique can improve generalization.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/01_theory_regularization_and_ensembles.ipynb",
+        "location": "Sections 2–11"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(ah)–1(aj), 1(al), 1(aq) · PDF pages 19–21, 23"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-deep-learning",
+    "overview": "Deep networks learn intermediate representations. Understand what each architecture shares or preserves, and how those design choices affect features, parameter count, and training.",
+    "concepts": [
+      {
+        "title": "Representation learning",
+        "explanation": "Earlier layers transform raw inputs into features later layers can combine. The architecture still imposes assumptions: convolution assumes useful local patterns can recur in different positions, while recurrence assumes earlier sequence context matters. More layers alone do not guarantee a better fit or better generalization."
+      },
+      {
+        "title": "ReLU and gradient flow",
+        "explanation": "ReLU outputs zero for a negative pre-activation and passes a positive one through. On its positive side the derivative does not shrink as sigmoid does in saturation, which can improve deep-network training. Units can still remain inactive; ReLU does not guarantee healthy gradients everywhere."
+      },
+      {
+        "title": "Convolution and pooling",
+        "explanation": "A convolutional filter reuses learned weights across local input windows. Stacking filters can build more complex features. Standard max or average pooling aggregates fixed windows without learned parameters. Count shared filter weights once, rather than once at every image position."
+      },
+      {
+        "title": "Residual connections",
+        "explanation": "A residual block adds a learned transformation to an identity path when the shapes allow it. This makes learning a small correction possible and provides another route for gradients. The block can represent identity when its residual is zero, but that is not a guarantee that optimization will always find the best solution."
+      },
+      {
+        "title": "Sequences and embeddings",
+        "explanation": "An RNN updates hidden state from the current input and previous state, reusing weights over time. An embedding maps an item such as a token to a learned dense vector. A one-hot index can select an embedding row; it is not the learned vector itself."
+      },
+      {
+        "title": "Language modeling",
+        "explanation": "Next-token training uses the actual next token as a target, so the text supplies its own labels. A softmax can predict a vocabulary distribution. During autoregressive generation, a chosen output token becomes input to the next step, while the model continues using the accumulated context."
+      }
+    ],
+    "example": {
+      "situation": "A single-channel image is 6 by 6. One 3 by 3 convolutional filter uses stride 1, no padding, and one learned bias.",
+      "steps": [
+        "There are 4 by 4 valid window positions, so this filter produces a 4 by 4 feature map.",
+        "It has nine filter weights and one bias: ten trainable parameters, reused across all sixteen positions.",
+        "A following non-overlapping 2 by 2 max-pooling layer would produce a 2 by 2 map and add no trainable parameters."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why can the same convolutional filter detect an edge in two places?",
+        "answer": "Its weights are shared across positions. Moving the local pattern moves where the filter responds."
+      },
+      {
+        "question": "Is attention created merely by adding a residual connection?",
+        "answer": "No. A residual connection adds a skip path. Attention is a different mechanism for weighting information."
+      },
+      {
+        "question": "What remains shared when an RNN is unrolled over several time steps?",
+        "answer": "The recurrent model’s weight matrices are reused. Hidden-state values change with the inputs and the preceding state."
+      }
+    ],
+    "lowerPriority": "Model-release history, named awards, frontier architectures only mentioned in passing, and AI philosophy excluded by the wrap-up. Learn the architectural mechanism and trace a small example.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/personal_notes/Forelesning/Deep learning.docx",
+        "location": "Deep feed-forward networks, ReLU, convolution, residual connections, RNNs, and embeddings"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(v)–1(y) · PDF pages 12–14"
+      },
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 2, deep-learning prompt · PDF page 8"
+      }
+    ]
+  },
+  {
+    "topicId": "ai-unsupervised-learning",
+    "overview": "Choose a method by what you want to discover: groups, a compact representation, or a visualization. Trace the steps and explain which notion of similarity or reconstruction each method uses.",
+    "concepts": [
+      {
+        "title": "Hierarchical clustering",
+        "explanation": "Agglomerative clustering starts with separate observations and repeatedly merges the closest clusters. Single linkage takes the smallest cross-cluster pair distance, complete the largest, and average their mean. Ward chooses the smallest increase in within-cluster squared deviations. Dendrogram merge heights record the resulting dissimilarities."
+      },
+      {
+        "title": "K-means",
+        "explanation": "Choose K centers, assign each point to its nearest center, then update each nonempty center to its members’ mean. Repeat until stable. This favors compact groups under squared Euclidean distance. Initialization, outliers, scaling, and the choice of K affect the solution. A lower objective from more clusters is not proof of a more meaningful grouping."
+      },
+      {
+        "title": "PCA",
+        "explanation": "Center feature columns, find orthogonal directions of high variance, and project onto selected leading directions. PCA makes linear combinations of original features; it is not feature selection. Variance is an unsupervised criterion and need not coincide with information useful for a later classification task."
+      },
+      {
+        "title": "Read PCA code",
+        "explanation": "With examples as rows, subtract the mean over axis 0. The centered scatter matrix is Y.T @ Y. Its leading eigenvector gives a principal direction; dividing by sample count changes the eigenvalues’ scale but not those directions. Row-centering answers a different question."
+      },
+      {
+        "title": "Autoencoders",
+        "explanation": "An encoder makes a latent representation and a decoder reconstructs the input. The input itself supplies the target. A bottleneck can encourage compression; the encoder can then initialize a downstream model. Low reconstruction loss does not by itself prove useful class separation."
+      },
+      {
+        "title": "t-SNE and interpretation",
+        "explanation": "t-SNE emphasizes local-neighbor relationships in a low-dimensional visualization. Widely separated displayed clusters or their relative sizes need not faithfully represent large-scale geometry. Contrast that goal with PCA’s linear variance preservation."
+      }
+    ],
+    "example": {
+      "situation": "One-dimensional data are 0, 2, 8, and 10, and k-means starts with centers 0 and 8. Perform one assignment and update.",
+      "steps": [
+        "Nearest-center assignment puts 0 and 2 in the first cluster, and 8 and 10 in the second.",
+        "The updated centers are their means: 1 and 9.",
+        "The within-cluster squared-distance sum is now 1 + 1 + 1 + 1 = 4. Different starts can reach different local solutions in harder datasets."
+      ]
+    },
+    "checks": [
+      {
+        "question": "What happens when a dendrogram cut is raised across a merge?",
+        "answer": "The groups below that merge combine, reducing the number of clusters. Raising the cut without crossing any merge leaves the count unchanged."
+      },
+      {
+        "question": "How does complete linkage differ from single linkage?",
+        "answer": "Complete takes the largest pairwise distance across the two groups; single takes the smallest. Single can connect chain-like shapes and can merge groups through bridging points."
+      },
+      {
+        "question": "Why does an autoencoder not require external class labels?",
+        "answer": "Its reconstruction target is its own input. Training can still use gradient descent and backpropagation on that reconstruction objective."
+      }
+    ],
+    "lowerPriority": "Long eigenvalue calculations, detailed visualization-method derivations, and pixel-perfect copies of plots. Prioritize choosing the method and tracing one update, merge, or centering step.",
+    "sourceRefs": [
+      {
+        "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",
+        "location": "Wrap-up: exam scope, code understanding, and calculation depth"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_12_Unsupervised_Learning/01_theory_unsupervised_learning.ipynb",
+        "location": "Sections 3–16"
+      },
+      {
+        "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf",
+        "location": "Questions 1(ak), 1(am)–1(ao), 1(ar)–1(as), 2(c) · PDF pages 20–24, 30"
+      }
+    ]
+  }
+]
