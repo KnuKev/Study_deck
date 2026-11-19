@@ -698,5 +698,12 @@
     "courseId": "IN3050",
     "kind": "Exam",
     "sha256": "25de9f6a57db2f854705da3f569a41c5292d77da762b48a83e55cbc5499572c6"
+  },
+  {
+    "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+    "title": "Final lecture: exam scope and principles",
+    "courseId": "IN3230",
+    "kind": "Personal notes",
+    "sha256": "599679aef1367e8d0915797fc111599624b80d10673867fe60950f0ce0f37acb"
   }
 ]

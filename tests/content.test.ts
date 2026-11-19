@@ -124,3 +124,27 @@ test('the 2025 trial includes every numbered quiz and written prompt without dup
   assert(prep.some(question => question.examPrep && question.sourceRefs?.some(reference => reference.path === source)))
   assert(prep.every(question => question.topicId !== 'ai-reinforcement-learning'))
 })
+
+test('all IN3230 topics have complete summaries with registered course sources', () => {
+  const course = COURSES.find(course => course.id === 'IN3230')!
+  assert.equal(course.topics.length, 12)
+  for (const topic of course.topics) {
+    const summary = topic.summary
+    assert(summary, topic.id)
+    assert.equal(summary.topicId, topic.id)
+    assert(summary.overview.trim().length > 40, topic.id)
+    assert(summary.concepts.length >= 4, topic.id)
+    assert(summary.example.steps.length >= 3, topic.id)
+    assert(summary.checks.length >= 3, topic.id)
+    assert(summary.lowerPriority.trim(), topic.id)
+    assert(summary.sourceRefs.some(reference => reference.path.endsWith('/Summary lecture.docx')), topic.id)
+    assert(summary.sourceRefs.some(reference => reference.path.endsWith('.pdf')), topic.id)
+    for (const reference of summary.sourceRefs) {
+      const source = SOURCE_INDEX.get(reference.path)
+      assert(source, reference.path)
+      assert.equal(source.courseId, 'IN3230', topic.id)
+      assert(topic.sourcePaths?.includes(reference.path), reference.path)
+      assert(reference.location.trim(), reference.path)
+    }
+  }
+})

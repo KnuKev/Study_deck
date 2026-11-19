@@ -1,0 +1,750 @@
+[
+  {
+    "topicId": "net-introduction",
+    "overview": "A network design works only if its layers and mechanisms cooperate under loss, delay, and changing paths. Use fragmentation and multipath to explain where those interactions go wrong.",
+    "concepts": [
+      {
+        "title": "Fragmentation and MTU",
+        "explanation": "A link MTU limits packet size. If an IP packet is fragmented, the receiver needs every fragment to rebuild it. One missing fragment prevents delivery of the whole original packet and leaves incomplete state until it times out."
+      },
+      {
+        "title": "Discovery instead of fragmentation",
+        "explanation": "Path MTU Discovery uses feedback about oversized packets to reduce the sender’s packet size. Filtering the ICMP feedback can create a black hole. Packetization-layer discovery instead tests sizes and uses successful delivery as evidence; a lost probe alone cannot tell congestion from an oversized packet."
+      },
+      {
+        "title": "Multipath and ordering",
+        "explanation": "Sending successive packets along paths with different delays can reorder them. A TCP receiver may then generate duplicate ACKs even without loss. Per-flow path selection reduces this risk, but one large flow can still overload a path while another is idle."
+      },
+      {
+        "title": "Cross-layer consequences",
+        "explanation": "A transport retransmission is a new IP packet; it does not complete the reassembly state of an earlier fragmented packet. Likewise, a network load-balancing change can disrupt assumptions made by transport loss detection."
+      },
+      {
+        "title": "Evaluate the design",
+        "explanation": "For any proposed fix, identify the state it needs, who owns that state, how feedback returns, and what happens if the feedback is missing. A mechanism that works on one path may fail behind a different firewall or tunnel."
+      }
+    ],
+    "example": {
+      "situation": "A TCP connection completes its handshake, but large transfers stall across a path with a smaller MTU and filtered ICMP errors.",
+      "steps": [
+        "Small handshake packets fit; larger data packets exceed a link’s limit.",
+        "Without the required feedback, ordinary PMTUD may keep the sender using a packet size that cannot get through.",
+        "Probe and confirm a smaller usable packet size at the packetization layer. Consider loss and probing overhead when deciding when to increase it again."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why can a tiny loss rate be costly when each packet has many fragments?",
+        "answer": "Every fragment must arrive. More fragments create more opportunities for one missing part to make the entire packet unusable."
+      },
+      {
+        "question": "Why might a router prefer per-flow over per-packet load balancing?",
+        "answer": "It tends to preserve order within each flow. The trade-off is less precise balancing when flow sizes differ greatly."
+      },
+      {
+        "question": "Does a lost size probe prove that its packet was too large?",
+        "answer": "No. Congestion or a random loss could also explain it. Discovery needs confirmation and a safe fallback size."
+      }
+    ],
+    "lowerPriority": "Company names, deployment anecdotes, and dates. Focus on the failure mechanisms and the assumptions behind each fix.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_intro.pdf",
+        "location": "PDF pages 4, 6–10"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF pages 15–18"
+      }
+    ]
+  },
+  {
+    "topicId": "net-architecture",
+    "overview": "Networking layers define communication scopes and shared state. Understand which entities cooperate, what service each layer offers, and what breaks when identifiers or interfaces expose the wrong assumptions.",
+    "concepts": [
+      {
+        "title": "Services, PDUs, and SDUs",
+        "explanation": "A layer accepts an SDU from above and carries it inside its own PDU with protocol information. Delimiting, multiplexing, ordering, error control, and flow control make the service usable by several communicating applications."
+      },
+      {
+        "title": "Scope and recursion",
+        "explanation": "Hop-local error control and end-to-end error control cover different scopes. Similar functions can therefore be useful at more than one layer. The lecture’s recursive view organizes functions around scope rather than treating the OSI stack as the only possible architecture."
+      },
+      {
+        "title": "Names and addresses",
+        "explanation": "An identifier says which entity is wanted; a locator helps reach it. IP addresses also participate in connection identification, so changing attachment points can disrupt a connection. Separating these roles makes mobility easier to reason about."
+      },
+      {
+        "title": "Routing, forwarding, and NAT",
+        "explanation": "Routing builds reachability information; forwarding uses it for each packet. NAT adds mappings between internal and external addresses and ports. Those mappings require state and can complicate incoming connections and protocol changes."
+      },
+      {
+        "title": "End-to-end reasoning",
+        "explanation": "The endpoints must provide functions that require complete application knowledge. An in-network mechanism can improve performance without making the endpoint’s correctness checks unnecessary. Evaluate middleboxes against reliability, visibility, and the ability to evolve protocols."
+      },
+      {
+        "title": "Multihoming and MPTCP",
+        "explanation": "MPTCP combines multiple TCP subflows into one logical connection and provides connection-level data ordering. Multiple paths offer resilience or capacity, but congestion control must account for shared bottlenecks so that opening extra subflows does not simply take an unfair share."
+      }
+    ],
+    "example": {
+      "situation": "A device moves from one access network to another while an application wants to keep its connection.",
+      "steps": [
+        "Its network address can change even though the application and remote peer are the same.",
+        "A conventional TCP connection is tied to its endpoint addresses and ports. Changing those identifiers cannot be treated as just another packet on the old connection.",
+        "A connection-level mechanism can associate new paths with the same logical connection. It also needs path validation, ordering, and a response to congestion on each path."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Is a link retransmission redundant when TCP also retransmits?",
+        "answer": "They cover different scopes. Local recovery may improve a single hop, while end-to-end recovery handles failures across the complete path. Local retries can also add delay."
+      },
+      {
+        "question": "What information does NAT need to remember?",
+        "answer": "A mapping that associates an internal endpoint with the externally visible address and port, so returning packets can reach the right internal endpoint."
+      },
+      {
+        "question": "Why does adding a second path not always double useful throughput?",
+        "answer": "The paths may share the same bottleneck, differ in delay, or require reordering. Congestion control and the receiver’s limits also apply."
+      }
+    ],
+    "lowerPriority": "Exact protocol header layouts, address examples, and the chronology of architecture proposals.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF pages 4–18, 25–42"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF pages 24–27"
+      }
+    ]
+  },
+  {
+    "topicId": "net-transport",
+    "overview": "Transport protocols turn packet delivery into an application service. Follow the sender and receiver state through acknowledgements, window limits, retransmissions, and uncertain loss signals.",
+    "concepts": [
+      {
+        "title": "TCP and UDP services",
+        "explanation": "TCP offers an ordered reliable byte stream; it does not preserve application message boundaries. UDP preserves datagram boundaries but leaves recovery, ordering, and rate adaptation to the application or a protocol built above it. Ports separate communicating application instances."
+      },
+      {
+        "title": "ACKs and outstanding data",
+        "explanation": "A cumulative TCP ACK names the next expected byte, acknowledging earlier bytes. The sender retains unacknowledged data for recovery. Duplicate ACKs can indicate a gap; SACK additionally reports blocks received beyond that gap."
+      },
+      {
+        "title": "Windows and scaling",
+        "explanation": "The receiver window protects receive capacity, while the congestion window limits load on the path. Outstanding data is bounded by the smaller window. Window scaling negotiates a larger interpretation of the advertised receive window so a fast, high-RTT path need not be receiver-window limited."
+      },
+      {
+        "title": "Timeouts and RTT estimation",
+        "explanation": "The retransmission timeout must allow for both average RTT and variation. Too short causes needless retransmissions and congestion backoff; too long delays real recovery. An ACK after retransmission can be ambiguous, so Karn’s rule avoids those RTT samples unless timestamps disambiguate them."
+      },
+      {
+        "title": "Faster recovery",
+        "explanation": "Duplicate ACKs let a sender infer a loss before the timer expires. SACK helps distinguish several holes; RACK uses acknowledgements and transmission timing to infer loss while allowing for reordering. In the lecture’s Reno model, a timeout triggers a more severe restart than fast recovery."
+      },
+      {
+        "title": "Short flows and tail loss",
+        "explanation": "A short flow may finish before reaching a steady sending rate. Setup RTTs and the initial window matter greatly. Losing the last packet may yield too few later ACKs for fast retransmit; a probe can generate feedback sooner than waiting for the full timeout."
+      }
+    ],
+    "example": {
+      "situation": "A 100 Mbit/s path has an RTT of 80 ms and an advertised receive window of 64 kB. Can the sender fill the path?",
+      "steps": [
+        "Keeping the link busy requires roughly bandwidth × RTT = 8 Mbit, or 1 MB, in flight.",
+        "A 64 kB receive window permits far less outstanding data. Even without loss, a window/RTT estimate is only about 6.4 Mbit/s using decimal units.",
+        "A scaled receive window can remove that constraint. Adequate buffers and congestion window are still needed; scaling does not increase the physical link capacity."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why can duplicate ACKs justify a milder response than a timeout?",
+        "answer": "They show that some later packets are still arriving. The sender has evidence the path is delivering data instead of assuming the flight has drained."
+      },
+      {
+        "question": "Why is an ACK for retransmitted data a problematic RTT sample?",
+        "answer": "Without disambiguation, the sender cannot tell which transmission caused the ACK, so it cannot choose the correct send time."
+      },
+      {
+        "question": "Why can a lost final packet hurt a tiny transfer more than a long one?",
+        "answer": "There may be no later packets to provoke enough duplicate ACKs. The transfer can wait on a timer even though very little data is missing."
+      }
+    ],
+    "lowerPriority": "RFC numbers, exact header bit positions, implementation dates, and the extra SACK-scoreboard slides marked outside the syllabus.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF pages 5–7, 12–32"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF pages 6–8"
+      }
+    ]
+  },
+  {
+    "topicId": "net-congestion",
+    "overview": "Congestion control adapts a sender to a shared path. Explain how feedback changes the sending window or rate, and distinguish useful in-flight data from a standing queue.",
+    "concepts": [
+      {
+        "title": "Receiver versus network limits",
+        "explanation": "Flow control stops a sender overrunning the receiver. Congestion control stops senders collectively overrunning bottleneck links and queues. A receiver can advertise ample space while the network is already congested."
+      },
+      {
+        "title": "ACK clocking and AIMD",
+        "explanation": "Returning ACKs provide evidence that data has left the path and help pace new transmissions. In the lecture’s TCP model, slow start grows rapidly, congestion avoidance increases more cautiously, and congestion signals trigger backoff. Additive increase with multiplicative decrease probes capacity and can move competing flows toward a fairer allocation."
+      },
+      {
+        "title": "BDP and bufferbloat",
+        "explanation": "Bandwidth × RTT estimates the amount of data needed in flight to fill a path. Extra queued data adds latency without increasing bottleneck capacity. Buffers absorb bursts, but large persistent queues harm interactive traffic."
+      },
+      {
+        "title": "Signals and queue management",
+        "explanation": "Loss, increasing delay, and ACK-derived delivery rate provide different evidence. RED reacts to average queue occupancy; CoDel detects persistent queueing delay. FQ-CoDel combines flow scheduling with per-queue delay control. ECN marks congestion so endpoints can back off without requiring that marked packet to be dropped."
+      },
+      {
+        "title": "Model-based control and pacing",
+        "explanation": "BBR-style control estimates bottleneck bandwidth and propagation RTT, using probing phases because a busy queue obscures base delay and an underfilled path obscures capacity. Pacing spreads packets over time, reducing bursts but not removing the need to control average load."
+      },
+      {
+        "title": "Fairness and competing flows",
+        "explanation": "A separate congestion-controlled connection gets its own share under a per-flow view. An application opening many connections can therefore dominate one using only one. Evaluate fairness at a stated unit: connection, user, or application."
+      }
+    ],
+    "example": {
+      "situation": "A bulk transfer nearly fills a bottleneck and a video call suddenly gains hundreds of milliseconds of delay, even though few packets are lost.",
+      "steps": [
+        "The sender is building a persistent queue. Low loss by itself does not imply low delay.",
+        "Compare queueing delay against the path’s unloaded delay. Enlarging the queue can worsen the symptom.",
+        "AQM with responsive senders can control queue delay; flow scheduling can keep the bulk transfer from monopolizing service. Pacing reduces bursts into the queue."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Does a larger congestion window always increase throughput?",
+        "answer": "Only while another limit has not been reached. Beyond the bottleneck’s useful in-flight capacity, it mainly grows the queue."
+      },
+      {
+        "question": "What must happen after ECN marks a packet?",
+        "answer": "The receiver reports the congestion indication and the sender reduces load. Marking alone cannot fix an unresponsive sender."
+      },
+      {
+        "question": "Why can a delay-based sender lose bandwidth to a loss-based sender?",
+        "answer": "It may back off as a queue starts to grow, while the loss-based sender keeps increasing until a later signal. Their response rules give different incentives."
+      }
+    ],
+    "lowerPriority": "Default timer values, algorithm publication years, and current deployment percentages. Learn the signal and response of each mechanism.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF pages 2–22, 24–37"
+      }
+    ]
+  },
+  {
+    "topicId": "net-wireless-1",
+    "overview": "Wireless capacity depends on how signals survive the channel and how users share it. Connect modulation, access methods, and antenna techniques to reliability, throughput, and interference.",
+    "concepts": [
+      {
+        "title": "Channel impairments",
+        "explanation": "Attenuation weakens the signal, other transmissions add interference, and reflected copies cause multipath. These affect how reliably a receiver can distinguish symbols. Link retransmissions and handovers can then create delay or losses visible to transport."
+      },
+      {
+        "title": "Symbols and modulation",
+        "explanation": "A constellation with M distinguishable states represents log₂(M) bits per symbol. More states increase bit rate at the same symbol rate, but closer constellation points require better signal quality for the same error rate. Modulation choice is a robustness-versus-efficiency trade-off."
+      },
+      {
+        "title": "Sharing the medium",
+        "explanation": "TDMA separates users in time and FDMA separates frequency bands. CDMA combines coded signals and recovers one with a matching code; orthogonality makes interfering code contributions cancel in the ideal model. OFDMA allocates groups of orthogonal subcarriers over time."
+      },
+      {
+        "title": "MIMO and beamforming",
+        "explanation": "Multiple antennas can send redundant coded information for reliability or independent streams for capacity when the channel supports separation. Beamforming adjusts antenna phases to reinforce signals in useful directions. Extra antennas do not guarantee a matching multiplication of throughput."
+      },
+      {
+        "title": "Bandwidth and mmWave",
+        "explanation": "More usable bandwidth can increase capacity; a higher carrier frequency alone does not create a higher data rate. The lecture’s mmWave examples offer wide bands but face blockage and demanding beam alignment. A strong aligned beam can fail suddenly if the path is obstructed."
+      }
+    ],
+    "example": {
+      "situation": "A client moves away from an access point and starts seeing many errors with a dense QAM constellation.",
+      "steps": [
+        "Lower received signal quality makes neighboring constellation points harder to distinguish.",
+        "A less dense constellation carries fewer bits per symbol but may deliver more useful data by avoiding failed frames and retries.",
+        "Better beam alignment or spatial diversity may improve reliability. If independent paths are weak, adding spatial streams may be less useful than improving signal quality."
+      ]
+    },
+    "checks": [
+      {
+        "question": "How many raw bits per symbol does a 16-point constellation encode?",
+        "answer": "Four, because 2⁴ = 16. Coding and other overhead mean payload throughput is lower than that raw rate suggests."
+      },
+      {
+        "question": "How does CDMA recover one sender from an ideal mixture?",
+        "answer": "Correlate the received mixture with that sender’s code. Its own contribution remains, while orthogonal code contributions cancel."
+      },
+      {
+        "question": "Why can wireless loss cause an unnecessary TCP slowdown?",
+        "answer": "The error may come from the radio rather than congestion. A loss-based sender can still treat it as a reason to reduce its congestion window."
+      }
+    ],
+    "lowerPriority": "Wireless-generation timelines, exact band allocations, and advertised maximum speeds. Use quantities to explain a mechanism, not as isolated facts.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w1_final.pdf",
+        "location": "PDF pages 8–24, 27–45, 53–59"
+      }
+    ]
+  },
+  {
+    "topicId": "net-wireless-2",
+    "overview": "Reason about who can hear whom, who controls access, and where a mobile user’s packets actually travel. These explain collisions, changing rates, handovers, and roaming delay.",
+    "concepts": [
+      {
+        "title": "Association and shared airtime",
+        "explanation": "A client discovers and associates with an access point before exchanging data through that WLAN. Nearby networks can share or overlap radio resources. Good signal strength to one AP does not mean the channel is free of contention."
+      },
+      {
+        "title": "CSMA and hidden terminals",
+        "explanation": "Carrier sensing checks whether the sender hears activity. Two senders may be unable to hear each other while both reach the same receiver, so both can transmit and collide there. Random backoff reduces repeated contention but does not make all collisions impossible."
+      },
+      {
+        "title": "RTS/CTS trade-off",
+        "explanation": "Short reservation messages can make neighbors of the receiver defer, reducing the cost of collisions involving long data frames. The control exchange itself uses airtime and can collide. Its overhead may outweigh the gain for short frames or light contention."
+      },
+      {
+        "title": "Rate adaptation and spatial use",
+        "explanation": "As channel quality changes, the radio can trade raw rate for more robust delivery. Multi-user MIMO can serve different users spatially when their channels can be separated. Neither technique creates unlimited airtime or removes interference."
+      },
+      {
+        "title": "Cellular control and data planes",
+        "explanation": "The radio access network connects devices; the core manages mobility, authentication, and connectivity. Control-plane functions arrange state and paths, while user packets follow the data-plane path through gateways and tunnels. A handover changes the serving radio without necessarily ending the application session."
+      },
+      {
+        "title": "Roaming paths and operators",
+        "explanation": "Home-routed traffic detours through the home operator’s gateway, which simplifies control and accounting but can increase RTT. Local breakout exits through the visited network. An MVNO can sell service using another operator’s radio resources; the degree of ownership of core functions varies."
+      }
+    ],
+    "example": {
+      "situation": "A and C send to B, but A and C cannot hear each other. Both observe an idle channel.",
+      "steps": [
+        "Their local carrier-sense results do not reveal the interference they can cause at B.",
+        "If B responds to A’s RTS with a CTS that C hears, C can defer while A transmits.",
+        "The reservation reduces large-frame collision cost but adds control overhead. Compare the benefit for long and short payloads rather than assuming RTS/CTS always wins."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why does listening before transmitting fail with hidden terminals?",
+        "answer": "The relevant activity is at the receiver, while sensing happens at the sender. The two locations can hear different transmitters."
+      },
+      {
+        "question": "Which plane authenticates a subscriber, and which carries its downloaded file?",
+        "answer": "Authentication is a control-plane function. The file travels as user data on the data plane."
+      },
+      {
+        "question": "Why can a roaming user have strong signal but poor web latency?",
+        "answer": "The data path may take a long home-routed detour. Radio quality and end-to-end RTT measure different parts of the system."
+      }
+    ],
+    "lowerPriority": "Wi-Fi version tables, base-station counts, interface-name lists, and exact mobility message formats.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF pages 3–10, 13–22, 25–40, 49–56"
+      }
+    ]
+  },
+  {
+    "topicId": "net-wireless-3",
+    "overview": "Massive IoT favors long battery life, reachability, and low cost over peak throughput. Choose mechanisms by message frequency, radio conditions, and how quickly the network must reach a device.",
+    "concepts": [
+      {
+        "title": "Match the application",
+        "explanation": "A meter sending a small report a few times per day has different needs from interactive video. Consider battery replacement, coverage, number of devices, payload size, and acceptable downlink delay together. A long-range link can still have very little useful capacity."
+      },
+      {
+        "title": "LoRaWAN",
+        "explanation": "Devices communicate through gateways into a network service, using shared unlicensed spectrum. Simple access and long range suit small, infrequent messages, while collisions and airtime limit scaling. LoRa is the radio modulation; LoRaWAN provides the network and MAC behavior."
+      },
+      {
+        "title": "Spreading factor and ADR",
+        "explanation": "A higher spreading factor lengthens a symbol and can make reception possible in weaker conditions, at the cost of longer airtime. ADR chooses rate and power settings based on link conditions. A stable strong link can use less airtime and energy; a changing link needs sufficient margin."
+      },
+      {
+        "title": "NB-IoT coverage",
+        "explanation": "NB-IoT uses cellular infrastructure and licensed spectrum. Concentrating power in a narrow band and repeating transmissions can improve coverage. Repetition consumes time and energy, so a deeply covered device may have less practical throughput and slower exchanges."
+      },
+      {
+        "title": "PSM and eDRx",
+        "explanation": "Power Saving Mode lets a registered device sleep with its receiver unavailable until it wakes. Extended discontinuous reception spaces out receive opportunities. Both save energy while making immediate network-initiated delivery harder; choose a sleep pattern consistent with the application’s deadline."
+      },
+      {
+        "title": "5G service diversity",
+        "explanation": "The later slides use virtualization and slicing to explain how shared infrastructure can support different service requirements. Large-scale sensing, high-rate broadband, and low-latency control make different demands on resources and isolation. Keep this at the level of mechanisms explained in the lecture."
+      }
+    ],
+    "example": {
+      "situation": "A battery-powered sensor moves into a basement. Its link now needs a more robust setting and the operator also wants instant remote commands.",
+      "steps": [
+        "More robust modulation or more repetitions may improve report delivery, but increases airtime, energy use, or both.",
+        "Long receiver sleep periods save energy but prevent instant reception of a command.",
+        "Choose coverage and sleep settings from the reporting interval and downlink deadline. Compare the available LoRaWAN deployment and NB-IoT service for that site instead of choosing by advertised range alone."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why can a higher spreading factor reduce total network capacity?",
+        "answer": "Each message occupies the radio longer. Other devices have fewer opportunities to send without overlap."
+      },
+      {
+        "question": "Can an NB-IoT device be registered and still unreachable for immediate downlink?",
+        "answer": "Yes. In PSM it retains registration but is not continuously listening. Delivery must wait for an appropriate wake-up opportunity."
+      },
+      {
+        "question": "Does better coverage from repetition come for free?",
+        "answer": "No. Repeating the same information uses extra transmissions, increasing airtime and usually energy or delivery delay."
+      }
+    ],
+    "lowerPriority": "Exact range promises, device-price figures, generation timelines, and features only named in passing.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_2025_w3_final.pdf",
+        "location": "PDF pages 5–19, 21–30"
+      }
+    ]
+  },
+  {
+    "topicId": "net-http-quic",
+    "overview": "Web performance depends on setup costs, scheduling, and the scope of ordered delivery. Track which problem is solved at the HTTP layer and which remains at the transport layer.",
+    "concepts": [
+      {
+        "title": "Connection reuse",
+        "explanation": "A new connection per request repeatedly pays setup costs and may restart congestion growth. Keepalive reuses an established connection. Multiple connections can overlap responses, but add state and compete for bottleneck capacity as separate flows."
+      },
+      {
+        "title": "Binary frames and streams",
+        "explanation": "HTTP/2 keeps the meaning of methods, headers, and status codes while changing how messages are carried. A message is split into frames; stream IDs let endpoints interleave frames from different requests and reassemble them correctly."
+      },
+      {
+        "title": "Scheduling and headers",
+        "explanation": "Prioritization lets important resources receive earlier service, subject to sender policy and available capacity. Different browser priorities can change rendering order. Header compression reduces repeated metadata by using indexed representations."
+      },
+      {
+        "title": "Two kinds of head-of-line blocking",
+        "explanation": "HTTP/2 can interleave responses instead of making one whole response wait behind another. Its TCP connection still delivers one ordered byte stream: a missing TCP segment can hold up later bytes carrying unrelated HTTP/2 streams."
+      },
+      {
+        "title": "QUIC and HTTP/3",
+        "explanation": "HTTP/3 uses QUIC over UDP. QUIC implements reliable ordered delivery per stream, flow control, recovery, and congestion control. Loss in one stream need not block delivery on an independent stream, although connection-wide congestion and shared dependencies can still slow it."
+      },
+      {
+        "title": "Setup, migration, and RTT",
+        "explanation": "QUIC integrates TLS 1.3: a new connection normally needs a handshake round trip before ordinary client application data, while suitable resumed connections can send 0-RTT early data. Connection IDs support migration across address changes with path validation. Distinct packet numbers and reported ACK delay help obtain RTT samples."
+      }
+    ],
+    "example": {
+      "situation": "A web connection carries a large background response and a small critical response. A packet containing only background-stream data is lost.",
+      "steps": [
+        "HTTP/2 may already have interleaved the responses, but a gap in TCP’s byte stream still blocks later delivery at the receiver.",
+        "With QUIC, received bytes on the independent critical stream can be delivered without waiting for the background stream’s missing bytes.",
+        "Loss can still reduce the shared sending rate. The gain concerns the scope of ordering, not a guarantee that the critical response has no delay."
+      ]
+    },
+    "checks": [
+      {
+        "question": "What identifies the stream of an HTTP/2 frame?",
+        "answer": "Its frame header includes a stream identifier. The requests can share the same IP addresses, ports, and transport connection."
+      },
+      {
+        "question": "Does UDP make QUIC unreliable or congestion-uncontrolled?",
+        "answer": "No. QUIC supplies those transport mechanisms above the UDP datagram service."
+      },
+      {
+        "question": "Can every first-time connection use 0-RTT?",
+        "answer": "No. Early data needs suitable resumption state and server acceptance. The ordinary fresh-connection handshake and network propagation still take time."
+      }
+    ],
+    "lowerPriority": "HTTP history, version-release dates, exact field sizes, and which historical version first introduced a feature. Learn the feature’s behavior and cost.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF pages 29–42, 48–59, 64–80"
+      },
+      {
+        "path": "IN3230/personal_notes/Gruppetimer/Last plenary session.docx",
+        "location": "Application-layer exam preparation"
+      }
+    ]
+  },
+  {
+    "topicId": "net-cloud",
+    "overview": "Cloud computing exposes computing resources as services. Explain who manages each layer, how resources follow demand, and why sharing or replication changes cost, isolation, and failure behavior.",
+    "concepts": [
+      {
+        "title": "Services and responsibility",
+        "explanation": "With IaaS, the customer manages its operating systems and applications on rented infrastructure. PaaS also manages the runtime platform; the customer deploys an application. SaaS supplies the application itself. More managed service reduces administration and also reduces some configuration freedom."
+      },
+      {
+        "title": "Scalability and elasticity",
+        "explanation": "Scalability is the ability to handle growing load; elasticity adds and removes resources as demand changes. Fixed provisioning can waste idle capacity or miss a peak. Dynamic provisioning helps only if the application and its bottlenecks can use the added resources in time."
+      },
+      {
+        "title": "Virtualization and multitenancy",
+        "explanation": "A hypervisor lets virtual machines share physical hardware while presenting isolated execution environments. Multitenancy shares a service or resource pool across customers, so isolation of data, performance, and configuration matters. Pooling can improve utilization but does not remove physical capacity limits."
+      },
+      {
+        "title": "Availability, reliability, and resilience",
+        "explanation": "Availability concerns whether a service is usable; reliability concerns correct operation over a period. Redundancy and fault tolerance keep service running through some failures. Resilience and recovery plans address restoration after disruption. Shared power, storage, or location can defeat apparently separate replicas."
+      },
+      {
+        "title": "SLA, cost, and deployment",
+        "explanation": "An SLA expresses measurable service commitments such as uptime or response time. Pay-per-use shifts spending toward consumed resources, but network, storage, and management costs still matter. Public, private, community, and hybrid deployment differ in access, control, and resource ownership rather than being new transport protocols."
+      }
+    ],
+    "example": {
+      "situation": "An online service has a predictable quiet period and occasional demand spikes. It runs on several VMs, but every VM depends on one database.",
+      "steps": [
+        "Elastic application replicas can reduce wasted capacity and handle more requests if they can start quickly enough.",
+        "If the database is saturated, more application VMs can add pressure without improving throughput.",
+        "If that database has no failure-tolerant alternative, it remains a single point of failure. Evaluate both capacity and recovery before claiming high availability."
+      ]
+    },
+    "checks": [
+      {
+        "question": "How would you distinguish IaaS and PaaS in a short written answer?",
+        "answer": "State which layers the provider operates. IaaS exposes infrastructure while the customer runs an OS and application. PaaS also manages the platform so the customer concentrates on deployment and application code."
+      },
+      {
+        "question": "Why are backups and live redundancy different?",
+        "answer": "A backup helps restore lost state after a failure. Redundancy can keep service operating during some failures; it does not automatically preserve a separate recoverable history."
+      },
+      {
+        "question": "Can elastic resources guarantee a response-time SLA?",
+        "answer": "No. Scaling delay, non-scalable dependencies, contention, and network delay can still limit service. The SLA describes a measurable commitment that must be engineered and monitored."
+      }
+    ],
+    "lowerPriority": "Provider product lists, market-share statistics, and memorized slogans. Practise concise explanations using a workload or failure scenario.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_cloud_computing.pdf",
+        "location": "PDF pages 9–28, 34, 61–77, 79–89"
+      }
+    ]
+  },
+  {
+    "topicId": "net-mpls",
+    "overview": "MPLS separates label-based forwarding from how paths and services are chosen. Trace the packet’s label stack and explain why an operator might select a path other than the ordinary shortest route.",
+    "concepts": [
+      {
+        "title": "FECs and label-switched paths",
+        "explanation": "At ingress, packets needing the same forwarding treatment are classified into a forwarding equivalence class. Labels guide them along a label-switched path. A label’s meaning is local to the relevant forwarding context, so its numerical value can change at successive routers."
+      },
+      {
+        "title": "Push, swap, pop",
+        "explanation": "An ingress provider edge can push labels; a core provider router uses the top label to choose an output and usually swaps it; the outer label is removed near the exit. Trace the lookup and next hop at each stage rather than assuming one global label follows the packet unchanged."
+      },
+      {
+        "title": "Control versus forwarding",
+        "explanation": "Routing supplies reachability and topology. Label-distribution or signaling mechanisms install mappings used by the forwarding plane. In the lecture’s LDP example, IP routing converges first and label bindings then enable forwarding along those routes."
+      },
+      {
+        "title": "Traffic engineering",
+        "explanation": "The least-cost route can be congested while an alternative has spare capacity. Constraint-based path selection first rules out unsuitable links, then finds an acceptable route. Fast reroute can use a prearranged local detour while the wider network reacts to failure."
+      },
+      {
+        "title": "Label stacks and VPNs",
+        "explanation": "An outer label carries a packet toward a remote provider edge; an inner label identifies a service, VPN context, or pseudowire there. L3VPNs use separate routing contexts for customers. L2VPNs emulate a link-layer service. Traffic separation is different from encrypting the payload."
+      }
+    ],
+    "example": {
+      "situation": "Two 40 Mbit/s demands would both traverse a 45 Mbit/s link on the ordinary least-cost routes. A second route has adequate spare capacity.",
+      "steps": [
+        "The shared link cannot carry the combined 80 Mbit/s. Low route cost does not imply sufficient bandwidth.",
+        "A traffic-engineering path can steer one demand onto the alternative route after checking every link’s available capacity.",
+        "At ingress, classify the traffic into the intended path. Core forwarding follows the installed labels; a backup detour still needs enough capacity when it is used."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why can a core router swap the outer label without knowing the customer’s VPN routes?",
+        "answer": "The outer label identifies transport toward the remote provider edge. The inner service context is interpreted where that service terminates."
+      },
+      {
+        "question": "What distinguishes an L2VPN from an L3VPN?",
+        "answer": "An L2VPN emulates link-layer connectivity. In an L3VPN, provider edges maintain and use customer-specific IP routing contexts."
+      },
+      {
+        "question": "Does an MPLS VPN by itself hide packet contents from the provider?",
+        "answer": "No. Label-based traffic separation is not encryption. Confidentiality needs an appropriate encryption mechanism as well."
+      }
+    ],
+    "lowerPriority": "Exact label-field widths, label values in examples, configuration commands, and guaranteed failover-time claims.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_mpls_lecture.pdf",
+        "location": "PDF pages 14–28, 31–39, 42–44, 49–53, 59–63"
+      }
+    ]
+  },
+  {
+    "topicId": "net-interconnects",
+    "overview": "Interconnection networks connect many devices with tightly constrained links, ports, and buffers. Compare topologies and routing rules by their capacity, contention, and ability to keep making progress.",
+    "concepts": [
+      {
+        "title": "Lossy and lossless flow control",
+        "explanation": "A lossy network can discard on overflow and recover later. A flow-controlled lossless network prevents overflow under its operating assumptions. Xon/Xoff pauses and resumes a sender; credits reserve a known amount of receiver buffer space before transmission. Neither removes the possibility of congestion."
+      },
+      {
+        "title": "Feedback delay and credits",
+        "explanation": "A sender needs enough credits to cover data in flight while buffer-return feedback travels back. For a simple link, the required byte window is roughly link rate × feedback round-trip time. Too few credits leave the link idle; longer links can therefore require larger buffers."
+      },
+      {
+        "title": "Latency and useful bandwidth",
+        "explanation": "Separate serialization time from propagation, routing, arbitration, and endpoint overhead. Payload throughput is lower than raw link rate when headers, control traffic, or contention consume capacity. The slowest shared cut or injection/reception limit can dominate performance."
+      },
+      {
+        "title": "Topology trade-offs",
+        "explanation": "A crossbar offers many simultaneous connections at increasing hardware cost. Multistage fabrics use smaller switches but may create shared internal paths. Direct networks attach endpoints throughout the switching structure. Bisection bandwidth measures capacity across a balanced cut; hop count alone does not describe a topology’s capacity."
+      },
+      {
+        "title": "Blocking, deadlock, and livelock",
+        "explanation": "Ordinary blocking is waiting for a busy resource. Deadlock is circular waiting among packets holding resources. Livelock keeps packets moving without reaching their destinations. Dimension-order routing on a mesh can prevent cyclic channel dependencies; virtual channels and recovery mechanisms offer other ways to maintain progress."
+      }
+    ],
+    "example": {
+      "situation": "An 8 Gbit/s link sends 100-byte packets. Credit-return latency is 10 microseconds, ignoring all other overhead. How much credit is needed to keep sending continuously?",
+      "steps": [
+        "The sender must cover 8 × 10⁹ bits/s × 10 × 10⁻⁶ s = 80,000 bits in flight.",
+        "That is 10,000 bytes, or 100 packet credits of 100 bytes each.",
+        "With fewer credits, the sender runs out and waits despite an idle-capable physical link. Actual requirements also depend on the stated credit and buffer implementation."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why can a network with few hops still have poor throughput?",
+        "answer": "Many flows may contend for the same internal links or low-capacity cut. Short paths do not guarantee enough capacity across those shared resources."
+      },
+      {
+        "question": "How does a credit differ from an acknowledgement?",
+        "answer": "A credit permits use of receiver buffer capacity. An acknowledgement reports receipt. A design may combine feedback, but the two meanings are different."
+      },
+      {
+        "question": "What does dimension-order routing give up to prevent deadlock?",
+        "answer": "It restricts permissible path choices to impose an acyclic resource ordering on the mesh. That can reduce flexibility to route around congestion."
+      }
+    ],
+    "lowerPriority": "Hardware generations, fixed topology performance tables, and low-level switch implementations. Trace a small topology or dependency cycle instead.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF pages 8–19, 24–25, 34–43, 50–61"
+      }
+    ]
+  },
+  {
+    "topicId": "net-network-operations",
+    "overview": "Operational network design balances capacity, stability, and cost. Use the campus examples to reason about end-to-end service and shared failure risks instead of memorizing the inventory.",
+    "concepts": [
+      {
+        "title": "Follow the path",
+        "explanation": "Trace a device through its access link or AP, local switches, distribution network, default gateway, and upstream connections. Physical connectivity, layer-2 forwarding, and layer-3 routing solve different parts of reachability."
+      },
+      {
+        "title": "Redundancy needs independence",
+        "explanation": "Two devices do not give two independent services if they share power, fiber routes, a room, or a critical upstream. Ask which failure each duplicate component survives and which common event can still take both out."
+      },
+      {
+        "title": "Loops and gateway availability",
+        "explanation": "Redundant layer-2 links can form forwarding loops; spanning tree chooses a loop-free active structure. Gateway redundancy such as HSRP preserves a usable default gateway when one router fails. These protect different parts of the path."
+      },
+      {
+        "title": "Capacity after failure",
+        "explanation": "A standby or alternative route must carry the surviving load. Adding links without checking bottlenecks, oversubscription, or failover behavior can create a network that is redundant on paper but unusable after one failure."
+      },
+      {
+        "title": "Physical resources matter",
+        "explanation": "Fiber paths, transceivers, and electrical power are dependencies of logical connectivity. Wavelength multiplexing can carry several channels over fiber; UPS and generator arrangements cover different durations of power interruption. A logical diagram should be checked against these physical dependencies."
+      }
+    ],
+    "example": {
+      "situation": "Two gateways normally carry 6 Gbit/s each. Either can take over the other’s traffic, but each has only a 10 Gbit/s usable uplink.",
+      "steps": [
+        "Normal operation fits within both uplinks, but a failure sends 12 Gbit/s toward the survivor’s 10 Gbit/s uplink.",
+        "Gateway redundancy preserves a forwarding option without preserving the original capacity. Expect overload unless capacity is increased or traffic is reduced.",
+        "Also check whether the two uplinks share a conduit, power feed, or upstream device. Independent routers can still have a common failure point."
+      ]
+    },
+    "checks": [
+      {
+        "question": "Why do spanning tree and gateway redundancy not replace one another?",
+        "answer": "Spanning tree prevents layer-2 loops. Gateway redundancy keeps a layer-3 first hop available. Solving one does not solve the other."
+      },
+      {
+        "question": "What would you check after adding a second fiber link for resilience?",
+        "answer": "Its physical route, endpoint devices, power dependencies, failover behavior, and available capacity when the first link fails."
+      },
+      {
+        "question": "Why can higher availability require spare capacity during normal operation?",
+        "answer": "Resources must be able to absorb redirected traffic after a failure. Running everything at its normal maximum leaves no such headroom."
+      }
+    ],
+    "lowerPriority": "Device models, connector inventories, campus link counts, standards identifiers, and organizational details.",
+    "sourceRefs": [
+      {
+        "path": "IN3230/personal_notes/Forelesning/Summary lecture.docx",
+        "location": "Final lecture: concepts, algorithms, window scaling, and timeouts"
+      },
+      {
+        "path": "In3230/lecture_slides/in3230_guest-lecture.pdf",
+        "location": "PDF pages 7–15, 31–40"
+      }
+    ]
+  }
+]

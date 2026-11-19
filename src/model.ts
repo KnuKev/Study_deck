@@ -21,7 +21,16 @@ export type SessionMode = 'practice' | 'exam'
 export type EndReason = 'completed' | 'manual' | 'timeout'
 
 export type Difficulty = 'easy' | 'medium' | 'hard'
-export interface Topic { id: string; title: string; description: string; order?: number; sourcePaths?: string[]; objectives?: string[] }
+export interface TopicSummary {
+  topicId: string
+  overview: string
+  concepts: { title: string; explanation: string }[]
+  example: { situation: string; steps: string[] }
+  checks: { question: string; answer: string }[]
+  lowerPriority: string
+  sourceRefs: SourceReference[]
+}
+export interface Topic { id: string; title: string; description: string; order?: number; sourcePaths?: string[]; objectives?: string[]; summary?: TopicSummary }
 export interface Course { id: CourseId; title: string; shortTitle: string; description: string; topics: Topic[] }
 export interface SourceReference { path: string; location: string }
 export interface SourceDocument { path: string; title: string; courseId: CourseId; kind: string; sha256: string }

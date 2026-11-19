@@ -13,6 +13,7 @@ import { useSlidingIndicator } from './useSlidingIndicator'
 import { deckQuestions, loadDecks, saveDecks } from './decks'
 import DeckLibrary from './DeckLibrary'
 import Results from './Results'
+import TopicSummaryDialog from './TopicSummaryDialog'
 import type { Period } from './resultsPeriod'
 
 type View = 'practice' | 'history' | 'syllabus' | 'decks'
@@ -75,6 +76,7 @@ export default function App() {
   const [from, setFrom] = useState('')
   const [through, setThrough] = useState('')
   const [topicIds, setTopicIds] = useState<string[]>([])
+  const [summaryTopicId, setSummaryTopicId] = useState<string | null>(null)
   const [difficulty, setDifficulty] = useState<Difficulty | 'all'>('all')
   const [focus, setFocus] = useState<QuestionFocus>('mixed')
   const [mode, setMode] = useState<'practice' | 'exam'>('practice')
@@ -90,6 +92,7 @@ export default function App() {
   const endDialog = useRef<HTMLDialogElement>(null)
   const selectionHeading = useRef<HTMLHeadingElement>(null)
   const course = COURSES.find(item => item.id === courseId)!
+  const summaryTopic = course.topics.find(topic => topic.id === summaryTopicId)
   const selectedTopics = course.topics.filter(topic => topicIds.includes(topic.id))
   const deck = decks.find(item => item.id === deckId)
   const studySetId = deck?.id ?? courseId
@@ -244,6 +247,14 @@ export default function App() {
     if (updated.finishedAt !== null) finish(updated, 'timeout')
     else if (active.mode === 'exam') advance(updated)
     else setProgress(previous => ({ ...previous, active: updated }))
+  }
+
+  function practiseTopic(id: string) {
+    setTopicIds([id])
+    setFocus('mixed')
+    setDifficulty('all')
+    setSummaryTopicId(null)
+    navigate('practice')
   }
 
   function navigate(next: View) {
@@ -425,7 +436,13 @@ export default function App() {
           return <section key={topic.id} className="panel syllabus-card"><h2>{topic.title}</h2>
             {topic.objectives?.length ? <ul className="topic-objectives">{topic.objectives.map(objective => <li key={objective}>{objective}</li>)}</ul> : <p>{topic.description}</p>}
             <div className="difficulty-counts">{(['easy', 'medium', 'hard'] as const).map(level => <span key={level} className={'difficulty-' + level}>{DIFFICULTY_LABELS[level]}<strong>{topicQuestions.filter(question => question.difficulty === level).length}</strong></span>)}</div>
-            <footer><span>{countLabel(topicQuestions.length, 'question')}</span><button className="text-button" disabled={Boolean(active)} onClick={() => { setTopicIds([topic.id]); setFocus('mixed'); setDifficulty('all'); navigate('practice') }}>Practise this topic<Icon name="arrow" /></button></footer>
+            <footer className="syllabus-topic-actions">
+              <span>{countLabel(topicQuestions.length, 'question')}</span>
+              <div>
+                {topic.summary && <button className="secondary-button" onClick={() => setSummaryTopicId(topic.id)}>Summary of this topic</button>}
+                <button className="text-button" disabled={Boolean(active)} onClick={() => practiseTopic(topic.id)}>Practise this topic<Icon name="arrow" /></button>
+              </div>
+            </footer>
             {topic.sourcePaths?.length ? <details className="topic-source-list"><summary>Topic sources <span>{topic.sourcePaths.length}</span></summary><ul>{topic.sourcePaths.map(path => <li key={path}><strong>{SOURCE_INDEX.get(path)?.title ?? path.split('/').at(-1)}</strong><small>{path}</small></li>)}</ul></details> : null}
           </section>
         })}</div>
@@ -433,6 +450,12 @@ export default function App() {
       </>}
     </main>
     </div>
+    <TopicSummaryDialog
+      topic={summaryTopic ?? null}
+      sessionActive={Boolean(active)}
+      onClose={() => setSummaryTopicId(null)}
+      onPractise={practiseTopic}
+    />
     <dialog ref={endDialog} className="confirm-dialog" onCancel={() => setConfirmEnd(false)} onClose={() => setConfirmEnd(false)} aria-labelledby="end-title"><h2 id="end-title">End this session?</h2><p>Your submitted answers will be saved. Skipped questions count as unanswered.</p><div><button className="secondary-button" autoFocus onClick={() => setConfirmEnd(false)}>Resume session</button><button className="primary-button" onClick={() => active && finish(active, 'manual')}>End and view results</button></div></dialog>
   </div>
 }
