@@ -705,5 +705,33 @@
     "courseId": "IN3230",
     "kind": "Personal notes",
     "sha256": "599679aef1367e8d0915797fc111599624b80d10673867fe60950f0ce0f37acb"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+    "title": "IN3050 / IN4050 practice quiz",
+    "courseId": "IN3050",
+    "kind": "Exam preparation",
+    "sha256": "6dc364a74458967925f65963641081fe856b81db2ddbb90d67ae338c047bf87e"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+    "title": "IN3050 / IN4050 guided review",
+    "courseId": "IN3050",
+    "kind": "Exam preparation",
+    "sha256": "15efec2ccef95385e8ec9425ea41ea29fdd143ebf804dfb6898b2edce2ccf32e"
+  },
+  {
+    "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+    "title": "Exam question walkthrough",
+    "courseId": "IN3050",
+    "kind": "Exam preparation",
+    "sha256": "f6ebeb3384da5ea86a98d7f00b19373928e0358d88c9ef3fbef13840e6e35899"
+  },
+  {
+    "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+    "title": "Last plenary: NumPy concepts and exam practice",
+    "courseId": "IN3050",
+    "kind": "Personal notes",
+    "sha256": "f05847c3bbb987b097fb23473fae738c1562fd9f6c362155ba626da17c9583da"
   }
 ]

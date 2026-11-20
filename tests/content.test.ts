@@ -74,7 +74,7 @@ test('practice selection combines course, topic and difficulty without old demo 
 })
 
 test('choice order is stable on reload and varies between sessions without changing answer IDs', () => {
-  const question = QUESTIONS.find(question => question.type === 'choice')!
+  const question = QUESTIONS.find(question => question.type === 'choice' && !question.instructorOriginal && !question.originalExam)!
   const before = JSON.stringify(question)
   assert.deepEqual(getOrderedOptions(question, 'session-a'), getOrderedOptions(question, 'session-a'))
   const orders = new Set(Array.from({ length: 15 }, (_, index) => getOrderedOptions(question, `session-${index}`).map(option => option.id).join(',')))
@@ -91,7 +91,7 @@ test('choice order is stable on reload and varies between sessions without chang
 
 test('authored answers do not concentrate in the uniquely longest option', () => {
   for (const course of COURSES) {
-    const questions = QUESTIONS.filter(question => question.courseId === course.id && !question.originalExam && question.type === 'choice' && !question.codeOptions)
+    const questions = QUESTIONS.filter(question => question.courseId === course.id && !question.originalExam && !question.instructorOriginal && question.type === 'choice' && !question.codeOptions)
     let unique = 0, correctLongest = 0
     for (const question of questions) {
       const lengths = question.options.map(option => option.text.length)

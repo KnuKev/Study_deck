@@ -1,0 +1,182 @@
+[
+  {
+    "src": "illustrations/in3230-reno.webp",
+    "sourcePath": "In3230/lecture_slides/in3230_cc.pdf",
+    "page": 12,
+    "crop": [
+      0.015,
+      0.25,
+      0.95,
+      0.9
+    ],
+    "sha256": "ca6b7a7c9a4bddd1d07122cfebb4e4b57331afc20a3c7af8976b265a87ef3a74"
+  },
+  {
+    "src": "illustrations/in3230-recovery.webp",
+    "sourcePath": "In3230/lecture_slides/in3230_transportlayer.pdf",
+    "page": 19,
+    "crop": [
+      0.04,
+      0.25,
+      0.5,
+      0.99
+    ],
+    "sha256": "7add455f5438180e6fb6e1cef01415ca7a603a7344cb0a8b0185b6f5dcab65e0"
+  },
+  {
+    "src": "illustrations/in3230-hidden.webp",
+    "sourcePath": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+    "page": 6,
+    "crop": [
+      0.03,
+      0.33,
+      0.51,
+      0.79
+    ],
+    "sha256": "ec20424b5ffa98c42a8ffd99f5efd91b913fcb4813a8b64d935cd919b986b5d8"
+  },
+  {
+    "src": "illustrations/in3230-beamforming.webp",
+    "sourcePath": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+    "page": 16,
+    "crop": [
+      0.13,
+      0.51,
+      0.77,
+      0.985
+    ],
+    "sha256": "2f6897367ef6c06a48b6c97cb117eb5decd5882ae4f846bee20066c7bee60bc6"
+  },
+  {
+    "src": "illustrations/in3230-mumimo.webp",
+    "sourcePath": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+    "page": 19,
+    "crop": [
+      0.33,
+      0.32,
+      0.85,
+      0.81
+    ],
+    "sha256": "f522ffd9bb65428a5d9bdf29fcb83af6cba91f1beff2fa2febe46bfb453a32d6"
+  },
+  {
+    "src": "illustrations/in3230-mptcp.webp",
+    "sourcePath": "In3230/lecture_slides/in3230_arch.pdf",
+    "page": 38,
+    "crop": [
+      0.14,
+      0.22,
+      0.91,
+      0.52
+    ],
+    "sha256": "50732f2422d0836dba9d2a2d7b7f61ceea8a9bf54336ad30d03010033fe2fea4"
+  },
+  {
+    "src": "illustrations/in3230-pipelining.webp",
+    "sourcePath": "In3230/lecture_slides/http2-and-quic.pdf",
+    "page": 41,
+    "crop": [
+      0.02,
+      0.22,
+      0.48,
+      0.91
+    ],
+    "sha256": "dfbd72712b2500439982dd1caf53967f456e680b822077d71c73105ed8d32fda"
+  },
+  {
+    "src": "illustrations/in3230-http2.webp",
+    "sourcePath": "In3230/lecture_slides/http2-and-quic.pdf",
+    "page": 54,
+    "crop": [
+      0.05,
+      0.23,
+      0.96,
+      0.93
+    ],
+    "sha256": "86dd5c968a0a5c6214b5751a225eb60914d312ae0db56cc9feea8b545789f1a2"
+  },
+  {
+    "src": "illustrations/in3230-quic.webp",
+    "sourcePath": "In3230/lecture_slides/http2-and-quic.pdf",
+    "page": 74,
+    "crop": [
+      0.15,
+      0.21,
+      0.88,
+      0.88
+    ],
+    "sha256": "3c077d3b47242f2b50bf29c7f197203b5454815bbd175c95646b9aa690377b16"
+  },
+  {
+    "src": "illustrations/in3230-bisection.webp",
+    "sourcePath": "In3230/lecture_slides/interconnects-lecture.pdf",
+    "page": 34,
+    "crop": [
+      0.06,
+      0.255,
+      0.94,
+      0.58
+    ],
+    "sha256": "16002818a2b9568cde62a4cd07b66f707587bde0ac58b48669659b718d0a8f19"
+  },
+  {
+    "src": "illustrations/in3230-deadlock.webp",
+    "sourcePath": "In3230/lecture_slides/interconnects-lecture.pdf",
+    "page": 57,
+    "crop": [
+      0.05,
+      0.18,
+      0.98,
+      0.97
+    ],
+    "sha256": "78fb7b1e7e6d2a3dc9d9e7938dd6c2f7064d799e75535a98397d32fe48b9e288"
+  },
+  {
+    "src": "illustrations/in3230-mpls.webp",
+    "sourcePath": "In3230/lecture_slides/in3230_mpls_lecture.pdf",
+    "page": 26,
+    "crop": [
+      0.74,
+      0.663,
+      0.94,
+      0.915
+    ],
+    "sha256": "19ef1f0ba6e37d5baee8cdf6fbd67c48d14765c7328366a78fd63b76a633eedd"
+  },
+  {
+    "src": "illustrations/in3230-pacing.webp",
+    "sourcePath": "In3230/lecture_slides/in3230_cc.pdf",
+    "page": 37,
+    "crop": [
+      0.445,
+      0.3,
+      0.97,
+      0.9
+    ],
+    "sha256": "5f2fa5d740d04009dc4c1b80d794c2d3c1d4e514edb5c80495a1e27ea82e8307"
+  },
+  {
+    "src": "illustrations/in3050-scaling.webp",
+    "sourcePath": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/week3.pdf",
+    "page": 18,
+    "crop": [
+      0.1,
+      0.21,
+      0.93,
+      0.86
+    ],
+    "sha256": "5f9f4fc6f187fc1d891b8de416c802c3209f4c53669f6923a9badb54cf8d0148"
+  },
+  {
+    "src": "illustrations/in3050-models.webp",
+    "sourcePath": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/week10.pdf",
+    "page": 16,
+    "crop": [
+      0.09,
+      0.22,
+      0.93,
+      0.84
+    ],
+    "sha256": "4b7c6688153ca167c464884451d54b28e336b6bd7aff5ff278955f5468d3ab53"
+  }
+]

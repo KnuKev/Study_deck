@@ -8,7 +8,9 @@ I built Study Deck with AI to revise for **IN3050** and **IN3230**. Anyone is we
 
 - **Past exams** in IN3050 defaults to Fall 2024 and Fall 2025. Turn off **Current exam topics only** for complete papers. The 2025 trial is extra practice. Original options and order are preserved; source errors are explained and excluded from scores.
 - **Mock exam** in IN3050 defaults to 50 multiple-choice questions. **Question bank → Exam prep** combines lecture-based and Fall-exam material. Lecture slides are the primary reference; AI Philosophy (Lecture 14, Part 2) is excluded. Spring 2025 is not a format reference.
-- **Syllabus** offers **Practise this topic**, **Summary of this topic**, and IN3050 exam guidance. The remaining walkthrough slides are pending.
+- **Syllabus** offers **Practise this topic**, **Summary of this topic**, and IN3050 exam guidance.
+- **Group session** in IN3050 contains the 18-question practice quiz and six-question walkthrough. Choose either set or combine them. The plenary notes describe the quiz as matching exam types and difficulty. Guided reviews and worked code examples appear after answering. Focus on common NumPy operations and concepts, rather than NumPy internals. Turn off **Current exam topics only** to include supplementary walkthrough Q4.
+- Choose **Question focus → Slide illustrations** in either course for visual questions using original slide figures. Select **Enlarge** for a closer view; source/page captions identify the material.
 - **Key terms** provides short definitions for both courses, with course/topic filters and alphabetical sorting.
 
 ## Create and share decks

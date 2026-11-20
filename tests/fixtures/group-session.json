@@ -1,0 +1,325 @@
+[
+  {
+    "id": "in3050-group-quiz-01",
+    "sourceId": "Q01",
+    "options": {
+      "A": "5",
+      "B": "1",
+      "C": "0.001",
+      "D": "0"
+    },
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-02",
+    "sourceId": "Q02",
+    "options": {
+      "A": "The training set is used to compute gradients and update model parameters.",
+      "B": "The test set should be checked after every epoch and used to choose the best model.",
+      "C": "The validation set should normally be used to compute gradient updates for model weights.",
+      "D": "Repeatedly looking at test performance while tuning the model keeps the test set fully independent.",
+      "E": "The validation set can be used for model selection, hyperparameter tuning, or early stopping.",
+      "F": "The test set should be reserved for final evaluation after model choices have been made."
+    },
+    "answers": [
+      "A",
+      "E",
+      "F"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-03",
+    "sourceId": "Q03",
+    "options": {
+      "A": "target = np.zeros(len(X))",
+      "B": "target = X.mean(axis=0)",
+      "C": "target = X",
+      "D": "target = cluster_labels"
+    },
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-04",
+    "sourceId": "Q04",
+    "options": {
+      "A": "X - X.mean(axis=0)",
+      "B": "X - X.mean(axis=1, keepdims=True)",
+      "C": "X / X.mean(axis=0)",
+      "D": "X.astype(int)"
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-05",
+    "sourceId": "Q05",
+    "options": {
+      "A": "[2]",
+      "B": "[0, 1, 2, 3]",
+      "C": "[1, 3]",
+      "D": "[0, 2]"
+    },
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-06",
+    "sourceId": "Q06",
+    "options": {
+      "A": "np.linalg.norm(X @ query)",
+      "B": "np.linalg.norm(X - query, axis=1)",
+      "C": "np.linalg.norm(X - query, axis=0).argmax()",
+      "D": "np.sum(X - query)"
+    },
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-07",
+    "sourceId": "Q07",
+    "options": {
+      "A": "p = z / z.sum()",
+      "B": "p = np.exp(z)",
+      "C": "p = np.exp(z - z.max()); p = p / p.sum()",
+      "D": "p = 1 / (1 + np.exp(-z))"
+    },
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-08",
+    "sourceId": "Q08",
+    "options": {
+      "A": "np.mean(t*np.log(y))",
+      "B": "-np.mean(t*np.log(y) + (1-t)*np.log(1-y))",
+      "C": "np.mean(t-y)",
+      "D": "np.mean((t-y)**2)"
+    },
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-09",
+    "sourceId": "Q09",
+    "options": {
+      "A": "0.5",
+      "B": "-0.5",
+      "C": "1",
+      "D": "0"
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-10",
+    "sourceId": "Q10",
+    "options": {
+      "A": "The two affine transformations can be combined into one affine transformation, so no nonlinear expressive power has been added.",
+      "B": "The second layer automatically behaves like ReLU.",
+      "C": "The network becomes equivalent to K-means.",
+      "D": "Every additional affine layer automatically introduces nonlinearity."
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-11",
+    "sourceId": "Q11",
+    "options": {
+      "A": "It is guaranteed to reach zero training errors because the perceptron convergence theorem applies to every dataset.",
+      "B": "It cannot achieve zero training errors because XOR is not linearly separable; when misclassified examples are visited, the perceptron rule continues to make updates.",
+      "C": "Its weights must settle at a stable solution that always classifies exactly three of the four examples correctly.",
+      "D": "It never updates because the step activation has zero derivative and the perceptron learning rule requires backpropagation."
+    },
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-12",
+    "sourceId": "Q12",
+    "options": {
+      "A": "Hidden layers receive the final prediction and directly compare it with the target label.",
+      "B": "Hidden layers simply store the raw training examples.",
+      "C": "Hidden layers update weights without using backpropagation.",
+      "D": "Hidden layers transform their inputs into intermediate representations passed to subsequent layers.",
+      "E": "Hidden layers are only useful when the input has more than two features."
+    },
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-13",
+    "sourceId": "Q13",
+    "options": {
+      "A": "Because squaring makes larger prediction errors contribute less to the loss.",
+      "B": "Because the mean signed error is not differentiable.",
+      "C": "Because averaging signed errors is necessarily nonconvex for a linear model.",
+      "D": "Because squaring makes error contributions nonnegative and prevents positive and negative errors from cancelling each other out.",
+      "E": "Because MSE guarantees that the loss at initialization is zero.",
+      "F": "Because the goal is to make the numerical loss as large as possible."
+    },
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-14",
+    "sourceId": "Q14",
+    "options": {
+      "A": "It learns a linear decision boundary.",
+      "B": "It uses backpropagation to update its model parameters.",
+      "C": "It is historically inspired by simplified models of biological neurons.",
+      "D": "It uses a threshold (step) activation to produce a class prediction."
+    },
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-15",
+    "sourceId": "Q15",
+    "options": {
+      "A": "The same parameter matrices U, W, and V are reused at every time step; h_t depends on x_t and h_(t-1), and the next word in the text is the training target.",
+      "B": "Every position has separate parameter matrices, so the model cannot process longer sentences.",
+      "C": "The hidden state h_t depends only on the current word; previous context is passed only through the previous output.",
+      "D": "This is unsupervised learning solely because no person manually labels each word."
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-16",
+    "sourceId": "Q16",
+    "options": {
+      "A": "Assume conditionally independent labelled examples, multiply the model probabilities of their observed labels, take the logarithm, and negate it so that maximum likelihood becomes minimization of cross-entropy.",
+      "B": "Start with squared error between sigmoid output and label and simplify it algebraically.",
+      "C": "Maximize the joint probability of input feature vectors alone.",
+      "D": "Take the logarithm because it changes the position of the likelihood maximum."
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-17",
+    "sourceId": "Q17",
+    "options": {
+      "A": "It will always converge to the local optimum A.",
+      "B": "It necessarily reaches both optima during every run.",
+      "C": "It will always reach the global optimum B.",
+      "D": "It reaches both optima simultaneously.",
+      "E": "It cannot converge to either optimum.",
+      "F": "It may finish near either optimum, depending on random choices and the cooling schedule."
+    },
+    "answers": [
+      "F"
+    ]
+  },
+  {
+    "id": "in3050-group-quiz-18",
+    "sourceId": "Q18",
+    "options": {
+      "A": "It implements standard independent bit-flip mutation.",
+      "B": "Exactly one randomly chosen bit is flipped whenever mutation occurs.",
+      "C": "Each bit has probability mutation_rate of being flipped, but the flips are not independent: either all bits flip or none do.",
+      "D": "The probability that all bits flip is mutation_rate ** len(parent).",
+      "E": "Setting mutation_rate = 1 / len(parent) guarantees exactly one flipped bit.",
+      "F": "The function can generate every possible binary chromosome of the same length."
+    },
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "id": "in3050-group-walkthrough-01",
+    "sourceId": "1",
+    "options": {
+      "A": "The decision boundary usually becomes smoother and less sensitive to individual noisy points, although a very large k can underfit.",
+      "B": "Training accuracy must always increase.",
+      "C": "The algorithm changes the labels of the training examples.",
+      "D": "The classifier automatically becomes a regression model."
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-walkthrough-02",
+    "sourceId": "2",
+    "options": {
+      "A": "To copy some of the best current individuals unchanged into the next generation so that good solutions are not accidentally lost.",
+      "B": "To force every individual to mutate with a higher probability.",
+      "C": "To guarantee that the global optimum will be found.",
+      "D": "To compute gradients for the best individuals only."
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-walkthrough-03",
+    "sourceId": "3",
+    "options": {
+      "A": "The accuracy is high, but the model has zero recall for the positive class, so accuracy alone is misleading.",
+      "B": "The model has 95% recall for the positive class.",
+      "C": "The model must generalize well because its accuracy is above 90%.",
+      "D": "The model has 95% precision for the positive class."
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-walkthrough-04",
+    "sourceId": "4",
+    "options": {
+      "A": "In result A, observations are generally much closer to their own cluster and better separated from neighbouring clusters.",
+      "B": "Result B must have lower WCSS because its silhouette score is smaller.",
+      "C": "Result A necessarily contains more clusters.",
+      "D": "A silhouette score close to zero means the clustering is always perfect."
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-walkthrough-05",
+    "sourceId": "5",
+    "options": {
+      "A": "p * (1 - p), the derivative of the sigmoid.",
+      "B": "w**2, because every gradient must contain the squared weight.",
+      "C": "b, because the bias must multiply the weight gradient.",
+      "D": "Nothing is missing; the gradient is already complete."
+    },
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "id": "in3050-group-walkthrough-06",
+    "sourceId": "6",
+    "options": {
+      "A": "argmax cannot be used with probabilities.",
+      "B": "Without axis=1, NumPy finds one global maximum over the whole array instead of one predicted class per observation.",
+      "C": "The programmer should use argmin because smaller probabilities are better.",
+      "D": "probs must first be sorted alphabetically by class name."
+    },
+    "answers": [
+      "B"
+    ]
+  }
+]

@@ -28,8 +28,25 @@
     "Sample questions in More On Supervised Learning, Regularization, and Unsupervised Learning",
     "Two exam-preparation sessions led by Artur, with online access through the previously shared Zoom link"
   ],
-  "pendingMaterial": {
-    "name": "exam_walkthrough_30min",
-    "status": "Awaiting the remaining walkthrough slides; not present in the supplied resources as of 2026-11-20"
+  "availablePreparation": {
+    "quizQuestions": 18,
+    "walkthroughQuestions": 6,
+    "guidedReviewQuestions": 18,
+    "paths": [
+      "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+      "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+      "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb"
+    ]
+  },
+  "supplementaryItem": {
+    "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+    "question": 4,
+    "reason": "Excluded in the supplied wrap-up notes."
+  },
+  "plenaryGuidance": {
+    "sourcePath": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+    "numpy": "Understand common NumPy functions and their concepts, rather than implementing NumPy internals.",
+    "quizRelevance": "The plenary notes describe the practice quiz as matching the exam question types and difficulty.",
+    "visualStudy": "Personal reminder to study algorithm explanations visually."
   }
 }

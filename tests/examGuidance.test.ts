@@ -45,5 +45,5 @@ test('exam prep includes lecture-based material and both Fall papers without pro
   const spring = { ...fall2025, sourceRefs: [{ path: 'IN3050/old_exams/spring-2025.pdf', location: 'Question 1' }] }
   assert.equal(hasRecommendedPaper(spring), false)
   assert.equal(getPracticePriority(spring), 1)
-  assert.equal(IN3050_EXAM_GUIDANCE.pendingMaterial.name, 'exam_walkthrough_30min')
+  assert.equal(IN3050_EXAM_GUIDANCE.availablePreparation.walkthroughQuestions, 6)
 })

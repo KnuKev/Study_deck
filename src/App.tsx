@@ -5,6 +5,10 @@ import type { QuestionFocus } from './engine'
 import type { CourseId, Deck, DeckId, Difficulty, Question, Session, StudySetId } from './model'
 import { loadProgress, saveProgress } from './storage'
 import Icon from './Icon'
+import QuestionIllustrations from './QuestionIllustrations'
+import QuestionExplanation from './QuestionExplanation'
+import { getGroupSessionPool, GROUP_SETS, groupSelectionLabel } from './groupSession'
+import type { GroupSelection } from './groupSession'
 import QuestionFigure from './QuestionFigure'
 import QuestionSources from './QuestionSources'
 import QuestionTable from './QuestionTable'
@@ -51,6 +55,8 @@ function AnswerReview({ question, answer }: { question: Question; answer?: strin
 function QuestionMaterial({ question }: { question: Question }) {
   return <>
     {question.code && <pre className="question-code" tabIndex={0} aria-label="Code example"><code>{question.code}</code></pre>}
+    {question.promptAfterCode && <p className="question-after-code"><MathText>{question.promptAfterCode}</MathText></p>}
+    <QuestionIllustrations images={question.illustrations?.filter(image => image.placement === 'question') ?? []} />
     {question.figure && <QuestionFigure kind={question.figure} />}
     {question.table && <QuestionTable table={question.table} />}
   </>
@@ -83,7 +89,8 @@ export default function App() {
   const [summaryTopicId, setSummaryTopicId] = useState<string | null>(null)
   const [difficulty, setDifficulty] = useState<Difficulty | 'all'>('all')
   const [focus, setFocus] = useState<QuestionFocus>('mixed')
-  const [questionSource, setQuestionSource] = useState<'bank' | 'exams'>('bank')
+  const [questionSource, setQuestionSource] = useState<'bank' | 'exams' | 'group'>('bank')
+  const [groupSelection, setGroupSelection] = useState<GroupSelection>('all')
   const [examSelection, setExamSelection] = useState<ExamSelection>('fall')
   const [currentExamTopicsOnly, setCurrentExamTopicsOnly] = useState(true)
   const [mode, setMode] = useState<'practice' | 'exam'>('practice')
@@ -105,8 +112,11 @@ export default function App() {
   const studySetId = deck?.id ?? courseId
   const courseQuestions = getPracticePool(QUESTIONS, courseId, [])
   const examOnly = !deck && courseId === 'IN3050' && questionSource === 'exams'
+  const groupOnly = !deck && courseId === 'IN3050' && questionSource === 'group'
+  const sourceLocked = examOnly || groupOnly
   const pool = deck ? deckQuestions(deck) : examOnly
     ? getPastExamPool(QUESTIONS, examSelection, currentExamTopicsOnly)
+    : groupOnly ? getGroupSessionPool(QUESTIONS, groupSelection, currentExamTopicsOnly)
     : getPracticePool(QUESTIONS, courseId, topicIds, difficulty, focus, mode)
   const availableTopicIds = new Set(courseQuestions.map(question => question.topicId))
   const practiceTopics = course.topics.filter(topic => availableTopicIds.has(topic.id))
@@ -122,7 +132,7 @@ export default function App() {
   const mainNav = useSlidingIndicator<HTMLElement>(view === 'decks' || view === 'terms' ? null : view, '[aria-current="page"]')
   const sourceOptions = useSlidingIndicator<HTMLDivElement>(showSetup && !deck && courseId === 'IN3050' ? questionSource : null)
   const durationOptions = useSlidingIndicator<HTMLDivElement>(showSetup ? duration ?? 'untimed' : null)
-  const difficultyOptions = useSlidingIndicator<HTMLDivElement>(showSetup && !deck && !examOnly ? difficulty : null)
+  const difficultyOptions = useSlidingIndicator<HTMLDivElement>(showSetup && !deck && !sourceLocked ? difficulty : null)
   const countOptions = useSlidingIndicator<HTMLDivElement>(showSetup ? countOption : null)
   const summary = result ? summarizeSession(result, resultQuestions) : null
   const remaining = active ? getRemainingSeconds(active, now) : null
@@ -188,12 +198,12 @@ export default function App() {
     setResultId(null)
   }
 
-  function chooseQuestionSource(next: 'bank' | 'exams') {
+  function chooseQuestionSource(next: 'bank' | 'exams' | 'group') {
     setQuestionSource(next)
     setTopicIds([])
     setDifficulty('all')
-    setCount(next === 'exams' || mode === 'exam' ? IN3050_EXAM_GUIDANCE.format.approximateQuestions : 10)
-    if (next === 'exams') setDuration(null)
+    setCount(next === 'group' ? 0 : next === 'exams' || mode === 'exam' ? IN3050_EXAM_GUIDANCE.format.approximateQuestions : 10)
+    if (next !== 'bank') setDuration(null)
   }
 
   function chooseMode(next: 'practice' | 'exam') {
@@ -232,7 +242,7 @@ export default function App() {
       mode: retry ? 'practice' : mode,
       questionIds: ids ?? pool.map(question => question.id),
       durationMinutes: retry ? null : duration,
-      priority: !retry && !deck && !examOnly
+      priority: !retry && !deck && !sourceLocked
         ? new Map(pool.map(question => [question.id, getPracticePriority(question)]))
         : undefined,
     })
@@ -315,10 +325,10 @@ export default function App() {
       </button>
       {!deck && (view === 'practice' || view === 'syllabus') && <>
       <div className="sidebar-section-heading"><h3>Topics</h3></div>
-      <button className={'all-topics' + (!topicIds.length ? ' selected' : '')} onClick={() => setTopicIds([])} disabled={Boolean(active) || examOnly} aria-pressed={!topicIds.length}><Icon name="layers" />All topics<span>{courseQuestions.length}</span></button>
-      <div className="topic-options">{practiceTopics.map(topic => <label key={topic.id} className={topicIds.includes(topic.id) ? 'selected' : ''}><input type="checkbox" checked={topicIds.includes(topic.id)} disabled={Boolean(active) || examOnly} onChange={() => toggleTopic(topic.id)} /><span>{topic.title}</span><small>{courseQuestions.filter(question => question.topicId === topic.id).length}</small></label>)}</div>
-      {(active || examOnly) && <p className="sidebar-hint">
-        {active ? 'Topics are locked during a session.' : 'Topics are fixed by the exam selection.'}
+      <button className={'all-topics' + (!topicIds.length ? ' selected' : '')} onClick={() => setTopicIds([])} disabled={Boolean(active) || sourceLocked} aria-pressed={!topicIds.length}><Icon name="layers" />All topics<span>{courseQuestions.length}</span></button>
+      <div className="topic-options">{practiceTopics.map(topic => <label key={topic.id} className={topicIds.includes(topic.id) ? 'selected' : ''}><input type="checkbox" checked={topicIds.includes(topic.id)} disabled={Boolean(active) || sourceLocked} onChange={() => toggleTopic(topic.id)} /><span>{topic.title}</span><small>{courseQuestions.filter(question => question.topicId === topic.id).length}</small></label>)}</div>
+      {(active || sourceLocked) && <p className="sidebar-hint">
+        {active ? 'Topics are locked during a session.' : 'Topics are fixed by the selected set.'}
       </p>}
       </>}
     </aside>
@@ -348,6 +358,7 @@ export default function App() {
                 <div ref={sourceOptions} className="segmented source-options sliding-indicator">
                   <button aria-pressed={questionSource === 'bank'} onClick={() => chooseQuestionSource('bank')}>Question bank</button>
                   <button aria-pressed={questionSource === 'exams'} onClick={() => chooseQuestionSource('exams')}>Past exams</button>
+                  <button aria-pressed={questionSource === 'group'} onClick={() => chooseQuestionSource('group')}>Group session</button>
                 </div>
               </fieldset>}
               {examOnly ? <>
@@ -363,26 +374,39 @@ export default function App() {
                 </label>
                 <label className="exam-scope-filter"><input type="checkbox" checked={currentExamTopicsOnly} onChange={event => setCurrentExamTopicsOnly(event.target.checked)} />Current exam topics only</label>
                 {!currentExamTopicsOnly && <p className="field-hint">Full papers include AI Philosophy and other historical topics.</p>}
+              </> : groupOnly ? <>
+                <label className="form-field">Practice set
+                  <span className="question-focus-control">
+                    <select value={groupSelection} onChange={event => setGroupSelection(event.target.value as GroupSelection)}>
+                      <option value="all">Quiz and walkthrough</option>
+                      {GROUP_SETS.map(set => <option key={set.id} value={set.id}>{set.label} ({set.count})</option>)}
+                    </select>
+                    <Icon name="chevron" />
+                  </span>
+                </label>
+                <label className="exam-scope-filter"><input type="checkbox" checked={currentExamTopicsOnly} onChange={event => setCurrentExamTopicsOnly(event.target.checked)} />Current exam topics only</label>
+                {!currentExamTopicsOnly && groupSelection !== 'quiz' && <p className="field-hint">Walkthrough Q4 is supplementary practice.</p>}
               </> : <label className="form-field">Question focus
                 <span className="question-focus-control">
-                  <select value={focus} onChange={event => setFocus(event.target.value === 'prep' ? 'prep' : 'mixed')}>
+                  <select value={focus} onChange={event => setFocus(event.target.value === 'prep' ? 'prep' : event.target.value === 'illustrations' ? 'illustrations' : 'mixed')}>
                     <option value="mixed">Mixed practice</option>
                     <option value="prep">{courseId === 'IN3050' ? 'Exam prep' : 'Application-layer exam prep'}</option>
+                    <option value="illustrations">Slide illustrations</option>
                   </select>
                   <Icon name="chevron" />
                 </span>
               </label>}
             </div>}
             <fieldset><legend><Icon name="clock" />Duration</legend><div ref={durationOptions} className="segmented duration-options sliding-indicator">{[15, 30, 45, 60, null].map(minutes => <button key={minutes ?? 'none'} aria-pressed={duration === minutes} onClick={() => setDuration(minutes)}>{minutes === null ? 'Untimed' : `${minutes} min`}</button>)}</div>{duration !== null && <p className="field-hint">The timer keeps running if you leave.</p>}</fieldset>
-            {!deck && !examOnly && <fieldset><legend>Difficulty</legend><div ref={difficultyOptions} className="segmented difficulty-options sliding-indicator">{(['all', 'easy', 'medium', 'hard'] as const).map(level => <button key={level} aria-pressed={difficulty === level} onClick={() => setDifficulty(level)}>{level === 'all' ? 'Mixed' : DIFFICULTY_LABELS[level]}</button>)}</div></fieldset>}
+            {!deck && !sourceLocked && <fieldset><legend>Difficulty</legend><div ref={difficultyOptions} className="segmented difficulty-options sliding-indicator">{(['all', 'easy', 'medium', 'hard'] as const).map(level => <button key={level} aria-pressed={difficulty === level} onClick={() => setDifficulty(level)}>{level === 'all' ? 'Mixed' : DIFFICULTY_LABELS[level]}</button>)}</div></fieldset>}
             <fieldset><legend>Number of questions</legend><div ref={countOptions} className="segmented count-options sliding-indicator">{[5, 10, 20, !deck && courseId === 'IN3050' ? 50 : 40, 0].map(amount => <button key={amount} disabled={amount > pool.length} aria-pressed={amount === countOption} onClick={() => setCount(amount)}>{amount === 0 ? 'All' : amount}</button>)}</div></fieldset>
-            <div className="session-start"><span><strong>{countLabel(selectedCount, 'question')}</strong><small>{deck ? 'Custom deck' : examOnly ? examSelectionLabel(examSelection) : topicIds.length ? `${countLabel(topicIds.length, 'topic')} selected` : 'All topics'} · {duration ? `${duration} minutes` : 'No time limit'}</small></span><button className="primary-button" disabled={!selectedCount} onClick={() => start()}>Start session<Icon name="arrow" /></button></div>
+            <div className="session-start"><span><strong>{countLabel(selectedCount, 'question')}</strong><small>{deck ? 'Custom deck' : examOnly ? examSelectionLabel(examSelection) : groupOnly ? groupSelectionLabel(groupSelection) : topicIds.length ? `${countLabel(topicIds.length, 'topic')} selected` : 'All topics'} · {duration ? `${duration} minutes` : 'No time limit'}</small></span><button className="primary-button" disabled={!selectedCount} onClick={() => start()}>Start session<Icon name="arrow" /></button></div>
           </section>
           <div className="setup-aside">
             <section className="panel selection-panel">
               <div className="panel-heading"><h2 ref={selectionHeading} tabIndex={-1}>Question pool</h2></div>
               <div className="selection-counts"><span><Icon name="layers" />Multiple choice<strong>{pool.filter(question => question.type !== 'boolean').length}</strong></span>{!deck && <span><Icon name="checkCircle" />True or false<strong>{pool.filter(question => question.type === 'boolean').length}</strong></span>}</div>
-              {!deck && !examOnly && selectedTopics.length > 0 && <div className="selected-topics">
+              {!deck && !sourceLocked && selectedTopics.length > 0 && <div className="selected-topics">
                 <div className="selected-topics-heading"><h3>Selected topics</h3><button type="button" className="text-button" onClick={() => { setTopicIds([]); selectionHeading.current?.focus() }}>Show all topics</button></div>
                 <ul className="selected-topic-list">{selectedTopics.map(topic => <li key={topic.id}>
                   <button type="button" aria-label={'Remove topic ' + topic.title} onClick={event => {
@@ -412,7 +436,7 @@ export default function App() {
         <div className="session-progress"><span>Question <strong>{active.currentIndex + 1}</strong> of {active.questionIds.length}</span><span>{Object.keys(active.answers).length} answered</span><progress value={Object.keys(active.answers).length} max={active.questionIds.length} aria-label="Answered questions" /></div>
         <article className="panel question-panel">{!active.deck && <div className="question-meta"><span className={'sample-pill difficulty-' + current.difficulty}>{current.isDemo ? 'Legacy sample question' : DIFFICULTY_LABELS[current.difficulty]}</span>{current.trial2025 && current.examYear === 2024 ? <span>2024 exam · 2025 trial</span> :
             current.trial2025 ? <span>2025 trial exam</span> : current.examYear && <span>{current.examYear} exam</span>}
-          {current.unscored && <span>Not scored · source issue</span>}{current.writtenAdaptation && <span>Adapted written prompt</span>}{current.examPrep && <span>Exam prep</span>}
+          {current.scopeNote && <span>Supplementary practice</span>}{current.practiceSet && <span>{groupSelectionLabel(current.practiceSet)}</span>}{current.unscored && <span>Not scored · source issue</span>}{current.writtenAdaptation && <span>Adapted written prompt</span>}{current.examPrep && !current.practiceSet && <span>Exam prep</span>}
           {current.type === 'multi' && <span>Choose {answerCount} answers</span>}</div>}<h2 ref={questionHeading} tabIndex={-1}><MathText>{current.prompt}</MathText></h2><QuestionMaterial question={current} />
           <fieldset className="answer-options"><legend className="sr-only">{current.type === 'multi' ? `Choose ${answerCount} answers` : 'Choose an answer'}</legend>{getOrderedOptions(current, active.id).map((option, index) => {
             const chosen = (recorded ? answerIds(recorded) : selected).includes(option.id)
@@ -427,7 +451,7 @@ export default function App() {
                   : [option.id])
               }} value={option.id} /><span className="option-letter">{String.fromCharCode(65 + index)}</span><span className="option-content"><AnswerText text={option.text} code={current.codeOptions} /></span>{correct ? <Icon name="checkCircle" /> : wrong ? <Icon name="close" /> : <span className={current.type === 'multi' ? 'option-radio option-checkbox' : 'option-radio'} />}</label>
           })}</fieldset>
-          {isFeedback && <div className={'answer-feedback' + (!current.unscored && recorded === current.correctOptionId ? ' is-correct' : '')} role="status"><h3><Icon name={!current.unscored && recorded === current.correctOptionId ? 'checkCircle' : 'info'} />{current.unscored ? 'Not scored · source issue' : recorded === current.correctOptionId ? 'Correct!' : 'Incorrect'}</h3>{current.explanation && <p><MathText>{current.explanation}</MathText></p>}{!active.deck && <QuestionSources question={current} />}</div>}
+          {isFeedback && <div className={'answer-feedback' + (!current.unscored && recorded === current.correctOptionId ? ' is-correct' : '')} role="status"><h3><Icon name={!current.unscored && recorded === current.correctOptionId ? 'checkCircle' : 'info'} />{current.unscored ? 'Not scored · source issue' : recorded === current.correctOptionId ? 'Correct!' : 'Incorrect'}</h3><QuestionExplanation question={current} />{!active.deck && <QuestionSources question={current} />}</div>}
           <div className="question-actions"><button className="secondary-button" disabled={active.currentIndex === 0} onClick={() => setProgress(previous => ({ ...previous, active: { ...active, currentIndex: active.currentIndex - 1 } }))}><Icon name="chevron" className="rotate-back" />Previous</button><div>{!recorded && <button className="text-button skip-button" onClick={() => advance(active)}>Skip</button>}{recorded ? <button className="primary-button" onClick={() => advance(active)}>{active.currentIndex === active.questionIds.length - 1 ? 'View results' : 'Next question'}<Icon name="arrow" /></button> : <button className="primary-button" disabled={!canSubmit} onClick={submit}>{active.mode === 'practice' ? 'Check answer' : active.currentIndex === active.questionIds.length - 1 ? 'Submit and view results' : 'Submit and continue'}<Icon name="arrow" /></button>}</div></div>
         </article>
         <div className="session-bottom"><button className="text-button" onClick={() => setConfirmEnd(true)}>End session</button></div>
@@ -440,7 +464,7 @@ export default function App() {
         <section className="panel topic-results"><div className="panel-heading"><h2>Results by topic</h2><span>Correct / total</span></div>{summary.topics.map(topic => <div key={topic.topicId} className="topic-result-row"><span>{sessionTopic(result, topic.topicId)}</span><progress value={topic.correct} max={topic.total} aria-label={`${sessionTopic(result, topic.topicId)}: ${topic.correct} of ${topic.total} correct`} /><strong>{topic.correct} / {topic.total}</strong></div>)}</section>
         <section className="answer-review"><div className="section-heading"><h2>Answers and explanations</h2><span>{countLabel(result.questionIds.length, 'question')}</span></div>{result.questionIds.map((id, index) => {
           const question = resultIndex.get(id)!, answer = result.answers[id], correct = !question.unscored && answer === question.correctOptionId
-          return <details className="panel review-item" key={id}><summary><span className={'review-marker' + (question.unscored ? ' unscored' : correct ? ' correct' : '')}><Icon name={question.unscored ? 'info' : correct ? 'check' : answer ? 'close' : 'info'} /></span><span><small>Question {index + 1} · {sessionTopic(result, question.topicId)}</small><strong><MathText>{question.prompt}</MathText></strong></span><Icon name="chevron" /></summary><div className="review-body"><QuestionMaterial question={question} /><p><strong>Your answer:</strong> <AnswerReview question={question} answer={answer} /></p>{question.unscored ? <p><strong>Not scored · source issue</strong></p> : <p><strong>{question.type === 'multi' ? 'Correct answers:' : 'Correct answer:'}</strong> <AnswerReview question={question} answer={question.correctOptionId} /></p>}{question.explanation && <p><MathText>{question.explanation}</MathText></p>}{!result.deck && <QuestionSources question={question} />}</div></details>
+          return <details className="panel review-item" key={id}><summary><span className={'review-marker' + (question.unscored ? ' unscored' : correct ? ' correct' : '')}><Icon name={question.unscored ? 'info' : correct ? 'check' : answer ? 'close' : 'info'} /></span><span><small>Question {index + 1} · {sessionTopic(result, question.topicId)}</small><strong><MathText>{question.prompt}</MathText></strong></span><Icon name="chevron" /></summary><div className="review-body"><QuestionMaterial question={question} /><p><strong>Your answer:</strong> <AnswerReview question={question} answer={answer} /></p>{question.unscored ? <p><strong>Not scored · source issue</strong></p> : <p><strong>{question.type === 'multi' ? 'Correct answers:' : 'Correct answer:'}</strong> <AnswerReview question={question} answer={question.correctOptionId} /></p>}<QuestionExplanation question={question} />{!result.deck && <QuestionSources question={question} />}</div></details>
         })}</section>
       </>}
 

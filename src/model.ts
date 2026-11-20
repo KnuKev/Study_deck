@@ -35,6 +35,14 @@ export interface Course { id: CourseId; title: string; shortTitle: string; descr
 export interface SourceReference { path: string; location: string }
 export interface SourceDocument { path: string; title: string; courseId: CourseId; kind: string; sha256: string }
 export interface QuestionTable { caption: string; columns: string[]; rows: string[][] }
+export interface QuestionIllustration {
+  src: string
+  alt: string
+  caption: string
+  placement: 'question' | 'explanation'
+  sourceRef: SourceReference
+  credit?: string
+}
 export interface Question {
   id: string
   courseId: StudySetId
@@ -57,6 +65,12 @@ export interface Question {
   trial2025?: boolean
   writtenAdaptation?: boolean
   examPrep?: boolean
+  practiceSet?: 'quiz' | 'walkthrough'
+  instructorOriginal?: boolean
+  scopeNote?: string
+  promptAfterCode?: string
+  illustrations?: QuestionIllustration[]
+  guidedReview?: { lesson: string; distractors: string[]; exampleCode: string; takeaway: string }
   historicalOnly?: boolean
   code?: string
   codeOptions?: boolean

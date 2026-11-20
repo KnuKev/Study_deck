@@ -7,7 +7,8 @@ export default function ExamPreparationGuidance() {
       <li>About {guidance.format.approximateQuestions} multiple-choice questions, primarily based on lecture slides.</li>
       <li>{guidance.excludedMaterial} is excluded.</li>
       <li>Use Fall 2024 and Fall 2025 for the question format. {guidance.notFormatReference} used a different format.</li>
+      <li>Understand common NumPy operations, array shapes and axes; NumPy internals are not the focus.</li>
     </ul>
-    <p className="small-copy">Walkthrough slides: awaiting the remaining material.</p>
+    <p className="small-copy">Practice quiz and walkthrough: available under Group session.</p>
   </details>
 }

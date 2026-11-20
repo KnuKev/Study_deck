@@ -1,0 +1,711 @@
+[
+  {
+    "id": "in3230-reno-visual",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "prompt": "In the Reno curve, cwnd rises beyond the capacity line while no loss is reported. Assuming the bottleneck capacity stays fixed, what is the main effect of those additional outstanding packets?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They increase propagation speed along the path."
+      },
+      {
+        "id": "b",
+        "text": "They increase queue occupancy and queueing delay."
+      },
+      {
+        "id": "c",
+        "text": "They permanently increase the bottleneck link rate."
+      },
+      {
+        "id": "d",
+        "text": "They increase the receiver’s advertised buffer size."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Once the path is filled, extra in-flight packets mostly build a bottleneck queue rather than raise its service rate. Loss-based Reno can continue increasing until a congestion signal causes a reduction.",
+    "difficulty": "hard",
+    "source": "TCP Reno · PDF page 12",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 12"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-reno.webp",
+        "alt": "A congestion-window curve rises above a capacity line toward a queue limit, then drops after losses.",
+        "caption": "TCP Reno · PDF page 12",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/in3230_cc.pdf",
+          "location": "PDF page 12"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3230-recovery-visual",
+    "courseId": "IN3230",
+    "topicId": "net-transport",
+    "type": "choice",
+    "prompt": "In this TCP timeline, repeated ACK 1 arrive after later segments get through. What extra information would SACK provide to help recover multiple losses?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The receive timestamps of every retransmitted segment."
+      },
+      {
+        "id": "b",
+        "text": "The maximum route capacity inferred by each router."
+      },
+      {
+        "id": "c",
+        "text": "The received byte ranges beyond the cumulative ACK gap."
+      },
+      {
+        "id": "d",
+        "text": "The application message boundaries in the received data."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The cumulative ACK identifies the next missing byte but does not describe all later received ranges. SACK reports those ranges, helping the sender identify and retransmit missing data selectively.",
+    "difficulty": "hard",
+    "source": "TCP recovery · PDF page 19",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+        "location": "PDF page 19"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-recovery.webp",
+        "alt": "A sender–receiver timeline with numbered TCP segments, missing transmissions, and repeated ACK 1.",
+        "caption": "TCP recovery · PDF page 19",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/in3230_transportlayer.pdf",
+          "location": "PDF page 19"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3230-hidden-visual",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "choice",
+    "prompt": "A and C cannot sense each other, but both can reach B. Both perform carrier sensing before transmitting to B. What can happen?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both transmit after sensing an idle channel, and their signals collide at B."
+      },
+      {
+        "id": "b",
+        "text": "Both detect the other’s transmission, so B receives strictly alternating frames."
+      },
+      {
+        "id": "c",
+        "text": "Only B’s carrier sensing matters, so neither sender needs a backoff procedure."
+      },
+      {
+        "id": "d",
+        "text": "Both transmissions succeed because separate senders imply separate channels."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Carrier sensing is local to each sender. A and C may each observe an idle medium while their transmissions interfere at the shared receiver B: the hidden-terminal problem.",
+    "difficulty": "medium",
+    "source": "Wireless week 2 · PDF page 6",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF page 6"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-hidden.webp",
+        "alt": "Wireless stations A and C on opposite sides of an obstacle transmit toward B.",
+        "caption": "Wireless week 2 · PDF page 6",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+          "location": "PDF page 6"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3230-beamforming-visual",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-1",
+    "type": "choice",
+    "prompt": "Compare the two antenna patterns. Which change produces a stronger lobe toward one receiver without increasing the total transmitted data rate by itself?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Assigning a different destination IP address to every antenna."
+      },
+      {
+        "id": "b",
+        "text": "Giving every stream an independent transport receive window."
+      },
+      {
+        "id": "c",
+        "text": "Replacing each antenna weight with a randomly chosen packet route."
+      },
+      {
+        "id": "d",
+        "text": "Coordinating relative antenna phases and amplitudes for that direction."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Beamforming combines antenna contributions constructively in a desired direction. It changes the spatial energy pattern; sending independent spatial streams is a separate multiplexing decision.",
+    "difficulty": "medium",
+    "source": "Wireless week 2 · PDF page 16",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF page 16"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-beamforming.webp",
+        "alt": "Two antenna radiation patterns: one spreads energy broadly and the other has a directed main lobe.",
+        "caption": "Wireless week 2 · PDF page 16",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+          "location": "PDF page 16"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3230-mumimo-visual",
+    "courseId": "IN3230",
+    "topicId": "net-wireless-2",
+    "type": "choice",
+    "prompt": "The access point serves several stations using spatial beams on one channel. Which condition is important for separating their streams?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Every station must receive an identical copy of the same payload."
+      },
+      {
+        "id": "b",
+        "text": "The channels must provide usable spatial separation and suitable channel information."
+      },
+      {
+        "id": "c",
+        "text": "Every station must share one MAC address throughout the transmission."
+      },
+      {
+        "id": "d",
+        "text": "The access point must disable coordination between its antennas."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "MU-MIMO uses spatial resources to separate users. It requires suitable channel conditions and sufficiently accurate channel information; multiple antennas alone do not guarantee independent usable streams.",
+    "difficulty": "medium",
+    "source": "Wireless week 2 · PDF page 19",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+        "location": "PDF page 19"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-mumimo.webp",
+        "alt": "A multi-antenna access point sends separate spatial beams to several stations.",
+        "caption": "Wireless week 2 · PDF page 19",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/in3230_2026_w2_final.pdf",
+          "location": "PDF page 19"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3230-mptcp-visual",
+    "courseId": "IN3230",
+    "topicId": "net-architecture",
+    "type": "choice",
+    "prompt": "Suppose two subflows between A and H cross the same bottleneck as one ordinary TCP connection. Why couple their congestion controllers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To force both subflows to use identical rates even on disjoint bottlenecks."
+      },
+      {
+        "id": "b",
+        "text": "To let either subflow ignore loss whenever the other one receives an ACK."
+      },
+      {
+        "id": "c",
+        "text": "To avoid giving the MPTCP connection the aggregate aggressiveness of two competitors."
+      },
+      {
+        "id": "d",
+        "text": "To reserve the bottleneck exclusively for whichever endpoint has more addresses."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Independent TCP-like subflows could obtain roughly two flows’ share against one competitor. Coupled control aims to avoid that unfair aggregate advantage while exploiting different paths when appropriate.",
+    "difficulty": "hard",
+    "source": "Network architecture · PDF page 38",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_arch.pdf",
+        "location": "PDF page 38"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-mptcp.webp",
+        "alt": "A network graph connects multihomed endpoint A to endpoint H through intermediate nodes.",
+        "caption": "Network architecture · PDF page 38",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/in3230_arch.pdf",
+          "location": "PDF page 38"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3230-pipelining-visual",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "The first HTTP/1.1 pipelined response takes much longer to generate than the next two. The later responses are ready. What prevents sending their complete responses first on this connection?",
+    "options": [
+      {
+        "id": "a",
+        "text": "HTTP/1.1 requires pipelined responses to follow request order."
+      },
+      {
+        "id": "b",
+        "text": "HTTP/1.1 permits only one outstanding request per connection."
+      },
+      {
+        "id": "c",
+        "text": "TCP requires each request to open a separate connection."
+      },
+      {
+        "id": "d",
+        "text": "TCP requires all three responses to have the same length."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Pipelining permits multiple outstanding requests, but HTTP/1.1 response ordering still causes application-layer head-of-line blocking. A later ready response waits behind an earlier one.",
+    "difficulty": "medium",
+    "source": "HTTP/1.1 pipelining · PDF page 41",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF page 41"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-pipelining.webp",
+        "alt": "Client–server timeline for pipelined HTTP/1.1 requests and ordered responses.",
+        "caption": "HTTP/1.1 pipelining · PDF page 41",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/http2-and-quic.pdf",
+          "location": "PDF page 41"
+        },
+        "credit": "High Performance Browser Networking · Ilya Grigorik"
+      }
+    ]
+  },
+  {
+    "id": "in3230-http2-visual",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "Frames from streams 1, 3 and 5 share the HTTP/2 connection. A TCP segment containing stream 1 data is lost, while later stream 3 bytes arrive. What can still block stream 3 delivery?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The HTTP/2 frame format has no field identifying a stream."
+      },
+      {
+        "id": "b",
+        "text": "The server must finish every stream 1 response before sending stream 3 frames."
+      },
+      {
+        "id": "c",
+        "text": "Each HTTP/2 stream waits for a new independent TCP handshake."
+      },
+      {
+        "id": "d",
+        "text": "The gap in TCP’s shared ordered byte stream can hold back later bytes."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "HTTP/2 can interleave frames from different streams, removing HTTP/1.1 response serialization. Its TCP connection still delivers one ordered byte stream, so a gap can stall later bytes belonging to other streams.",
+    "difficulty": "hard",
+    "source": "HTTP/2 multiplexing · PDF page 54",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF page 54"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-http2.webp",
+        "alt": "HTTP/2 frames from streams 1, 3 and 5 share one connection between a client and server.",
+        "caption": "HTTP/2 multiplexing · PDF page 54",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/http2-and-quic.pdf",
+          "location": "PDF page 54"
+        },
+        "credit": "High Performance Browser Networking · Ilya Grigorik"
+      }
+    ]
+  },
+  {
+    "id": "in3230-quic-visual",
+    "courseId": "IN3230",
+    "topicId": "net-http-quic",
+    "type": "choice",
+    "prompt": "In the QUIC case, stream A loses data but all data needed to deliver stream B have arrived. Which statement best describes the remaining dependency?",
+    "options": [
+      {
+        "id": "a",
+        "text": "B must wait for A because QUIC exposes only one ordered byte stream."
+      },
+      {
+        "id": "b",
+        "text": "B can be delivered, although future transmissions can still share congestion limits."
+      },
+      {
+        "id": "c",
+        "text": "B can be delivered because QUIC never retransmits missing stream data."
+      },
+      {
+        "id": "d",
+        "text": "B needs another UDP socket before its received data can be delivered."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "QUIC provides ordered delivery within each reliable stream rather than across all streams together. Complete stream B data need not wait for A; shared congestion control and capacity can still affect subsequent transmissions.",
+    "difficulty": "hard",
+    "source": "QUIC stream delivery · PDF page 74",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/http2-and-quic.pdf",
+        "location": "PDF page 74"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-quic.webp",
+        "alt": "HTTP/2 over TCP and QUIC diagrams show several streams and a lost packet.",
+        "caption": "QUIC stream delivery · PDF page 74",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/http2-and-quic.pdf",
+          "location": "PDF page 74"
+        },
+        "credit": "Diagram credited to devopedia.org/quic in the lecture"
+      }
+    ]
+  },
+  {
+    "id": "in3230-bisection-visual",
+    "courseId": "IN3230",
+    "topicId": "net-interconnects",
+    "type": "choice",
+    "prompt": "Assume equal-capacity links. Why can the mesh in the middle carry more traffic across the shown balanced cut than the tree on the left?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Its endpoints have different names on opposite sides of the cut."
+      },
+      {
+        "id": "b",
+        "text": "Its routes contain no intermediate switches or routers."
+      },
+      {
+        "id": "c",
+        "text": "Several links cross its cut rather than a single tree link."
+      },
+      {
+        "id": "d",
+        "text": "Its packets no longer compete for any network resources."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Bisection capacity sums link capacity across a balanced cut. The pictured tree has a one-link bottleneck; the mesh cut crosses several links. This comparison does not guarantee every traffic pattern achieves that capacity.",
+    "difficulty": "hard",
+    "source": "Interconnection topologies · PDF page 34",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF page 34"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-bisection.webp",
+        "alt": "A tree, a 4-by-4 mesh, and a hypercube are shown with lines dividing their nodes into halves.",
+        "caption": "Interconnection topologies · PDF page 34",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+          "location": "PDF page 34"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3230-deadlock-visual",
+    "courseId": "IN3230",
+    "topicId": "net-interconnects",
+    "type": "choice",
+    "prompt": "Suppose each packet holds its current channel buffer while requesting the next channel in the dependency cycle. None can release its held buffer first. What makes this a deadlock risk?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A cycle of hold-and-wait dependencies can prevent every packet in the cycle from advancing."
+      },
+      {
+        "id": "b",
+        "text": "A cycle proves that packets are moving indefinitely without ever approaching a destination."
+      },
+      {
+        "id": "c",
+        "text": "A cycle makes routing impossible even when every channel buffer is completely empty."
+      },
+      {
+        "id": "d",
+        "text": "A cycle means that every packet must have been delivered to the wrong endpoint."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Deadlock requires more than a geometric cycle: occupied resources and blocking dependencies matter. Under these assumptions, each packet waits for a resource held by another packet in the cycle. Restricting channel dependencies or using suitable virtual channels can prevent such waiting cycles.",
+    "difficulty": "hard",
+    "source": "Routing dependencies · PDF page 57",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+        "location": "PDF page 57"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-deadlock.webp",
+        "alt": "Packets occupy channels in a mesh; a corresponding directed channel-dependency graph contains cycles.",
+        "caption": "Routing dependencies · PDF page 57",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/interconnects-lecture.pdf",
+          "location": "PDF page 57"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3230-mpls-visual",
+    "courseId": "IN3230",
+    "topicId": "net-mpls",
+    "type": "choice",
+    "prompt": "A core router forwards the packet represented by this MPLS stack. Which label does it normally examine first?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The innermost service label nearest the payload."
+      },
+      {
+        "id": "b",
+        "text": "Every label simultaneously to form a transport port."
+      },
+      {
+        "id": "c",
+        "text": "The original Layer 3 destination instead of any label."
+      },
+      {
+        "id": "d",
+        "text": "The outermost label at the top of the stack."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Core MPLS forwarding normally uses the top label. Inner labels can identify additional services or forwarding contexts; the bottom-of-stack bit identifies the last label before the payload.",
+    "difficulty": "medium",
+    "source": "MPLS label stack · PDF page 26",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_mpls_lecture.pdf",
+        "location": "PDF page 26"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-mpls.webp",
+        "alt": "An MPLS stack showing LDP, TE and VPN labels above a Layer 2/3 packet header.",
+        "caption": "MPLS label stack · PDF page 26",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/in3230_mpls_lecture.pdf",
+          "location": "PDF page 26"
+        },
+        "credit": "Cisco lecture figure"
+      }
+    ]
+  },
+  {
+    "id": "in3230-pacing-visual",
+    "courseId": "IN3230",
+    "topicId": "net-congestion",
+    "type": "choice",
+    "prompt": "Both senders may have enough window space for all the shown packets. What does pacing change relative to sending them as a burst?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It increases the maximum size of every packet on the link."
+      },
+      {
+        "id": "b",
+        "text": "It spaces transmissions to reduce short-term queue spikes."
+      },
+      {
+        "id": "c",
+        "text": "It eliminates the need to obey the congestion window."
+      },
+      {
+        "id": "d",
+        "text": "It guarantees an identical end-to-end delay for every packet."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A window limits how much data may be outstanding; pacing also regulates when packets enter the path. Spreading transmissions can reduce microbursts without guaranteeing latency or replacing congestion control.",
+    "difficulty": "medium",
+    "source": "Pacing · PDF page 37",
+    "sourceRefs": [
+      {
+        "path": "In3230/lecture_slides/in3230_cc.pdf",
+        "location": "PDF page 37"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3230-pacing.webp",
+        "alt": "Two sender–receiver diagrams compare closely bunched packets with evenly spaced packets.",
+        "caption": "Pacing · PDF page 37",
+        "placement": "question",
+        "sourceRef": {
+          "path": "In3230/lecture_slides/in3230_cc.pdf",
+          "location": "PDF page 37"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3050-scaling-visual",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "The vertical feature is rescaled while the horizontal feature is left unchanged. What can change when kNN uses Euclidean distance after this transformation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the printed tick labels change; nearest-neighbor order must remain identical."
+      },
+      {
+        "id": "b",
+        "text": "Every class label is rescaled by the same factor as the vertical feature."
+      },
+      {
+        "id": "c",
+        "text": "The relative contribution of the vertical feature and the resulting neighbor ranking can change."
+      },
+      {
+        "id": "d",
+        "text": "Every distance becomes equal because normalization removes all variation."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Rescaling one coordinate changes its contribution to Euclidean distance. Points retain their labels, but nearest-neighbor rankings and predictions can change. Fit scaling parameters on training data and reuse them on validation or test data.",
+    "difficulty": "medium",
+    "source": "Feature scaling · week 3, PDF page 18",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/week3.pdf",
+        "location": "PDF page 18"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3050-scaling.webp",
+        "alt": "Two scatter plots show the same points before and after the vertical axis is rescaled.",
+        "caption": "Feature scaling · week 3, PDF page 18",
+        "placement": "question",
+        "sourceRef": {
+          "path": "IN3050/Github/IN3050-main/Lecture_03_Supervised_Learning_KNN/week3.pdf",
+          "location": "PDF page 18"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3050-models-visual",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "The join-the-dots model fits the displayed training points exactly. What is the soundest way to decide whether it generalizes better than the quadratic model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Compare performance on validation data using the same evaluation procedure."
+      },
+      {
+        "id": "b",
+        "text": "Select join-the-dots solely because its training error is smallest."
+      },
+      {
+        "id": "c",
+        "text": "Select the model with the greatest number of adjustable parameters."
+      },
+      {
+        "id": "d",
+        "text": "Tune both models repeatedly against the final test labels until one wins."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Training fit alone cannot establish generalization. Use held-out validation or cross-validation for model selection, then reserve the test set for evaluating the selected procedure.",
+    "difficulty": "medium",
+    "source": "Model selection · week 10, PDF page 16",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/week10.pdf",
+        "location": "PDF page 16"
+      }
+    ],
+    "illustrations": [
+      {
+        "src": "illustrations/in3050-models.webp",
+        "alt": "The same data are fitted by a straight line, a quadratic curve, and a join-the-dots curve.",
+        "caption": "Model selection · week 10, PDF page 16",
+        "placement": "question",
+        "sourceRef": {
+          "path": "IN3050/Github/IN3050-main/Lecture_10_Regularization_and_Ensembles/week10.pdf",
+          "location": "PDF page 16"
+        }
+      }
+    ]
+  }
+]

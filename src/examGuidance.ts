@@ -17,11 +17,13 @@ export function hasLectureMaterial(question: Question): boolean {
 }
 
 export function isIN3050ExamPreparation(question: Question): boolean {
-  return hasRecommendedPaper(question) || hasLectureMaterial(question)
+  return Boolean(question.practiceSet) || hasRecommendedPaper(question) || hasLectureMaterial(question)
 }
 
 export function getPracticePriority(question: Question): number {
   if (question.courseId !== 'IN3050') return question.examPrep ? 4 : 1
+  if (question.practiceSet === 'quiz') return 6
+  if (question.practiceSet === 'walkthrough') return 5
   if (question.sourceRefs?.some(reference => slidePaths.has(reference.path))) return 5
   if (hasRecommendedPaper(question)) return 4
   if (hasLectureMaterial(question)) return 3

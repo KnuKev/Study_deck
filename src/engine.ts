@@ -1,7 +1,7 @@
 import type { StudySetId, Difficulty, EndReason, ExamYear, Question, Session, SessionMode, SessionSummary } from './model.ts'
 import { isIN3050ExamPreparation } from './examGuidance.ts'
 
-export type QuestionFocus = 'mixed' | 'prep' | 'trial-2025' | ExamYear
+export type QuestionFocus = 'mixed' | 'prep' | 'illustrations' | 'trial-2025' | ExamYear
 
 export function getPracticePool(questions: readonly Question[], courseId: StudySetId, topicIds: readonly string[], difficulty: Difficulty | 'all' = 'all', focus: QuestionFocus = 'mixed', mode: SessionMode = 'practice') {
   const topics = new Set(topicIds)
@@ -12,6 +12,7 @@ export function getPracticePool(questions: readonly Question[], courseId: StudyS
     if (question.historicalOnly || (topics.size && !topics.has(question.topicId))) return false
     if (difficulty !== 'all' && question.difficulty !== difficulty) return false
     if (courseId === 'IN3050' && mode === 'exam' && (question.type === 'boolean' || question.unscored)) return false
+    if (focus === 'illustrations') return Boolean(question.illustrations?.some(image => image.placement === 'question'))
     return focus === 'mixed' || (courseId === 'IN3050' ? isIN3050ExamPreparation(question) : Boolean(question.examPrep || question.examYear || question.trial2025))
   })
 }
@@ -19,7 +20,7 @@ export function getPracticePool(questions: readonly Question[], courseId: StudyS
 /** Stable per session, including after reload; prevents learning an answer's letter. */
 export function getOrderedOptions(question: Question, sessionId: string) {
   const options = [...question.options]
-  if (question.type === 'boolean' || question.originalExam) return options
+  if (question.type === 'boolean' || question.originalExam || question.instructorOriginal) return options
   let seed = 2166136261
   for (const character of `${sessionId}:${question.id}`) seed = Math.imul(seed ^ character.charCodeAt(0), 16777619) >>> 0
   for (let i = options.length - 1; i > 0; i--) {

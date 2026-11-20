@@ -1,0 +1,1321 @@
+[
+  {
+    "id": "in3050-group-quiz-01",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A network has five hidden layers, each using ReLU, followed by a linear output layer. During backpropagation, the gradient passes through one ReLU derivative per hidden layer. Ignoring the effects of the weights, what is the largest factor by which these activation derivatives alone can scale the gradient by the time it reaches the first layer?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5"
+      },
+      {
+        "id": "b",
+        "text": "1"
+      },
+      {
+        "id": "c",
+        "text": "0.001"
+      },
+      {
+        "id": "d",
+        "text": "0"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "ReLU(z) = max(0,z). For z>0 its derivative is 1, and for z<0 it is 0. By the chain rule the activation derivatives multiply along a backward path; through five active ReLUs their maximum product is 1^5 = 1. At z=0 a subgradient is selected by convention. Actual backpropagation also multiplies by weight matrices, so this question deliberately isolates activation derivatives.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q01",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q01 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q01 · cells 4–6"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "For \\(\\mathrm{ReLU}(z)=\\max(0,z)\\), the derivative is 1 for \\(z>0\\) and 0 for \\(z<0\\). At \\(z=0\\), software uses a convention for a subgradient. Along a backward path, these activation derivatives multiply. Real gradients also include the weight matrices and the loss derivative, but this item deliberately ignores them.",
+      "distractors": [
+        "A is not correct: Five layers create five derivative factors; the chain rule multiplies them rather than adding them.",
+        "C is not correct: A small product such as \\(0.25^5\\) is a sigmoid-style comparison, not the largest possible ReLU derivative product.",
+        "D is not correct: The product is zero only if at least one ReLU is inactive; the question asks for the largest possible factor."
+      ],
+      "exampleCode": "import numpy as np\n\nrelu_derivatives = np.ones(5)\nmax_relu_factor = np.prod(relu_derivatives)\nsigmoid_reference_factor = 0.25 ** 5  # maximum sigmoid derivative per layer\n\nassert max_relu_factor == 1\nprint(f\"Five active ReLUs: 1^5 = {max_relu_factor:g}\")\nprint(f\"For comparison, 0.25^5 = {sigmoid_reference_factor:.8f}\")",
+      "takeaway": "ReLU does not automatically shrink an active gradient through depth: its largest activation-only multiplier is 1. Vanishing or exploding gradients still depend on the full chain, including weights and inactive units."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-02",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "multi",
+    "prompt": "Which statements correctly describe the roles of training, validation, and test sets in supervised machine learning? Select exactly THREE answers.",
+    "options": [
+      {
+        "id": "a",
+        "text": "The training set is used to compute gradients and update model parameters."
+      },
+      {
+        "id": "b",
+        "text": "The test set should be checked after every epoch and used to choose the best model."
+      },
+      {
+        "id": "c",
+        "text": "The validation set should normally be used to compute gradient updates for model weights."
+      },
+      {
+        "id": "d",
+        "text": "Repeatedly looking at test performance while tuning the model keeps the test set fully independent."
+      },
+      {
+        "id": "e",
+        "text": "The validation set can be used for model selection, hyperparameter tuning, or early stopping."
+      },
+      {
+        "id": "f",
+        "text": "The test set should be reserved for final evaluation after model choices have been made."
+      }
+    ],
+    "correctOptionId": "a,e,f",
+    "explanation": "The training partition is used to fit model parameters. The validation partition guides choices such as hyperparameters and stopping epoch without directly performing ordinary training updates. The test partition is held out until the evaluation protocol and model choices are fixed. Repeatedly checking test performance and tuning to it introduces test-set leakage and optimistic estimates.",
+    "difficulty": "easy",
+    "source": "Practice quiz · Q02",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q02 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q02 · cells 7–9"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "A clean evaluation protocol separates fitting from model selection and final reporting. Training data estimate parameters, validation data choose among configurations, and the test data estimate performance only after those choices are fixed. This separation is especially important when many experiments are tried.",
+      "distractors": [
+        "B is not correct: Checking the test set every epoch turns it into a tuning signal rather than an independent final evaluation.",
+        "C is not correct: Ordinary gradient updates use training data; validation is for comparing already-trained choices.",
+        "D is not correct: Repeated model choices based on test performance leak information from the test set and make its estimate optimistic."
+      ],
+      "exampleCode": "import numpy as np\n\ncandidates = [\"small model\", \"medium model\", \"large model\"]\nvalidation_accuracy = np.array([0.78, 0.84, 0.81])\nchosen_index = int(np.argmax(validation_accuracy))\n\nprint(\"Choose using validation only:\")\nprint(candidates[chosen_index], \"with validation accuracy\", validation_accuracy[chosen_index])\nprint(\"The test set remains unseen until this choice is fixed.\")\nassert candidates[chosen_index] == \"medium model\"",
+      "takeaway": "Train, validation, and test data have different jobs. The test set is not a dashboard for iterative decisions; it is the final audit of a completed selection process."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-03",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "When training a standard autoencoder to reconstruct its input X, what should be used as the reconstruction target?",
+    "options": [
+      {
+        "id": "a",
+        "text": "target = np.zeros(len(X))"
+      },
+      {
+        "id": "b",
+        "text": "target = X.mean(axis=0)"
+      },
+      {
+        "id": "c",
+        "text": "target = X"
+      },
+      {
+        "id": "d",
+        "text": "target = cluster_labels"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A standard autoencoder consists of an encoder z = f(X) and decoder X_hat = g(z). Training minimizes a reconstruction loss such as mean squared error between X_hat and the original X. External class labels are not required for the standard unsupervised/self-supervised reconstruction task. Variants include denoising autoencoders, which receive corrupted inputs but reconstruct clean targets.",
+    "difficulty": "easy",
+    "source": "Practice quiz · Q03",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q03 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q03 · cells 11–13"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "codeOptions": true,
+    "guidedReview": {
+      "lesson": "An autoencoder contains an encoder \\(z=f(X)\\) and a decoder \\(\\hat X=g(z)\\). A standard reconstruction loss compares \\(\\hat X\\) with \\(X\\), for example \\(\\mathrm{MSE}=\\frac{1}{nd}\\sum_{i,j}(X_{ij}-\\hat X_{ij})^2\\). Denoising variants can receive a corrupted input but still use the clean original as target.",
+      "distractors": [
+        "A is not correct: An all-zero target would train the decoder to output zeros, not to reconstruct each input.",
+        "B is not correct: The feature mean is one shared vector and loses the individual structure that reconstruction should preserve.",
+        "D is not correct: Standard autoencoders do not require cluster labels; using them would define a different supervised objective."
+      ],
+      "exampleCode": "import numpy as np\n\nX = np.array([[1.0, 0.0, 1.0], [0.0, 1.0, 0.0]])\nX_hat = np.array([[0.90, 0.10, 0.80], [0.10, 0.85, 0.15]])\nreconstruction_target = X\nmse = np.mean((X_hat - reconstruction_target) ** 2)\n\nassert np.array_equal(reconstruction_target, X)\nprint(\"Reconstruction target:\\n\", reconstruction_target)\nprint(f\"Reconstruction MSE: {mse:.4f}\")",
+      "takeaway": "The normal autoencoder target is the input itself. The latent code is useful only insofar as a decoder can reconstruct relevant input structure from it."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-04",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "Which code performs the usual feature-wise centering step before standard principal component analysis (PCA)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "X - X.mean(axis=0)"
+      },
+      {
+        "id": "b",
+        "text": "X - X.mean(axis=1, keepdims=True)"
+      },
+      {
+        "id": "c",
+        "text": "X / X.mean(axis=0)"
+      },
+      {
+        "id": "d",
+        "text": "X.astype(int)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "PCA identifies directions of maximal variance of centered data. If X has shape (n_samples,n_features), X.mean(axis=0) computes one mean per feature. Centering yields Xc = X - X.mean(axis=0), and the covariance matrix may be estimated as Xc.T @ Xc/(n-1). Centering each row instead is not the standard PCA preprocessing step.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q04",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q04 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q04 · cells 14–16"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "codeOptions": true,
+    "guidedReview": {
+      "lesson": "PCA looks for directions of greatest variance around the data mean. For \\(X\\in\\mathbb{R}^{n\\times d}\\), feature-wise centering is \\(X_c=X-\\mu\\), where \\(\\mu_j=\\frac{1}{n}\\sum_i X_{ij}\\). In NumPy, X.mean(axis=0) has one entry per feature and broadcasts across rows.",
+      "distractors": [
+        "B is not correct: Row-wise centering subtracts a separate mean from each sample and is not the usual PCA preprocessing step.",
+        "C is not correct: Dividing by the mean is not centering; standardization, when needed, additionally divides by a standard deviation after centering.",
+        "D is not correct: Converting values to integers discards precision and does not move feature means to zero."
+      ],
+      "exampleCode": "import numpy as np\n\nX = np.array([[1.0, 10.0], [3.0, 20.0], [5.0, 30.0]])\nfeature_means = X.mean(axis=0)\nX_centered = X - feature_means\nrow_means = X.mean(axis=1, keepdims=True)\n\nassert np.allclose(X_centered.mean(axis=0), [0.0, 0.0])\nprint(\"Feature means:\", feature_means)\nprint(\"Feature-centered X:\\n\", X_centered)\nprint(\"Row means have shape\", row_means.shape, \"and solve a different problem.\")",
+      "takeaway": "Before standard PCA, center columns rather than rows. axis=0 refers to reducing over samples and therefore keeps one value per feature."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-05",
+    "courseId": "IN3050",
+    "topicId": "ai-regularization-ensembles",
+    "type": "choice",
+    "prompt": "What does the following expression return?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[2]"
+      },
+      {
+        "id": "b",
+        "text": "[0, 1, 2, 3]"
+      },
+      {
+        "id": "c",
+        "text": "[1, 3]"
+      },
+      {
+        "id": "d",
+        "text": "[0, 2]"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "np.flatnonzero(a) returns the indices of nonzero elements of a flattened array. For [2.4,0,-0.1,0], indices 0 and 2 are nonzero, so the output is array([0,2]). This can help inspect sparsity: it identifies the positions of active/nonzero coefficients, not the values.",
+    "difficulty": "easy",
+    "source": "Practice quiz · Q05",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q05 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q05 · cells 17–19"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "code": "weights = np.array([2.4, 0, -0.1, 0])\nnp.flatnonzero(weights)",
+    "codeOptions": true,
+    "guidedReview": {
+      "lesson": "Sparse vectors contain many zeros. np.flatnonzero(a) returns the integer locations of values that compare unequal to zero after flattening. It does not return coefficient values, and it does not distinguish positive from negative nonzero values.",
+      "distractors": [
+        "A is not correct: This is a value-like answer, not the full set of nonzero positions.",
+        "B is not correct: Indices 1 and 3 hold zero and therefore are not included.",
+        "C is not correct: These are precisely the indices of zero entries, the opposite of what flatnonzero returns."
+      ],
+      "exampleCode": "import numpy as np\n\nweights = np.array([2.4, 0.0, -0.1, 0.0])\nactive_indices = np.flatnonzero(weights)\nassert np.array_equal(active_indices, np.array([0, 2]))\nprint(\"weights:\", weights)\nprint(\"nonzero indices:\", active_indices)",
+      "takeaway": "Use flatnonzero to inspect which positions are active. It reports indices, not magnitudes or signs."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-06",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "Assume X is a NumPy array of shape (n_samples, n_features) and query is a one-dimensional feature vector of shape (n_features,). Which code computes the Euclidean distance from each row of X to query?",
+    "options": [
+      {
+        "id": "a",
+        "text": "np.linalg.norm(X @ query)"
+      },
+      {
+        "id": "b",
+        "text": "np.linalg.norm(X - query, axis=1)"
+      },
+      {
+        "id": "c",
+        "text": "np.linalg.norm(X - query, axis=0).argmax()"
+      },
+      {
+        "id": "d",
+        "text": "np.sum(X - query)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "For each training row x_i, Euclidean distance is sqrt(sum_j (x_ij-q_j)^2). NumPy broadcasting forms X-query, which has n_samples rows. np.linalg.norm(X-query, axis=1) computes one distance per row. The smallest distances identify k nearest neighbours; feature scaling may matter when feature units differ.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q06",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q06 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q06 · cells 20–22"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "codeOptions": true,
+    "guidedReview": {
+      "lesson": "For sample \\(x_i\\) and query \\(q\\), Euclidean distance is \\(d_i=\\sqrt{\\sum_j(x_{ij}-q_j)^2}\\). If X.shape == (n_samples, n_features) and query.shape == (n_features,), NumPy broadcasts the query across rows. Nearest-neighbour methods are sensitive to feature scales because distances use the numerical units directly.",
+      "distractors": [
+        "A is not correct: X @ query is a dot product per row, not the norm of a difference vector.",
+        "C is not correct: axis=0 combines values down feature columns, and argmax returns one index rather than all distances.",
+        "D is not correct: A single sum discards the row-wise squared differences required for Euclidean distance."
+      ],
+      "exampleCode": "import numpy as np\n\nX = np.array([[0.0, 100.0], [3.0, 130.0], [6.0, 110.0]])\nquery = np.array([2.0, 105.0])\ndistances = np.linalg.norm(X - query, axis=1)\n\nX_standardized = (X - X.mean(axis=0)) / X.std(axis=0)\nquery_standardized = (query - X.mean(axis=0)) / X.std(axis=0)\nscaled_distances = np.linalg.norm(X_standardized - query_standardized, axis=1)\n\nassert distances.shape == (3,)\nprint(\"Broadcasted difference shape:\", (X - query).shape)\nprint(\"Distances:\", np.round(distances, 3))\nprint(\"After feature scaling:\", np.round(scaled_distances, 3))",
+      "takeaway": "The row axis is axis=1 in a samples-by-features matrix. Always consider scaling before distance-based learning when feature units differ."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-07",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "For a one-dimensional NumPy vector z of logits, which code correctly computes numerically stable softmax probabilities?",
+    "options": [
+      {
+        "id": "a",
+        "text": "p = z / z.sum()"
+      },
+      {
+        "id": "b",
+        "text": "p = np.exp(z)"
+      },
+      {
+        "id": "c",
+        "text": "p = np.exp(z - z.max()); p = p / p.sum()"
+      },
+      {
+        "id": "d",
+        "text": "p = 1 / (1 + np.exp(-z))"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Softmax maps logits to a probability vector: p_i = exp(z_i)/sum_j exp(z_j). Adding the same constant to every logit does not change p. Therefore using z-z.max() yields identical probabilities but avoids overflow for large positive logits. This code assumes a one-dimensional vector; for batches use an explicit class axis and keepdims=True.",
+    "difficulty": "hard",
+    "source": "Practice quiz · Q07",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q07 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q07 · cells 24–26"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "codeOptions": true,
+    "guidedReview": {
+      "lesson": "Softmax is \\(p_i=\\exp(z_i)/\\sum_j\\exp(z_j)\\). Adding the same constant to every logit does not change the result, so use \\(z'=z-\\max(z)\\). Then the largest shifted logit is zero, which keeps exponentials at most one for the example. For batches, specify the class axis and retain dimensions when normalizing.",
+      "distractors": [
+        "A is not correct: Dividing raw logits by their sum is not the softmax formula and can give negative or invalid values.",
+        "B is not correct: Exponentiating alone produces unnormalized positive scores, not probabilities that sum to one.",
+        "D is not correct: The sigmoid is applied independently to binary logits and does not normalize a multi-class probability vector."
+      ],
+      "exampleCode": "import numpy as np\n\nz = np.array([1000.0, 1001.0, 1002.0])\nshifted = z - z.max()\nexp_shifted = np.exp(shifted)\nprobabilities = exp_shifted / exp_shifted.sum()\n\nassert np.isclose(probabilities.sum(), 1.0)\nassert np.argmax(probabilities) == 2\nprint(\"Shifted logits:\", shifted)\nprint(\"Stable softmax:\", np.round(probabilities, 6))",
+      "takeaway": "Stable softmax is mathematically identical to ordinary softmax but numerically safer. Shift first, exponentiate second, normalize last."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-08",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "Let t contain binary target labels in {0, 1}, and let y contain predicted probabilities strictly between 0 and 1. Which expression computes mean binary cross-entropy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "np.mean(t*np.log(y))"
+      },
+      {
+        "id": "b",
+        "text": "-np.mean(t*np.log(y) + (1-t)*np.log(1-y))"
+      },
+      {
+        "id": "c",
+        "text": "np.mean(t-y)"
+      },
+      {
+        "id": "d",
+        "text": "np.mean((t-y)**2)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "For a Bernoulli label t, the probability assigned to the observed outcome is p^t(1-p)^(1-t). Taking the negative log gives -[t log p+(1-t) log(1-p)]. Averaging over samples yields binary cross-entropy. Inputs should be strictly between 0 and 1 or use a numerically stable logits-based implementation in practice.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q08",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q08 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q08 · cells 27–29"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "codeOptions": true,
+    "guidedReview": {
+      "lesson": "For a binary target \\(t\\in\\{0,1\\}\\) and predicted probability \\(y\\), the probability of the observed outcome is \\(y^t(1-y)^{1-t}\\). Taking the negative logarithm gives \\(-[t\\log y+(1-t)\\log(1-y)]\\). Inputs must stay strictly within \\((0,1)\\) for this direct probability formula; practical libraries often compute a stable logits-based version.",
+      "distractors": [
+        "A is not correct: It omits the negative sign and the contribution for negative labels \\((1-t)\\log(1-y)\\).",
+        "C is not correct: A signed mean difference allows errors to cancel and is not a log-likelihood loss.",
+        "D is not correct: Mean squared error is a different loss; it is not the Bernoulli negative log-likelihood."
+      ],
+      "exampleCode": "import numpy as np\nimport matplotlib.pyplot as plt\n\nt = np.array([1.0, 0.0])\ny = np.array([0.90, 0.20])\nbce = -np.mean(t * np.log(y) + (1 - t) * np.log(1 - y))\nassert bce > 0\n\np = np.linspace(0.01, 0.99, 200)\nplt.figure(figsize=(7, 3.6))\nplt.plot(p, -np.log(p), label=\"target = 1\")\nplt.plot(p, -np.log(1 - p), label=\"target = 0\")\nplt.xlabel(\"predicted probability p\")\nplt.ylabel(\"per-example BCE\")\nplt.title(\"Binary cross-entropy penalizes confident wrong predictions\")\nplt.legend()\nplt.tight_layout()\nplt.show()\nprint(f\"BCE for the two examples: {bce:.4f}\")",
+      "takeaway": "BCE rewards confident correct probabilities and heavily penalizes confident incorrect ones. Its two terms handle positive and negative targets symmetrically."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-09",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "What is sigmoid(0), where sigmoid(z) = 1 / (1 + exp(-z))?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.5"
+      },
+      {
+        "id": "b",
+        "text": "-0.5"
+      },
+      {
+        "id": "c",
+        "text": "1"
+      },
+      {
+        "id": "d",
+        "text": "0"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The logistic sigmoid maps any real logit z to the interval (0,1). At z=0, exp(0)=1 and sigmoid(0)=1/2. This corresponds to the model assigning equal probabilities to the positive and negative class, not a guarantee that half of such predictions are correct.",
+    "difficulty": "easy",
+    "source": "Practice quiz · Q09",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q09 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q09 · cells 30–32"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "The logistic sigmoid \\(\\sigma(z)=1/(1+e^{-z})\\) maps logits to probabilities in \\((0,1)\\). A logit of zero corresponds to equal model odds and hence probability 0.5. This does not say that exactly half of examples with zero logits are empirically classified correctly; it describes the model output.",
+      "distractors": [
+        "B is not correct: The sigmoid range is \\((0,1)\\), so it cannot return a negative probability.",
+        "C is not correct: A finite logit of zero is not certainty for the positive class.",
+        "D is not correct: Zero is not the sigmoid output; it is the logit supplied to the function."
+      ],
+      "exampleCode": "import numpy as np\nimport matplotlib.pyplot as plt\n\ndef sigmoid(z):\n    return 1 / (1 + np.exp(-z))\n\nz = np.linspace(-6, 6, 300)\nassert np.isclose(sigmoid(0.0), 0.5)\nplt.figure(figsize=(7, 3.6))\nplt.plot(z, sigmoid(z), color=\"#3274a1\")\nplt.scatter([0], [sigmoid(0)], color=\"#e1812c\", zorder=3, label=\"sigmoid(0) = 0.5\")\nplt.axhline(0.5, color=\"gray\", linestyle=\"--\", linewidth=1)\nplt.xlabel(\"logit z\")\nplt.ylabel(\"sigmoid(z)\")\nplt.title(\"The sigmoid maps logits to probabilities\")\nplt.legend()\nplt.tight_layout()\nplt.show()",
+      "takeaway": "A zero logit sits at the midpoint of the sigmoid curve. Probability 0.5 is an uncertain model prediction, not an accuracy statement."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-10",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "A programmer claims that this two-layer network represents nonlinear functions merely because it has two sets of weights:",
+    "options": [
+      {
+        "id": "a",
+        "text": "The two affine transformations can be combined into one affine transformation, so no nonlinear expressive power has been added."
+      },
+      {
+        "id": "b",
+        "text": "The second layer automatically behaves like ReLU."
+      },
+      {
+        "id": "c",
+        "text": "The network becomes equivalent to K-means."
+      },
+      {
+        "id": "d",
+        "text": "Every additional affine layer automatically introduces nonlinearity."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "An affine transformation has the form f(X)=XW+b. Composing two affine transformations gives X(W1W2)+(b1W2+b2), another affine transformation. Adding more linear/affine layers alone cannot represent a nonlinear decision boundary such as XOR. Nonlinear activations between layers introduce the necessary expressive power.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q10",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q10 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q10 · cells 34–36"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "code": "h = X @ W1 + b1\noutput = h @ W2 + b2",
+    "promptAfterCode": "What is the correct assessment?",
+    "guidedReview": {
+      "lesson": "An affine map has the form \\(f(X)=XW+b\\). If \\(h=XW_1+b_1\\) and \\(o=hW_2+b_2\\), then \\(o=X(W_1W_2)+(b_1W_2+b_2)\\). Nonlinear functions and nonlinear decision boundaries require an activation such as ReLU, sigmoid, or tanh between affine layers.",
+      "distractors": [
+        "B is not correct: An affine layer has no automatic ReLU; a nonlinear activation must be explicitly applied.",
+        "C is not correct: K-means is a clustering algorithm and is unrelated to composing affine transformations.",
+        "D is not correct: Depth without nonlinearities changes parameterization but not the class of affine functions represented."
+      ],
+      "exampleCode": "import numpy as np\n\nX = np.array([[1.0, 2.0], [-1.0, 0.5]])\nW1 = np.array([[1.0, -1.0, 0.5], [0.2, 0.3, -0.4]])\nb1 = np.array([0.1, -0.2, 0.3])\nW2 = np.array([[0.5], [1.2], [-0.7]])\nb2 = np.array([0.4])\n\ntwo_layers = (X @ W1 + b1) @ W2 + b2\ncombined = X @ (W1 @ W2) + (b1 @ W2 + b2)\nassert np.allclose(two_layers, combined)\nprint(\"Two affine layers:\\n\", np.round(two_layers, 4))\nprint(\"One combined affine layer:\\n\", np.round(combined, 4))",
+      "takeaway": "More weight matrices do not by themselves create nonlinear expressive power. Nonlinear activations are what stop affine layers from collapsing into one affine transformation."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-11",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A single perceptron with a step activation is repeatedly trained on all four XOR examples using the perceptron learning rule. What is true if training continues?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It is guaranteed to reach zero training errors because the perceptron convergence theorem applies to every dataset."
+      },
+      {
+        "id": "b",
+        "text": "It cannot achieve zero training errors because XOR is not linearly separable; when misclassified examples are visited, the perceptron rule continues to make updates."
+      },
+      {
+        "id": "c",
+        "text": "Its weights must settle at a stable solution that always classifies exactly three of the four examples correctly."
+      },
+      {
+        "id": "d",
+        "text": "It never updates because the step activation has zero derivative and the perceptron learning rule requires backpropagation."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A single threshold perceptron implements a linear decision boundary. The XOR positives (1,0),(0,1) and negatives (0,0),(1,1) are not linearly separable. The perceptron convergence theorem guarantees convergence only for linearly separable data. Its update is based on (target-prediction)*input and does not require differentiating the step activation; do not claim the parameter values must follow a literal repeating cycle.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q11",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q11 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q11 · cells 37–39"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "A single perceptron uses a linear threshold boundary. XOR labels \\((0,0)\\) and \\((1,1)\\) as one class and \\((1,0)\\) and \\((0,1)\\) as the other, producing diagonally opposed classes. The perceptron convergence theorem only guarantees finite convergence when some linear boundary separates all labels.",
+      "distractors": [
+        "A is not correct: The perceptron convergence theorem requires linearly separable data, which XOR is not.",
+        "C is not correct: There is no theorem requiring a stable state with exactly three correct examples.",
+        "D is not correct: The classical perceptron update uses the prediction error directly and does not differentiate the step activation or require backpropagation."
+      ],
+      "exampleCode": "import numpy as np\nimport matplotlib.pyplot as plt\n\nxor_X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])\nxor_y = np.array([0, 1, 1, 0])\ncolors = np.where(xor_y == 1, \"#e1812c\", \"#3274a1\")\n\nplt.figure(figsize=(4.8, 4.2))\nplt.scatter(xor_X[:, 0], xor_X[:, 1], s=120, c=colors)\nfor point, label in zip(xor_X, xor_y):\n    plt.text(point[0] + 0.04, point[1] + 0.04, f\"class {label}\")\nplt.xlim(-0.2, 1.35)\nplt.ylim(-0.2, 1.35)\nplt.xlabel(\"x1\")\nplt.ylabel(\"x2\")\nplt.title(\"XOR classes are diagonally opposed\")\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()",
+      "takeaway": "XOR is the standard example showing the limitation of a single linear threshold unit. A hidden layer with nonlinear activation can create a more useful representation."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-12",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "Which statement correctly describes the role of hidden layers in a multilayer neural network?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hidden layers receive the final prediction and directly compare it with the target label."
+      },
+      {
+        "id": "b",
+        "text": "Hidden layers simply store the raw training examples."
+      },
+      {
+        "id": "c",
+        "text": "Hidden layers update weights without using backpropagation."
+      },
+      {
+        "id": "d",
+        "text": "Hidden layers transform their inputs into intermediate representations passed to subsequent layers."
+      },
+      {
+        "id": "e",
+        "text": "Hidden layers are only useful when the input has more than two features."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Hidden layers compute intermediate feature representations. With nonlinear activations they allow multilayer networks to model nonlinear functions, including XOR with only two input features. During training, backpropagation computes gradients through hidden layers and the optimizer updates parameters; hidden nodes do not directly compare their outputs with the final class label.",
+    "difficulty": "easy",
+    "source": "Practice quiz · Q12",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q12 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q12 · cells 40–42"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "Forward propagation transforms inputs layer by layer, for example \\(h=\\phi(XW_1+b_1)\\) and \\(\\hat y=g(hW_2+b_2)\\). Backpropagation applies the chain rule to compute how a loss changes with each parameter; an optimizer then updates those parameters. These are distinct roles in a training step.",
+      "distractors": [
+        "A is not correct: The final output/loss stage compares predictions with targets; hidden layers transform incoming representations.",
+        "B is not correct: Network parameters store learned patterns, but hidden layers do not simply store raw examples.",
+        "C is not correct: Backpropagation computes gradients through hidden layers and an optimizer applies updates; hidden layers do not update weights by themselves.",
+        "E is not correct: Hidden layers can be useful even for two input features, as XOR demonstrates."
+      ],
+      "exampleCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots(figsize=(8, 3.3))\nax.axis(\"off\")\nstages = [(0.1, \"input\\nfeatures\"), (0.5, \"hidden\\nrepresentation\"), (0.9, \"output\\nprediction\")]\nfor x, label in stages:\n    ax.text(x, 0.55, label, ha=\"center\", va=\"center\", fontsize=12,\n            bbox=dict(boxstyle=\"round,pad=0.6\", facecolor=\"#e8f1f8\", edgecolor=\"#3274a1\"))\nax.annotate(\"\", xy=(0.4, 0.55), xytext=(0.2, 0.55), arrowprops=dict(arrowstyle=\"->\", lw=2))\nax.annotate(\"\", xy=(0.8, 0.55), xytext=(0.6, 0.55), arrowprops=dict(arrowstyle=\"->\", lw=2))\nax.text(0.5, 0.18, \"forward propagation: transform representations\", ha=\"center\", fontsize=11)\nax.set_title(\"A hidden layer is an intermediate representation\")\nplt.tight_layout()\nplt.show()",
+      "takeaway": "Hidden layers build representations; backpropagation computes gradients; the optimizer changes parameters. Keeping these roles separate makes neural-network training easier to reason about."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-13",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "In linear regression, why is mean squared error (MSE) generally preferred to simply averaging the signed prediction errors (prediction minus target)? Choose the BEST answer.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because squaring makes larger prediction errors contribute less to the loss."
+      },
+      {
+        "id": "b",
+        "text": "Because the mean signed error is not differentiable."
+      },
+      {
+        "id": "c",
+        "text": "Because averaging signed errors is necessarily nonconvex for a linear model."
+      },
+      {
+        "id": "d",
+        "text": "Because squaring makes error contributions nonnegative and prevents positive and negative errors from cancelling each other out."
+      },
+      {
+        "id": "e",
+        "text": "Because MSE guarantees that the loss at initialization is zero."
+      },
+      {
+        "id": "f",
+        "text": "Because the goal is to make the numerical loss as large as possible."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "For residuals r_i = prediction_i-target_i, the mean residual (sum_i r_i)/n may be zero even when individual predictions are poor, because positive and negative residuals cancel. Mean squared error is (1/n) sum_i r_i^2; terms are nonnegative and larger deviations receive greater penalties. For an ordinary linear regression model, MSE is differentiable and convex in the parameters, but the mean signed residual is also differentiable and affine, so these are not the decisive distinction in this question.",
+    "difficulty": "easy",
+    "source": "Practice quiz · Q13",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q13 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q13 · cells 43–45"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "For residuals \\(r_i=\\hat y_i-y_i\\), the mean signed residual \\(\\frac1n\\sum_i r_i\\) can hide poor predictions when positive and negative values cancel. Mean squared error is \\(\\mathrm{MSE}=\\frac1n\\sum_i r_i^2\\). It is nonnegative, differentiable, and convex in the parameters of ordinary linear regression.",
+      "distractors": [
+        "A is not correct: Squaring makes a larger magnitude residual contribute more, not less.",
+        "B is not correct: The mean signed residual is differentiable; differentiability is not the decisive reason here.",
+        "C is not correct: For a linear model, the mean signed residual is affine and therefore not necessarily nonconvex.",
+        "E is not correct: MSE does not guarantee zero loss at initialization.",
+        "F is not correct: Training minimizes the loss rather than maximizing it."
+      ],
+      "exampleCode": "import numpy as np\nimport matplotlib.pyplot as plt\n\nresiduals = np.array([-4.0, 4.0])\nsigned_mean = residuals.mean()\nmse = np.mean(residuals ** 2)\nassert signed_mean == 0.0 and mse == 16.0\n\nplt.figure(figsize=(6.5, 3.5))\nplt.bar([\"residual 1\", \"residual 2\"], residuals, color=[\"#3274a1\", \"#e1812c\"])\nplt.axhline(0, color=\"black\", linewidth=0.8)\nplt.ylabel(\"prediction - target\")\nplt.title(f\"Signed mean = {signed_mean:g}, but MSE = {mse:g}\")\nplt.tight_layout()\nplt.show()",
+      "takeaway": "Zero mean signed error does not mean accurate predictions. MSE measures error magnitude by preventing cancellation and emphasizing larger deviations."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-14",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "Which statement is NOT correct about the classical single-layer perceptron learning algorithm?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It learns a linear decision boundary."
+      },
+      {
+        "id": "b",
+        "text": "It uses backpropagation to update its model parameters."
+      },
+      {
+        "id": "c",
+        "text": "It is historically inspired by simplified models of biological neurons."
+      },
+      {
+        "id": "d",
+        "text": "It uses a threshold (step) activation to produce a class prediction."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The classical perceptron is a linear threshold classifier. Its update w <- w + eta*(t-yhat)*x is applied when the prediction is wrong. Unlike multilayer networks trained with differentiable losses and backpropagation, the classic perceptron rule does not require a derivative of the step function.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q14",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q14 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q14 · cells 46–48"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "For a misclassified example, a common perceptron update is \\(w\\leftarrow w+\\eta(t-\\hat y)x\\) and \\(b\\leftarrow b+\\eta(t-\\hat y)\\). This rule can learn a linearly separable boundary. Modern multilayer networks instead use differentiable losses, backpropagation for gradients, and an optimizer such as SGD or Adam.",
+      "distractors": [
+        "A is not correct: A single perceptron is a linear threshold classifier, so this is correct.",
+        "C is not correct: The algorithm was historically inspired by simplified biological-neuron ideas, so this is correct.",
+        "D is not correct: The classical model uses a step/threshold rule to turn a score into a class prediction, so this is correct."
+      ],
+      "exampleCode": "import numpy as np\n\nx = np.array([2.0, -1.0])\nw = np.array([0.1, 0.2])\nbias = -0.1\ntarget = 1\nlearning_rate = 0.5\n\nprediction = int(x @ w + bias >= 0)\nerror = target - prediction\nupdated_w = w + learning_rate * error * x\nupdated_bias = bias + learning_rate * error\n\nprint(\"prediction:\", prediction, \"target:\", target)\nprint(\"updated weights:\", updated_w, \"updated bias:\", updated_bias)\nassert prediction == 0 and np.allclose(updated_w, [1.1, -0.3])",
+      "takeaway": "The perceptron rule is a simple online update for a linear threshold model. It should not be confused with backpropagation, which differentiates through multilayer differentiable computations."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-15",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "choice",
+    "prompt": "An RNN language model reads the words “The cat is on the” one at a time and predicts the next word. Which statement is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The same parameter matrices U, W, and V are reused at every time step; h_t depends on x_t and h_(t-1), and the next word in the text is the training target."
+      },
+      {
+        "id": "b",
+        "text": "Every position has separate parameter matrices, so the model cannot process longer sentences."
+      },
+      {
+        "id": "c",
+        "text": "The hidden state h_t depends only on the current word; previous context is passed only through the previous output."
+      },
+      {
+        "id": "d",
+        "text": "This is unsupervised learning solely because no person manually labels each word."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A vanilla recurrent network typically computes h_t = phi(U x_t + W h_(t-1)+b) and an output from V h_t. The same U, W and V are reused across time steps. In next-token prediction, the following token is automatically obtained from the text as a training target; this is commonly called self-supervised training, not evidence that there are no training targets.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q15",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q15 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q15 · cells 50–52"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "A vanilla RNN can be written \\(h_t=\\phi(Ux_t+Wh_{t-1}+b)\\) and \\(o_t=Vh_t+c\\). The same parameter matrices are reused at every step; unrolling draws repeated uses of one recurrent cell, not separate models. In language modelling, a shifted sequence naturally supplies the next-token target.",
+      "distractors": [
+        "B is not correct: Parameter sharing is exactly what lets an RNN process sequences of different lengths.",
+        "C is not correct: The recurrence explicitly gives \\(h_t\\) access to previous context through \\(h_{t-1}\\).",
+        "D is not correct: Next-token targets are obtained from the text, but they are still training targets; this is commonly called self-supervised learning."
+      ],
+      "exampleCode": "import numpy as np\nimport matplotlib.pyplot as plt\n\ntokens = [\"The\", \"cat\", \"is\", \"on\", \"the\"]\nnext_targets = [\"cat\", \"is\", \"on\", \"the\", \"mat\"]\nU, W, V = 0.7, 0.5, 1.1  # shared scalar parameters for a tiny demonstration\nh = 0.0\nstates = []\nfor token in tokens:\n    x_t = len(token) / 3.0\n    h = np.tanh(U * x_t + W * h)\n    states.append(h)\n\nassert len(states) == len(tokens)\nfig, ax = plt.subplots(figsize=(9, 2.8))\nax.axis(\"off\")\nfor step, (token, target, state) in enumerate(zip(tokens, next_targets, states)):\n    x_position = 0.08 + step * 0.21\n    ax.text(x_position, 0.68, f\"x{step + 1}\\n{token}\", ha=\"center\", va=\"center\",\n            bbox=dict(boxstyle=\"round,pad=0.4\", facecolor=\"#e8f1f8\", edgecolor=\"#3274a1\"))\n    ax.text(x_position, 0.25, f\"h{step + 1}\\n{state:.2f}\", ha=\"center\", va=\"center\",\n            bbox=dict(boxstyle=\"round,pad=0.4\", facecolor=\"#fff0dd\", edgecolor=\"#e1812c\"))\n    if step < len(tokens) - 1:\n        ax.annotate(\"\", xy=(x_position + 0.15, 0.25), xytext=(x_position + 0.06, 0.25),\n                    arrowprops=dict(arrowstyle=\"->\", lw=1.6))\nax.text(0.5, 0.98, \"Unrolled RNN: the same U, W, and V are reused at every step\", ha=\"center\", va=\"top\", fontsize=11)\nax.text(0.5, 0.02, \"Each input has the following token as its target\", ha=\"center\", va=\"bottom\", fontsize=10)\nplt.tight_layout()\nplt.show()\nprint(\"Shared U, W, V are used at every step.\")\nfor token, target, state in zip(tokens, next_targets, states):\n    print(f\"input={token:>3s} -> next-token target={target:>3s}; hidden state={state:.3f}\")",
+      "takeaway": "RNN parameter sharing allows one model to handle different sequence lengths. The hidden state is the channel through which earlier context influences later predictions."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-16",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "How is binary cross-entropy derived from the likelihood of labels in logistic regression?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Assume conditionally independent labelled examples, multiply the model probabilities of their observed labels, take the logarithm, and negate it so that maximum likelihood becomes minimization of cross-entropy."
+      },
+      {
+        "id": "b",
+        "text": "Start with squared error between sigmoid output and label and simplify it algebraically."
+      },
+      {
+        "id": "c",
+        "text": "Maximize the joint probability of input feature vectors alone."
+      },
+      {
+        "id": "d",
+        "text": "Take the logarithm because it changes the position of the likelihood maximum."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "For independent training labels t_i given x_i, with predicted probability p_i, L = product_i p_i^(t_i)(1-p_i)^(1-t_i). Taking logarithms yields a sum. Negating yields the binary cross-entropy / negative log-likelihood objective. Since the logarithm is increasing, it does not change the location of the maximum; negating it converts maximization to minimization.",
+    "difficulty": "hard",
+    "source": "Practice quiz · Q16",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q16 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q16 · cells 53–55"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "For label \\(t_i\\in\\{0,1\\}\\) and probability \\(p_i=P(t_i=1\\mid x_i)\\), the Bernoulli probability of the observed label is \\(p_i^{t_i}(1-p_i)^{1-t_i}\\). Assuming examples are conditionally independent gives \\(L=\\prod_i p_i^{t_i}(1-p_i)^{1-t_i}\\). The negative average log-likelihood is BCE.",
+      "distractors": [
+        "B is not correct: Squared error is not the starting likelihood-based derivation of binary cross-entropy.",
+        "C is not correct: Logistic regression models labels conditional on features, rather than maximizing a model of feature vectors alone.",
+        "D is not correct: The logarithm is strictly increasing, so it preserves the maximum location; negation, not logging, changes maximization into minimization."
+      ],
+      "exampleCode": "import numpy as np\n\ntargets = np.array([1, 0])\nprobabilities = np.array([0.8, 0.3])\nlikelihood = np.prod(probabilities ** targets * (1 - probabilities) ** (1 - targets))\nnegative_log_likelihood = -np.log(likelihood)\nbce = -np.mean(targets * np.log(probabilities) + (1 - targets) * np.log(1 - probabilities))\n\nassert np.isclose(negative_log_likelihood, 2 * bce)\nprint(f\"Likelihood of observed labels: {likelihood:.4f}\")\nprint(f\"Negative log-likelihood: {negative_log_likelihood:.4f}\")\nprint(f\"Mean BCE: {bce:.4f}\")",
+      "takeaway": "BCE is not an arbitrary formula: it is the negative log-likelihood for Bernoulli labels. Logging improves numerical optimization by changing a product into a sum without moving the likelihood maximum."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-17",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "A search landscape contains two peaks: A is a lower local optimum, and B is a higher global optimum. The initial solution x is on the rising slope to the left of A. A simulated annealing algorithm maximizes quality, sometimes accepts worse solutions with a temperature-dependent probability, and gradually decreases the temperature. Which statement best describes what may happen across different runs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It will always converge to the local optimum A."
+      },
+      {
+        "id": "b",
+        "text": "It necessarily reaches both optima during every run."
+      },
+      {
+        "id": "c",
+        "text": "It will always reach the global optimum B."
+      },
+      {
+        "id": "d",
+        "text": "It reaches both optima simultaneously."
+      },
+      {
+        "id": "e",
+        "text": "It cannot converge to either optimum."
+      },
+      {
+        "id": "f",
+        "text": "It may finish near either optimum, depending on random choices and the cooling schedule."
+      }
+    ],
+    "correctOptionId": "f",
+    "explanation": "Simulated annealing can accept a worse move, especially at higher temperatures, which may let it leave the lower local optimum A. However, random choices and the cooling schedule affect whether it escapes and reaches B. Therefore the global optimum is not guaranteed, and different runs may finish near either peak.",
+    "difficulty": "medium",
+    "source": "Practice quiz · Q17",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q17 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q17 · cells 56–58"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "guidedReview": {
+      "lesson": "For maximization, a downhill move with quality change \\(\\Delta<0\\) is often accepted with probability \\(\\exp(\\Delta/T)\\). At high temperature \\(T\\), this can escape a local optimum; as \\(T\\) cools, such moves become unlikely. Thus the schedule balances exploration with convergence, rather than guaranteeing a global optimum.",
+      "distractors": [
+        "A and C are not correct: Randomness and the cooling schedule mean neither optimum is guaranteed.",
+        "B is not correct: A run can finish without visiting one or both peak locations.",
+        "D is not correct: A search state is one candidate solution, so it cannot occupy two distinct optima at once.",
+        "E is not correct: The algorithm can settle near either peak as exploration decreases."
+      ],
+      "exampleCode": "import numpy as np\n\ndef quality(position):\n    return max(2.0 - (position + 2.0) ** 2, 3.5 - (position - 2.0) ** 2)\n\ndef anneal(seed, steps=160):\n    rng = np.random.default_rng(seed)\n    position = -3.0  # rising slope to the left of the lower peak A\n    for step in range(steps):\n        temperature = 1.5 * (0.97 ** step) + 0.02\n        proposal = np.clip(position + rng.normal(0, 0.65), -5, 5)\n        delta = quality(proposal) - quality(position)\n        if delta >= 0 or rng.random() < np.exp(delta / temperature):\n            position = proposal\n    return position\n\nfinal_positions = np.array([anneal(seed) for seed in range(12)])\nnear_A = np.sum(final_positions < 0)\nnear_B = np.sum(final_positions >= 0)\nassert near_A + near_B == len(final_positions)\nprint(f\"Finished near A: {near_A}; finished near B: {near_B}\")\nprint(\"The split can change when the seeds or cooling schedule change.\")",
+      "takeaway": "Simulated annealing can escape a local optimum by accepting some worse moves early on, but its stochastic path and cooling schedule do not guarantee the global optimum."
+    }
+  },
+  {
+    "id": "in3050-group-quiz-18",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "A programmer implements mutation for binary chromosomes containing at least two bits:",
+    "options": [
+      {
+        "id": "a",
+        "text": "It implements standard independent bit-flip mutation."
+      },
+      {
+        "id": "b",
+        "text": "Exactly one randomly chosen bit is flipped whenever mutation occurs."
+      },
+      {
+        "id": "c",
+        "text": "Each bit has probability mutation_rate of being flipped, but the flips are not independent: either all bits flip or none do."
+      },
+      {
+        "id": "d",
+        "text": "The probability that all bits flip is mutation_rate ** len(parent)."
+      },
+      {
+        "id": "e",
+        "text": "Setting mutation_rate = 1 / len(parent) guarantees exactly one flipped bit."
+      },
+      {
+        "id": "f",
+        "text": "The function can generate every possible binary chromosome of the same length."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The random probability check is executed once, before the loop. Consequently, each bit has marginal probability mutation_rate of flipping, but the events are perfectly correlated: a successful check flips every bit and an unsuccessful check flips none. Standard independent bit-flip mutation draws a separate random number for each bit.",
+    "difficulty": "hard",
+    "source": "Practice quiz · Q18",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Practice_Quiz.ipynb",
+        "location": "Question Q18 · cell 3"
+      },
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Preparation/IN3050_Guided_Review.ipynb",
+        "location": "Q18 · cells 59–61"
+      },
+      {
+        "path": "IN3050/personal_notes/Gruppetimer/Las plenary and exam prep.docx",
+        "location": "Plenary notes: practice quiz relevance and NumPy concept focus"
+      }
+    ],
+    "practiceSet": "quiz",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "code": "def mutate(parent, mutation_rate):\n    child = parent.copy()\n    if random_number() < mutation_rate:\n        for i in range(len(child)):\n            child[i] = 1 - child[i]\n    return child",
+    "promptAfterCode": "Assume 0 < mutation_rate < 1 and random_number() returns an independent uniform random number between 0 and 1. Which statement correctly describes this implementation?",
+    "guidedReview": {
+      "lesson": "Standard independent bit-flip mutation performs if random_number() < mutation_rate inside the loop. Then each bit flips independently with probability \\(p\\), and the number of flipped bits follows a binomial distribution. In the given code, the only possible flip counts are zero and the chromosome length.",
+      "distractors": [
+        "A is not correct: Independent mutation needs a separate random draw for each bit.",
+        "B is not correct: When mutation happens, every bit is flipped.",
+        "D is not correct: All bits flip with probability mutation_rate, not its length-th power.",
+        "E is not correct: That rate only changes the chance that all bits flip.",
+        "F is not correct: The child can only be the parent or its bitwise complement."
+      ],
+      "exampleCode": "import numpy as np\n\ndef correlated_mutate(parent, mutation_rate, rng):\n    child = parent.copy()\n    if rng.random() < mutation_rate:\n        child = 1 - child\n    return child\n\ndef independent_mutate(parent, mutation_rate, rng):\n    child = parent.copy()\n    for i in range(len(child)):\n        if rng.random() < mutation_rate:\n            child[i] = 1 - child[i]\n    return child\n\nparent = np.array([1, 0, 1, 0])\nrng = np.random.default_rng(7)\ncorrelated_counts = [np.sum(correlated_mutate(parent, 0.3, rng) != parent) for _ in range(2000)]\nindependent_counts = [np.sum(independent_mutate(parent, 0.3, rng) != parent) for _ in range(2000)]\n\nassert set(correlated_counts) <= {0, len(parent)}\nassert any(count in {1, 2, 3} for count in independent_counts)\nprint(\"Correlated flip counts:\", sorted(set(correlated_counts)))\nprint(\"Independent flip counts:\", sorted(set(independent_counts)))",
+      "takeaway": "One probability check outside a bit loop creates all-or-none mutation. Put the random check inside the loop when the intent is independent per-bit mutation."
+    }
+  },
+  {
+    "id": "in3050-group-walkthrough-01",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "What is the most likely effect of increasing k in a kNN classifier from 1 to a much larger value?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The decision boundary usually becomes smoother and less sensitive to individual noisy points, although a very large k can underfit."
+      },
+      {
+        "id": "b",
+        "text": "Training accuracy must always increase."
+      },
+      {
+        "id": "c",
+        "text": "The algorithm changes the labels of the training examples."
+      },
+      {
+        "id": "d",
+        "text": "The classifier automatically becomes a regression model."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Increasing k usually makes kNN less sensitive to individual training examples and noise.\n\nWith k = 1, a single unusual or mislabeled observation can strongly affect a small local region. With a larger k, more neighbours vote, so the decision boundary usually becomes smoother.\n\nIf k becomes too large, local structure can disappear and the model can underfit.",
+    "difficulty": "easy",
+    "source": "Exam walkthrough · question 1",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+        "location": "Question 1 · cell 1"
+      }
+    ],
+    "practiceSet": "walkthrough",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "illustrations": [
+      {
+        "src": "illustrations/in3050-walkthrough-1.webp",
+        "alt": "Side-by-side kNN decision-boundary plots for different neighborhood sizes.",
+        "caption": "Exam walkthrough · question 1",
+        "placement": "explanation",
+        "sourceRef": {
+          "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+          "location": "Question 1 · cell 1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "in3050-group-walkthrough-02",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-applications",
+    "type": "choice",
+    "prompt": "Why is elitism sometimes used in an evolutionary algorithm?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To copy some of the best current individuals unchanged into the next generation so that good solutions are not accidentally lost."
+      },
+      {
+        "id": "b",
+        "text": "To force every individual to mutate with a higher probability."
+      },
+      {
+        "id": "c",
+        "text": "To guarantee that the global optimum will be found."
+      },
+      {
+        "id": "d",
+        "text": "To compute gradients for the best individuals only."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Elitism means copying one or more of the best individuals directly into the next generation.\n\nSelection, crossover, and mutation are stochastic, so a very good solution can otherwise disappear by chance. Elitism protects already discovered good solutions.",
+    "difficulty": "easy",
+    "source": "Exam walkthrough · question 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+        "location": "Question 2 · cell 2"
+      }
+    ],
+    "practiceSet": "walkthrough",
+    "instructorOriginal": true,
+    "examPrep": true
+  },
+  {
+    "id": "in3050-group-walkthrough-03",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "A binary-classification dataset contains 950 negative examples and 50 positive examples.\n\nA model predicts negative for every example and obtains 95% accuracy.\n\nWhich statement is most accurate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The accuracy is high, but the model has zero recall for the positive class, so accuracy alone is misleading."
+      },
+      {
+        "id": "b",
+        "text": "The model has 95% recall for the positive class."
+      },
+      {
+        "id": "c",
+        "text": "The model must generalize well because its accuracy is above 90%."
+      },
+      {
+        "id": "d",
+        "text": "The model has 95% precision for the positive class."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The model predicts every observation as negative. It therefore gets all 950 negative observations correct, so its accuracy is 95%.\n\nBut it finds none of the 50 positive observations. Its positive-class recall is therefore 0%.\n\nThis is why accuracy alone can be misleading when the classes are strongly imbalanced.",
+    "difficulty": "medium",
+    "source": "Exam walkthrough · question 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+        "location": "Question 3 · cell 3"
+      }
+    ],
+    "practiceSet": "walkthrough",
+    "instructorOriginal": true,
+    "examPrep": true
+  },
+  {
+    "id": "in3050-group-walkthrough-04",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "Two clustering results use the same number of clusters.\n\n- Result A has mean silhouette score 0.72\n- Result B has mean silhouette score 0.08\n\nWhat does this most strongly suggest?",
+    "options": [
+      {
+        "id": "a",
+        "text": "In result A, observations are generally much closer to their own cluster and better separated from neighbouring clusters."
+      },
+      {
+        "id": "b",
+        "text": "Result B must have lower WCSS because its silhouette score is smaller."
+      },
+      {
+        "id": "c",
+        "text": "Result A necessarily contains more clusters."
+      },
+      {
+        "id": "d",
+        "text": "A silhouette score close to zero means the clustering is always perfect."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A silhouette score asks whether each observation is close to points in its own cluster and far from the nearest neighbouring cluster.\n\nA value close to 1 usually indicates good cohesion and separation. A value close to 0 suggests observations are near cluster boundaries. Negative values can indicate that some observations may fit another cluster better.\n\nSo 0.72 suggests a much clearer clustering structure than 0.08.",
+    "difficulty": "easy",
+    "source": "Exam walkthrough · question 4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+        "location": "Question 4 · cell 4"
+      }
+    ],
+    "practiceSet": "walkthrough",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "illustrations": [
+      {
+        "src": "illustrations/in3050-walkthrough-4.webp",
+        "alt": "Two scatter plots showing different cluster arrangements.",
+        "caption": "Exam walkthrough · question 4",
+        "placement": "explanation",
+        "sourceRef": {
+          "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+          "location": "Question 4 · cell 4"
+        }
+      }
+    ],
+    "historicalOnly": true,
+    "scopeNote": "Supplementary: the wrap-up notes exclude walkthrough question 4 from the exam."
+  },
+  {
+    "id": "in3050-group-walkthrough-05",
+    "courseId": "IN3050",
+    "topicId": "ai-backpropagation",
+    "type": "choice",
+    "prompt": "The programmer wants the gradient of the loss with respect to w.",
+    "options": [
+      {
+        "id": "a",
+        "text": "p * (1 - p), the derivative of the sigmoid."
+      },
+      {
+        "id": "b",
+        "text": "w**2, because every gradient must contain the squared weight."
+      },
+      {
+        "id": "c",
+        "text": "b, because the bias must multiply the weight gradient."
+      },
+      {
+        "id": "d",
+        "text": "Nothing is missing; the gradient is already complete."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The code differentiates the squared-error loss with respect to the prediction, but it forgets that the prediction itself is produced by a sigmoid.\n\nThe chain rule requires multiplying by the derivative of the sigmoid. If p = sigmoid(z), then the derivative is p * (1 - p).\n\nSo the weight gradient should contain:\n\n``python\n2 * (p - y) * p * (1 - p) * x\n`\n\nThe missing factor is **p * (1 - p)`**.",
+    "difficulty": "medium",
+    "source": "Exam walkthrough · question 5",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+        "location": "Question 5 · cell 5"
+      }
+    ],
+    "practiceSet": "walkthrough",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "code": "z = w * x + b\np = 1 / (1 + np.exp(-z))\nloss = (p - y)**2\n\ndL_dw = 2 * (p - y) * x",
+    "promptAfterCode": "What important factor is missing from dL_dw?"
+  },
+  {
+    "id": "in3050-group-walkthrough-06",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "probs contains predicted class probabilities and has shape:",
+    "options": [
+      {
+        "id": "a",
+        "text": "argmax cannot be used with probabilities."
+      },
+      {
+        "id": "b",
+        "text": "Without axis=1, NumPy finds one global maximum over the whole array instead of one predicted class per observation."
+      },
+      {
+        "id": "c",
+        "text": "The programmer should use argmin because smaller probabilities are better."
+      },
+      {
+        "id": "d",
+        "text": "probs must first be sorted alphabetically by class name."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "probs contains one row per observation and one column per class.\n\nCalling np.argmax(probs) without an axis finds one maximum over the entire array and returns a single flattened index.\n\nFor multiclass prediction we want the largest probability within each row:\n\n``python\npredicted_classes = np.argmax(probs, axis=1)\n``\n\nThat returns one predicted class for every observation.",
+    "difficulty": "medium",
+    "source": "Exam walkthrough · question 6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/Github/IN3050-main/Exam_Walkthrough_30min.ipynb",
+        "location": "Question 6 · cell 6"
+      }
+    ],
+    "practiceSet": "walkthrough",
+    "instructorOriginal": true,
+    "examPrep": true,
+    "code": "(n_samples, n_classes)",
+    "promptAfterCode": "The programmer writes:\n\n``python\npredicted_classes = np.argmax(probs)\n``\n\nWhat is the conceptual problem?"
+  }
+]
