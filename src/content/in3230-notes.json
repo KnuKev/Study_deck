@@ -257,32 +257,32 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-008",
+    "id": "in3230-extra-notes-008-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "The recipient has delivered a PDU up, but the receipt is lost. The sender will send the PDU again. What protocol function prevents the same content from being delivered up twice?",
+    "prompt": "A receiver delivers a PDU, but its ACK is lost. The sender retransmits the PDU. What prevents duplicate delivery to the upper layer?",
     "options": [
       {
         "id": "a",
-        "text": "Using a larger MTU"
+        "text": "Increasing the maximum size of each transmitted data unit"
       },
       {
         "id": "b",
-        "text": "Re-distributing All Re-Transmissions"
+        "text": "Acknowledging every retransmission without inspecting its identity"
       },
       {
         "id": "c",
-        "text": "Removing the checksum field from receipts"
+        "text": "Recalculating the route whenever an acknowledgment is lost"
       },
       {
         "id": "d",
-        "text": "Duplicate detection based on identity or sequence information"
+        "text": "Detecting duplicates using identifiers or sequence information"
       }
     ],
     "correctOptionId": "d",
-    "explanation": "The incorrect delivery of the new copy is not enough: the recipient must be able to recognise it as already provided. Sequence information can distinguish retransmissions from new data.",
+    "explanation": "The receiver needs to recognize that a retransmitted PDU was already delivered. Identifiers or sequence numbers distinguish duplicates from genuinely new data.",
     "source": "IN3230 course introduction and repetition · Paragraphs 60–65",
     "sourceRefs": [
       {
@@ -401,28 +401,28 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-012",
+    "id": "in3230-extra-notes-012-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "In a node-addressed model, the target node is H, regardless of the interface. One of the Hs two links fails, but the other one works and the routine finds a new path. What advantage does the name H have here?",
+    "prompt": "Node H has two links. One fails, but routing finds a path through the other. What advantage does a node-based identity provide?",
     "options": [
       {
         "id": "a",
-        "text": "H must have one common IP address on all interfaces"
+        "text": "Every interface must share the same link-layer address."
       },
       {
         "id": "b",
-        "text": "All packets already on the corrupted link will be restored"
+        "text": "Packets on the failed link are recovered without retransmission."
       },
       {
         "id": "c",
-        "text": "Route tables are no longer necessary"
+        "text": "No node needs a forwarding table after the path changes."
       },
       {
         "id": "d",
-        "text": "The destination may retain the same identity even if the way in to it changes"
+        "text": "The destination keeps its identity while its reachable path changes."
       }
     ],
     "correctOptionId": "d",
@@ -506,7 +506,7 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-015",
+    "id": "in3230-extra-notes-015-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
     "type": "choice",
@@ -515,19 +515,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Both subflows should always use identical rates, including different bottlenecks"
+        "text": "Make both subflows use the same rate even on different bottlenecks."
       },
       {
         "id": "b",
-        "text": "MPTCP should ignore losses as long as one subflow delivers"
+        "text": "Let the faster subflow ignore congestion experienced by the slower one."
       },
       {
         "id": "c",
-        "text": "The MPTCP connection should collectively avoid acting as two competitors against one TCP flow"
+        "text": "Avoid taking two flows' share at a bottleneck shared with one TCP flow."
       },
       {
         "id": "d",
-        "text": "Each subflow should be fully independent and competed as one full TCP flow"
+        "text": "Let both subflows compete independently as two ordinary TCP flows."
       }
     ],
     "correctOptionId": "c",
@@ -861,7 +861,7 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-024",
+    "id": "in3230-extra-notes-024-v2",
     "courseId": "IN3230",
     "topicId": "net-transport",
     "type": "choice",
@@ -870,23 +870,23 @@
     "options": [
       {
         "id": "a",
-        "text": "All \\(6\\,\\mathrm{MSS}\\) in both cases"
+        "text": "IW 4 sends 6 MSS; IW 10 sends 6 MSS."
       },
       {
         "id": "b",
-        "text": "\\(4\\,\\mathrm{MSS}\\) with \\(\\mathrm{IW}=4\\); \\(10\\,\\mathrm{MSS}\\) with \\(\\mathrm{IW}=10\\)"
+        "text": "IW 4 sends 4 MSS; IW 10 sends 10 MSS."
       },
       {
         "id": "c",
-        "text": "\\(1\\,\\mathrm{MSS}\\) in both cases"
+        "text": "IW 4 sends 1 MSS; IW 10 sends 1 MSS."
       },
       {
         "id": "d",
-        "text": "\\(4\\,\\mathrm{MSS}\\) with \\(\\mathrm{IW}=4\\); all \\(6\\,\\mathrm{MSS}\\) with \\(\\mathrm{IW}=10\\)"
+        "text": "IW 4 sends 4 MSS; IW 10 sends 6 MSS."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "The window limits outstanding data, but the sender does not generate additional data to fill it. With \\(\\mathrm{IW}=4\\), two out of six MSSs have to wait; with \\(\\mathrm{IW}=10\\), the whole answer will be given in the first broadcast.",
+    "explanation": "Outstanding data is limited by the window, but transmission also requires available application data. IW 4 permits 4 of the 6 MSS before ACKs; IW 10 permits all 6.",
     "source": "The internet transport layer · Paragraphs 104–112",
     "sourceRefs": [
       {
@@ -1001,32 +1001,32 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-028",
+    "id": "in3230-extra-notes-028-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "Two networks have an average one-way delay \\(20\\,\\mathrm{ms}\\). In A, all measurements are close to \\(20\\,\\mathrm{ms}\\), while B switches between 5 and \\(35\\,\\mathrm{ms}\\). What is the direct characteristic of the measurements?",
+    "prompt": "Networks A and B both have mean one-way delay 20 ms. A stays near 20 ms; B alternates between 5 and 35 ms. What follows?",
     "options": [
       {
         "id": "a",
-        "text": "B must have lower average delay"
+        "text": "B has a lower average delay because some samples are 5 ms."
       },
       {
         "id": "b",
-        "text": "A must have higher package losses"
+        "text": "A has greater packet loss because its delay stays near 20 ms."
       },
       {
         "id": "c",
-        "text": "The average fully determines the jitter"
+        "text": "The equal average delay implies that both have equal jitter."
       },
       {
         "id": "d",
-        "text": "B has more variation in delay, i.e. more jitter"
+        "text": "B has greater jitter because its individual delays vary more."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "Both can have average \\(20\\,\\mathrm{ms}\\), but the variation around the mean is greater in B. Trafficking variations can give jitters without indicating the average number alone.",
+    "explanation": "Both networks have mean delay 20 ms. B's measurements fluctuate more around that mean, so it has greater delay variation, or jitter.",
     "source": "Congestion control · Paragraphs 8–10",
     "sourceRefs": [
       {
@@ -1328,32 +1328,32 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-037",
+    "id": "in3230-extra-notes-037-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "A satellite PEP shall repair losses locally by reading transport receipts and buffering data without cooperation from the end-points. What is an important obstacle if previous TCP traffic is replaced by QUIC with protected transport information?",
+    "prompt": "A satellite PEP transparently buffers TCP data and processes ACKs to repair losses locally. What changes when the traffic uses QUIC with protected transport information?",
     "options": [
       {
         "id": "a",
-        "text": "The interchange box does not have the same transparency and control in the state of transport"
+        "text": "Protected transport state prevents the same transparent ACK processing."
       },
       {
         "id": "b",
-        "text": "All IP addresses disappear from the outside header"
+        "text": "QUIC removes IP addresses from every packet's externally visible header."
       },
       {
         "id": "c",
-        "text": "QUIC only transfers full application response in a single packet"
+        "text": "QUIC requires a complete response to fit inside one UDP datagram."
       },
       {
         "id": "d",
-        "text": "QUIC stops managing package losses"
+        "text": "QUIC delegates all loss recovery to intermediate satellite equipment."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "The lecture describes that such transparent TCP mechanisms cannot be used immediately for encrypted QUIC transport. This is a matter of transparency, not whether QUIC itself deals with losses.",
+    "explanation": "Protected QUIC transport information prevents a transparent intermediary from inspecting and manipulating ACK state as it did with TCP. QUIC itself still implements loss recovery.",
     "source": "Congestion control · Paragraphs 179–190",
     "sourceRefs": [
       {
@@ -1698,32 +1698,32 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-047",
+    "id": "in3230-extra-notes-047-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-2",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "A hears B send and therefore postpones its own transmission with CSMA. Assume that a separate measurement indicates that As consignment would not interfere with B’s receiver, and vice versa. What does the example show?",
+    "prompt": "A hears B transmitting and defers under CSMA. Measurements show their transmissions would not interfere at either receiver. What does this illustrate?",
     "options": [
       {
         "id": "a",
-        "text": "A must be a hidden terminal because it belongs to B"
+        "text": "A is hidden because it can hear B's carrier transmission."
       },
       {
         "id": "b",
-        "text": "All users need to share one TCP connection to resolve the situation"
+        "text": "A needs a larger TCP receive window before using the channel."
       },
       {
         "id": "c",
-        "text": "Carrier sensing may be more conservative than the actual interference required by the recipients"
+        "text": "Carrier sensing can defer transmissions that would not interfere."
       },
       {
         "id": "d",
-        "text": "Carrier sensation always shows exactly what recipients will have collision"
+        "text": "Carrier sensing reveals interference at every possible receiver exactly."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "CSMA observe the channel at the transmitter. It is not identical to measuring interference with all recipients. Under the explicit conditions, a possible simultaneous shipment is delayed.",
+    "explanation": "Carrier sensing measures the channel at the transmitter, while interference matters at the receivers. Under these conditions, deferral is unnecessarily conservative: the exposed-terminal problem.",
     "source": "Wireless communications · Paragraphs 162–178",
     "sourceRefs": [
       {
@@ -1916,28 +1916,28 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-053",
+    "id": "in3230-extra-notes-053-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-2",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "An operator assesses local breakout to reduce roaming delay, but is concerned about settlement and liability in case of errors. What is the relevant weighting in the notes?",
+    "prompt": "An operator considers local breakout to reduce roaming latency. Which operational trade-off matters?",
     "options": [
       {
         "id": "a",
-        "text": "Shorter data route must be assessed against traffic control, clearing and debugging by operators"
+        "text": "A shorter data path trades off against charging, control and troubleshooting."
       },
       {
         "id": "b",
-        "text": "Local breakout slows radio signals in the air"
+        "text": "A shorter data path requires slower radio modulation in the visited network."
       },
       {
         "id": "c",
-        "text": "Home routing always gives fewer kilometers than local breakout"
+        "text": "A shorter data path removes all need to coordinate between the operators."
       },
       {
         "id": "d",
-        "text": "Billing is determined solely by the antennas of the phone"
+        "text": "A shorter data path guarantees simpler charging and fault attribution."
       }
     ],
     "correctOptionId": "a",
@@ -2403,32 +2403,32 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-066",
+    "id": "in3230-extra-notes-066-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
     "difficulty": "easy",
-    "prompt": "A sender on a credit-based network has zero credits, although the link is currently free. What is the correct interpretation?",
+    "prompt": "A credit-based sender has zero credits while its link is idle. What does this mean?",
     "options": [
       {
         "id": "a",
-        "text": "All previously sent packets must have been lost"
+        "text": "The free link proves that all outstanding data was delivered."
       },
       {
         "id": "b",
-        "text": "The free link is not sufficient; the sender does not have permission to represent the receiver buffer"
+        "text": "The link is free, but no receiver-buffer credit permits transmission."
       },
       {
         "id": "c",
-        "text": "The sender should ignore the credits because free link proves free buffer"
+        "text": "The free link permits transmission even when no credits remain."
       },
       {
         "id": "d",
-        "text": "The receiver must have crashed"
+        "text": "The absence of credits proves that the receiving device has failed."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "Credits protect buffer resources at the receiver. The momentary state of the extension does not say only whether these resources are available or whether a new credit has been re-started.",
+    "explanation": "Credits represent permission backed by receiver buffer resources. An idle physical link does not establish that the sender has buffer space reserved at the receiver.",
     "source": "Cloud computing · Paragraphs 25–28",
     "sourceRefs": [
       {
@@ -2551,32 +2551,32 @@
     ]
   },
   {
-    "id": "in3230-extra-notes-070",
+    "id": "in3230-extra-notes-070-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "An observer sees that QUIC uses UDP and concludes that application data on reliable QUIC streams can never be returned. What's the error in the reasoning?",
+    "prompt": "Someone claims that QUIC’s use of UDP prevents retransmission on reliable QUIC streams. What is wrong with this claim?",
     "options": [
       {
         "id": "a",
-        "text": "Only the IP Team can implement retransmission"
+        "text": "Only IP is permitted to implement retransmission over a datagram service."
       },
       {
         "id": "b",
-        "text": "UDP does not provide confidence, but QUIC can implement it over UDP"
+        "text": "QUIC can implement reliability above UDP's unreliable datagram service."
       },
       {
         "id": "c",
-        "text": "UDP automatically repeats all lost datagrams"
+        "text": "UDP automatically retransmits lost packets when it carries QUIC traffic."
       },
       {
         "id": "d",
-        "text": "HTTP/3 is actually always using TCP and never UDP"
+        "text": "HTTP/3 reliability comes from a TCP connection hidden inside each packet."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "A feature missing in an underlying service may be offered by the above layer. QUIC implements transport functions, including reliable delivery for its reliable flows, over UDP.",
+    "explanation": "UDP offers an unreliable datagram service. QUIC implements acknowledgment, loss recovery and reliable stream delivery above that service.",
     "source": "The internet transport layer · Paragraphs 7–9",
     "sourceRefs": [
       {

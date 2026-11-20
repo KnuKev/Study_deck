@@ -1,82 +1,610 @@
 [
   {
-    "id": "in3050-trial-2025-06",
+    "id": "in3050-original-trial-2025-01",
     "courseId": "IN3050",
-    "topicId": "ai-evolutionary-algorithms",
+    "topicId": "ai-optimization-search",
     "type": "multi",
-    "prompt": "Which two statements are true for permutation representations in evolutionary algorithms?",
+    "prompt": "Choose **two correct statements** among all statements:",
     "options": [
       {
         "id": "a",
-        "text": "They fit problems where each item must appear once."
+        "text": "Pure exploitation may find a local optimum by gradually improving solution until we can’t find a better solution"
       },
       {
         "id": "b",
-        "text": "Ordinary bit-flip mutation preserves validity."
+        "text": "Global optimum can be worse than some neighboring solutions."
       },
       {
         "id": "c",
-        "text": "Swapping two positions preserves validity."
+        "text": "Exploration means moving (randomly) around in the search landscape, trying to find new types of solutions that potentially are better than what we have found before."
       },
       {
         "id": "d",
-        "text": "They fit encodings where an item may appear arbitrarily many times."
+        "text": "Local optimum can be worse than some neighboring solutions."
+      }
+    ],
+    "correctOptionId": "a,c",
+    "explanation": "Exploitation refines a promising solution and can stop at a local optimum. Exploration tests other regions. Use the objective value and direction consistently when comparing optima.",
+    "difficulty": "hard",
+    "source": "Part 1, question 1 · PDF page 1",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 1 · PDF page 1"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-02",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "In gradient descent and ascent, which of the following does tell us the *direction* of solution update?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Gradient"
+      },
+      {
+        "id": "b",
+        "text": "Step-size"
+      },
+      {
+        "id": "c",
+        "text": "Batch-size"
+      },
+      {
+        "id": "d",
+        "text": "Temperature"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The gradient points in the direction of steepest local ascent; gradient descent uses its negative. The step size determines the displacement scale.",
+    "difficulty": "easy",
+    "source": "Part 1, question 2 · PDF page 1",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 2 · PDF page 1"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-03",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "Which one is NOT a “Discrete” optimization problem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Traveling salesman problem."
+      },
+      {
+        "id": "b",
+        "text": "Finding a course time table with the minimum number of clashes for registered students."
+      },
+      {
+        "id": "c",
+        "text": "Knapsack problem: Given a set of items, each with a weight and a value, determine which items to include in the collection so that the total weight is less than or equal to a given limit and the total value is as large as possible."
+      },
+      {
+        "id": "d",
+        "text": "Designing parts of an airplane."
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Aircraft dimensions can be continuous variables. The other examples involve finite selections, orderings, or assignments.",
+    "difficulty": "medium",
+    "source": "Part 1, question 3 · PDF page 1",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 3 · PDF page 1"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-04",
+    "courseId": "IN3050",
+    "topicId": "ai-optimization-search",
+    "type": "choice",
+    "prompt": "In simulated annealing, how can we increase “exploitation”?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Increasing the step-size"
+      },
+      {
+        "id": "b",
+        "text": "Decreasing the step-size"
+      },
+      {
+        "id": "c",
+        "text": "Increasing the temperature"
+      },
+      {
+        "id": "d",
+        "text": "Decreasing the temperature"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "For a fixed proposal mechanism, a lower temperature reduces the probability of accepting a move that worsens the objective.",
+    "difficulty": "medium",
+    "source": "Part 1, question 4 · PDF page 1",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 4 · PDF page 1"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-05",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "If a genetic algorithm is stuck in a local minimum, which of the following modifications is most likely to help escape it?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Increase the mutation rate"
+      },
+      {
+        "id": "b",
+        "text": "Decrease the crossover rate"
+      },
+      {
+        "id": "c",
+        "text": "Increase the selection pressure"
+      },
+      {
+        "id": "d",
+        "text": "Reduce the population size"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "More mutation can restore diversity and generate candidates outside a local basin, though an excessive rate can disrupt good solutions.",
+    "difficulty": "medium",
+    "source": "Part 1, question 5 · PDF page 1–2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 5 · PDF page 1–2"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-06",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "multi",
+    "prompt": "Which two are true for permutation representations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They are used for problems where each variable can only appear once"
+      },
+      {
+        "id": "b",
+        "text": "Bit-flip mutation is applicable"
+      },
+      {
+        "id": "c",
+        "text": "A mutation operator that swaps at least two values is applicable"
+      },
+      {
+        "id": "d",
+        "text": "They are used for problems where each variable can appear multiple times"
       }
     ],
     "correctOptionId": "a,c",
     "explanation": "A permutation is an ordering of a fixed set of items. Swapping positions changes the ordering while preserving exactly one copy of each item.",
     "difficulty": "medium",
-    "source": "IN3050 2025 trial exam · Part 1, question 6 · PDF page 2",
+    "source": "Part 1, question 6 · PDF page 2",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
         "location": "Part 1, question 6 · PDF page 2"
       }
     ],
-    "trial2025": true
+    "trial2025": true,
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-14",
+    "id": "in3050-original-trial-2025-07",
     "courseId": "IN3050",
-    "topicId": "ai-evaluation-generalization",
+    "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
-    "prompt": "When is a classifier’s macro F1 score most likely to be much lower than its accuracy?",
+    "prompt": "In a genetic algorithm, a population has the following fitness values for five individuals: [12, 15, 20, 25, 28]. Calculate the probability of selecting the individual with a fitness of 28 using fitness-proportionate selection (roulette wheel).",
     "options": [
       {
         "id": "a",
-        "text": "The classes have exactly equal support."
+        "text": "0.14"
       },
       {
         "id": "b",
-        "text": "The classifier does well on both classes."
+        "text": "0.28"
       },
       {
         "id": "c",
-        "text": "The dataset is highly imbalanced and the classifier succeeds mostly on the majority class."
+        "text": "0.4"
       },
       {
         "id": "d",
-        "text": "The classifier predicts every class equally often."
+        "text": "0.56"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Fitness-proportionate selection normalizes by the total: \\(28/(12+15+20+25+28)=0.28\\).",
+    "difficulty": "medium",
+    "source": "Part 1, question 7 · PDF page 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 7 · PDF page 2"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-08",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "choice",
+    "prompt": "You are using a roulette wheel selection method in a genetic algorithm for a problem with a fitness landscape where most individuals have similar fitness values. What issue might arise with this selection method, and which alternative selection strategy would address this issue?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Premature convergence; switch to elitist selection"
+      },
+      {
+        "id": "b",
+        "text": "Loss of selection pressure; switch to rank-based selection"
+      },
+      {
+        "id": "c",
+        "text": "Increased diversity; switch to selection with fitness sharing"
+      },
+      {
+        "id": "d",
+        "text": "Lack of convergence; switch to random selection"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Nearly equal fitness values yield nearly equal selection probabilities. Ranking can maintain pressure independently of the raw fitness gaps.",
+    "difficulty": "medium",
+    "source": "Part 1, question 8 · PDF page 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 8 · PDF page 2"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-09",
+    "courseId": "IN3050",
+    "topicId": "ai-evolutionary-algorithms",
+    "type": "multi",
+    "prompt": "Which of the following statements about tournament selection in a genetic algorithm are true? (Select TWO)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Increasing tournament size reduces selection pressure."
+      },
+      {
+        "id": "b",
+        "text": "Larger tournament sizes favor fitter individuals."
+      },
+      {
+        "id": "c",
+        "text": "Tournament selection has constant selection pressure regardless of tournament size."
+      },
+      {
+        "id": "d",
+        "text": "Smaller tournament sizes increase diversity."
+      },
+      {
+        "id": "e",
+        "text": "Tournament selection is guaranteed to select the top individual."
+      },
+      {
+        "id": "f",
+        "text": "Picking with replacement increases selection pressure."
+      }
+    ],
+    "correctOptionId": "b,d",
+    "explanation": "A larger random tournament is more likely to contain a highly ranked individual; smaller tournaments let lower-ranked candidates reproduce more often and can preserve diversity.",
+    "difficulty": "medium",
+    "source": "Part 1, question 9 · PDF page 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 9 · PDF page 2"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-10",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "Consider the following problems: Problem A: Predict the temperature tomorrow Problem B: Assign a label from a set of 5 labels to each image Which statement is true:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Problem A is regression and Problem B is classification."
+      },
+      {
+        "id": "b",
+        "text": "Problem A is classification and Problem B is regression."
+      },
+      {
+        "id": "c",
+        "text": "Problem A is regression and Problem B is regression."
+      },
+      {
+        "id": "d",
+        "text": "Problem A is classification and Problem B is classification."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Temperature is a continuous numerical target. Selecting one of five categories is multiclass classification.",
+    "difficulty": "easy",
+    "source": "Part 1, question 10 · PDF page 2",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 10 · PDF page 2"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-11",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "Which statement is wrong about kNNs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "For a given k, it calculates the distance to all the training instances and picks the k nearest ones, followed by choosing the majority class."
+      },
+      {
+        "id": "b",
+        "text": "Selecting a small k may lead to overfitting to training data."
+      },
+      {
+        "id": "c",
+        "text": "Selecting a large k may lead to a very general but ineffective model."
+      },
+      {
+        "id": "d",
+        "text": "kNN can be trained very efficiently, and scales well to large problem sizes"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Basic kNN stores the training data, making fitting cheap. Prediction must search neighbors, which is costly with a large dataset without indexing or approximation.",
+    "difficulty": "medium",
+    "source": "Part 1, question 11 · PDF page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 11 · PDF page 3"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-12",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "Suppose you trained a machine learning model for a binary classification task and after evaluation on the test set and presenting the confusion matrix, you obtained these numbers for the evaluated examples: True positives, tp=100 False positives, fp=50 False negatives, fn=50 True negatives, tn=200 What is the correct accuracy in percent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "66.67%"
+      },
+      {
+        "id": "b",
+        "text": "75%"
+      },
+      {
+        "id": "c",
+        "text": "25%"
+      },
+      {
+        "id": "d",
+        "text": "50%"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Accuracy is \\((100+200)/(100+50+50+200)=0.75\\), or 75%.",
+    "difficulty": "medium",
+    "source": "Part 1, question 12 · PDF page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 12 · PDF page 3"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-13",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "For a model’s predictions on a binary classification problem at a given threshold, the F1- score is 0.75. The model has 40 true positives (TP) and 10 false positives (FP). Calculate the model’s recall.",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.50"
+      },
+      {
+        "id": "b",
+        "text": "0.60"
+      },
+      {
+        "id": "c",
+        "text": "0.67"
+      },
+      {
+        "id": "d",
+        "text": "0.71"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Precision is \\(40/50=0.8\\). Solving \\(F_1=2PR/(P+R)\\) gives \\(R=0.75(0.8)/(1.6-0.75)\\approx0.706\\).",
+    "difficulty": "hard",
+    "source": "Part 1, question 13 · PDF page 3",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 13 · PDF page 3"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-14",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "Which scenario is likely to cause a model’s macro F1-score to be significantly lower than its accuracy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The dataset is perfectly balanced between classes."
+      },
+      {
+        "id": "b",
+        "text": "The classifier performs well on both classes."
+      },
+      {
+        "id": "c",
+        "text": "The dataset is highly imbalanced, and the model mostly predicts the majority class correctly."
+      },
+      {
+        "id": "d",
+        "text": "The model’s predictions are equally distributed across all classes."
       }
     ],
     "correctOptionId": "c",
     "explanation": "Accuracy counts correct examples, so the majority class can dominate it. Macro F1 gives the rare class the same weight as the majority class, exposing poor performance on the rare class.",
     "difficulty": "medium",
-    "source": "IN3050 2025 trial exam · Part 1, question 14 · PDF page 3",
+    "source": "Part 1, question 14 · PDF page 3",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
         "location": "Part 1, question 14 · PDF page 3"
       }
     ],
-    "trial2025": true
+    "trial2025": true,
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-17",
+    "id": "in3050-original-trial-2025-15",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "For regression, we often use the mean squared error (MSE) loss function instead of for example average of errors. Why is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To eliminate negative values and to check how far the prediction is from the correct value so we don’t want positive and negative errors from individual data points to cancel each other out."
+      },
+      {
+        "id": "b",
+        "text": "To eliminate negative values and to check how far the prediction is from the correct value so we want smaller loss when the gap is larger."
+      },
+      {
+        "id": "c",
+        "text": "Because we want to make sure that the overall loss function is differentiable."
+      },
+      {
+        "id": "d",
+        "text": "Because we want to make sure that the overall loss function becomes a convex function."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Squaring each residual before averaging prevents opposite-signed errors from canceling and penalizes larger errors more heavily.",
+    "difficulty": "medium",
+    "source": "Part 1, question 15 · PDF page 3–4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 15 · PDF page 3–4"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-16",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "Consider a simple linear regression problem with parameters w_0, w_1, …., w_m. To measure the performance, one may consider, mean squared error (MSE), root mean squared error (RMSE), or squared error (SE). What is common among MSE, RMSE, and SE?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The value of different error functions are the same under the same parameters"
+      },
+      {
+        "id": "b",
+        "text": "All error functions are practical and useful when we have training and test sets with different sizes"
+      },
+      {
+        "id": "c",
+        "text": "All of them are minimized under the same parameters w_i’s"
+      },
+      {
+        "id": "d",
+        "text": "None of them are practical and useful when we have training and test sets with different sizes"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "For a fixed dataset, MSE is SE divided by the sample count and RMSE is the square root of MSE. Both transformations are strictly increasing for nonnegative error.",
+    "difficulty": "hard",
+    "source": "Part 1, question 16 · PDF page 4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 16 · PDF page 4"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-17",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
-    "prompt": "Ridge adds \\(\\alpha\\sum_j w_j^2\\) using feature weights only. If \\(\\alpha=0.5\\) and their squared sum is 10, how much is added to the loss?",
+    "prompt": "In a regularized linear regression model, Ridge (L2) regularization is applied with a regularization factor α=0.5. If the sum of squared coefficients (weights) without regularization is 10, what is the total loss added by the regularization term?",
     "options": [
       {
         "id": "a",
@@ -98,57 +626,212 @@
     "correctOptionId": "b",
     "explanation": "Use the stated penalty convention: multiply the sum of squared feature weights by the regularization coefficient. The contribution is \\(0.5\\times10=5\\).",
     "difficulty": "medium",
-    "source": "IN3050 2025 trial exam · Part 1, question 17 · PDF page 4",
+    "source": "Part 1, question 17 · PDF page 4",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
         "location": "Part 1, question 17 · PDF page 4"
       }
     ],
-    "trial2025": true
+    "trial2025": true,
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-21",
+    "id": "in3050-original-trial-2025-18",
     "courseId": "IN3050",
-    "topicId": "ai-evaluation-generalization",
+    "topicId": "ai-logistic-regression",
     "type": "choice",
-    "prompt": "In the classical bias–variance trade-off, what risk often increases when a model becomes very flexible and has low bias?",
+    "prompt": "In multinomial logistic regression for multi-class classification, we first obtain the weighted sums of the input features and weights and biases. Then we apply some activation functions on the weighted sums to obtain predicted probabilities for each class (y’s) whose cross-entropy loss is computed with the one-hot ground-truth targets. What activation function is used to obtain prediction probabilities for each class?",
     "options": [
       {
         "id": "a",
-        "text": "It necessarily generalizes well."
+        "text": "Softmax function"
       },
       {
         "id": "b",
-        "text": "It underfits the training data."
+        "text": "Logistic Sigmoid function"
       },
       {
         "id": "c",
-        "text": "It can become sensitive to the particular training sample and overfit."
+        "text": "ReLU function"
       },
       {
         "id": "d",
-        "text": "It performs nearly identically across training samples."
+        "text": "Step function"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Softmax exponentiates logits and divides by their sum so the probabilities are nonnegative and sum to one.",
+    "difficulty": "easy",
+    "source": "Part 1, question 18 · PDF page 4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 18 · PDF page 4"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-19",
+    "courseId": "IN3050",
+    "topicId": "ai-logistic-regression",
+    "type": "choice",
+    "prompt": "For binary classification and one-hot labels, what is the cross-entropy loss of a single data point (x_i,y_i)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The absolute difference between the prediction of model and ground truth"
+      },
+      {
+        "id": "b",
+        "text": "The probability of predicting the ground truth"
+      },
+      {
+        "id": "c",
+        "text": "Applying ReLU on top of a linear mapping (weighted sum of input and weights)"
+      },
+      {
+        "id": "d",
+        "text": "Negative logarithm of the predicted probability of the ground-truth class"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "For a one-hot target, only the true class contributes to cross-entropy, giving the negative log of its predicted probability.",
+    "difficulty": "medium",
+    "source": "Part 1, question 19 · PDF page 4",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 19 · PDF page 4"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-20",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "In a situation where the data is linearly separable, a logistic regression model is trained without regularization. This model achieves perfect accuracy on the training set but fails on the test set. Which issue best explains this performance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "High bias due to underfitting"
+      },
+      {
+        "id": "b",
+        "text": "High variance due to overfitting"
+      },
+      {
+        "id": "c",
+        "text": "Model collapse due to insufficient data"
+      },
+      {
+        "id": "d",
+        "text": "Inadequate features for classification"
+      },
+      {
+        "id": "e",
+        "text": "high bias due to overfitting"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Perfect fitting on the training set with poor test performance is consistent with overfitting and high variance.",
+    "difficulty": "medium",
+    "source": "Part 1, question 20 · PDF page 4–5",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 20 · PDF page 4–5"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-21",
+    "courseId": "IN3050",
+    "topicId": "ai-evaluation-generalization",
+    "type": "choice",
+    "prompt": "In a bias-variance trade-off, a highly complex model with low bias is more likely to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Generalize well to new data"
+      },
+      {
+        "id": "b",
+        "text": "Underfit the training data"
+      },
+      {
+        "id": "c",
+        "text": "Have high variance and overfit the training data"
+      },
+      {
+        "id": "d",
+        "text": "Perform consistently across different datasets"
       }
     ],
     "correctOptionId": "c",
     "explanation": "Low bias means the model class can capture complex relationships. It can also fit noise or idiosyncrasies of a particular sample, increasing variance.",
     "difficulty": "easy",
-    "source": "IN3050 2025 trial exam · Part 1, question 21 · PDF page 5",
+    "source": "Part 1, question 21 · PDF page 5",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
         "location": "Part 1, question 21 · PDF page 5"
       }
     ],
-    "trial2025": true
+    "trial2025": true,
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-23",
+    "id": "in3050-original-trial-2025-22",
+    "courseId": "IN3050",
+    "topicId": "ai-perceptron-regression",
+    "type": "choice",
+    "prompt": "A perceptron with a step activation function can only classify linearly separable data. Which of the following statements explains why such a perceptron fails to classify data that is not linearly separable, such as data points forming an XOR pattern?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It is computationally infeasible to adjust the weights and bias of a perceptron to learn non-linear decision boundaries."
+      },
+      {
+        "id": "b",
+        "text": "The perceptron activation function can only produce outputs of 0 or 1, which limits its ability to handle continuous outputs."
+      },
+      {
+        "id": "c",
+        "text": "A classical perceptron lacks non-linear activation functions that would allow it to model complex relationships in data."
+      },
+      {
+        "id": "d",
+        "text": "The learning rate in a perceptron is too low to converge on non-linear patterns."
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Source issue: C is the intended answer, but a step activation is nonlinear. The actual limitation is that a single perceptron thresholds one affine score, giving a linear decision boundary. A hidden layer with nonlinear activations can represent XOR. No option states this accurately, so this item is excluded from the score.",
+    "difficulty": "medium",
+    "source": "Part 1, question 22 · PDF page 5",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 22 · PDF page 5"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025",
+    "unscored": true
+  },
+  {
+    "id": "in3050-original-trial-2025-23",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
-    "prompt": "A bias-free neural layer computes \\(\\operatorname{ReLU}(xW)\\). The row input is \\(x=(1,2,-2,1)\\), and the weight matrix \\(W\\) is shown below. What is the output?",
+    "prompt": "You are given a feed-forward neural network (FFNN), also known as multi-layered perceptron (MLP). It employs ReLU activation function, and the weight values of the first layer are given below. No bias term is used. What is the output of this first layer (after applying the activation function) on the data instance x=[1, 2, -2, 1]?",
     "options": [
       {
         "id": "a",
@@ -160,17 +843,17 @@
       },
       {
         "id": "c",
-        "text": "[1, −5, 3, 1]"
+        "text": "[1, -5, 3, 1]"
       },
       {
         "id": "d",
-        "text": "[1, 0, −3, 1]"
+        "text": "[1, 0, -3, 1]"
       }
     ],
     "correctOptionId": "b",
     "explanation": "Dot the input with each column. The pre-activation values are \\((1,-5,3,1)\\). ReLU keeps positive values and replaces negative values with zero.",
     "difficulty": "hard",
-    "source": "IN3050 2025 trial exam · Part 1, question 23 · PDF page 5",
+    "source": "Part 1, question 23 · PDF page 5",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
@@ -212,18 +895,19 @@
           "-1"
         ]
       ]
-    }
+    },
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-24",
+    "id": "in3050-original-trial-2025-24",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
-    "prompt": "The bias-free output layer of a three-class network applies softmax to \\(hW\\). If \\(h=(4,0,2,0)\\), which class has the highest probability?",
+    "prompt": "You are given a feed-forward neural network (FFNN), also known as multi-layered perceptron (MLP). It performs multinomial classification of the input data instances into three classes. The network employs softmax after the output layer. No bias term is used. The weight values of the last layer are given below. What class this network will predict if the input to the last layer is h=[4, 0, 2, 0]?",
     "options": [
       {
         "id": "a",
-        "text": "The class cannot be determined."
+        "text": "Unknown class"
       },
       {
         "id": "b",
@@ -241,7 +925,7 @@
     "correctOptionId": "b",
     "explanation": "The class logits are \\((10,8,8)\\). Softmax preserves the ranking of logits, so the first class has the largest predicted probability.",
     "difficulty": "hard",
-    "source": "IN3050 2025 trial exam · Part 1, question 24 · PDF page 5–6",
+    "source": "Part 1, question 24 · PDF page 5–6",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
@@ -278,72 +962,185 @@
           "2"
         ]
       ]
-    }
+    },
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-25",
+    "id": "in3050-original-trial-2025-25",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
-    "prompt": "After k-means assigns examples to their nearest centers, how does it update a center with at least one assigned example?",
+    "prompt": "In k-means clustering, what happens to the cluster centers at each iteration?",
     "options": [
       {
         "id": "a",
-        "text": "It places the center randomly again each iteration."
+        "text": "They are randomly repositioned"
       },
       {
         "id": "b",
-        "text": "It keeps the original center fixed."
+        "text": "B) They are fixed at the initial positions"
       },
       {
         "id": "c",
-        "text": "It moves the center toward neighboring clusters."
+        "text": "They are updated by moving towards neighboring clusters"
       },
       {
         "id": "d",
-        "text": "It replaces the center with the mean of the examples assigned to it."
+        "text": "They are updated to the mean of the assigned samples"
       }
     ],
     "correctOptionId": "d",
     "explanation": "For a fixed cluster under the squared Euclidean objective, the mean minimizes the sum of squared distances to its members.",
     "difficulty": "easy",
-    "source": "IN3050 2025 trial exam · Part 1, question 25 · PDF page 6",
+    "source": "Part 1, question 25 · PDF page 6",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
         "location": "Part 1, question 25 · PDF page 6"
       }
     ],
-    "trial2025": true
+    "trial2025": true,
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-29",
+    "id": "in3050-original-trial-2025-26",
     "courseId": "IN3050",
-    "topicId": "ai-reinforcement-learning",
+    "topicId": "ai-unsupervised-learning",
     "type": "choice",
-    "prompt": "Which statement about rewards in reinforcement learning is true?",
+    "prompt": "In hierarchical clustering, suppose you choose Ward linkage to determine the distance between clusters. What characteristic does Ward linkage prioritize when merging clusters?",
     "options": [
       {
         "id": "a",
-        "text": "A reward explicitly tells the agent what action it should have taken."
+        "text": "Minimizing the maximum distance between samples in merged clusters"
       },
       {
         "id": "b",
-        "text": "A reward can never be delayed."
+        "text": "Minimizing the increase in within-cluster variance"
       },
       {
         "id": "c",
-        "text": "Rewards must be positive."
+        "text": "Maximizing the number of clusters at each stage"
       },
       {
         "id": "d",
-        "text": "An episode can have zero rewards until the terminal step."
+        "text": "Maximizing the mean distance between clusters"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Ward chooses the merge with the smallest increase in pooled within-cluster sum of squared deviations.",
+    "difficulty": "medium",
+    "source": "Part 1, question 26 · PDF page 6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 26 · PDF page 6"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-27",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "Given a dataset with highly correlated features, you decide to apply Principal Component Analysis (PCA). What would be the expected effect of PCA on the dataset?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It will create new features that are linear combinations of the original features with maximized variance and reduced dimensionality."
+      },
+      {
+        "id": "b",
+        "text": "It will increase the dimensionality of the dataset by adding orthogonal features."
+      },
+      {
+        "id": "c",
+        "text": "It will reduce the dataset to one-dimensional data regardless of the original dimensionality."
+      },
+      {
+        "id": "d",
+        "text": "It will remove all correlations between features without changing the dimensionality."
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "PCA forms orthogonal linear combinations ordered by variance. Keeping only leading components can retain much of the variance when features are correlated.",
+    "difficulty": "medium",
+    "source": "Part 1, question 27 · PDF page 6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 27 · PDF page 6"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-28",
+    "courseId": "IN3050",
+    "topicId": "ai-unsupervised-learning",
+    "type": "choice",
+    "prompt": "Which of the following statements is NOT true about autoencoders?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Autoencoders learn to produce an output similar to the input."
+      },
+      {
+        "id": "b",
+        "text": "Autoencoders require labeled data for training."
+      },
+      {
+        "id": "c",
+        "text": "Autoencoders can be used for dimensionality reduction by learning a compressed representation of the data through middle layers."
+      },
+      {
+        "id": "d",
+        "text": "Autoencoders can be used as a pretraining method to provide a useful weight initialization for other tasks like classification."
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The training target for a standard autoencoder is the input itself. External class labels are unnecessary.",
+    "difficulty": "medium",
+    "source": "Part 1, question 28 · PDF page 6",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 28 · PDF page 6"
+      }
+    ],
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-29",
+    "courseId": "IN3050",
+    "topicId": "ai-reinforcement-learning",
+    "type": "choice",
+    "prompt": "In Reinforcement Learning",
+    "options": [
+      {
+        "id": "a",
+        "text": "The reward tells us which action we should have taken"
+      },
+      {
+        "id": "b",
+        "text": "The reward is never delayed"
+      },
+      {
+        "id": "c",
+        "text": "The reward is always a positive value"
+      },
+      {
+        "id": "d",
+        "text": "It is possible to receive the entire reward at the end"
       }
     ],
     "correctOptionId": "d",
     "explanation": "Sparse or delayed rewards are possible. For example, a task may give a score only when the episode ends. A reward evaluates an outcome without prescribing the correct action.",
     "difficulty": "easy",
-    "source": "IN3050 2025 trial exam · Part 1, question 29 · PDF page 6",
+    "source": "Part 1, question 29 · PDF page 6",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
@@ -351,36 +1148,37 @@
       }
     ],
     "trial2025": true,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-30",
+    "id": "in3050-original-trial-2025-30",
     "courseId": "IN3050",
     "topicId": "ai-reinforcement-learning",
     "type": "choice",
-    "prompt": "What does the one-step Q-learning update use to estimate the value of the next state, when that state is non-terminal?",
+    "prompt": "The Q-learning algorithm",
     "options": [
       {
         "id": "a",
-        "text": "The highest estimated action value in the next state."
+        "text": "Assumes future actions will be optimal when calculating Q-values"
       },
       {
         "id": "b",
-        "text": "The mean of all estimated action values in the next state."
+        "text": "Calculates values by averaging all possible actions"
       },
       {
         "id": "c",
-        "text": "Only the action actually selected next by the behavior policy."
+        "text": "Is a type of on-policy learning"
       },
       {
         "id": "d",
-        "text": "The lowest action value to avoid optimistic estimates."
+        "text": "Results in less risky solutions than SARSA"
       }
     ],
     "correctOptionId": "a",
     "explanation": "The Q-learning target is \\(r + \\gamma\\max_{a\\prime} Q(s\\prime,a\\prime)\\). This is a greedy bootstrap target even when the behavior policy explores. SARSA uses the action actually selected next.",
     "difficulty": "medium",
-    "source": "IN3050 2025 trial exam · Part 1, question 30 · PDF page 7",
+    "source": "Part 1, question 30 · PDF page 7",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
@@ -388,36 +1186,37 @@
       }
     ],
     "trial2025": true,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-31",
+    "id": "in3050-original-trial-2025-31",
     "courseId": "IN3050",
     "topicId": "ai-reinforcement-learning",
     "type": "choice",
-    "prompt": "What is the usual objective of a reinforcement learning agent?",
+    "prompt": "What is the objective of a reinforcement learning agent?",
     "options": [
       {
         "id": "a",
-        "text": "Minimize supervised prediction error for a fixed set of labels."
+        "text": "To minimize errors"
       },
       {
         "id": "b",
-        "text": "Maximize classification accuracy."
+        "text": "To maximize accuracy"
       },
       {
         "id": "c",
-        "text": "Maximize expected cumulative return."
+        "text": "To maximize rewards"
       },
       {
         "id": "d",
-        "text": "Minimize computational resources regardless of performance."
+        "text": "To minimize computational resources"
       }
     ],
     "correctOptionId": "c",
     "explanation": "The agent aims to choose actions that maximize expected return, typically a sum of future rewards with discounting. An action with a small immediate reward can still be best in the long run.",
     "difficulty": "easy",
-    "source": "IN3050 2025 trial exam · Part 1, question 31 · PDF page 7",
+    "source": "Part 1, question 31 · PDF page 7",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
@@ -425,14 +1224,141 @@
       }
     ],
     "trial2025": true,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "trial-2025"
   },
   {
-    "id": "in3050-trial-2025-35",
+    "id": "in3050-original-trial-2025-32",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "multi",
+    "prompt": "What is the primary difference between Strong AI and Weak AI? (Choose TWO)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Strong AI claims AI can truly understand and have minds."
+      },
+      {
+        "id": "b",
+        "text": "Weak AI is limited to performing specific tasks without understanding."
+      },
+      {
+        "id": "c",
+        "text": "Strong AI is less computationally intensive."
+      },
+      {
+        "id": "d",
+        "text": "Weak AI seeks to create machines with consciousness."
+      },
+      {
+        "id": "e",
+        "text": "Strong AI simulates tasks with human-like efficiency."
+      },
+      {
+        "id": "f",
+        "text": "Weak AI operates independently of human-designed rules."
+      }
+    ],
+    "correctOptionId": "a,b",
+    "explanation": "Strong AI makes a claim about genuine understanding. Weak AI describes systems that simulate intelligent behavior without committing to that claim.",
+    "difficulty": "medium",
+    "source": "Part 1, question 32 · PDF page 7",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 32 · PDF page 7"
+      }
+    ],
+    "historicalOnly": true,
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-33",
+    "courseId": "IN3050",
+    "topicId": "ai-supervised-knn",
+    "type": "choice",
+    "prompt": "The \"Chinese Room\" argument by John Searle challenges which assumption in AI?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A) That AI can replicate human emotions"
+      },
+      {
+        "id": "b",
+        "text": "B) That AI can only perform narrow, specific tasks"
+      },
+      {
+        "id": "c",
+        "text": "That symbolic AI is inferior to connectionist approaches"
+      },
+      {
+        "id": "d",
+        "text": "That computation alone is sufficient for understanding"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The argument distinguishes syntactic symbol manipulation from understanding the symbols' meaning.",
+    "difficulty": "medium",
+    "source": "Part 1, question 33 · PDF page 7",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 33 · PDF page 7"
+      }
+    ],
+    "historicalOnly": true,
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-34",
+    "courseId": "IN3050",
+    "topicId": "ai-deep-learning",
+    "type": "multi",
+    "prompt": "How does the complexity of an AI model generally affect its explainability, and why is this relationship important in the context of Explainable AI? (Select TWO)",
+    "options": [
+      {
+        "id": "a",
+        "text": "As model complexity increases, explainability typically decreases, making it harder for humans to understand the decision-making process."
+      },
+      {
+        "id": "b",
+        "text": "Complex models, such as deep neural networks, are usually easier to explain than simpler models like decision trees."
+      },
+      {
+        "id": "c",
+        "text": "Explainable AI techniques are more effective on complex models than on simple models."
+      },
+      {
+        "id": "d",
+        "text": "Simple models, like linear regression, are usually less transparent, making them more difficult to explain compared to more complex models."
+      },
+      {
+        "id": "e",
+        "text": "Lack of explainability in complex AI models can lead to ethical issues, as it becomes difficult to identify and correct biases in decisions that impact individuals."
+      }
+    ],
+    "correctOptionId": "a,e",
+    "explanation": "More complex models are often harder to inspect directly, making bias and consequential errors harder to diagnose. Complexity does not guarantee opacity in every model.",
+    "difficulty": "medium",
+    "source": "Part 1, question 34 · PDF page 7",
+    "sourceRefs": [
+      {
+        "path": "IN3050/old_exams/trial-exam-2025.pdf",
+        "location": "Part 1, question 34 · PDF page 7"
+      }
+    ],
+    "historicalOnly": true,
+    "trial2025": true,
+    "originalExam": "trial-2025"
+  },
+  {
+    "id": "in3050-original-trial-2025-35",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
-    "prompt": "Which approach is most closely associated with connectionism in AI?",
+    "prompt": "The philosophical concept of \"connectionism\" in AI is most closely associated with which of the following approaches?",
     "options": [
       {
         "id": "a",
@@ -458,7 +1384,7 @@
     "correctOptionId": "c",
     "explanation": "Connectionist approaches model information processing using networks of connected computational units. Neural networks are the main example.",
     "difficulty": "easy",
-    "source": "IN3050 2025 trial exam · Part 1, question 35 · PDF page 7",
+    "source": "Part 1, question 35 · PDF page 7",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/trial-exam-2025.pdf",
@@ -466,7 +1392,8 @@
       }
     ],
     "trial2025": true,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "trial-2025"
   },
   {
     "id": "in3050-trial-2025-36",
@@ -506,7 +1433,7 @@
     "writtenAdaptation": true
   },
   {
-    "id": "in3050-trial-2025-37",
+    "id": "in3050-trial-2025-37-v2",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -514,19 +1441,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Generalization is beginning to get worse. Use early stopping and restore the checkpoint with the lowest validation loss."
+        "text": "Overfitting; restore the checkpoint with the lowest validation loss."
       },
       {
         "id": "b",
-        "text": "The model is underfitting more as training loss falls. Keep training until both curves cross."
+        "text": "Underfitting; continue until training loss reaches exactly zero."
       },
       {
         "id": "c",
-        "text": "The validation set has become part of the training data. Select the checkpoint with the smallest training loss."
+        "text": "Data leakage; choose the checkpoint with the lowest training loss."
       },
       {
         "id": "d",
-        "text": "The improvement in training loss proves the later checkpoints generalize better."
+        "text": "Convergence; keep the last checkpoint because training loss is lower."
       }
     ],
     "correctOptionId": "a",
@@ -544,7 +1471,7 @@
     "figure": "trial-learning-curves"
   },
   {
-    "id": "in3050-trial-2025-38",
+    "id": "in3050-trial-2025-38-v2",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
@@ -552,19 +1479,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Stacked affine layers collapse to a single affine map. Nonlinear hidden activations can create a nonlinear boundary, for example to solve XOR."
+        "text": "Nonlinear hidden layers can represent XOR; stacked affine layers cannot."
       },
       {
         "id": "b",
-        "text": "Additional affine layers alone make every Boolean function linearly separable."
+        "text": "Sufficiently many affine layers can represent XOR without nonlinearity."
       },
       {
         "id": "c",
-        "text": "Nonlinear activations merely rescale the learning rate; their output boundaries are always linear."
+        "text": "Nonlinear layers make XOR linearly separable in the original input space."
       },
       {
         "id": "d",
-        "text": "XOR can be solved by making a purely linear network sufficiently deep without changing its activations."
+        "text": "Linear layers need only a different learning rate to represent XOR."
       }
     ],
     "correctOptionId": "a",
@@ -581,7 +1508,7 @@
     "writtenAdaptation": true
   },
   {
-    "id": "in3050-trial-2025-39",
+    "id": "in3050-trial-2025-39-v2",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
@@ -589,19 +1516,19 @@
     "options": [
       {
         "id": "a",
-        "text": "They learn internal feature vectors from data; a learned vector representing a token or another input item is an example of an embedding."
+        "text": "Hidden layers learn features; an embedding is a learned vector representation."
       },
       {
         "id": "b",
-        "text": "They store only a dictionary of hand-written input features, and an embedding is the final predicted label."
+        "text": "Hidden layers use only hand-written features; an embedding is the output label."
       },
       {
         "id": "c",
-        "text": "Representations are gradients, and embeddings are the optimizer’s weight updates."
+        "text": "Hidden layers store gradients; an embedding is an optimizer's weight update."
       },
       {
         "id": "d",
-        "text": "Every hidden layer must reproduce the raw input exactly to learn a representation."
+        "text": "Hidden layers reconstruct raw inputs exactly; an embedding is a class count."
       }
     ],
     "correctOptionId": "a",
@@ -618,7 +1545,7 @@
     "writtenAdaptation": true
   },
   {
-    "id": "in3050-trial-2025-40",
+    "id": "in3050-trial-2025-40-v2",
     "courseId": "IN3050",
     "topicId": "ai-reinforcement-learning",
     "type": "choice",
@@ -626,19 +1553,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Epsilon-greedy usually chooses the best action but sometimes samples uniformly. Softmax samples according to Q-values and uses temperature to control how concentrated the distribution is."
+        "text": "Epsilon-greedy mixes greedy and uniform choices; softmax weights choices by Q-values and temperature."
       },
       {
         "id": "b",
-        "text": "Both methods always select the action with the maximum Q-value."
+        "text": "Epsilon-greedy weights random choices by Q-values; softmax chooses uniformly regardless of temperature."
       },
       {
         "id": "c",
-        "text": "Epsilon-greedy assigns higher random exploration probability to better actions, while softmax explores uniformly at every temperature."
+        "text": "Epsilon-greedy always chooses the best action; softmax explores only actions whose Q-values are equal."
       },
       {
         "id": "d",
-        "text": "Higher temperature and larger epsilon both make selection more greedy."
+        "text": "Epsilon-greedy explores less as epsilon increases; softmax becomes greedier as temperature increases."
       }
     ],
     "correctOptionId": "a",

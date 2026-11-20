@@ -15,12 +15,13 @@ test('curriculum questions have distinct identities, real topics and valid answe
     assert.deepEqual(ids, [...ids].sort(), question.id)
     assert.equal(ids.length > 1, question.type === 'multi', question.id)
     assert.equal(new Set(question.options.map(option => option.id)).size, question.options.length, question.id)
-    assert.equal(new Set(question.options.map(option => option.text.trim().toLowerCase())).size, question.options.length, question.id)
+    // Source papers contain duplicate options; authored questions must not.
+    if (!question.originalExam) assert.equal(new Set(question.options.map(option => option.text.trim().toLowerCase())).size, question.options.length, question.id)
     assert(question.options.every(option => option.id && option.text.trim()), question.id)
     assert(question.prompt.trim().length > 10 && question.explanation.trim().length > 20, question.id)
     if (question.type === 'boolean') assert.equal(question.options.length, 2, question.id)
     else assert(question.options.length >= 4 && question.options.length <= 8, question.id)
-    const prompt = `${question.courseId}:${question.prompt.trim().toLowerCase()}`
+    const prompt = `${question.courseId}:${question.originalExam ?? 'authored'}:${question.prompt.trim().toLowerCase()}`
     assert(!prompts.has(prompt), `Repeated question: ${question.id}`)
     prompts.add(prompt)
     if (question.table) {
@@ -87,6 +88,22 @@ test('choice order is stable on reload and varies between sessions without chang
   assert.deepEqual(getOrderedOptions(boolean, 'a'), boolean.options)
 })
 
+test('authored answers do not concentrate in the uniquely longest option', () => {
+  for (const course of COURSES) {
+    const questions = QUESTIONS.filter(question => question.courseId === course.id && !question.originalExam && question.type === 'choice' && !question.codeOptions)
+    let unique = 0, correctLongest = 0
+    for (const question of questions) {
+      const lengths = question.options.map(option => option.text.length)
+      const maximum = Math.max(...lengths)
+      if (lengths.filter(length => length === maximum).length !== 1) continue
+      unique++
+      if (question.options[lengths.indexOf(maximum)]!.id === question.correctOptionId) correctLongest++
+    }
+    assert(unique > 100, course.id)
+    assert(correctLongest / unique <= .35, `${course.id}: ${correctLongest}/${unique} uniquely longest choices are correct`)
+  }
+})
+
 
 test('full papers contain all original items while focused practice uses only relevant recent material', () => {
   for (const [year, expected] of [[2024, 50], [2025, 56]] as const) {
@@ -105,14 +122,14 @@ test('full papers contain all original items while focused practice uses only re
 })
 
 
-test('the 2025 trial includes every numbered quiz and written prompt without duplicating shared questions', () => {
+test('the 2025 trial retains its own wording for every quiz and keeps written adaptations separate', () => {
   const source = 'IN3050/old_exams/trial-exam-2025.pdf'
   const paper = getPracticePool(ALL_QUESTIONS, 'IN3050', [], 'all', 'trial-2025')
   assert.equal(paper.length, 40)
   const written = paper.filter(question => question.writtenAdaptation)
   assert.equal(written.length, 5)
   assert(written.every(question => question.type === 'choice'))
-  assert(paper.some(question => question.examYear === 2024))
+  assert.equal(paper.filter(question => question.originalExam === 'trial-2025').length, 35)
   const locations = paper.map(question => question.sourceRefs!.find(reference => reference.path === source)?.location ?? '')
   for (let i = 1; i <= 35; i++) {
     assert.equal(locations.filter(location => location.startsWith(`Part 1, question ${i} ·`)).length, 1)

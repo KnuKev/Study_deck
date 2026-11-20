@@ -159,32 +159,32 @@
     ]
   },
   {
-    "id": "in3050-extra-found-006",
+    "id": "in3050-extra-found-006-v2",
     "courseId": "IN3050",
     "topicId": "ai-linear-algebra",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "\\(A\\) is a \\(2\\times 3\\) and a \\(B\\) is a \\(3\\times 2\\). What claim about \\(AB\\) and \\(BA\\) are correct?",
+    "prompt": "A has shape 2×3 and B has shape 3×2. Which statement about AB and BA is correct?",
     "options": [
       {
         "id": "a",
-        "text": "\\(AB\\) and \\(BA\\) must contain the same elements."
+        "text": "Both products are defined and both have shape 3×3."
       },
       {
         "id": "b",
-        "text": "Both are defined; \\(AB\\) is \\(2\\times 2\\) and \\(BA\\) is \\(3\\times 3\\)."
+        "text": "Both are defined: AB is 2×2 and BA is 3×3."
       },
       {
         "id": "c",
-        "text": "Only \\(AB\\) is defined."
+        "text": "Only AB is defined, and its result has shape 2×2."
       },
       {
         "id": "d",
-        "text": "Both are defined and form \\(2\\times 2\\)."
+        "text": "Only BA is defined, and its result has shape 3×3."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "Both products have corresponding internal dimensions, but the outer dimensions are different. Matrix multiplication is therefore not generally commutative either.",
+    "explanation": "Both products have matching inner dimensions. Their outer dimensions differ: (2×3)(3×2) gives 2×2, while (3×2)(2×3) gives 3×3.",
     "source": "theory linear algebra · Cell 21",
     "sourceRefs": [
       {
@@ -373,32 +373,32 @@
     ]
   },
   {
-    "id": "in3050-extra-found-012",
+    "id": "in3050-extra-found-012-v2",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
     "difficulty": "hard",
-    "prompt": "We minimize the cost in the table. Neighbors differ in exactly one piece. A string hill clipper starts in 00 and just takes improvements. What happens if we instead allow moves that turn up to two bits?",
+    "prompt": "Minimize the costs in the table. A strict hill climber starts at 00 and considers one-bit moves. What changes if it can instead flip up to two bits?",
     "options": [
       {
         "id": "a",
-        "text": "00 is the global minimum in both cases."
+        "text": "00 remains a local minimum under both neighborhoods."
       },
       {
         "id": "b",
-        "text": "00 can already be improved to 11 with one-bit stretch."
+        "text": "00 can reach 11 with one bit under either neighborhood."
       },
       {
         "id": "c",
-        "text": "Na company definition cannot affect local optimism."
+        "text": "00 becomes a global minimum when two-bit moves are allowed."
       },
       {
         "id": "d",
-        "text": "00 is the local minimum with one bit, but can be improved directly to 11 with the new neighborhood."
+        "text": "00 is a one-bit local minimum; a two-bit move reaches better state 11."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "01 and 10 have higher costs than 00, so no one bit enhancement is available. 11 has lower costs, but are two bit changes away. Local optimisation depends on the neighbourhood.",
+    "explanation": "The one-bit neighbors 01 and 10 cost more than 00. The lower-cost state 11 is two flips away, so allowing two-bit moves changes whether 00 is locally optimal.",
     "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 2, question 1",
     "sourceRefs": [
       {
@@ -437,32 +437,32 @@
     }
   },
   {
-    "id": "in3050-extra-found-013",
+    "id": "in3050-extra-found-013-v2",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
     "difficulty": "hard",
-    "prompt": "From \\(A\\) the next-neighbor always chooses the nearest unvisited city and returns to \\(A\\) at the end. The symmetric travel costs are given in the table; they do not have to satisfy the similarity of triangles. What claim is correct?",
+    "prompt": "Starting at A, greedy nearest-neighbor search visits the nearest unvisited city and finally returns to A. Using the symmetric costs in the table, which statement is correct?",
     "options": [
       {
         "id": "a",
-        "text": "The Greedy route \\(A\\mathbin{-}B\\mathbin{-}C\\mathbin{-}D\\mathbin{-}A\\) becomes 104, while \\(A\\mathbin{-}C\\mathbin{-}B\\mathbin{-}D\\mathbin{-}A\\) becomes 7."
+        "text": "Greedy A–B–C–D–A costs 104; A–C–B–D–A costs 7."
       },
       {
         "id": "b",
-        "text": "The Greedy route becomes the 7 and is the shortest."
+        "text": "Greedy A–B–C–D–A costs 7; A–C–B–D–A costs 104."
       },
       {
         "id": "c",
-        "text": "Both of these paths become 104."
+        "text": "Greedy A–B–C–D–A costs 104; A–C–B–D–A costs 104."
       },
       {
         "id": "d",
-        "text": "The Greedy route \\(A\\mathbin{-}B\\mathbin{-}D\\mathbin{-}C\\mathbin{-}A\\) becomes 104."
+        "text": "Greedy A–B–D–C–A costs 104; A–C–B–D–A costs 7."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "From \\(A\\) select \\(B\\) (1), then \\(C\\) (1), then \\(D\\) (100), and back to \\(A\\) (2): 104. This option uses \\(2+1+2+2=7\\). Local short choice does not necessarily give a short total route.",
+    "explanation": "Greedy choices give costs 1 + 1 + 100 + 2 = 104. The alternative tour costs 2 + 1 + 2 + 2 = 7; locally short steps need not produce a short complete tour.",
     "source": "Optimization and Search · Paragraphs 24–35",
     "sourceRefs": [
       {
@@ -675,32 +675,32 @@
     ]
   },
   {
-    "id": "in3050-extra-found-019",
+    "id": "in3050-extra-found-019-v2",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "For a lower SA draw, use \\(p=\\exp\\left(-\\frac{\\Delta}{T}\\right)\\). Drag \\(A\\) has \\(\\Delta =3\\), \\(T=6\\); move \\(B\\) has \\(\\Delta =1\\), \\(T=2\\). How are acceptance probabilities compared?",
+    "prompt": "Simulated annealing accepts a worsening move with probability exp(−Δ/T). Move A has Δ = 3 and T = 6; move B has Δ = 1 and T = 2. How do their acceptance probabilities compare?",
     "options": [
       {
         "id": "a",
-        "text": "\\(B\\) is always accepted because \\(\\Delta\\) is smaller."
+        "text": "B is more likely because its cost increase is smaller."
       },
       {
         "id": "b",
-        "text": "\\(A\\) has twice the probability because \\(T\\) is larger."
+        "text": "A is more likely because its temperature is larger."
       },
       {
         "id": "c",
-        "text": "They're the same because \\(\\frac{\\Delta}{T}=0.5\\) in both cases."
+        "text": "They are equal because both have Δ/T = 0.5."
       },
       {
         "id": "d",
-        "text": "\\(A\\) has three times more probability."
+        "text": "A is twice as likely because its temperature is larger."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "It's the ratio of the deterioration to the temperature that determines the exponent. Both give \\(\\exp(-0.5)\\), approximately 0.607.",
+    "explanation": "The acceptance probability depends on Δ/T. Both moves give Δ/T = 0.5, hence exp(−0.5), approximately 0.607.",
     "source": "Optimization and Search · Paragraphs 74–84",
     "sourceRefs": [
       {
@@ -1324,32 +1324,32 @@
     ]
   },
   {
-    "id": "in3050-extra-found-038",
+    "id": "in3050-extra-found-038-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
     "difficulty": "hard",
-    "prompt": "Two individuals have positive fitness 1 and 9. What happens to the best probability of fitness-proportional selection if we add 100 to both fitness values?",
+    "prompt": "Two individuals have fitness 1 and 9. How does adding 100 to both values change the fitter individual’s probability under fitness-proportionate selection?",
     "options": [
       {
         "id": "a",
-        "text": "It drops to \\(\\frac{9}{200}\\), or 0.045."
+        "text": "It changes from 0.9 to 9/200, about 0.045."
       },
       {
         "id": "b",
-        "text": "It drops from 0.9 to \\(\\frac{109}{210}\\), about 0.519."
+        "text": "It changes from 0.9 to 109/210, about 0.519."
       },
       {
         "id": "c",
-        "text": "It's still 0.9 because the ranking is unchanged."
+        "text": "It remains 0.9 because their rank order is unchanged."
       },
       {
         "id": "d",
-        "text": "It rises to 1."
+        "text": "It changes from 0.9 to 109/110, about 0.991."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "Before is the probability \\(\\frac9{1+9}\\). Then it's \\(\\frac{109}{101+109}\\). Common additions change relative fitness rates, even if the ranking is unchanged, and this gives weaker selection pressures.",
+    "explanation": "The initial probability is 9/(1 + 9) = 0.9. After adding 100 it is 109/(101 + 109), about 0.519. Additive shifts preserve rank but change fitness-proportionate selection pressure.",
     "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 2, question 2a",
     "sourceRefs": [
       {
@@ -1468,32 +1468,32 @@
     ]
   },
   {
-    "id": "in3050-extra-found-042",
+    "id": "in3050-extra-found-042-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "Identical sensors are represented as a list of busy cells. The lists \\([2,5,8]\\) and \\([8,2,5]\\) describe the same layout. What is a possible consequence when population diversity is only measured as inequality between lists?",
+    "prompt": "Identical sensors are encoded as occupied-cell lists. [2, 5, 8] and [8, 2, 5] describe the same layout. What can go wrong if diversity is measured only by comparing the lists?",
     "options": [
       {
         "id": "a",
-        "text": "Fitness must always use the order in the list."
+        "text": "It can assign different objective values to the same layout."
       },
       {
         "id": "b",
-        "text": "The diversity measure may count the same physical solution more than once."
+        "text": "It can count different encodings of one layout as diversity."
       },
       {
         "id": "c",
-        "text": "The lists must have different minimum sensor spacings."
+        "text": "It can reject every permutation of a valid layout as invalid."
       },
       {
         "id": "d",
-        "text": "Only the first list is a valid genotype."
+        "text": "It can underestimate the number of distinct physical layouts."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "The order is irrelevant for identical sensors. A distance measure that treats the positions as an disorderly set, or a canonical sorting, prevents such equivalent representations from looking different.",
+    "explanation": "Reordering identical sensors changes the list without changing the physical layout. Compare unordered sets or canonical encodings to avoid counting this as extra solution diversity.",
     "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 3–5, question 2",
     "sourceRefs": [
       {
@@ -1503,28 +1503,28 @@
     ]
   },
   {
-    "id": "in3050-extra-found-043",
+    "id": "in3050-extra-found-043-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
     "difficulty": "medium",
-    "prompt": "Two valid sensor lists \\([1,2,3]\\) and \\([3,4,5]\\) are checked at first position. The child becomes \\([1,4,5]\\). If reverse parental direction gives \\([3,2,3]\\), what repair keeps the requirement of three unique cells?",
+    "prompt": "A crossover of [1, 2, 3] and [3, 4, 5] produces [3, 2, 3]. Which repair restores an encoding with three distinct occupied cells?",
     "options": [
       {
         "id": "a",
-        "text": "Delete both 3s without inserting anything."
+        "text": "Delete both copies of 3, leaving just one sensor."
       },
       {
         "id": "b",
-        "text": "Add a fourth sensor to a free cell."
+        "text": "Append a fourth sensor without removing either 3."
       },
       {
         "id": "c",
-        "text": "Replace one of the two 3s with an allowed free cell."
+        "text": "Replace one copy of 3 with an allowed unused cell."
       },
       {
         "id": "d",
-        "text": "Keep both 3s because their parents were valid."
+        "text": "Keep both copies of 3 and change their order in the list."
       }
     ],
     "correctOptionId": "c",
@@ -1842,32 +1842,32 @@
     }
   },
   {
-    "id": "in3050-extra-found-052",
+    "id": "in3050-extra-found-052-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
     "difficulty": "easy",
-    "prompt": "What is a possible disadvantage with very frequent exchanges of many individuals between the islands of an Iceland-EA?",
+    "prompt": "What is a possible drawback of frequent, large migrations between islands in an island EA?",
     "options": [
       {
         "id": "a",
-        "text": "Mutation becomes mathematically impossible."
+        "text": "Migration prevents crossover from combining individuals."
       },
       {
         "id": "b",
-        "text": "Fitness can no longer be calculated locally."
+        "text": "Migration makes local fitness values impossible to compare."
       },
       {
         "id": "c",
-        "text": "All islands must then have identical population sizes."
+        "text": "Migration forces every island to adopt the same population size."
       },
       {
         "id": "d",
-        "text": "The islands can become equal and lose the advantage of exploring different solutions."
+        "text": "Migration can homogenize islands and reduce independent exploration."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "Migration spreads good individuals, but too strong a mixture can homogenise the subpopulations. The range and number of migrants must be balanced against the desire for independent exploration.",
+    "explanation": "Migration spreads useful candidates between islands. Excessive migration can make their populations too similar, reducing the benefit of exploring separately.",
     "source": "Evolutionary algorithms 2 · Paragraphs 100–115",
     "sourceRefs": [
       {
@@ -1877,7 +1877,7 @@
     ]
   },
   {
-    "id": "in3050-extra-found-053",
+    "id": "in3050-extra-found-053-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
@@ -1886,23 +1886,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Limit mating to individuals with similar genotypes, phenotypes or compatible species marks."
+        "text": "Restrict mating to individuals with compatible species or similar encodings."
       },
       {
         "id": "b",
-        "text": "Let all offspring compete directly with the population's best individual."
+        "text": "Require all offspring to replace the globally best individual in the population."
       },
       {
         "id": "c",
-        "text": "Replace all fitness values with the same constant."
+        "text": "Require every island to receive the same migrants at every generation."
       },
       {
         "id": "d",
-        "text": "Selecting all parents from only one random individual."
+        "text": "Select every parent from the single highest-fitness member of the population."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Speciation introduces groups or rules for who can mate. This differs from fitness sharing, which alters effective fitness based on the needs of niches.",
+    "explanation": "Speciation groups compatible or similar individuals for mating. Fitness sharing instead modifies fitness based on local crowding; the two mechanisms are related but distinct.",
     "source": "Evolutionary algorithms 2 · Paragraphs 94–98",
     "sourceRefs": [
       {

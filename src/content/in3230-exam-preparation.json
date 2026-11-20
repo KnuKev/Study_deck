@@ -360,7 +360,7 @@
     "examPrep": true
   },
   {
-    "id": "in3230-exam-prep-10",
+    "id": "in3230-exam-prep-10-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
@@ -368,19 +368,19 @@
     "options": [
       {
         "id": "a",
-        "text": "TCP cannot deliver past a gap in its ordered byte stream even though HTTP/2 has separate logical streams."
+        "text": "TCP's shared ordered byte stream blocks delivery past the missing range."
       },
       {
         "id": "b",
-        "text": "The HTTP/2 frame header has no stream ID."
+        "text": "HTTP/2 provides no stream identifier to distinguish the arriving frames."
       },
       {
         "id": "c",
-        "text": "Both streams always share one application request."
+        "text": "HTTP/2 treats all streams as one request requiring one complete response."
       },
       {
         "id": "d",
-        "text": "The HTTP/2 scheduler cannot transmit a frame until all earlier responses finish."
+        "text": "TCP delivers later bytes immediately but HTTP/2 forbids concurrent responses."
       }
     ],
     "correctOptionId": "a",
@@ -520,7 +520,7 @@
     "examPrep": true
   },
   {
-    "id": "in3230-exam-prep-14",
+    "id": "in3230-exam-prep-14-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
@@ -528,19 +528,19 @@
     "options": [
       {
         "id": "a",
-        "text": "On resumption when the client has suitable prior connection state and the server allows early data."
+        "text": "On resumption with suitable prior state and server acceptance of early data"
       },
       {
         "id": "b",
-        "text": "On every first connection to any server, before negotiating cryptographic parameters."
+        "text": "On first contact without any previously established server-related state"
       },
       {
         "id": "c",
-        "text": "Only after sending a new TCP SYN and receiving SYN-ACK."
+        "text": "After a separate TCP handshake has established a connection to the server"
       },
       {
         "id": "d",
-        "text": "Whenever congestion control reports no packet loss."
+        "text": "After congestion control has observed a round trip without any packet loss"
       }
     ],
     "correctOptionId": "a",
@@ -560,7 +560,7 @@
     "examPrep": true
   },
   {
-    "id": "in3230-exam-prep-15",
+    "id": "in3230-exam-prep-15-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
@@ -568,19 +568,19 @@
     "options": [
       {
         "id": "a",
-        "text": "The fresh connection normally needs a handshake round trip before the client sends ordinary application data; resumption can put early data in the first flight."
+        "text": "Fresh setup uses a handshake RTT; resumption can send early data in its first flight."
       },
       {
         "id": "b",
-        "text": "The fresh connection never sends a handshake; only resumed connections do."
+        "text": "Fresh setup sends no handshake; resumption must complete one before sending data."
       },
       {
         "id": "c",
-        "text": "Both need a separate TCP handshake before TLS can begin."
+        "text": "Both require a TCP handshake before either can exchange their TLS messages."
       },
       {
         "id": "d",
-        "text": "Resumption eliminates propagation delay for the eventual response."
+        "text": "Both send ordinary application data immediately without prior server state."
       }
     ],
     "correctOptionId": "a",
@@ -600,7 +600,7 @@
     "examPrep": true
   },
   {
-    "id": "in3230-exam-prep-16",
+    "id": "in3230-exam-prep-16-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
@@ -608,19 +608,19 @@
     "options": [
       {
         "id": "a",
-        "text": "An acknowledgment identifies the specific packet transmission, even if that transmission carried data sent before."
+        "text": "The ACK identifies which packet transmission arrived, avoiding retransmission ambiguity."
       },
       {
         "id": "b",
-        "text": "QUIC reuses packet numbers so retransmitted packets have an identical timestamp."
+        "text": "The ACK reuses the original packet number, assigning both transmissions one timestamp."
       },
       {
         "id": "c",
-        "text": "Only the application acknowledges packets and records transfer times."
+        "text": "The application adds an RTT measurement to every ACK before QUIC processes it."
       },
       {
         "id": "d",
-        "text": "Connection IDs report the current RTT directly."
+        "text": "The connection ID contains an RTT sample that is updated by every forwarding router."
       }
     ],
     "correctOptionId": "a",

@@ -65,8 +65,9 @@ export default function Results({ rows, sources, sourceId, onSource, period, fro
   const invalidRange = period === 'custom' && Boolean(from && through && from > through)
   const visible = invalidRange ? [] : rows.filter(({ session }) => session.finishedAt! >= start && session.finishedAt! < end)
     .sort((a, b) => b.session.finishedAt! - a.session.finishedAt!)
-  const average = visible.length ? Math.round(visible.reduce((sum, row) => sum + row.score.percentage, 0) / visible.length) : null
-  const answered = visible.reduce((sum, row) => sum + row.score.answered, 0)
+  const scored = visible.filter(row => row.score.total > 0)
+  const average = scored.length ? Math.round(scored.reduce((sum, row) => sum + row.score.percentage, 0) / scored.length) : null
+  const answered = visible.reduce((sum, row) => sum + Object.keys(row.session.answers).length, 0)
 
   return <>
     <div className="page-heading"><h1>Results</h1></div>
@@ -93,17 +94,17 @@ export default function Results({ rows, sources, sourceId, onSource, period, fro
     {visible.length ? <>
       <div className="history-metrics">
         <div className="metric-card"><Icon name="checkCircle" /><strong>{visible.length}</strong><span>completed sessions</span></div>
-        <div className="metric-card"><Icon name="target" /><strong>{average}%</strong><span>average score</span></div>
+        <div className="metric-card"><Icon name="target" /><strong>{average === null ? '—' : `${average}%`}</strong><span>average score</span></div>
         <div className="metric-card"><Icon name="book" /><strong>{answered}</strong><span>questions answered</span></div>
       </div>
-      <ScoreChart rows={[...visible].reverse()} />
+      {scored.length > 0 && <ScoreChart rows={[...scored].reverse()} />}
       <section className="panel history-panel">
         <div className="panel-heading"><h2>Past sessions</h2></div>
         {visible.map(({ session, score, legacy }) => <button className="history-row" key={session.id} disabled={sessionActive} onClick={() => onReview(session)}>
           <span className="history-icon"><Icon name={session.mode === 'practice' ? 'book' : 'flag'} /></span>
-          <span><strong>{session.mode === 'practice' ? 'Practice' : 'Mock exam'} · {score.total} {score.total === 1 ? 'question' : 'questions'}</strong>
+          <span><strong>{session.mode === 'practice' ? 'Practice' : 'Mock exam'} · {session.questionIds.length} {session.questionIds.length === 1 ? 'question' : 'questions'}</strong>
             <small>{formatSessionDate.format(session.finishedAt!)}{legacy ? ' · Legacy sample content' : ''}</small></span>
-          <span className="history-score"><strong>{score.percentage}%</strong><small>{score.correct} of {score.total} correct</small></span>
+          <span className="history-score"><strong>{score.total ? `${score.percentage}%` : '—'}</strong><small>{score.total ? `${score.correct} of ${score.total} correct` : 'Not scored'}</small></span>
           <Icon name="chevron" />
         </button>)}
       </section>

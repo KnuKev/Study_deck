@@ -35,12 +35,12 @@
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-introduction-002",
+    "id": "in3230-introduction-002-v2",
     "courseId": "IN3230",
     "topicId": "net-introduction",
     "prompt": "What is an important reason why ECMP often distributes traffic per connection instead of choosing new roads for each packet?",
     "difficulty": "easy",
-    "explanation": "Different routes may have different delays. When packets in the same flow follow the same path, shuffles are reduced as otherwise may be lost for TCP.",
+    "explanation": "Keeping a flow on one ECMP path reduces reordering within that flow. Per-flow hashing does not guarantee identical load on every path.",
     "source": "Course introduction and repetition · PDF page 9",
     "sourceRefs": [
       {
@@ -52,19 +52,19 @@
     "options": [
       {
         "id": "a",
-        "text": "This guarantees that all links have identical load."
+        "text": "To guarantee equal byte counts on every available path"
       },
       {
         "id": "b",
-        "text": "That means TCP doesn't need sequence numbers."
+        "text": "To remove the need for transport sequence numbers"
       },
       {
         "id": "c",
-        "text": "It replaces the routing table with the receiving window."
+        "text": "To let every packet choose the least loaded next hop"
       },
       {
         "id": "d",
-        "text": "It limits the reorganization of packets within the same connection."
+        "text": "To reduce packet reordering within each connection"
       }
     ],
     "correctOptionId": "d"
@@ -167,12 +167,12 @@
     "correctOptionId": "false"
   },
   {
-    "id": "in3230-introduction-006",
+    "id": "in3230-introduction-006-v2",
     "courseId": "IN3230",
     "topicId": "net-introduction",
-    "prompt": "A route uses TCP port numbers when it selects which ECMP route a float should get. What is the architectural balance that illustrates?",
+    "prompt": "An ECMP router hashes TCP port numbers to assign flows to paths. What architectural trade-off does this illustrate?",
     "difficulty": "medium",
-    "explanation": "A purely layer-separated image hides such dependencies. The router looks at transport information in order to keep packets in the same flow on the same road, even though transport is usually described as a higher layer.",
+    "explanation": "Hashing transport ports uses higher-layer information inside network equipment. This can distinguish flows and give them stable paths while retaining IP forwarding.",
     "source": "Course introduction and repetition · PDF page 7",
     "sourceRefs": [
       {
@@ -188,19 +188,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Team sharing means that the transport manager is irrelevant for network equipment."
+        "text": "Layer boundaries prevent routers from inspecting any transport fields."
       },
       {
         "id": "b",
-        "text": "Rutingutstyr uses information from a higher layer to provide flows with stable velvet."
+        "text": "Routers inspect transport fields to assign stable paths to flows."
       },
       {
         "id": "c",
-        "text": "TCP takes over the task of looking up all routing tables."
+        "text": "TCP endpoints must calculate the routing table for each router."
       },
       {
         "id": "d",
-        "text": "IP can only work when the transport layer is UDP."
+        "text": "IP forwarding requires every application to use the same transport."
       }
     ],
     "correctOptionId": "b"
@@ -346,12 +346,12 @@
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-architecture-003",
+    "id": "in3230-architecture-003-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
     "prompt": "What is the primary objective of flow control?",
     "difficulty": "easy",
-    "explanation": "Flow control takes into account recipient capacity and buffers. The overload within the network itself is managed by the congestion control, which is another task.",
+    "explanation": "Flow control limits outstanding data according to receiver capacity. Congestion control instead responds to limits in the network path.",
     "source": "Networking principles · PDF page 8",
     "sourceRefs": [
       {
@@ -363,19 +363,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Preventing two applications from using the same routing table."
+        "text": "Prevent competing senders from filling network queues"
       },
       {
         "id": "b",
-        "text": "To hide all IP addresses of the recipient."
+        "text": "Prevent applications from selecting the same port number"
       },
       {
         "id": "c",
-        "text": "To find the shortest physical path through the network."
+        "text": "Prevent routers from choosing inconsistent network routes"
       },
       {
         "id": "d",
-        "text": "To prevent the sender from overloading the recipient’s ability to receive data."
+        "text": "Prevent a sender from overwhelming the receiver's capacity"
       }
     ],
     "correctOptionId": "d"
@@ -408,12 +408,12 @@
     "correctOptionId": "true"
   },
   {
-    "id": "in3230-architecture-005",
+    "id": "in3230-architecture-005-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
-    "prompt": "What does a typical port translate NAT when several internal connections share one public IPv4 address?",
+    "prompt": "What state does a port-translating NAT maintain when several internal connections share one public IPv4 address?",
     "difficulty": "easy",
-    "explanation": "A NAT table allows response traffic to be returned to the correct internal connection. This condition and use of transport ports create dependencies beyond pure IP forwarding.",
+    "explanation": "A port-translating NAT tracks internal and translated address–port mappings so that return traffic can reach the correct internal endpoint.",
     "source": "Networking principles · PDF page 26",
     "sourceRefs": [
       {
@@ -425,30 +425,30 @@
     "options": [
       {
         "id": "a",
-        "text": "It keeps state that connects internal addresses and ports to external addresses and ports."
+        "text": "Mappings between internal and translated address–port pairs"
       },
       {
         "id": "b",
-        "text": "It provides each internal connection a globally unique DNS server."
+        "text": "Mappings between every application message and a DNS record"
       },
       {
         "id": "c",
-        "text": "It eliminates the need for transport ports in all end-systems."
+        "text": "A separate globally routable address for each internal socket"
       },
       {
         "id": "d",
-        "text": "It automatically encrypts the payload of the application."
+        "text": "Encryption keys used to protect each translated connection"
       }
     ],
     "correctOptionId": "a"
   },
   {
-    "id": "in3230-architecture-006",
+    "id": "in3230-architecture-006-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
-    "prompt": "An application sends messages that may have different lengths over a service that only provides one stream of bytes. What protocol function is needed to find the message limits?",
+    "prompt": "An application sends variable-length messages over a byte-stream service. What identifies message boundaries?",
     "difficulty": "medium",
-    "explanation": "A byte stream does not provide automatic information on where one application message ends and the next one starts. Limit or length information solves this problem.",
+    "explanation": "A byte stream does not preserve application write boundaries. Framing must identify messages, for example through lengths or delimiters that the protocol can distinguish from payload.",
     "source": "Networking principles · PDF page 7",
     "sourceRefs": [
       {
@@ -460,30 +460,30 @@
     "options": [
       {
         "id": "a",
-        "text": "Just a lower RTT."
+        "text": "A timeout that marks every idle period as a message boundary"
       },
       {
         "id": "b",
-        "text": "Only address translation in the router."
+        "text": "Address translation that assigns a different port to each message"
       },
       {
         "id": "c",
-        "text": "Delimating, e.g. length field or a unique boundary."
+        "text": "Framing, such as a length prefix or an unambiguous delimiter"
       },
       {
         "id": "d",
-        "text": "Just a bigger shipping window."
+        "text": "A larger send window that combines messages into one segment"
       }
     ],
     "correctOptionId": "c"
   },
   {
-    "id": "in3230-architecture-007",
+    "id": "in3230-architecture-007-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
     "prompt": "Two clients contact the same service on the same server port. Why isn't the server port alone enough to separate the connections?",
     "difficulty": "medium",
-    "explanation": "A port does not identify an entire connection alone. The combination of source and target information allows the same service to handle multiple flows simultaneously and is also relevant to NAT assignments.",
+    "explanation": "A TCP connection is distinguished by its endpoint addresses and ports. Many clients can therefore share a server's destination address and listening port.",
     "source": "Networking principles · PDF page 9",
     "sourceRefs": [
       {
@@ -499,30 +499,30 @@
     "options": [
       {
         "id": "a",
-        "text": "The receiver can only separate clients by examining the file content."
+        "text": "The server must identify each client by inspecting its payload."
       },
       {
         "id": "b",
-        "text": "The links may have the same target port; the addresses of the end-points and source ports must also be included in the identification."
+        "text": "The endpoint addresses and source ports also identify each connection."
       },
       {
         "id": "c",
-        "text": "All clients need to use different network card names."
+        "text": "Each client must contact a different destination port on the server."
       },
       {
         "id": "d",
-        "text": "The transport layer has no concept of simultaneous connections."
+        "text": "Each connection must have a globally unique transport protocol number."
       }
     ],
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-architecture-008",
+    "id": "in3230-architecture-008-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
     "prompt": "A mobile client changes network and gets a new IP address. What problem does this illustrate in using the IP address as both identity and proxy for location?",
     "difficulty": "medium",
-    "explanation": "An IP address expresses where communications can reach an interface, but the application will often communicate with the same host or service even after moving. Names and mechanisms that MPTCP can reduce this connection.",
+    "explanation": "An address identifies a network attachment as well as an endpoint in ordinary IP transport. Changing it can disrupt a connection even though the communicating host is unchanged.",
     "source": "Networking principles · PDF page 27",
     "sourceRefs": [
       {
@@ -534,30 +534,30 @@
     "options": [
       {
         "id": "a",
-        "text": "The IP address is automatically given the same value as the client DNS name."
+        "text": "The application must change its message format whenever its IP changes."
       },
       {
         "id": "b",
-        "text": "All routers immediately forget all other clients."
+        "text": "The new address automatically preserves the old transport connection."
       },
       {
         "id": "c",
-        "text": "Transport ports stop having any function."
+        "text": "The transport port becomes sufficient to identify the endpoint alone."
       },
       {
         "id": "d",
-        "text": "A permanent communication partner may be perceived as a new endpoint when changing the address."
+        "text": "The same host can appear to be a different endpoint after its IP changes."
       }
     ],
     "correctOptionId": "d"
   },
   {
-    "id": "in3230-architecture-009",
+    "id": "in3230-architecture-009-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
-    "prompt": "What's the best expression of end-to-end argument?",
+    "prompt": "Which statement best expresses the end-to-end argument?",
     "difficulty": "medium",
-    "explanation": "The argument is about placement of functions and balances. It is more difficult to say that absolute logic must lie at its ends than the argument itself provides for.",
+    "explanation": "Some correctness requirements can be fully satisfied only at the endpoints. Network support may improve efficiency, but does not necessarily remove the need for endpoint checks.",
     "source": "Networking principles · PDF page 40",
     "sourceRefs": [
       {
@@ -569,30 +569,30 @@
     "options": [
       {
         "id": "a",
-        "text": "Assessing a function must lie in the end systems to achieve its objective, and weigh off the benefits of support within the network."
+        "text": "Some functions require endpoint support even when the network also helps."
       },
       {
         "id": "b",
-        "text": "All off-premises operations shall be prohibited in the network."
+        "text": "Reliability can be guaranteed solely by adding checksums at each router."
       },
       {
         "id": "c",
-        "text": "All malfunction control shall be in the first router."
+        "text": "All useful functions belong exclusively inside the network's routers."
       },
       {
         "id": "d",
-        "text": "Applications should always determine the internal buffer size of the routes."
+        "text": "Network support makes application-level correctness checks redundant."
       }
     ],
     "correctOptionId": "a"
   },
   {
-    "id": "in3230-architecture-010",
+    "id": "in3230-architecture-010-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
-    "prompt": "Why can a protocol vary reserved values with \"greasing\"?",
+    "prompt": "Why does a protocol exercise reserved values through greasing?",
     "difficulty": "medium",
-    "explanation": "If intermediate equipment assumes that reserved fields always have one specific value, subsequent extensions may be blocked. Greasing provides support for variation so that the extension space remains usable.",
+    "explanation": "Exercising reserved values discourages implementations from assuming those fields will always contain familiar constants. This helps preserve room for protocol extensions.",
     "source": "Networking principles · PDF page 42",
     "sourceRefs": [
       {
@@ -604,19 +604,19 @@
     "options": [
       {
         "id": "a",
-        "text": "To replace authentication by random bit."
+        "text": "To let reserved fields replace cryptographic authentication"
       },
       {
         "id": "b",
-        "text": "To give all packets the same destination address."
+        "text": "To make all endpoints select identical protocol parameters"
       },
       {
         "id": "c",
-        "text": "In order to prevent intermediate equipment from becoming dependent on the fact that unused values are always identical."
+        "text": "To keep implementations tolerant of unfamiliar field values"
       },
       {
         "id": "d",
-        "text": "To compress application data without the recipient knowing it."
+        "text": "To let intermediate devices infer encrypted application content"
       }
     ],
     "correctOptionId": "c"
@@ -719,12 +719,12 @@
     "correctOptionId": "d"
   },
   {
-    "id": "in3230-architecture-014",
+    "id": "in3230-architecture-014-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
     "prompt": "A regular TCP connection goes to address X on a host with two interfaces. X becomes inaccessible, while the same host is still reachable at address Y. Why isn't this alone enough to keep the connection?",
     "difficulty": "hard",
-    "explanation": "A accessible alternative interface is not the same as changing the addresses of the established connection. The slides use multihoming to show this difference and MPTCP as a possible solution.",
+    "explanation": "An ordinary TCP connection's endpoint tuple contains X. Reachability at Y does not by itself migrate that established connection; additional mobility or multipath support is needed.",
     "source": "Networking principles · PDF page 33",
     "sourceRefs": [
       {
@@ -740,19 +740,19 @@
     "options": [
       {
         "id": "a",
-        "text": "The connection is related to the endpoint with X; an alternative address does not automatically mean that the existing connection is moved to Y."
+        "text": "The established connection identifies X; moving to Y needs additional support."
       },
       {
         "id": "b",
-        "text": "TCP always chooses a new IP address from DNS for each segment."
+        "text": "TCP queries DNS for a replacement address whenever a segment is unacknowledged."
       },
       {
         "id": "c",
-        "text": "Routes may not have multiple routes to the same machine."
+        "text": "A host with two interfaces cannot receive traffic using both IP addresses."
       },
       {
         "id": "d",
-        "text": "The DNS host name is part of each TCP segment and will be mistakenly deleted."
+        "text": "The sender must recreate its routing table before any IP address can change."
       }
     ],
     "correctOptionId": "a"
@@ -905,12 +905,12 @@
     "correctOptionId": "true"
   },
   {
-    "id": "in3230-transport-004",
+    "id": "in3230-transport-004-v2",
     "courseId": "IN3230",
     "topicId": "net-transport",
-    "prompt": "What does SACK add beyond the usual cumulative TCP certification?",
+    "prompt": "What does TCP SACK add beyond cumulative acknowledgments?",
     "difficulty": "easy",
-    "explanation": "The cumulative ACK shows the start of the first hole. SACK can also describe later received blocks, so that the sender is better informed about the data that is actually missing.",
+    "explanation": "A cumulative ACK identifies the next missing byte. SACK can additionally describe received byte ranges beyond a gap, helping the sender retransmit missing data selectively.",
     "source": "The Internet Transport Layer · PDF page 20",
     "sourceRefs": [
       {
@@ -922,30 +922,30 @@
     "options": [
       {
         "id": "a",
-        "text": "A requirement that the whole window always have to be retransmitted."
+        "text": "A requirement to retransmit the entire outstanding window"
       },
       {
         "id": "b",
-        "text": "Information about blocks of data received after a gap in the byte stream."
+        "text": "Information about received byte ranges beyond a missing range"
       },
       {
         "id": "c",
-        "text": "A guarantee that there will never be any shrouding."
+        "text": "Permission to deliver bytes to the application out of order"
       },
       {
         "id": "d",
-        "text": "A new IP address for each lost segment."
+        "text": "An estimate of the maximum capacity along the forward path"
       }
     ],
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-transport-005",
+    "id": "in3230-transport-005-v2",
     "courseId": "IN3230",
     "topicId": "net-transport",
-    "prompt": "What does TCP's advertised recipient window tell?",
+    "prompt": "What does TCP’s advertised receive window describe?",
     "difficulty": "easy",
-    "explanation": "The receiving window is the receiver's credit to the sender and is used for flow control. The sender must at the same time respect the congestion window, which concerns the conditions of the network.",
+    "explanation": "The advertised receive window communicates the receiver's flow-control allowance. The sender is also constrained by its congestion window and by data already outstanding.",
     "source": "The Internet Transport Layer · PDF page 13",
     "sourceRefs": [
       {
@@ -957,30 +957,30 @@
     "options": [
       {
         "id": "a",
-        "text": "The shortest RTT measured on the connection."
+        "text": "The path's estimated bandwidth available to this flow"
       },
       {
         "id": "b",
-        "text": "Number of routers on the way to the consignee."
+        "text": "The sender's current limit based on network congestion"
       },
       {
         "id": "c",
-        "text": "The physical bandwidth of the server's network card."
+        "text": "The highest rate at which routers have acknowledged data"
       },
       {
         "id": "d",
-        "text": "How much data the receiver allows the sender to be outstanding under the flow control."
+        "text": "The receiver's advertised allowance for outstanding data"
       }
     ],
     "correctOptionId": "d"
   },
   {
-    "id": "in3230-transport-006",
+    "id": "in3230-transport-006-v2",
     "courseId": "IN3230",
     "topicId": "net-transport",
     "prompt": "What is the purpose of a Tail Loss Probe (TLP)?",
     "difficulty": "easy",
-    "explanation": "When the end of a data transfer is lost, no later data might trigger enough duplicate ACKs. The TLP sends a test to obtain feedback before the normal RTO.",
+    "explanation": "A tail loss can leave too little later traffic to trigger ordinary fast recovery. A probe elicits feedback so recovery need not wait for the full retransmission timeout.",
     "source": "The Internet Transport Layer · PDF page 30",
     "sourceRefs": [
       {
@@ -992,19 +992,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Sending a sample that can trigger feedback and repair losses before a long return timeout."
+        "text": "Send a probe to elicit feedback and recover a tail loss before the RTO."
       },
       {
         "id": "b",
-        "text": "To make the last segment smaller than all the others for MTU."
+        "text": "Reduce the last segment's size to discover a smaller path MTU."
       },
       {
         "id": "c",
-        "text": "Disabling all receipts for short connections."
+        "text": "Stop sending ACKs so the sender retransmits its final window sooner."
       },
       {
         "id": "d",
-        "text": "Forcing the receiver to close the connection."
+        "text": "Close the connection after its last data segment becomes outstanding."
       }
     ],
     "correctOptionId": "a"
@@ -1072,12 +1072,12 @@
     "correctOptionId": "true"
   },
   {
-    "id": "in3230-transport-009",
+    "id": "in3230-transport-009-v2",
     "courseId": "IN3230",
     "topicId": "net-transport",
     "prompt": "Why can Appropriate Bytes Counting (ABC) be useful in congestion control?",
     "difficulty": "medium",
-    "explanation": "ACK numbers alone can be affected by, among other things, delayed ACKs and division into many small ACKs. Counting newly confirmed bytes connects the window growth more clearly to the provided data.",
+    "explanation": "Basing congestion-window growth on newly acknowledged bytes reduces dependence on how ACKs are split or combined. Counting ACK packets alone can distort growth.",
     "source": "The Internet Transport Layer · PDF page 22",
     "sourceRefs": [
       {
@@ -1089,19 +1089,19 @@
     "options": [
       {
         "id": "a",
-        "text": "It allows every small ACK to increase the window unlimitedly."
+        "text": "It increases cwnd for each ACK regardless of newly acknowledged data."
       },
       {
         "id": "b",
-        "text": "The growth can be associated with how many new bytes have been confirmed, instead of just the number of ACK packets."
+        "text": "It bases cwnd growth on newly acknowledged bytes rather than ACK count."
       },
       {
         "id": "c",
-        "text": "This means that TCP no longer needs cumulative ACCs."
+        "text": "It estimates the advertised receive window from the number of ACK bytes."
       },
       {
         "id": "d",
-        "text": "It replaces the receiver window with the number of DNS lookups."
+        "text": "It replaces cumulative ACKs with one separate ACK for every received byte."
       }
     ],
     "correctOptionId": "b"
@@ -1231,12 +1231,12 @@
     "correctOptionId": "a"
   },
   {
-    "id": "in3230-transport-014",
+    "id": "in3230-transport-014-v2",
     "courseId": "IN3230",
     "topicId": "net-transport",
-    "prompt": "What is the main idea in RACK compared to a loss detector that only counts duplicate ACCs?",
+    "prompt": "How does RACK differ from loss detection based only on duplicate-ACK counts?",
     "difficulty": "medium",
-    "explanation": "RACK uses the time order for broadcasts. Once later data has been verified, older unconfirmed data can be identified as lost after taking into account a erasing window.",
+    "explanation": "RACK uses transmission timing and evidence that later-sent data arrived. A reordering allowance helps avoid declaring an earlier transmission lost too soon.",
     "source": "The Internet Transport Layer · PDF page 31",
     "sourceRefs": [
       {
@@ -1248,19 +1248,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Let the receiver choose a new path for all unconfirmed segments."
+        "text": "It chooses a new network path whenever a duplicate ACK arrives."
       },
       {
         "id": "b",
-        "text": "Always wait for normal RTO before identifying any loss."
+        "text": "It waits for the retransmission timeout before inferring any loss."
       },
       {
         "id": "c",
-        "text": "Use send times and confirm delivery of later sent data, with deletion tolerance."
+        "text": "It uses delivery of later-sent data and timing, allowing for reordering."
       },
       {
         "id": "d",
-        "text": "gar all packets lost if RTT is greater than one milliseconds."
+        "text": "It treats all packets older than the latest RTT sample as lost immediately."
       }
     ],
     "correctOptionId": "c"
@@ -1524,12 +1524,12 @@
     "correctOptionId": "true"
   },
   {
-    "id": "in3230-congestion-002",
+    "id": "in3230-congestion-002-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
-    "prompt": "Why can classic slow start give about a double of congestion window per RTT when each packet gives one ACK?",
+    "prompt": "In classic slow start, assume each packet produces one ACK. Why can cwnd roughly double per RTT?",
     "difficulty": "easy",
-    "explanation": "With one increase of one segment size per ACK and one full window confirmed during an RTT, the overall increase is approximately equal to the old window. Delayed ACKs and other algorithm details can change this.",
+    "explanation": "With an increase of roughly one segment per ACK, acknowledging a window of cwnd segments adds roughly another cwnd. Under the stated ACK assumption, that produces approximate doubling per RTT.",
     "source": "Congestion control · PDF page 7",
     "sourceRefs": [
       {
@@ -1541,30 +1541,30 @@
     "options": [
       {
         "id": "a",
-        "text": "Each ACK increases the window, and a whole window of packets gives about as many ACKs as the window size."
+        "text": "ACKs grow cwnd, and a window of packets produces roughly cwnd ACKs."
       },
       {
         "id": "b",
-        "text": "The routers send a message to double the window at every second."
+        "text": "Routers explicitly command a doubling once per measured round trip."
       },
       {
         "id": "c",
-        "text": "The receiver is automatically doubles the physical capacity."
+        "text": "The receiver doubles its advertised buffer after every acknowledged window."
       },
       {
         "id": "d",
-        "text": "The sender uses only half of the window in each RTT."
+        "text": "The sender doubles cwnd only when its retransmission timer expires."
       }
     ],
     "correctOptionId": "a"
   },
   {
-    "id": "in3230-congestion-003",
+    "id": "in3230-congestion-003-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
     "prompt": "What does ACK clocking mean?",
     "difficulty": "easy",
-    "explanation": "ACCs are feedback that previous data has moved on. They can free up space in the transmission window and thus regulate new traffic as delivery occurs.",
+    "explanation": "ACKs provide feedback that earlier data has left the path. Their arrival helps regulate the injection of new data, rather than requiring synchronized router clocks.",
     "source": "Congestion control · PDF page 4",
     "sourceRefs": [
       {
@@ -1576,30 +1576,30 @@
     "options": [
       {
         "id": "a",
-        "text": "That an ACK is always sent exactly once per second."
+        "text": "Sending one packet whenever a fixed one-second timer expires"
       },
       {
         "id": "b",
-        "text": "That the sender can ignore the number of remaining bytes."
+        "text": "Sending the entire receive window whenever the application writes"
       },
       {
         "id": "c",
-        "text": "That receipts for provided data help to manage when new data are sent into the network."
+        "text": "Using arriving ACKs to regulate the transmission of new data"
       },
       {
         "id": "d",
-        "text": "That all routers must have identical wall clocks."
+        "text": "Using synchronized router clocks to schedule each TCP segment"
       }
     ],
     "correctOptionId": "c"
   },
   {
-    "id": "in3230-congestion-004",
+    "id": "in3230-congestion-004-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
-    "prompt": "How does ECN report overload without necessarily throwing the packet?",
+    "prompt": "How does ECN signal congestion without necessarily dropping a packet?",
     "difficulty": "easy",
-    "explanation": "ECN allows explicit notification through labelling. The sender receives the feedback via the receiver and can reduce the load without losing this particular packet.",
+    "explanation": "An ECN-capable router can mark a packet instead of dropping it. The receiver echoes that congestion indication so the sender can reduce its sending pressure.",
     "source": "Congestion control · PDF page 20",
     "sourceRefs": [
       {
@@ -1611,30 +1611,30 @@
     "options": [
       {
         "id": "a",
-        "text": "The sender ceases to use receipts."
+        "text": "The sender infers congestion solely from the absence of packet loss."
       },
       {
         "id": "b",
-        "text": "A router marks an ECN-capable packet, and the receiver reports it back to the sender."
+        "text": "A router marks a capable packet and the receiver echoes the signal."
       },
       {
         "id": "c",
-        "text": "The receiver changes the package payload to an error message."
+        "text": "The receiver replaces the packet's payload with a congestion report."
       },
       {
         "id": "d",
-        "text": "The router will select a new DNS server for the sender."
+        "text": "The sender increases its receive window when it observes a mark."
       }
     ],
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-congestion-005",
+    "id": "in3230-congestion-005-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
-    "prompt": "What sizes do BBR try to estimate as the basis for its transmission model?",
+    "prompt": "Which two path properties underpin BBR’s transmission model?",
     "difficulty": "easy",
-    "explanation": "BBR builds a bottleneck bandwidth model and minimum RTT. Measurement of capacity and measurement of low chain delay may require different transmission phases.",
+    "explanation": "BBR estimates bottleneck delivery bandwidth and minimum RTT to model the path. Minimum RTT approximates propagation delay without persistent queueing.",
     "source": "Congestion control · PDF page 21",
     "sourceRefs": [
       {
@@ -1646,19 +1646,19 @@
     "options": [
       {
         "id": "a",
-        "text": "The number of characters in the hostname and the number of DNS servers."
+        "text": "The sender's application rate and the receiver's buffer size"
       },
       {
         "id": "b",
-        "text": "Only the receiver's RAM and file size."
+        "text": "The count of duplicate ACKs and the current retransmission timer"
       },
       {
         "id": "c",
-        "text": "Only number of duplicate ACKs since startup."
+        "text": "The average queue length and the number of active TCP senders"
       },
       {
         "id": "d",
-        "text": "The bottleneck bandwidth and a low representative RTT without continuous queue."
+        "text": "The bottleneck delivery bandwidth and the minimum path RTT"
       }
     ],
     "correctOptionId": "d"
@@ -1753,12 +1753,12 @@
     "correctOptionId": "true"
   },
   {
-    "id": "in3230-congestion-009",
+    "id": "in3230-congestion-009-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
-    "prompt": "What is Codel trying to separate from a short, harmless traffic loss?",
+    "prompt": "What does CoDel try to distinguish from a short, harmless traffic burst?",
     "difficulty": "medium",
-    "explanation": "A single high measurement may be due to a short brush. CoDel examines whether the queue cannot drain sufficiently over time, so that even the lowest queue delay in the interval is above the target.",
+    "explanation": "CoDel observes packet sojourn time and whether its minimum stays above a target over an interval. Persistent delay suggests a standing queue rather than a brief burst.",
     "source": "Congestion control · PDF page 19",
     "sourceRefs": [
       {
@@ -1770,30 +1770,30 @@
     "options": [
       {
         "id": "a",
-        "text": "That a packet has a longer payload than the ACK."
+        "text": "A single packet with a high delay during a short burst"
       },
       {
         "id": "b",
-        "text": "That a host uses a different DNS server than its neighbour."
+        "text": "A large difference between the payload and ACK sizes"
       },
       {
         "id": "c",
-        "text": "Continued queue delay, by checking whether even the minimum delay remains above the target through an interval."
+        "text": "Persistent queue delay rather than a temporary burst"
       },
       {
         "id": "d",
-        "text": "That a connection uses a high port number."
+        "text": "A high instantaneous arrival rate with an empty queue"
       }
     ],
     "correctOptionId": "c"
   },
   {
-    "id": "in3230-congestion-010",
+    "id": "in3230-congestion-010-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
-    "prompt": "Why can RED drop or mark packets before the buffer is full?",
+    "prompt": "Why can RED drop or mark packets before a buffer fills?",
     "difficulty": "medium",
-    "explanation": "RED uses smooth cooling and reacts before pure overflow. Early probabilistic signals may cause transmitters to reduce traffic before long-lasting, full queues occur.",
+    "explanation": "RED gives an early congestion signal as average queue occupancy rises. Randomized marking or dropping can reduce synchronized reactions from many senders.",
     "source": "Congestion control · PDF page 16",
     "sourceRefs": [
       {
@@ -1805,30 +1805,30 @@
     "options": [
       {
         "id": "a",
-        "text": "To keep the buffer fully full."
+        "text": "To keep average queue occupancy near the buffer's maximum size"
       },
       {
         "id": "b",
-        "text": "In order to provide an early overload signal and limit cold growth, with randomisation that can reduce synchronised reactions."
+        "text": "To signal congestion early and reduce synchronized sender reactions"
       },
       {
         "id": "c",
-        "text": "To ensure that all packets from one connection are in reverse order."
+        "text": "To make every flow lose packets at exactly the same instant"
       },
       {
         "id": "d",
-        "text": "To replace the routing with random destination address selection."
+        "text": "To select a separate random forwarding path for each TCP segment"
       }
     ],
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-congestion-011",
+    "id": "in3230-congestion-011-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
-    "prompt": "A delay-based flow divides the bottleneck with a loss-based Reno flow. Why can the delay-based flow get a small share?",
+    "prompt": "A delay-based flow shares a bottleneck with loss-based Reno. Why might the delay-based flow obtain a small share?",
     "difficulty": "medium",
-    "explanation": "The two control loops react to different signals. Early reduction in catch growth can release capacity used by a more aggressive loss-based flow. Low priority protocols can deliberately exploit this.",
+    "explanation": "A delay-based controller can reduce its rate as queues grow. Reno may continue increasing until stronger signals such as loss, so the more cautious flow can yield capacity.",
     "source": "Congestion control · PDF page 14",
     "sourceRefs": [
       {
@@ -1840,30 +1840,30 @@
     "options": [
       {
         "id": "a",
-        "text": "Delay-based control cannot send TCP segments."
+        "text": "It cannot measure the same RTT as the competing Reno flow."
       },
       {
         "id": "b",
-        "text": "Reno gets direct access to the other float's receiver buffer."
+        "text": "It uses a receiver window that Reno directly overwrites."
       },
       {
         "id": "c",
-        "text": "The delay-based flow must use longer IP addresses."
+        "text": "It interprets every acknowledged segment as a loss signal."
       },
       {
         "id": "d",
-        "text": "It can withdraw as the queue grows, while Reno continues to increase until stronger signals like loss."
+        "text": "It backs off at growing delay while Reno can keep growing until loss."
       }
     ],
     "correctOptionId": "d"
   },
   {
-    "id": "in3230-congestion-012",
+    "id": "in3230-congestion-012-v2",
     "courseId": "IN3230",
     "topicId": "net-congestion",
-    "prompt": "What is the main advantage of pacing compared to sending a completely permissible window as one dense brush?",
+    "prompt": "What is an advantage of pacing rather than sending the permitted window in one burst?",
     "difficulty": "medium",
-    "explanation": "Pacing controls when data is sent within the allowed rate or window. Smoother sending can reduce microbursts, but capacity limits and competition still apply.",
+    "explanation": "Pacing spaces packets over time instead of injecting a whole window at once. This can reduce transient queue growth and burst-related loss without guaranteeing delivery times.",
     "source": "Congestion control · PDF page 37",
     "sourceRefs": [
       {
@@ -1875,19 +1875,19 @@
     "options": [
       {
         "id": "a",
-        "text": "The packets are distributed more evenly in time, which can reduce short-term peaks and losses."
+        "text": "It spreads transmissions over time, reducing short bursts."
       },
       {
         "id": "b",
-        "text": "All packets become less than one byte."
+        "text": "It combines the whole window into one larger IP packet."
       },
       {
         "id": "c",
-        "text": "The receiver refuses to use sequence numbers."
+        "text": "It bypasses congestion control when the application has data."
       },
       {
         "id": "d",
-        "text": "TCP is given a guaranteed delivery time regardless of other traffic."
+        "text": "It makes the receiver acknowledge every segment immediately."
       }
     ],
     "correctOptionId": "a"
@@ -2207,12 +2207,12 @@
     }
   },
   {
-    "id": "in3230-wireless-1-001",
+    "id": "in3230-wireless-1-001-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-1",
     "prompt": "What is meant by modulation in radio communications?",
     "difficulty": "easy",
-    "explanation": "Information may be expressed by, for example, amplitude, frequency or phase. The receiver uses demodulation to retrieve the information from the received signal.",
+    "explanation": "Modulation represents information by changing a carrier property such as amplitude, frequency or phase. It differs from error-control coding and medium-access scheduling.",
     "source": "Wireless Communications I · PDF page 12",
     "sourceRefs": [
       {
@@ -2224,30 +2224,30 @@
     "options": [
       {
         "id": "a",
-        "text": "Select the recipient's DNS server."
+        "text": "Adding redundant bits so that the receiver can correct errors"
       },
       {
         "id": "b",
-        "text": "Removing all variations from the radio signal."
+        "text": "Dividing access time among devices sharing the same channel"
       },
       {
         "id": "c",
-        "text": "To put IP fragments together in the antenna."
+        "text": "Reassembling received link frames into a network-layer packet"
       },
       {
         "id": "d",
-        "text": "To vary the characteristics of a carrier wave according to the information to be sent."
+        "text": "Varying a carrier's properties to represent transmitted information"
       }
     ],
     "correctOptionId": "d"
   },
   {
-    "id": "in3230-wireless-1-002",
+    "id": "in3230-wireless-1-002-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-1",
-    "prompt": "What is multipath propaganda?",
+    "prompt": "What is multipath propagation?",
     "difficulty": "easy",
-    "explanation": "Reflections from, among other things, buildings and the ground may give several copies of the signal. They can intensify or interfere with each other and arrive at different times.",
+    "explanation": "Reflections and other propagation effects create multiple paths to the receiver. Different path lengths cause delayed copies that can combine constructively or destructively.",
     "source": "Wireless Communications I · PDF page 8",
     "sourceRefs": [
       {
@@ -2259,19 +2259,19 @@
     "options": [
       {
         "id": "a",
-        "text": "The same radio signal may reach the receiver via several reflectance paths with different delays."
+        "text": "A signal arrives over several propagation paths with different delays."
       },
       {
         "id": "b",
-        "text": "A transmitter always switches IP address between two radio waves."
+        "text": "A radio moves each successive packet to a different IP route."
       },
       {
         "id": "c",
-        "text": "Two applications share the same TCP port."
+        "text": "A receiver assigns every reflected signal to a separate TCP flow."
       },
       {
         "id": "d",
-        "text": "A radio transmitter necessarily uses two mobile operators."
+        "text": "A transmitter changes its network identity between radio symbols."
       }
     ],
     "correctOptionId": "a"
@@ -2304,12 +2304,12 @@
     "correctOptionId": "true"
   },
   {
-    "id": "in3230-wireless-1-004",
+    "id": "in3230-wireless-1-004-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-1",
-    "prompt": "What is the difference between transit diversity and spatial multiplexing in MEMO?",
+    "prompt": "How do transmit diversity and spatial multiplexing differ in MIMO?",
     "difficulty": "easy",
-    "explanation": "Diversity exploits multiple transfer routes for the same information, while spatial multiplexing tries to increase capacity by separate flows. Potential gain depends on channel conditions.",
+    "explanation": "Diversity uses multiple propagation paths to improve robustness. Spatial multiplexing carries independent streams to increase data rate when channel conditions permit.",
     "source": "Wireless Communications I · PDF page 43",
     "sourceRefs": [
       {
@@ -2321,19 +2321,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Both means that all antennas need to use different mobile operators."
+        "text": "Diversity sends independent streams; multiplexing repeats one stream."
       },
       {
         "id": "b",
-        "text": "Spatial multiplexing sends only one piece, regardless of the number of data flows."
+        "text": "Diversity and multiplexing both require separate frequency channels."
       },
       {
         "id": "c",
-        "text": "Diversity uses multiple antennas to make delivery more robust; spatial multiplexing can send independent data streams parallel."
+        "text": "Diversity improves robustness; multiplexing sends parallel independent streams."
       },
       {
         "id": "d",
-        "text": "Diversity always means more IP addresses; spatial multiplexing means more TCP ports."
+        "text": "Diversity increases symbol count; multiplexing removes channel interference."
       }
     ],
     "correctOptionId": "c"
@@ -2374,12 +2374,12 @@
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-wireless-1-006",
+    "id": "in3230-wireless-1-006-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-1",
-    "prompt": "What is the characteristic of resource allocation in OFDMA?",
+    "prompt": "How are resources allocated in OFDMA?",
     "difficulty": "medium",
-    "explanation": "OFDMA combines frequency and time resources. Orthogonal submersibles can be packed closely while the receiver can separate them under the model's assumptions.",
+    "explanation": "OFDMA allocates users subsets of time–frequency resources. Orthogonal subcarriers allow receivers to distinguish those allocations under suitable synchronization and channel conditions.",
     "source": "Wireless Communications I · PDF page 34",
     "sourceRefs": [
       {
@@ -2391,30 +2391,30 @@
     "options": [
       {
         "id": "a",
-        "text": "Each user must have the whole tape permanently on his own."
+        "text": "Each user permanently owns all subcarriers for its entire session."
       },
       {
         "id": "b",
-        "text": "All users are only identified by different TCP windows."
+        "text": "Each user transmits on the same subcarrier at the same instant."
       },
       {
         "id": "c",
-        "text": "Orthogonality means that all performers have the same frequency."
+        "text": "Users are separated solely by different packet source addresses."
       },
       {
         "id": "d",
-        "text": "Users can be allocated resources both in time and on orthogonal supporters."
+        "text": "Users receive allocations across time and orthogonal subcarriers."
       }
     ],
     "correctOptionId": "d"
   },
   {
-    "id": "in3230-wireless-1-007",
+    "id": "in3230-wireless-1-007-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-1",
-    "prompt": "Two modulations use the same average transmit power. One has many more symbol points close in the same area of the constellation diagram. What's a typical factoring?",
+    "prompt": "At the same average transmit power, a modulation uses more, closer constellation points. What is the typical trade-off?",
     "difficulty": "medium",
-    "explanation": "Several possible symbol modes can code multiple bits. In the case of comparable power, the distance is often reduced, so that a given noise disturbance can more easily move the reception near the wrong symbol.",
+    "explanation": "More constellation points represent more bits per symbol. At comparable average power, smaller spacing makes noise more likely to cause a symbol decision error.",
     "source": "Wireless Communications I · PDF page 20",
     "sourceRefs": [
       {
@@ -2430,19 +2430,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Multiple bits per symbol, but less distance between symbols can make them more difficult to distinguish by noise."
+        "text": "More bits per symbol, but closer points can increase noise sensitivity."
       },
       {
         "id": "b",
-        "text": "Fewer bits per symbol and necessarily larger distances between all points."
+        "text": "Fewer bits per symbol, but closer points reduce all detection errors."
       },
       {
         "id": "c",
-        "text": "Multiple symbols automatically give unlimited noise immunity."
+        "text": "More bits per symbol, with unchanged separation and noise sensitivity."
       },
       {
         "id": "d",
-        "text": "The number of symbol points affects only the IP address."
+        "text": "Fewer bits per symbol, with improved reliability regardless of SNR."
       }
     ],
     "correctOptionId": "a"
@@ -2475,12 +2475,12 @@
     "correctOptionId": "false"
   },
   {
-    "id": "in3230-wireless-1-009",
+    "id": "in3230-wireless-1-009-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-1",
     "prompt": "How can an antenna array use beamforming to focus the signal?",
     "difficulty": "medium",
-    "explanation": "Control of, among others, relative phases and weights allows the array to shape a directional pattern. This exploits constructive and destructive interference.",
+    "explanation": "Relative antenna phases and amplitudes shape the radiation pattern. Suitable weights reinforce the signal in a target direction and can suppress it elsewhere.",
     "source": "Wireless Communications I · PDF page 45",
     "sourceRefs": [
       {
@@ -2492,19 +2492,19 @@
     "options": [
       {
         "id": "a",
-        "text": "By transmitting with identical arrival phase in all directions regardless of antenna location."
+        "text": "Use equal phases without accounting for antenna position or direction."
       },
       {
         "id": "b",
-        "text": "By replacing the radio wave with an IP address."
+        "text": "Give every antenna a separate destination address and routing table."
       },
       {
         "id": "c",
-        "text": "By combining the antenna signals so as to enhance each other in the desired direction and to weaken each other in other directions."
+        "text": "Choose antenna weights for constructive combining in the target direction."
       },
       {
         "id": "d",
-        "text": "By making all TCP receipts bigger."
+        "text": "Remove the carrier frequency so that only the desired receiver detects it."
       }
     ],
     "correctOptionId": "c"
@@ -2808,12 +2808,12 @@
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-wireless-2-001",
+    "id": "in3230-wireless-2-001-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-2",
-    "prompt": "What is part of a Basic Service Set (BSS) infrastructure mode for Wi-Fi?",
+    "prompt": "What forms a Wi-Fi Basic Service Set in infrastructure mode?",
     "difficulty": "easy",
-    "explanation": "In infrastructure mode, communication goes through an access point. The lecture distinguishes this from the ad hoc mode, where the network consists of hosts without such an AP.",
+    "explanation": "An infrastructure BSS consists of an access point and its associated stations. An ad hoc group operates without that access-point role.",
     "source": "Wireless Communications II · PDF page 3",
     "sourceRefs": [
       {
@@ -2825,19 +2825,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Only hosts with no access point."
+        "text": "A peer-to-peer group of stations with no access point"
       },
       {
         "id": "b",
-        "text": "Only the core network of two mobile operators."
+        "text": "A distribution system linking several independent access points"
       },
       {
         "id": "c",
-        "text": "One DNS server without any radio part."
+        "text": "A collection of mobile cells under one cellular core controller"
       },
       {
         "id": "d",
-        "text": "An access point and the associated wireless hosts."
+        "text": "An access point and the wireless stations associated with it"
       }
     ],
     "correctOptionId": "d"
@@ -3080,12 +3080,12 @@
     "correctOptionId": "d"
   },
   {
-    "id": "in3230-wireless-2-009",
+    "id": "in3230-wireless-2-009-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-2",
-    "prompt": "What does MU-MIMO add compared to using the spatial flows only to one station at a time?",
+    "prompt": "What does MU-MIMO add compared with serving one station at a time?",
     "difficulty": "medium",
-    "explanation": "Multi-user MIMO uses spatial separation and transformation for multiple recipients simultaneously. This may increase overall utilisation, but requires appropriate channel conditions and management of transfers.",
+    "explanation": "MU-MIMO uses spatial resources to serve several stations simultaneously. Its usefulness depends on channel separation, channel information and transmission coordination.",
     "source": "Wireless Communications II · PDF page 19",
     "sourceRefs": [
       {
@@ -3097,30 +3097,30 @@
     "options": [
       {
         "id": "a",
-        "text": "The access point may use spatial resources for simultaneous transmission to multiple stations on the same channel."
+        "text": "Spatial streams can serve multiple stations on the same channel at once."
       },
       {
         "id": "b",
-        "text": "All stations must be moved to each of their mobile operators."
+        "text": "Spatial streams must all carry identical data to the same station."
       },
       {
         "id": "c",
-        "text": "All antennas must send identical payloads to the same station."
+        "text": "Each station receives its own independent frequency band permanently."
       },
       {
         "id": "d",
-        "text": "It eliminates the need for knowledge about the radio channel."
+        "text": "Channel knowledge becomes unnecessary when several stations are served."
       }
     ],
     "correctOptionId": "a"
   },
   {
-    "id": "in3230-wireless-2-010",
+    "id": "in3230-wireless-2-010-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-2",
-    "prompt": "What distinguishes home-routed roaming from local breakout in the LTE model in the lecture?",
+    "prompt": "How do home-routed roaming and local breakout differ in the lecture’s LTE model?",
     "difficulty": "medium",
-    "explanation": "In the case of home routing, traffic goes through the home network, even when the user is abroad. Local breakouts can provide a more local exit to IP services, thus avoiding a geographic detour.",
+    "explanation": "Home routing sends user traffic through the home network's P-GW. Local breakout uses a P-GW in the visited network, potentially avoiding the detour through the home network.",
     "source": "Wireless Communications II · PDF page 49",
     "sourceRefs": [
       {
@@ -3132,19 +3132,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Local breakout requires that all user data be sent first through home network HSS."
+        "text": "Both send user traffic through the home P-GW; only radio access changes."
       },
       {
         "id": "b",
-        "text": "The models are identical except for the name of the SIM card."
+        "text": "Both send user traffic through the visited P-GW; only authentication changes."
       },
       {
         "id": "c",
-        "text": "Home routed sends user traffic via home network P-GW; local breakout can send it out via home network P-GW."
+        "text": "Home-routed traffic uses the home P-GW; local breakout uses a visited P-GW."
       },
       {
         "id": "d",
-        "text": "Home routed means that the phone is still physically at home."
+        "text": "Home-routed traffic uses a visited P-GW; local breakout uses the home P-GW."
       }
     ],
     "correctOptionId": "c"
@@ -3401,12 +3401,12 @@
     }
   },
   {
-    "id": "in3230-architecture-017",
+    "id": "in3230-architecture-017-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
-    "prompt": "In the BIRD example of the group session, what's the routing daemon's task?",
+    "prompt": "What is the BIRD routing daemon’s role in the group-session example?",
     "difficulty": "easy",
-    "explanation": "BIRD is a dynamic IP routine daemon. The group material uses it to examine routing protocols, neighbours and routes in a Mininet topology. The route control function differs from the application services.",
+    "explanation": "BIRD exchanges routing information and maintains routing state. It is a control-plane routing daemon, distinct from application servers and radio transmission functions.",
     "source": "p5_14-10-2026 – group session · Section “BIRD”",
     "sourceRefs": [
       {
@@ -3418,30 +3418,30 @@
     "options": [
       {
         "id": "a",
-        "text": "To be a server for all users' application data."
+        "text": "Delivering application responses to users on every connected host"
       },
       {
         "id": "b",
-        "text": "Running dynamic routing protocols and maintaining routing information."
+        "text": "Running routing protocols and maintaining routing information"
       },
       {
         "id": "c",
-        "text": "Translate the application file format to text."
+        "text": "Translating application file formats before Ethernet transmission"
       },
       {
         "id": "d",
-        "text": "Performing radio modulation on the network card."
+        "text": "Modulating the radio signals used by each wireless interface"
       }
     ],
     "correctOptionId": "b"
   },
   {
-    "id": "in3230-architecture-018",
+    "id": "in3230-architecture-018-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
     "prompt": "In the group exercise, A ↔ B ↔ C forms a chain, and B has a separate interface for each neighbour. B receives a local request from A and must reply directly to A. Why must B consider which interface received the request?",
     "difficulty": "medium",
-    "explanation": "The interfaces connect different links. The group exercise uses the incoming interface to send the reply on the correct link.",
+    "explanation": "B's interfaces connect separate links. A reply intended for A must use an appropriate interface and destination on A's link rather than the link toward C.",
     "source": "p4_30-09-2026 – group session · Section “What Changed from Last Time”: Three-node topology and Interface-pinned receive & reply",
     "sourceRefs": [
       {
@@ -3453,30 +3453,30 @@
     "options": [
       {
         "id": "a",
-        "text": "Answers to different interfaces must always have the same Ethernet destination."
+        "text": "Both links use the same Ethernet destination for every response."
       },
       {
         "id": "b",
-        "text": "A host with two interfaces cannot keep two neighbours apart."
+        "text": "Receiving on one interface makes the other interface unreachable."
       },
       {
         "id": "c",
-        "text": "The receiver interface determines the file type of the application."
+        "text": "The receiving interface determines the application's message format."
       },
       {
         "id": "d",
-        "text": "A reply sent on the interface towards C does not automatically reach A on the other link."
+        "text": "The interface toward C does not directly reach A on its separate link."
       }
     ],
     "correctOptionId": "d"
   },
   {
-    "id": "in3230-architecture-019",
+    "id": "in3230-architecture-019-v2",
     "courseId": "IN3230",
     "topicId": "net-architecture",
-    "prompt": "Why does the HiP example from the group session use a separate EtherType field for the protocol?",
+    "prompt": "Why does the group-session HiP example use a separate EtherType?",
     "difficulty": "medium",
-    "explanation": "EtherType describes the protocol type to be carried in the Ethernet framework. It is a form of demultiplexing, different from the destination-MAC that selects the receiver on the link and the TTL that restricts forwarding.",
+    "explanation": "EtherType demultiplexes the payload protocol inside an Ethernet frame. The destination MAC address identifies the link-layer recipient; it serves a different purpose.",
     "source": "p4_30-09-2026 – group session · Section “What Changed from Last Time”: EtherType filtering",
     "sourceRefs": [
       {
@@ -3488,19 +3488,19 @@
     "options": [
       {
         "id": "a",
-        "text": "To distinguish Ethernet frames with HiP content from frames with other protocol content."
+        "text": "To identify the payload protocol carried inside an Ethernet frame"
       },
       {
         "id": "b",
-        "text": "To separate two users with the same password."
+        "text": "To identify which remote application owns a transport-layer port"
       },
       {
         "id": "c",
-        "text": "To specify the number of remaining routers before discarding the packet."
+        "text": "To identify how many network routers a packet may still traverse"
       },
       {
         "id": "d",
-        "text": "To identify which physical neighbour will receive each frame."
+        "text": "To identify the physical neighbor selected as the frame's destination"
       }
     ],
     "correctOptionId": "a"

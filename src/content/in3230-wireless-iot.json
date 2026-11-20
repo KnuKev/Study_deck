@@ -1,6 +1,6 @@
 [
   {
-    "id": "in3230-wireless-iot-01",
+    "id": "in3230-wireless-iot-01-v2",
     "courseId": "IN3230",
     "topicId": "net-wireless-3",
     "type": "choice",
@@ -9,19 +9,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Live 4K video from every endpoint."
+        "text": "Battery-powered cameras continuously uploading high-resolution video"
       },
       {
         "id": "b",
-        "text": "Data storage with bidirectional traffic of several gigabits per second."
+        "text": "Data-center servers exchanging multi-gigabit traffic in both directions"
       },
       {
         "id": "c",
-        "text": "Continuous high-bitrate music streaming."
+        "text": "Portable speakers receiving continuous high-bitrate audio streams"
       },
       {
         "id": "d",
-        "text": "Battery-powered meters that send small amounts of data over long distances."
+        "text": "Battery-powered meters sending small readings over long distances"
       }
     ],
     "correctOptionId": "d",

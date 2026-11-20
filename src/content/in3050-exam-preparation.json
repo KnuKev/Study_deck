@@ -161,7 +161,7 @@
     "code": "weight = 2.0\nweight -= 0.1 * loss_gradient(weight)\nprint(weight)"
   },
   {
-    "id": "in3050-prep-05",
+    "id": "in3050-prep-05-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -173,15 +173,15 @@
       },
       {
         "id": "b",
-        "text": "Multiclass classification"
+        "text": "Single-label multiclass classification"
       },
       {
         "id": "c",
-        "text": "Clustering"
+        "text": "Unsupervised clustering of images"
       },
       {
         "id": "d",
-        "text": "Numerical regression"
+        "text": "Supervised numerical regression"
       }
     ],
     "correctOptionId": "a",
@@ -201,7 +201,7 @@
     "examPrep": true
   },
   {
-    "id": "in3050-prep-06",
+    "id": "in3050-prep-06-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -209,19 +209,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Seven-neighbor voting reduces sensitivity to individual noisy points."
+        "text": "Voting over more neighbors reduces sensitivity to noisy points."
       },
       {
         "id": "b",
-        "text": "Larger k activates the gradient at more training points."
+        "text": "Voting over more neighbors increases the influence of each noisy point."
       },
       {
         "id": "c",
-        "text": "The larger neighborhood makes the boundary more jagged."
+        "text": "Increasing k trains a gradient-based boundary around each point."
       },
       {
         "id": "d",
-        "text": "Seven neighbors guarantee the Bayes optimal decision."
+        "text": "Increasing k makes the boundary more detailed around each point."
       }
     ],
     "correctOptionId": "a",
@@ -647,7 +647,7 @@
     "examPrep": true
   },
   {
-    "id": "in3050-prep-17",
+    "id": "in3050-prep-17-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
@@ -655,19 +655,19 @@
     "options": [
       {
         "id": "a",
-        "text": "It confines competition to similar individuals and helps preserve different niches."
+        "text": "It limits competition within niches and helps preserve diversity."
       },
       {
         "id": "b",
-        "text": "It ensures the fittest individual always replaces every parent."
+        "text": "It makes every offspring compete against the globally best parent."
       },
       {
         "id": "c",
-        "text": "It increases selection pressure equally across all niches."
+        "text": "It raises selection pressure by comparing all parents with all offspring."
       },
       {
         "id": "d",
-        "text": "It removes the need to measure fitness."
+        "text": "It selects replacements by similarity without comparing fitness."
       }
     ],
     "correctOptionId": "a",

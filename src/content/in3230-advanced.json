@@ -159,31 +159,31 @@
     ]
   },
   {
-    "id": "in3230-http-quic-006",
+    "id": "in3230-http-quic-006-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
-    "prompt": "Three requests have been sent with HTTP/1.1 pipelining. The first answer is slow to produce. Why can later answers be delayed even if they are ready?",
+    "prompt": "With HTTP/1.1 pipelining, the first response is slow to generate. Why can later ready responses be delayed?",
     "options": [
       {
         "id": "a",
-        "text": "The responses must be sent in the order of the requests without merging the response content."
+        "text": "HTTP/1.1 sends pipelined responses in request order."
       },
       {
         "id": "b",
-        "text": "Pipelining allows only one outstanding request."
+        "text": "HTTP/1.1 permits only one request to be outstanding."
       },
       {
         "id": "c",
-        "text": "HTTP/1.1 must wait until all replies have been completed before the first one is sent."
+        "text": "HTTP/1.1 waits for every response before sending any."
       },
       {
         "id": "d",
-        "text": "Each pipeline request requires a new TCP connection."
+        "text": "HTTP/1.1 opens a separate TCP connection per response."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Pipelining allows the client to send multiple requests, but the HTTP/1.1 responses need to continue to be serialised in the correct order. An early response can therefore block subsequent responses at application level.",
+    "explanation": "HTTP/1.1 pipelining allows multiple outstanding requests but requires responses in request order. A slow first response can block later ready responses at the application layer.",
     "difficulty": "medium",
     "source": "HTTP/2, HTTP/3 and QUIC · PDF pages 39, 41",
     "sourceRefs": [
@@ -194,7 +194,7 @@
     ]
   },
   {
-    "id": "in3230-http-quic-007",
+    "id": "in3230-http-quic-007-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
@@ -202,23 +202,23 @@
     "options": [
       {
         "id": "a",
-        "text": "B is always delivered immediately because HTTP/2 does not use TCP."
+        "text": "HTTP/2 delivers B immediately because it uses separate TCP connections."
       },
       {
         "id": "b",
-        "text": "Only HTTP headers are lost; data do not need retransmission."
+        "text": "HTTP/2 discards only A's headers and never retransmits the missing data."
       },
       {
         "id": "c",
-        "text": "B needs to create a new IP address to continue."
+        "text": "TCP sends B through a new connection whenever A has a missing segment."
       },
       {
         "id": "d",
-        "text": "TCP can hold back later byte also for B until the hole in the ordered byte stream is repaired."
+        "text": "TCP can block B's later bytes behind the gap in the shared byte stream."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "HTTP/2 removes the application restriction from merging responses, but TCP exposes one ordered byte stream. Thus, losses can lead to head-of-line blocking across HTTP/2 streams.",
+    "explanation": "HTTP/2 multiplexes logical streams over one ordered TCP byte stream. TCP can withhold later bytes for any stream until a missing earlier range is recovered.",
     "difficulty": "medium",
     "source": "HTTP/2, HTTP/3 and QUIC · PDF pages 55, 68",
     "sourceRefs": [
@@ -256,7 +256,7 @@
     ]
   },
   {
-    "id": "in3230-http-quic-009",
+    "id": "in3230-http-quic-009-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
@@ -264,23 +264,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Separate flows mean that network loading can never affect multiple flows simultaneously."
+        "text": "Flow control limits network load; congestion control limits receiver buffers."
       },
       {
         "id": "b",
-        "text": "Flow control protects recipient capacity; congestion control adapts transmission to network capacity."
+        "text": "Flow control protects receivers; congestion control responds to network capacity."
       },
       {
         "id": "c",
-        "text": "Flow control encrypts data; congestion control selects HTTP method."
+        "text": "Flow control selects packet routes; congestion control schedules HTTP methods."
       },
       {
         "id": "d",
-        "text": "Both just means UDP has a fixed maximum package speed."
+        "text": "Flow control repairs losses; congestion control identifies application boundaries."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "QUIC applies flow control to the data a receiver can accept, including per-stream limits, and congestion control to the transport connection. Independent stream delivery does not give streams independent capacity at a shared bottleneck.",
+    "explanation": "QUIC flow control protects receiver resources, with connection and stream limits. Congestion control responds to the shared network path; independent stream delivery does not provide independent capacity.",
     "difficulty": "medium",
     "source": "HTTP/2, HTTP/3 and QUIC · PDF page 75",
     "sourceRefs": [
@@ -353,31 +353,31 @@
     ]
   },
   {
-    "id": "in3230-http-quic-012",
+    "id": "in3230-http-quic-012-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
-    "prompt": "What statement about starting QUIC best fits the lecture model?",
+    "prompt": "Which statement describes QUIC connection setup?",
     "options": [
       {
         "id": "a",
-        "text": "QUIC first requires a separate TCP handshake and then two UDP handshake."
+        "text": "Fresh connections require TCP setup; resumed connections require UDP setup."
       },
       {
         "id": "b",
-        "text": "TLS is not relevant since QUIC is using UDP."
+        "text": "Fresh and resumed connections both require two separate TCP handshakes."
       },
       {
         "id": "c",
-        "text": "A new connection may use \\(1\\,\\mathrm{RTT}\\), while the resumption of a previous connection may allow 0-RTT data."
+        "text": "Fresh connections can use 1-RTT setup; resumption can allow 0-RTT data."
       },
       {
         "id": "d",
-        "text": "All clients can always send secure 0-RTT data without prior contact."
+        "text": "Fresh connections permit 0-RTT data without previously contacting the server."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "QUIC integrates TLS 1.3 into startup. 0-RTT is an option for recovery with previously established state, not a universal property of a completely new connection.",
+    "explanation": "QUIC integrates TLS 1.3 into connection setup. A fresh connection can establish in one RTT; eligible resumption can carry 0-RTT early data, which a server may reject.",
     "difficulty": "medium",
     "source": "HTTP/2, HTTP/3 and QUIC · PDF pages 76, 78–79",
     "sourceRefs": [
@@ -458,7 +458,7 @@
     ]
   },
   {
-    "id": "in3230-http-quic-015",
+    "id": "in3230-http-quic-015-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
@@ -466,19 +466,19 @@
     "options": [
       {
         "id": "a",
-        "text": "HTTP/3 must retransmit both documents while HTTP/2 never retransmits."
+        "text": "HTTP/2 sends each stream over its own TCP connection; HTTP/3 shares one."
       },
       {
         "id": "b",
-        "text": "HTTP/2 has an independent TCP byte stream per HTTP stream on the same connection."
+        "text": "HTTP/2 avoids retransmission; HTTP/3 retransmits every stream after any loss."
       },
       {
         "id": "c",
-        "text": "QUIC guarantees that B is not affected by shared congestion or capacity."
+        "text": "HTTP/2 has shared congestion control; QUIC never shares congestion limits."
       },
       {
         "id": "d",
-        "text": "TCP can block delivery of B behind a gap. QUIC can deliver B independently if B itself has no missing data."
+        "text": "TCP can block B behind A's gap; QUIC can deliver B once B's data is complete."
       }
     ],
     "correctOptionId": "d",
@@ -528,31 +528,31 @@
     ]
   },
   {
-    "id": "in3230-http-quic-017",
+    "id": "in3230-http-quic-017-v2",
     "courseId": "IN3230",
     "topicId": "net-http-quic",
     "type": "choice",
-    "prompt": "An app has 20 independent small answers and a very large response to one connection. What change allows small answers to be merged while the large answer is still being transferred, without a connection per answer?",
+    "prompt": "One connection carries many small responses and one large response. Which change allows the small responses to be interleaved with the large one?",
     "options": [
       {
         "id": "a",
-        "text": "Switching all requests from GET to POST."
+        "text": "Use POST for every request while retaining HTTP/1.1 response ordering."
       },
       {
         "id": "b",
-        "text": "Switching from HTTP/1.1 response serialisation to HTTP/2 frameworks and streams."
+        "text": "Use HTTP/2 framing to interleave responses from separate streams."
       },
       {
         "id": "c",
-        "text": "Increase the number of HTTP/1.1 queries in the pipeline, without other changes."
+        "text": "Queue more HTTP/1.1 requests while retaining its response ordering."
       },
       {
         "id": "d",
-        "text": "Remove stream ID from the HTTP/2 frames."
+        "text": "Remove stream identifiers so response bytes can be sent in any order."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "The HTTP/2 framework can be distributed between flows during the transfer. HTTP/1.1 pipelining sends multiple requests, but does not cancel the requirement for serialised responses.",
+    "explanation": "HTTP/2 identifies streams in its frames, allowing frames from different responses to be interleaved. HTTP/1.1 pipelining retains response-order constraints.",
     "difficulty": "hard",
     "source": "HTTP/2, HTTP/3 and QUIC · PDF pages 39, 41, 52, 55",
     "sourceRefs": [
@@ -730,7 +730,7 @@
     ]
   },
   {
-    "id": "in3230-cloud-005",
+    "id": "in3230-cloud-005-v2",
     "courseId": "IN3230",
     "topicId": "net-cloud",
     "type": "choice",
@@ -738,19 +738,19 @@
     "options": [
       {
         "id": "a",
-        "text": "A rented virtual machine where the customer installs the operating system."
+        "text": "A virtual machine on which the customer manages the operating system"
       },
       {
         "id": "b",
-        "text": "An empty physical server the customer buys and puts in his own rack."
+        "text": "A physical server on which the customer installs its own applications"
       },
       {
         "id": "c",
-        "text": "A platform where the customer’s main responsibility is to deliver its own application code."
+        "text": "A managed runtime to which the customer deploys application code"
       },
       {
         "id": "d",
-        "text": "A complete online application using and configuring functions without managing the operating system."
+        "text": "A complete online application that the customer uses and configures"
       }
     ],
     "correctOptionId": "d",
@@ -862,7 +862,7 @@
     ]
   },
   {
-    "id": "in3230-cloud-009",
+    "id": "in3230-cloud-009-v2",
     "courseId": "IN3230",
     "topicId": "net-cloud",
     "type": "choice",
@@ -870,23 +870,23 @@
     "options": [
       {
         "id": "a",
-        "text": "That the supplier promises that the service is \"magnificent modern\"."
+        "text": "A promise to keep the product more modern than competing services"
       },
       {
         "id": "b",
-        "text": "That all customers think the interface is nice."
+        "text": "A promise that users will find all interface interactions attractive"
       },
       {
         "id": "c",
-        "text": "That the service uses the word cloud in the product name."
+        "text": "A commitment to include cloud terminology in product descriptions"
       },
       {
         "id": "d",
-        "text": "Contracted availability for a measurement period and how to deal with breaches."
+        "text": "An availability target, its measurement period and remedies for breaches"
       }
     ],
     "correctOptionId": "d",
-    "explanation": "A SLA concretes the level of service, such as availability, response time or throughput, as well as the follow-up of breaches. Marketing words alone do not give measurable obligations.",
+    "explanation": "An SLA specifies measurable service commitments and how compliance or breaches are handled. Availability needs both a target and a defined measurement period.",
     "difficulty": "medium",
     "source": "Cloud Computing · PDF page 15",
     "sourceRefs": [
@@ -1126,31 +1126,31 @@
     ]
   },
   {
-    "id": "in3230-mpls-001",
+    "id": "in3230-mpls-001-v2",
     "courseId": "IN3230",
     "topicId": "net-mpls",
     "type": "choice",
-    "prompt": "What is the role of a PE route in the MPLS network shown in the lecture?",
+    "prompt": "What is the role of a PE router in the lecture’s MPLS network?",
     "options": [
       {
         "id": "a",
-        "text": "It is the customer's edge panes, which are described in the model CE."
+        "text": "A customer-edge router that connects the customer's own sites"
       },
       {
         "id": "b",
-        "text": "It is a clean core route with no responsibility for customer services."
+        "text": "A provider-core router that forwards traffic between provider edges"
       },
       {
         "id": "c",
-        "text": "It is the label distribution protocol that is run between routers."
+        "text": "A label-distribution protocol used between routers in the core"
       },
       {
         "id": "d",
-        "text": "It is at the edge of the supplier network and connects the customer page to the MPLS services."
+        "text": "A provider-edge router that connects customers to provider services"
       }
     ],
     "correctOptionId": "d",
-    "explanation": "PE means Provider Edge. CE is Customer Edge on the customer side, while P denotes a core unit in the supplier network.",
+    "explanation": "PE means Provider Edge. It connects customer-facing services to the provider network; CE is Customer Edge and P identifies a provider-core router.",
     "difficulty": "easy",
     "source": "Introduction to MPLS · PDF page 14",
     "sourceRefs": [
@@ -1232,7 +1232,7 @@
     ]
   },
   {
-    "id": "in3230-mpls-004",
+    "id": "in3230-mpls-004-v2",
     "courseId": "IN3230",
     "topicId": "net-mpls",
     "type": "choice",
@@ -1240,23 +1240,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Whether the entry is at the bottom of the label stack."
+        "text": "Whether this entry is the bottom label in the stack"
       },
       {
         "id": "b",
-        "text": "Whether the packet uses TCP or UDP."
+        "text": "Whether this packet contains a TCP rather than UDP payload"
       },
       {
         "id": "c",
-        "text": "Whether the whole packet is encrypted."
+        "text": "Whether the original payload has been encrypted end to end"
       },
       {
         "id": "d",
-        "text": "Whether or not the router is a CE or PE route."
+        "text": "Whether the next forwarding device is a customer-edge router"
       }
     ],
     "correctOptionId": "a",
-    "explanation": "S is the bottom-of-stick indicator. It makes it possible to identify the last label entry before the encapsulated payload.",
+    "explanation": "The S-bit is the bottom-of-stack indicator. It identifies the final label entry before the encapsulated payload.",
     "difficulty": "easy",
     "source": "Introduction to MPLS · PDF page 15",
     "sourceRefs": [
@@ -1426,31 +1426,31 @@
     ]
   },
   {
-    "id": "in3230-mpls-010",
+    "id": "in3230-mpls-010-v2",
     "courseId": "IN3230",
     "topicId": "net-mpls",
     "type": "choice",
-    "prompt": "What statement describes the difference between L3VPN and L2VPN in the lecture model?",
+    "prompt": "How do L3VPN and L2VPN differ in the lecture model?",
     "options": [
       {
         "id": "a",
-        "text": "L2VPN means that CE can never use a routing protocol."
+        "text": "L3VPN bridges customer Ethernet; L2VPN replaces customer IP routing."
       },
       {
         "id": "b",
-        "text": "L3VPN and L2VPN distinguish only on the length of the mains line."
+        "text": "L3VPN and L2VPN differ only in the number of labels in every packet."
       },
       {
         "id": "c",
-        "text": "At L3VPN, CE shall be routed to PE; at L2VPN CE routes may form routing navels over the service with each other."
+        "text": "L3VPN routes between CE and PE; L2VPN can carry CE-to-CE routing adjacency."
       },
       {
         "id": "d",
-        "text": "L3VPN can only transport Ethernet without IP, while L2VPN must always replace customer routing."
+        "text": "L3VPN requires a full mesh of CE peers; L2VPN forbids CE routing protocols."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "L3VPN makes the supplier edge involved in the customer's layer 3 routine. L2VPN presents a layer 2 connection, and the customer can place its own layer 3 routine over it.",
+    "explanation": "An L3VPN involves the provider edge in customer IP routing. An L2VPN presents a Layer 2 service over which customer routers can establish their own Layer 3 adjacencies.",
     "difficulty": "medium",
     "source": "Introduction to MPLS · PDF page 47",
     "sourceRefs": [
@@ -1750,31 +1750,31 @@
     ]
   },
   {
-    "id": "in3230-interconnects-001",
+    "id": "in3230-interconnects-001-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
-    "prompt": "What is a central function of the network interface, NIC, in an interconnection network?",
+    "prompt": "What does a network interface controller do in an interconnection network?",
     "options": [
       {
         "id": "a",
-        "text": "To replace all network switch with one local route table."
+        "text": "Choosing the topology and routing policy for every switch in the fabric"
       },
       {
         "id": "b",
-        "text": "Connecting the host's data transmission to the network, including through buffering and package management."
+        "text": "Connecting the host to the fabric, with buffering and packet handling"
       },
       {
         "id": "c",
-        "text": "To determine the physical topology of the entire network alone."
+        "text": "Replacing every switch buffer with one shared application-level queue"
       },
       {
         "id": "d",
-        "text": "To guarantee unrestricted reception without buffers or flow control."
+        "text": "Providing unlimited receive capacity without any flow-control signals"
       }
     ],
     "correctOptionId": "b",
-    "explanation": "NCI is the interface between the host and the network. The lecture shows, among other things, transmission engines, buffers and data entry.",
+    "explanation": "The NIC connects host communication to the network fabric. It can provide packet handling, buffering and transfer engines rather than determining the entire network topology.",
     "difficulty": "easy",
     "source": "Interconnection Networks · PDF page 9",
     "sourceRefs": [
@@ -1882,31 +1882,31 @@
     ]
   },
   {
-    "id": "in3230-interconnects-005",
+    "id": "in3230-interconnects-005-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
-    "prompt": "What is the meaning of the Bible’s vision bandwidth in the lecture?",
+    "prompt": "What is bisection bandwidth?",
     "options": [
       {
         "id": "a",
-        "text": "Average capacity along all possible pairs of paths."
+        "text": "The mean capacity of all shortest paths between endpoint pairs"
       },
       {
         "id": "b",
-        "text": "The total capacity over a minimum cut that divides the end nodes into two equal groups."
+        "text": "The minimum cut capacity separating endpoints into equal halves"
       },
       {
         "id": "c",
-        "text": "The sum of the capacity of all links, regardless of the average they cross."
+        "text": "The sum of every link's capacity across the entire network fabric"
       },
       {
         "id": "d",
-        "text": "Maximum acceptance rate to one end node, regardless of topology."
+        "text": "The maximum rate accepted by a single destination in the fabric"
       }
     ],
     "correctOptionId": "b",
-    "explanation": "Bissection examines a balanced section of the network. The capacity of the interconnections over the average tells us how much traffic can cross between halfs.",
+    "explanation": "A bisection divides the endpoints into equal halves. Bisection bandwidth measures capacity across the least-capacity such cut, indicating a limit on traffic between the halves.",
     "difficulty": "easy",
     "source": "Interconnection Networks · PDF pages 32–35",
     "sourceRefs": [
@@ -1917,31 +1917,31 @@
     ]
   },
   {
-    "id": "in3230-interconnects-006",
+    "id": "in3230-interconnects-006-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
-    "prompt": "What is a direct interaction network as described in the lecture?",
+    "prompt": "What characterizes a direct interconnection network?",
     "options": [
       {
         "id": "a",
-        "text": "Calculation nodes are linked to the routes of the network topology itself, rather than to the leaves of a separate switch network only."
+        "text": "Compute nodes attach to routers distributed through the network topology."
       },
       {
         "id": "b",
-        "text": "All nodes must be connected directly to all other nodes."
+        "text": "Compute nodes attach only to leaves of a separate multistage switch fabric."
       },
       {
         "id": "c",
-        "text": "The calculation nodes must be aggregated at the leaves in a separate multi-level suite."
+        "text": "Every compute node has a physical link to every other compute node."
       },
       {
         "id": "d",
-        "text": "All messages must reach the destination without intermediate route jumps."
+        "text": "Every message travels to its destination without an intermediate router."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "In the direct model, calculation nodes are linked to the routes through topology. In an indirect network, the calculation nodes are at the ends of a separate switch network. Direct does not necessarily mean completely connected.",
+    "explanation": "In a direct network, compute nodes attach to routers within the network topology. In an indirect network, endpoints attach at the edges of a separate switching fabric; direct does not mean fully connected.",
     "difficulty": "easy",
     "source": "Interconnection Networks · PDF pages 47, 50",
     "sourceRefs": [
@@ -1952,31 +1952,31 @@
     ]
   },
   {
-    "id": "in3230-interconnects-007",
+    "id": "in3230-interconnects-007-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
-    "prompt": "Why should an Xoff message be sent before the recipient cache is full?",
+    "prompt": "Why must Xoff be sent before the receive buffer is full?",
     "options": [
       {
         "id": "a",
-        "text": "Xoff gives the sender several credits that must be used immediately."
+        "text": "Xoff grants extra buffer credits that must first be consumed."
       },
       {
         "id": "b",
-        "text": "Xoff requires the entire contents of the old buffer to be returned first."
+        "text": "Xoff returns all buffered packets to their original sender."
       },
       {
         "id": "c",
-        "text": "All sent packets are automatically returned once at Xoff."
+        "text": "Xoff removes all data already in flight from the network."
       },
       {
         "id": "d",
-        "text": "Data may already be on the way and continue to arrive before the sender has responded."
+        "text": "Data already in flight can arrive before the sender stops."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "The stop message uses time until the sender is sent, and the data that has already been sent must still be received. The buffer therefore needs the safety clearance.",
+    "explanation": "The stop signal takes time to reach and affect the sender. Space must remain for data already in flight and data sent before the sender stops.",
     "difficulty": "medium",
     "source": "Interconnection Networks · PDF pages 12–14",
     "sourceRefs": [
@@ -2014,7 +2014,7 @@
     ]
   },
   {
-    "id": "in3230-interconnects-009",
+    "id": "in3230-interconnects-009-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
@@ -2022,19 +2022,19 @@
     "options": [
       {
         "id": "a",
-        "text": "In deadlock only one link is full. Livelock requires delivery to the wrong node."
+        "text": "Deadlock is a full input queue; livelock is a retransmission timer expiring."
       },
       {
         "id": "b",
-        "text": "In deadlock, packets are stuck waiting on resource dependencies. In livelock, a packet can keep moving without reaching its destination."
+        "text": "Deadlock is cyclic resource waiting; livelock is movement without delivery."
       },
       {
         "id": "c",
-        "text": "In deadlock, packets keep moving without reaching their destination. In livelock, all affected packets are stuck waiting."
+        "text": "Deadlock is movement without delivery; livelock is cyclic resource waiting."
       },
       {
         "id": "d",
-        "text": "Deadlock is any short queue. Livelock is any retransmission after packet loss."
+        "text": "Deadlock is a wrong destination; livelock is a packet waiting for an ACK."
       }
     ],
     "correctOptionId": "b",
@@ -2049,7 +2049,7 @@
     ]
   },
   {
-    "id": "in3230-interconnects-010",
+    "id": "in3230-interconnects-010-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
@@ -2057,23 +2057,23 @@
     "options": [
       {
         "id": "a",
-        "text": "It can remove cyclic channel dependencies by imposing a fixed resource usage order."
+        "text": "A fixed channel-use order can remove cyclic resource dependencies."
       },
       {
         "id": "b",
-        "text": "It makes all buffers infinite large."
+        "text": "A fixed channel-use order allows every buffer to have infinite capacity."
       },
       {
         "id": "c",
-        "text": "It allows all packets to use all channels simultaneously."
+        "text": "A fixed channel-use order eliminates all possible contention for links."
       },
       {
         "id": "d",
-        "text": "It removes the need for physical connection between routers."
+        "text": "A fixed channel-use order lets packets bypass intermediate routers."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Dimension-order routing in the current mesh model arranges channel usage. Such a system can prevent circular waiting. The wraparound link network, like torus, requires further assessment.",
+    "explanation": "A suitable fixed dimension order prevents cyclic channel dependencies in the mesh model. Topologies with wraparound links, such as a torus, require additional care.",
     "difficulty": "medium",
     "source": "Interconnection Networks · PDF pages 58–59",
     "sourceRefs": [
@@ -2084,31 +2084,31 @@
     ]
   },
   {
-    "id": "in3230-interconnects-011",
+    "id": "in3230-interconnects-011-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
-    "prompt": "What's the point of making a tree fat in a fat tree topology?",
+    "prompt": "Why does a fat-tree network provide greater aggregate capacity toward its upper levels?",
     "options": [
       {
         "id": "a",
-        "text": "Making all cables physically thicker without changing capacity."
+        "text": "Use longer cables so that upper levels can span more endpoints."
       },
       {
         "id": "b",
-        "text": "Using a single root link for all traffic, regardless of the number of nodes."
+        "text": "Force all endpoint traffic through one unchanged-capacity root link."
       },
       {
         "id": "c",
-        "text": "To place calculation nodes in all internal Switches as the only definition requirement."
+        "text": "Attach compute nodes to every internal switch instead of only leaves."
       },
       {
         "id": "d",
-        "text": "To provide enough total capacity up in the tree to ensure that collapsing traffic is not automatically choked by narrow upper levels."
+        "text": "Provide more aggregate capacity higher up to carry combined traffic."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "A regular tree can get little capacity near the root. Fat-tree builds more capacity towards upper tiers, e.g. with multiple interconnections, so that the Bisection capacity can be scaled up.",
+    "explanation": "Traffic from multiple lower branches combines higher in the tree. Greater aggregate capacity on upper levels prevents those levels from becoming an inherent bottleneck.",
     "difficulty": "medium",
     "source": "Interconnection Networks · PDF pages 47–48",
     "sourceRefs": [
@@ -2146,7 +2146,7 @@
     ]
   },
   {
-    "id": "in3230-interconnects-013",
+    "id": "in3230-interconnects-013-v2",
     "courseId": "IN3230",
     "topicId": "net-interconnects",
     "type": "choice",
@@ -2154,23 +2154,23 @@
     "options": [
       {
         "id": "a",
-        "text": "All switched networks must then behave like an infinitely fast bus."
+        "text": "Many-to-one traffic automatically chooses a slower physical signaling rate."
       },
       {
         "id": "b",
-        "text": "The capacity of the recipient or recipient link may become a bottleneck even if many consignors have available capacity."
+        "text": "The destination or its incoming links can limit the aggregate delivered rate."
       },
       {
         "id": "c",
-        "text": "The package payload automatically gets bigger for many senders."
+        "text": "The senders no longer need arbitration once they choose one destination."
       },
       {
         "id": "d",
-        "text": "Many senders do not need to be bitten anymore."
+        "text": "The network must serialize every packet at a single source before sending."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "The integrated injection capacity is not sufficient. The traffic pattern may concentrate the load on a limited set of receivers, which therefore set a lower limit.",
+    "explanation": "Many sources can collectively offer more traffic than one destination or its incoming links can accept. Available capacity elsewhere does not remove this destination bottleneck.",
     "difficulty": "medium",
     "source": "Interconnection Networks · PDF pages 24, 27",
     "sourceRefs": [
@@ -2473,27 +2473,27 @@
     ]
   },
   {
-    "id": "in3230-network-operations-002",
+    "id": "in3230-network-operations-002-v2",
     "courseId": "IN3230",
     "topicId": "net-network-operations",
     "type": "choice",
-    "prompt": "What standardisation work links the guest lecture to IEEE 802?",
+    "prompt": "Which standardization area belongs to IEEE 802?",
     "options": [
       {
         "id": "a",
-        "text": "Among other things, wired and wireless local networks, like Ethernet and WLAN."
+        "text": "LAN and metropolitan-network standards, including Ethernet and WLAN"
       },
       {
         "id": "b",
-        "text": "Primary HTTP, DNS and other Internet application protocols."
+        "text": "Application-layer Internet standards, including HTTP and domain-name lookup"
       },
       {
         "id": "c",
-        "text": "Primary route policy between autonomous systems with BGP."
+        "text": "Interdomain routing policy standards used to configure autonomous systems"
       },
       {
         "id": "d",
-        "text": "Allocation of all domain names and public IP addresses."
+        "text": "Global allocation of domain names and publicly routable Internet addresses"
       }
     ],
     "correctOptionId": "a",
@@ -2543,27 +2543,27 @@
     ]
   },
   {
-    "id": "in3230-network-operations-004",
+    "id": "in3230-network-operations-004-v2",
     "courseId": "IN3230",
     "topicId": "net-network-operations",
     "type": "choice",
-    "prompt": "The campus figure shows HSRP by two gateway routes and Spanning Tree in the Switching Network. What is the best explanation for these problems?",
+    "prompt": "The campus diagram uses HSRP at redundant gateways and Spanning Tree in the switching network. What are their roles?",
     "options": [
       {
         "id": "a",
-        "text": "Both mechanisms distribute IP routes between autonomous systems."
+        "text": "HSRP chooses interdomain routes; Spanning Tree distributes BGP policies."
       },
       {
         "id": "b",
-        "text": "Spanning Tree doubles the capacity of any redundant link, while HSRP removes the need for additional routers."
+        "text": "HSRP prevents Ethernet loops; Spanning Tree provides a redundant gateway."
       },
       {
         "id": "c",
-        "text": "HSRP supports redundant standard gateway, while Spanning Tree handles redundant layer 2 paths so that forwarding does not form loops."
+        "text": "HSRP provides gateway redundancy; Spanning Tree prevents Layer 2 loops."
       },
       {
         "id": "d",
-        "text": "HSRP calculates a loop-free layer of 2 tree, while Spanning Tree shares a standard gateway between two routers."
+        "text": "HSRP balances wireless users; Spanning Tree duplicates every Ethernet path."
       }
     ],
     "correctOptionId": "c",
@@ -2668,31 +2668,31 @@
     ]
   },
   {
-    "id": "in3230-network-operations-008",
+    "id": "in3230-network-operations-008-v2",
     "courseId": "IN3230",
     "topicId": "net-network-operations",
     "type": "choice",
-    "prompt": "Two gateway routes, each with capacity for the whole load, are on the same circuit and are reached through each of their uplinks. The goal is to withstand the loss of one circuit. What action is best taken by the described weakness?",
+    "prompt": "Two gateways can each carry the full load, but share one power circuit. Which change addresses the requirement to survive a single circuit failure?",
     "options": [
       {
         "id": "a",
-        "text": "Give both gateways more memory, but keep common current."
+        "text": "Add memory to both gateways while keeping their shared circuit."
       },
       {
         "id": "b",
-        "text": "Change the name of the wireless network."
+        "text": "Increase each uplink's capacity while keeping the shared circuit."
       },
       {
         "id": "c",
-        "text": "Make sure that the gateways can be driven from independent power paths so that one circuit failure does not take both."
+        "text": "Supply the gateways through independent power paths or circuits."
       },
       {
         "id": "d",
-        "text": "Increase the bandwidth of both uplinks without changing the power supply."
+        "text": "Put both gateways on one larger circuit with unchanged redundancy."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "Two routers and two links do not protect against the common circuit. Independent flow paths remove the specified common error point; other sources of error have to be assessed separately.",
+    "explanation": "Redundant devices and uplinks still fail together if they share the failed power circuit. Independent power paths address that particular common point of failure.",
     "difficulty": "hard",
     "source": "Networking in the Real World · PDF pages 8, 11",
     "sourceRefs": [

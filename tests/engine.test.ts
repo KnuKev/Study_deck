@@ -64,3 +64,21 @@ test('score counts unanswered questions and finishing is idempotent', () => {
   assert.equal(summary.elapsedSeconds, 19)
   assert.equal(summary.topics.reduce((total, topic) => total + topic.total, 0), 2)
 })
+
+test('broken source items remain answerable but do not change scores or topic totals', () => {
+  const broken = QUESTIONS.find(question => question.unscored)!
+  const session = createSession({ courseId: 'IN3050', mode: 'practice', questionIds: [first.id, broken.id], durationMinutes: null }, 1000)
+  const correct = answerQuestion(session, first.id, first.correctOptionId, QUESTIONS, 1500)
+  const answered = answerQuestion(correct, broken.id, broken.options[0]!.id, QUESTIONS, 2000)
+  for (const attempt of [correct, answered]) {
+    const summary = summarizeSession(attempt, QUESTIONS, 2500)
+    assert.equal(summary.total, 1)
+    assert.equal(summary.unscored, 1)
+    assert.equal(summary.correct, 1)
+    assert.equal(summary.answered, 1)
+    assert.equal(summary.percentage, 100)
+    assert.equal(summary.topics.reduce((sum, topic) => sum + topic.total, 0), 1)
+  }
+  const onlyBroken = createSession({ courseId: 'IN3050', mode: 'exam', questionIds: [broken.id], durationMinutes: null }, 1000)
+  assert.equal(summarizeSession(onlyBroken, QUESTIONS, 2000).total, 0)
+})

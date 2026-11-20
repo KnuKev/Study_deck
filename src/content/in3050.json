@@ -451,7 +451,7 @@
     ]
   },
   {
-    "id": "in3050-opt-002",
+    "id": "in3050-opt-002-v2",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
@@ -459,23 +459,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Number of times to visit the solution"
+        "text": "How many candidates the search visits"
       },
       {
         "id": "b",
-        "text": "How good a candidate is according to the selected criterion"
+        "text": "How well a candidate meets the objective"
       },
       {
         "id": "c",
-        "text": "Which computer to use"
+        "text": "Which operator generates each candidate"
       },
       {
         "id": "d",
-        "text": "That all candidates are equally good"
+        "text": "How long the search runs before stopping"
       }
     ],
     "correctOptionId": "b",
-    "explanation": "The object function returns a value to be minimised or maximised. It defines what better means.",
+    "explanation": "The objective function assigns a value to each candidate. Optimization seeks candidates that minimize or maximize that value.",
     "source": "theory optimization search · Cell 3",
     "difficulty": "easy",
     "sourceRefs": [
@@ -548,7 +548,7 @@
     ]
   },
   {
-    "id": "in3050-opt-005",
+    "id": "in3050-opt-005-v2",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
@@ -556,23 +556,23 @@
     "options": [
       {
         "id": "a",
-        "text": "The greedy method guarantees the optimal tour. Hill climbing never does."
+        "text": "Greedy search improves complete tours; hill climbing constructs partial tours."
       },
       {
         "id": "b",
-        "text": "The greedy method builds a tour step by step. Hill climbing improves an existing complete tour."
+        "text": "Greedy search constructs a tour; hill climbing improves a complete tour."
       },
       {
         "id": "c",
-        "text": "Hill climbing requires no neighbourhood."
+        "text": "Greedy search compares every tour; hill climbing uses only the first tour."
       },
       {
         "id": "d",
-        "text": "Both always examine all routes"
+        "text": "Greedy search uses no distances; hill climbing requires a distance matrix."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "The greedy method chooses the next local step while constructing the tour. Hill climbing compares neighbouring versions of a complete tour.",
+    "explanation": "Greedy nearest-neighbor search constructs a tour one city at a time. Hill climbing instead modifies a complete tour using a defined neighborhood.",
     "source": "theory optimization search · Cells 11–13",
     "difficulty": "medium",
     "sourceRefs": [
@@ -672,7 +672,7 @@
     ]
   },
   {
-    "id": "in3050-opt-009",
+    "id": "in3050-opt-009-v2",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
@@ -680,23 +680,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Temperature affects only good moves"
+        "text": "It stays fixed because only the sign of the cost change matters."
       },
       {
         "id": "b",
-        "text": "The probability will always be 1"
+        "text": "It approaches one as the temperature approaches zero."
       },
       {
         "id": "c",
-        "text": "The probability of accepting the worse move will be lower"
+        "text": "It decreases because the worsening move becomes less likely."
       },
       {
         "id": "d",
-        "text": "Probability increases"
+        "text": "It increases because the search becomes more exploratory."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "For a worse move, \\(p=\\exp\\!\\left(-\\frac{\\Delta}{T}\\right)\\) is. Lower positive \\(T\\) gives more negative exponent and lower \\(p\\).",
+    "explanation": "For a worsening move, the acceptance probability is exp(−Δ/T). With fixed positive Δ, reducing T lowers this probability.",
     "source": "theory optimization search · Cell 19",
     "difficulty": "medium",
     "sourceRefs": [
@@ -812,27 +812,27 @@
     ]
   },
   {
-    "id": "in3050-knn-001",
+    "id": "in3050-knn-001-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "What does a training kit contain for the guided classification?",
+    "prompt": "What does a training set for supervised classification contain?",
     "options": [
       {
         "id": "a",
-        "text": "Only one target function without data"
+        "text": "Feature vectors paired with initial cluster centers"
       },
       {
         "id": "b",
-        "text": "Feature vectors with known class labels"
+        "text": "Feature vectors paired with known class labels"
       },
       {
         "id": "c",
-        "text": "Only unmarked feature vectors"
+        "text": "Feature vectors paired with randomly chosen labels"
       },
       {
         "id": "d",
-        "text": "only phase without input"
+        "text": "Feature vectors paired with their test predictions"
       }
     ],
     "correctOptionId": "b",
@@ -979,31 +979,31 @@
     ]
   },
   {
-    "id": "in3050-knn-006",
+    "id": "in3050-knn-006-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "One feature is measured in crowns (0-1,000,000), another on the 0-1 scale. What is a risk of unscaled Euclid distance?",
+    "prompt": "One feature ranges from 0 to 1,000,000 kroner and another from 0 to 1. What is a risk of using unscaled Euclidean distance?",
     "options": [
       {
         "id": "a",
-        "text": "All observations automatically get the same close"
+        "text": "The smaller-scale feature can determine every nearest neighbor."
       },
       {
         "id": "b",
-        "text": "kNN turns into logistic regression"
+        "text": "The features contribute equally regardless of their ranges."
       },
       {
         "id": "c",
-        "text": "Scaling always changes all tags"
+        "text": "The neighbor ranking becomes independent of feature values."
       },
       {
         "id": "d",
-        "text": "The feature measured in kroner can dominate the distance because of its scale."
+        "text": "The larger-scale feature can dominate the distance."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "Large numerical differences get large squared contributions. Relevant scaling may prevent proximity to the unit of measurement alone.",
+    "explanation": "A feature with large numerical differences contributes more to Euclidean distance. Scaling can prevent measurement units from dominating neighbor selection.",
     "source": "theory supervised learning knn · Cells 13 and 30",
     "difficulty": "medium",
     "sourceRefs": [
@@ -1068,31 +1068,31 @@
     ]
   },
   {
-    "id": "in3050-knn-009",
+    "id": "in3050-knn-009-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "What is a common consequence of increasing \\(k\\) very much?",
+    "prompt": "What is a common consequence of making k very large in kNN?",
     "options": [
       {
         "id": "a",
-        "text": "The prediction will be independent of all training labels"
+        "text": "Predictions become independent of the observed class frequencies."
       },
       {
         "id": "b",
-        "text": "The model is always more sensitive to a noisy point"
+        "text": "Predictions become more sensitive to each individual noisy point."
       },
       {
         "id": "c",
-        "text": "Decision-making becomes smoother and can undermine local patterns"
+        "text": "The boundary becomes smoother and can miss local patterns."
       },
       {
         "id": "d",
-        "text": "The generalization error will be guaranteed zero"
+        "text": "The boundary becomes more detailed around each training point."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "Several neighbors make the preaching work less local. Too large \\(k\\) can erase useful local structures.",
+    "explanation": "Larger neighborhoods average over more examples, reducing sensitivity to individual points. Excessively large k can hide useful local structure and cause underfitting.",
     "source": "theory supervised learning knn · Cell 38",
     "difficulty": "medium",
     "sourceRefs": [
@@ -1173,31 +1173,31 @@
     ]
   },
   {
-    "id": "in3050-knn-012",
+    "id": "in3050-knn-012-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "Neighbors have distances 1 and 2. What statement is correct if you replace \\(d\\) with \\(d^2\\) both at neighboring and in weight \\(\\frac1d\\)?",
+    "prompt": "Two neighbors have distances 1 and 2 and inverse-distance weights. What happens if squared distances replace distances in both neighbor ranking and the weighting rule?",
     "options": [
       {
         "id": "a",
-        "text": "Both order and weights are unchanged"
+        "text": "The order stays the same; the weight ratio stays 2:1."
       },
       {
         "id": "b",
-        "text": "Keeping the neighbour order, the ratio between the weights changes from \\(2:1\\) to \\(4:1\\)"
+        "text": "The order stays the same; the weight ratio becomes 4:1."
       },
       {
         "id": "c",
-        "text": "Both weights double the same amount"
+        "text": "The order reverses; the weight ratio stays 2:1."
       },
       {
         "id": "d",
-        "text": "The nesting order is turned, but the weights are unchanged"
+        "text": "The order reverses; the weight ratio becomes 4:1."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "With \\(\\frac1d\\), the weights are 1 and \\(\\frac12\\). With \\(\\frac1{d^2}\\), they are 1 and \\(\\frac14\\). It's not the same distance weighted classification.",
+    "explanation": "Squaring nonnegative distances preserves their order. Inverse-distance weights change from 1 and 1/2 to 1 and 1/4, so the weight ratio changes from 2:1 to 4:1.",
     "source": "theory supervised learning knn · Cells 15 and 21",
     "difficulty": "hard",
     "sourceRefs": [
@@ -1208,27 +1208,27 @@
     ]
   },
   {
-    "id": "in3050-per-001",
+    "id": "in3050-per-001-v2",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
-    "prompt": "What is the main difference between the exit of a perceptron and the normal linear regression?",
+    "prompt": "How do the outputs of a perceptron classifier and ordinary linear regression differ?",
     "options": [
       {
         "id": "a",
-        "text": "The receiver has no weights"
+        "text": "Both threshold a score to predict a discrete class."
       },
       {
         "id": "b",
-        "text": "Both always give the same type of class label"
+        "text": "Both return an unrestricted numerical prediction."
       },
       {
         "id": "c",
-        "text": "Perceptron thresholds for a class; regression gives a numerical prediction"
+        "text": "A perceptron predicts a class; regression predicts a number."
       },
       {
         "id": "d",
-        "text": "Regression can't have bias"
+        "text": "Regression predicts a class; a perceptron predicts a number."
       }
     ],
     "correctOptionId": "c",
@@ -1243,7 +1243,7 @@
     ]
   },
   {
-    "id": "in3050-per-002",
+    "id": "in3050-per-002-v2",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
@@ -1251,19 +1251,19 @@
     "options": [
       {
         "id": "a",
-        "text": "It necessarily rotates the boundary 90 degrees."
+        "text": "It rotates the boundary while fixing its intercept."
       },
       {
         "id": "b",
-        "text": "It removes all negative weights."
+        "text": "It rescales the weights while fixing the boundary."
       },
       {
         "id": "c",
-        "text": "It always changes the number of features."
+        "text": "It changes the feature space by adding a dimension."
       },
       {
         "id": "d",
-        "text": "It moves the decision boundary parallel to itself."
+        "text": "It shifts the boundary without changing its orientation."
       }
     ],
     "correctOptionId": "d",
@@ -1569,27 +1569,27 @@
     ]
   },
   {
-    "id": "in3050-per-012",
+    "id": "in3050-per-012-v2",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
-    "prompt": "Two models use \\((w,b)\\) and \\((-2w,-2b)\\) respectively, with 1 class at a positive score. What is going on outside the limit itself?",
+    "prompt": "Two classifiers use (w, b) and (−2w, −2b), assigning class 1 to positive scores. What changes away from the boundary?",
     "options": [
       {
         "id": "a",
-        "text": "The same geometric boundary, but the classes on the two sides are replaced"
+        "text": "The boundary stays fixed and the class labels swap sides."
       },
       {
         "id": "b",
-        "text": "Both boundary and classes are unchanged"
+        "text": "The boundary stays fixed and the class labels stay unchanged."
       },
       {
         "id": "c",
-        "text": "The second model has a non-linear decision boundary."
+        "text": "The boundary becomes curved and the class labels swap sides."
       },
       {
         "id": "d",
-        "text": "The limit is moved parallel to the distance 2"
+        "text": "The boundary shifts and the class labels stay unchanged."
       }
     ],
     "correctOptionId": "a",
@@ -1736,7 +1736,7 @@
     ]
   },
   {
-    "id": "in3050-ea-005",
+    "id": "in3050-ea-005-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
@@ -1744,19 +1744,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Genotype is always the fitness value"
+        "text": "The genotype is the fitness; the phenotype is the encoding."
       },
       {
         "id": "b",
-        "text": "The phenotype is always a binary string"
+        "text": "The genotype is the parent; the phenotype is its offspring."
       },
       {
         "id": "c",
-        "text": "The concepts mean parent and child"
+        "text": "The genotype is the solution; the phenotype is its objective."
       },
       {
         "id": "d",
-        "text": "The genotype is the encoding; the phenotype is the interpreted solution"
+        "text": "The genotype is the encoding; the phenotype is its interpretation."
       }
     ],
     "correctOptionId": "d",
@@ -1771,7 +1771,7 @@
     ]
   },
   {
-    "id": "in3050-ea-006",
+    "id": "in3050-ea-006-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
@@ -1779,23 +1779,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Because permutations cannot be optimised"
+        "text": "To make the fitness function independent of the encoding."
       },
       {
         "id": "b",
-        "text": "In order for changes to be meaningful and to maintain the solution requirements,"
+        "text": "To preserve valid encodings while producing useful variation."
       },
       {
         "id": "c",
-        "text": "Because all representations need the same bit-flip operator"
+        "text": "To give every representation the same mutation operator."
       },
       {
         "id": "d",
-        "text": "Because real values cannot be mutated"
+        "text": "To ensure every variation step increases the candidate's fitness."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "An operator acting for bits may produce invalid permutations or meaningless changes in other representations.",
+    "explanation": "An operator must respect the encoding's constraints. For example, swapping positions preserves a permutation, while replacing one value can introduce a duplicate.",
     "source": "theory evolutionary algorithms · Cells 21–25",
     "difficulty": "medium",
     "sourceRefs": [
@@ -2000,7 +2000,7 @@
     ]
   },
   {
-    "id": "in3050-app-001",
+    "id": "in3050-app-001-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
@@ -2008,23 +2008,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Which features are always deleted"
+        "text": "Which candidates replace members of the current population"
       },
       {
         "id": "b",
-        "text": "What individuals are allowed to contribute to offspring"
+        "text": "Which individuals contribute genetic material to offspring"
       },
       {
         "id": "c",
-        "text": "Only which individual is globally optimal"
+        "text": "Which features are removed before evaluating the population"
       },
       {
         "id": "d",
-        "text": "Which gradient descent implementation is used"
+        "text": "Which termination condition ends the current generation"
       }
     ],
     "correctOptionId": "b",
-    "explanation": "Parental selection determines reproductive potential; survival choices determine who actually gets on with it.",
+    "explanation": "Parent selection determines which individuals reproduce. Survivor selection determines which individuals enter the next population.",
     "source": "evolutionary applications flight lab · Cell 6",
     "difficulty": "easy",
     "sourceRefs": [
@@ -2035,7 +2035,7 @@
     ]
   },
   {
-    "id": "in3050-app-002",
+    "id": "in3050-app-002-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
@@ -2043,23 +2043,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Keeping one or more of the best individuals unchanged"
+        "text": "Copying some top individuals unchanged into the next generation"
       },
       {
         "id": "b",
-        "text": "That mutation is never used"
+        "text": "Selecting every parent uniformly from the current population"
       },
       {
         "id": "c",
-        "text": "That all offspring must be better than all parents"
+        "text": "Replacing every parent with its most similar offspring"
       },
       {
         "id": "d",
-        "text": "That only random individuals survive"
+        "text": "Retaining only offspring whose fitness exceeds every parent"
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Elitism already protects good solutions against being lost by variation and substitution.",
+    "explanation": "Elitism carries some high-fitness individuals unchanged into the next generation, protecting them from being lost through variation or replacement.",
     "source": "evolutionary applications flight lab · Cell 9",
     "difficulty": "easy",
     "sourceRefs": [
@@ -2097,27 +2097,27 @@
     ]
   },
   {
-    "id": "in3050-app-004",
+    "id": "in3050-app-004-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
-    "prompt": "What is neurovolution?",
+    "prompt": "What is neuroevolution?",
     "options": [
       {
         "id": "a",
-        "text": "Training that never uses a population"
+        "text": "Using backpropagation to select parents in a population"
       },
       {
         "id": "b",
-        "text": "A guarantee for better results than back-propagation"
+        "text": "Using clustering to group networks by their predictions"
       },
       {
         "id": "c",
-        "text": "Use of evolutionary algorithms to search for network weights or architectures"
+        "text": "Using evolution to search network weights or architectures"
       },
       {
         "id": "d",
-        "text": "Another word for the core rule"
+        "text": "Using gradient descent to tune every mutation probability"
       }
     ],
     "correctOptionId": "c",
@@ -2132,31 +2132,31 @@
     ]
   },
   {
-    "id": "in3050-app-005",
+    "id": "in3050-app-005-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
-    "prompt": "What does \\((\\mu,\\lambda)\\) separate from \\((\\mu+\\lambda)\\)?",
+    "prompt": "How does (μ, λ) replacement differ from (μ + λ) replacement?",
     "options": [
       {
         "id": "a",
-        "text": "Comma selects only from among offspring; plus selects from parents and offspring"
+        "text": "Comma selects from offspring; plus selects from both generations."
       },
       {
         "id": "b",
-        "text": "Both must always keep all parents"
+        "text": "Comma selects from parents; plus selects from both generations."
       },
       {
         "id": "c",
-        "text": "The note only describes the mutation rate"
+        "text": "Comma selects from both generations; plus selects from offspring."
       },
       {
         "id": "d",
-        "text": "Comma only selects from parents; plus only from offspring"
+        "text": "Comma selects from both generations; plus selects from parents."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "The candidate basis for the next \\(\\mu\\) individuals is different. In the presence of a comma, old parents cannot survive directly.",
+    "explanation": "In (μ, λ) replacement, the next μ individuals come only from offspring. In (μ + λ) replacement, parents and offspring both compete for those places.",
     "source": "evolutionary applications flight lab · Cell 9",
     "difficulty": "medium",
     "sourceRefs": [
@@ -2256,31 +2256,31 @@
     ]
   },
   {
-    "id": "in3050-app-009",
+    "id": "in3050-app-009-v2",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
-    "prompt": "An EA gets better best fitness, but unchanged average fitness. What does this most directly support?",
+    "prompt": "An EA improves its best fitness while mean fitness stays unchanged. What follows?",
     "options": [
       {
         "id": "a",
-        "text": "All individuals must be better"
+        "text": "Every candidate in the population has improved."
       },
       {
         "id": "b",
-        "text": "At least one candidate has been improved, but the population as a whole is not necessarily improved"
+        "text": "A top candidate improved; the population need not improve overall."
       },
       {
         "id": "c",
-        "text": "Global optimism proved"
+        "text": "The population has reached the global optimum."
       },
       {
         "id": "d",
-        "text": "The multiple must be zero"
+        "text": "The population's fitness variance has fallen to zero."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "The best value and population mean describe different things. A particularly good individual can lift only the best value.",
+    "explanation": "Best fitness and mean fitness describe different aspects of the population. Improvement in one exceptional candidate does not establish improvement across the population.",
     "source": "evolutionary applications flight lab · Cell 22",
     "difficulty": "medium",
     "sourceRefs": [
@@ -2652,31 +2652,31 @@
     ]
   },
   {
-    "id": "in3050-log-009",
+    "id": "in3050-log-009-v2",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
-    "prompt": "Why is negative log-likelihood used as loss function?",
+    "prompt": "Why use negative log-likelihood as a loss?",
     "options": [
       {
         "id": "a",
-        "text": "Maximising peerhood becomes an equivalent minimization task"
+        "text": "Maximizing likelihood becomes minimizing a loss."
       },
       {
         "id": "b",
-        "text": "It removes the need for training labels"
+        "text": "Estimating likelihood no longer requires training labels."
       },
       {
         "id": "c",
-        "text": "It always gives zero losses after one update"
+        "text": "Minimizing likelihood becomes minimizing a loss."
       },
       {
         "id": "d",
-        "text": "It guarantees perfect probabilities of new data"
+        "text": "Estimating likelihood guarantees calibrated probabilities."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Logarithm is monotonous; a minus sign spins maximization to minimise. Sums of log values are also easier to handle than products.",
+    "explanation": "The logarithm preserves the ordering of positive likelihoods. Negating it converts maximization to minimization, while turning products of probabilities into sums.",
     "source": "theory logistic regression · Cells 12 and 13",
     "difficulty": "medium",
     "sourceRefs": [
@@ -2792,7 +2792,7 @@
     ]
   },
   {
-    "id": "in3050-bp-001",
+    "id": "in3050-bp-001-v2",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
@@ -2800,19 +2800,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Without them, the whole network can be written as one affine transformation"
+        "text": "Affine layers alone collapse to a single affine map."
       },
       {
         "id": "b",
-        "text": "They make training labels unnecessary"
+        "text": "Affine layers alone make the input dimension increase."
       },
       {
         "id": "c",
-        "text": "They always reduce the number of parameters to zero."
+        "text": "Affine layers alone prevent gradients from being defined."
       },
       {
         "id": "d",
-        "text": "They guarantee that all local minima will disappear"
+        "text": "Affine layers alone make the training labels redundant."
       }
     ],
     "correctOptionId": "a",
@@ -2827,31 +2827,31 @@
     ]
   },
   {
-    "id": "in3050-bp-002",
+    "id": "in3050-bp-002-v2",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
-    "prompt": "What makes a forward pass?",
+    "prompt": "What does a forward pass do?",
     "options": [
       {
         "id": "a",
-        "text": "Updates all weights without calculating a loss"
+        "text": "Updating weights from the loss and its derivatives"
       },
       {
         "id": "b",
-        "text": "Automatically Selects Valid Tags"
+        "text": "Choosing a learning rate from validation predictions"
       },
       {
         "id": "c",
-        "text": "Calculates activation and prediction from input through layers"
+        "text": "Computing layer activations and the final prediction"
       },
       {
         "id": "d",
-        "text": "Deleting neurons with a small gradient"
+        "text": "Removing hidden units whose gradients are small"
       }
     ],
     "correctOptionId": "c",
-    "explanation": "Forward pass uses the current parameters to calculate model output; then, the loss can be calculated.",
+    "explanation": "A forward pass applies the current weights and activations from input to output. The resulting prediction can then be compared with the target to calculate loss.",
     "source": "theory backpropagation · Cell 12",
     "difficulty": "easy",
     "sourceRefs": [
@@ -2862,7 +2862,7 @@
     ]
   },
   {
-    "id": "in3050-bp-003",
+    "id": "in3050-bp-003-v2",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
@@ -2870,19 +2870,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Classes cannot be separated by one straight line"
+        "text": "The two classes cannot be separated by one straight line."
       },
       {
         "id": "b",
-        "text": "XOR has only one class"
+        "text": "The two classes require input values outside the real numbers."
       },
       {
         "id": "c",
-        "text": "A bias always makes XOR linearly separable"
+        "text": "The two classes cannot be represented by numerical labels."
       },
       {
         "id": "d",
-        "text": "Input values cannot be represented numerically"
+        "text": "The two classes require a bias that changes for each example."
       }
     ],
     "correctOptionId": "a",
@@ -3053,31 +3053,31 @@
     ]
   },
   {
-    "id": "in3050-bp-009",
+    "id": "in3050-bp-009-v2",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
-    "prompt": "Why can numeric differences be used to control back-propagation?",
+    "prompt": "Why are finite differences useful for checking backpropagation?",
     "options": [
       {
         "id": "a",
-        "text": "They do not require a calculation of the loss"
+        "text": "They approximate the loss without evaluating any model outputs."
       },
       {
         "id": "b",
-        "text": "They always train faster than backpropagation"
+        "text": "They replace derivatives with exact updates for any step size."
       },
       {
         "id": "c",
-        "text": "They give an independent approximate gradient estimate for small parameter changes"
+        "text": "They independently approximate derivatives by perturbing parameters."
       },
       {
         "id": "d",
-        "text": "They are exact for any step value"
+        "text": "They compute gradients faster regardless of parameter count."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "A finite difference gradient can be compared to the analytical gradient of small examples. Step size and float errors affect precision.",
+    "explanation": "Finite differences estimate derivatives from small parameter perturbations and loss evaluations. Comparing them with backpropagation can reveal gradient errors; step size and floating-point precision limit accuracy.",
     "source": "theory backpropagation · Cell 23",
     "difficulty": "medium",
     "sourceRefs": [
@@ -3193,7 +3193,7 @@
     ]
   },
   {
-    "id": "in3050-eval-001",
+    "id": "in3050-eval-001-v2",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -3201,23 +3201,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Training kit after the model has seen all labels"
+        "text": "The training set used to estimate the final weights"
       },
       {
         "id": "b",
-        "text": "The validation set that already selected the hyperparameter"
+        "text": "The validation set used to choose hyperparameters"
       },
       {
         "id": "c",
-        "text": "That of all sets that give the highest accuracy"
+        "text": "The split that produces the highest reported accuracy"
       },
       {
         "id": "d",
-        "text": "A test set that has been excluded from practice and model selection"
+        "text": "A held-out test set used only after model selection"
       }
     ],
     "correctOptionId": "d",
-    "explanation": "Training data adapts parameters, validation selects model settings, and an unmoved test set results in a final assessment.",
+    "explanation": "Training fits parameters, validation selects settings, and the held-out test set estimates performance after those choices. Using test results for selection compromises that estimate.",
     "source": "theory evaluation and generalization · Cells 4 and 6",
     "difficulty": "easy",
     "sourceRefs": [
@@ -3380,31 +3380,31 @@
     }
   },
   {
-    "id": "in3050-eval-006",
+    "id": "in3050-eval-006-v2",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
-    "prompt": "What is the main point of nested cross-validation?",
+    "prompt": "What is the main purpose of nested cross-validation?",
     "options": [
       {
         "id": "a",
-        "text": "Both levels only train on the test set"
+        "text": "Inner folds evaluate the procedure; outer folds select settings."
       },
       {
         "id": "b",
-        "text": "The next CV removes the need for validation data"
+        "text": "Inner and outer folds both select settings on the same test split."
       },
       {
         "id": "c",
-        "text": "Outer CV selects labels and inner CV create features without data"
+        "text": "Inner and outer folds both estimate only the training error."
       },
       {
         "id": "d",
-        "text": "Inner CV selects settings; extreme CV evaluates the entire procedure on data it has not selected from"
+        "text": "Inner folds select settings; outer folds evaluate the procedure."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "External holdout folds are not used in the internal model selection. This is also the assessment of the effect of hyperparameter selection.",
+    "explanation": "Each outer training split contains an inner model-selection procedure. The outer held-out fold evaluates that entire procedure without taking part in its choices.",
     "source": "More on supervised learning · Paragraphs 99–103",
     "difficulty": "medium",
     "sourceRefs": [
@@ -3997,31 +3997,31 @@
     ]
   },
   {
-    "id": "in3050-reg-009",
+    "id": "in3050-reg-009-v2",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
-    "prompt": "A deep decision tree model has high variance. Why can baking help?",
+    "prompt": "A deep decision tree has high variance. Why can bagging help?",
     "options": [
       {
         "id": "a",
-        "text": "Bagging makes every three linear"
+        "text": "It makes each fitted tree a stable linear model."
       },
       {
         "id": "b",
-        "text": "Bootstrap guarantees that all models make different errors"
+        "text": "It forces all fitted trees to make independent errors."
       },
       {
         "id": "c",
-        "text": "Average or vote may dampen variation from unstable single models"
+        "text": "It averages unstable trees to reduce prediction variance."
       },
       {
         "id": "d",
-        "text": "Bagging makes all training examples independent of the labels"
+        "text": "It removes bootstrap duplicates before fitting each tree."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "When the single models are not perfectly correlated, aggregation can reduce variance. It is a trend, not a guarantee of better scores in any situation.",
+    "explanation": "Averaging trees whose errors are not perfectly correlated can reduce prediction variance. Bagging creates variation by fitting trees to bootstrap samples.",
     "source": "theory regularization and ensembles · Cells 22 and 28",
     "difficulty": "medium",
     "sourceRefs": [
@@ -4428,31 +4428,31 @@
     ]
   },
   {
-    "id": "in3050-deep-010",
+    "id": "in3050-deep-010-v2",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
-    "prompt": "How can a language model get training goals from normal text for next-token prediction?",
+    "prompt": "How does next-token prediction obtain training targets from ordinary text?",
     "options": [
       {
         "id": "a",
-        "text": "All tokens get the same random class"
+        "text": "The target is the same random token for every context."
       },
       {
         "id": "b",
-        "text": "The model must know the full text of the future when generating"
+        "text": "The target is the complete generated text from a future run."
       },
       {
         "id": "c",
-        "text": "Each word must always be given a manually-drawn bunding box"
+        "text": "The target is a hand-labeled category for every sentence."
       },
       {
         "id": "d",
-        "text": "The next token in the text is used as a target for the previous context"
+        "text": "The target is the next token following the observed context."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "The text order gives input-target pairs. During autoregressive generation, the previous token is used and the model produces the next token.",
+    "explanation": "Text provides its own input–target pairs: a preceding context is the input and the next token is the target. During generation, the model repeatedly predicts a continuation.",
     "source": "Deep learning · Paragraphs 269–285",
     "difficulty": "medium",
     "sourceRefs": [
@@ -4463,31 +4463,31 @@
     ]
   },
   {
-    "id": "in3050-deep-011",
+    "id": "in3050-deep-011-v2",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
-    "prompt": "What does that mean that a CNN learns features, without all feature engineering being done manually?",
+    "prompt": "What does it mean that a CNN learns features?",
     "options": [
       {
         "id": "a",
-        "text": "Training can be done without data or goal"
+        "text": "It learns without an objective once its architecture is fixed."
       },
       {
         "id": "b",
-        "text": "The filters are adapted to data, but architecture still has assumptions like location and weight sharing"
+        "text": "It learns filters within assumptions such as locality and sharing."
       },
       {
         "id": "c",
-        "text": "All data sets require the same CNN architecture"
+        "text": "It learns the same filters regardless of the training dataset."
       },
       {
         "id": "d",
-        "text": "The model has no inductive bias"
+        "text": "It learns without an inductive bias because all filters are trained."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "Learned representations reduces the need for hand-designed filters. The architectural selection continues to promote what is easy to learn.",
+    "explanation": "Training adjusts the filters rather than requiring them all to be hand-designed. Local receptive fields and shared weights still impose architectural assumptions.",
     "source": "Deep learning · Paragraphs 224–242",
     "difficulty": "medium",
     "sourceRefs": [

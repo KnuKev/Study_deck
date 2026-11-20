@@ -50,6 +50,9 @@ export interface Question {
   sourceRefs?: SourceReference[]
   table?: QuestionTable
   isDemo?: boolean
+  retired?: boolean
+  originalExam?: 'final-2024' | 'final-2025' | 'trial-2025'
+  unscored?: boolean
   examYear?: ExamYear
   trial2025?: boolean
   writtenAdaptation?: boolean
@@ -77,6 +80,7 @@ export interface SessionSummary {
   correct: number
   answered: number
   total: number
+  unscored: number
   percentage: number
   elapsedSeconds: number
   topics: { topicId: string; correct: number; answered: number; total: number }[]

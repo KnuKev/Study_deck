@@ -167,31 +167,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-006",
+    "id": "in3050-extra-ml-006-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "For one feature, the training average is 80 and the standard deviation 10. A new observation has value 95. What does the standardized value mean?",
+    "prompt": "A training feature has mean 80 and standard deviation 10. Standardize the new value 95. Which value and interpretation are correct?",
     "options": [
       {
         "id": "a",
-        "text": "1.5: the observation is located 1.5 training standard deviation above the training average."
+        "text": "1.5: it is above the training mean."
       },
       {
         "id": "b",
-        "text": "0.95: value is 95 percent of maximum."
+        "text": "0.95: it is below the training mean."
       },
       {
         "id": "c",
-        "text": "15: subtract only the average."
+        "text": "15: it is above the training mean."
       },
       {
         "id": "d",
-        "text": "−1.5: the observation is below the training average."
+        "text": "−1.5: it is below the training mean."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Standardisation returns \\(z=\\frac{95-80}{10}=1.5\\). The scaling uses the average and standard deviation of practice, not a min-max limit.",
+    "explanation": "The standardized value is (95 − 80)/10 = 1.5. The observation is 1.5 training-set standard deviations above the training mean.",
     "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 12–13 · question 7b",
     "difficulty": "medium",
     "sourceRefs": [
@@ -241,31 +241,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-008",
+    "id": "in3050-extra-ml-008-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "Three classes of \\(A\\), \\(B\\) and \\(C\\) occur among the five nearest neighbours such as \\([A, A, B, B, C]\\). What statement about common unbalanced CNN is correct?",
+    "prompt": "The five nearest neighbors have labels [A, A, B, B, C]. What happens with ordinary unweighted multiclass kNN voting?",
     "options": [
       {
         "id": "a",
-        "text": "\\(C\\) wins because it's least represented."
+        "text": "C wins because it has the smallest class count."
       },
       {
         "id": "b",
-        "text": "All five neighbours need to have different distances to count their votes."
+        "text": "A wins because it occurs first in the neighbor list."
       },
       {
         "id": "c",
-        "text": "An odd number for \\(k\\) does not prevent the equality of votes between classes in a multi-class problem."
+        "text": "A and B tie despite the odd number of neighbors."
       },
       {
         "id": "d",
-        "text": "\\(A\\) wins unambiguously because \\(k\\) is odd."
+        "text": "B wins because odd k removes multiclass voting ties."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "\\(A\\) and \\(B\\) have both votes. Odds prevent 50/50 reconciliation between two classes, but are not enough to avoid even the highest number of votes between several classes. The model needs a fixed rule for such cases.",
+    "explanation": "A and B each receive two votes. Odd k prevents a two-class voting tie, but does not prevent a tie for the most votes when there are three or more classes.",
     "source": "Adapted from 2022 Exam · PDF page 3 · question 4",
     "difficulty": "medium",
     "sourceRefs": [
@@ -307,31 +307,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-010",
+    "id": "in3050-extra-ml-010-v2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "A training kit does not contain identical feature vectors. You evaluate the 1-NN on the same observations, and let each observation be its own neighbour. What's correct?",
+    "prompt": "Every training feature vector is distinct. Evaluate 1-NN on the training set, allowing each point to be its own neighbor. What follows?",
     "options": [
       {
         "id": "a",
-        "text": "Test accuracy on new data must also become 100%."
+        "text": "Test accuracy is 100%; every new point matches a stored point."
       },
       {
         "id": "b",
-        "text": "The training accuracy can never be higher than 50%."
+        "text": "Training accuracy is 50%; self-neighbors cancel other votes."
       },
       {
         "id": "c",
-        "text": "This is equivalent to leave-one-out validation."
+        "text": "The result estimates generalization through leave-one-out validation."
       },
       {
         "id": "d",
-        "text": "The training accuracy becomes 100%, but this is not an independent measure of generalisation."
+        "text": "Training accuracy is 100%; this does not estimate generalization."
       }
     ],
     "correctOptionId": "d",
-    "explanation": "Each observation has the distance 0 to itself and gets its own label. This tests the recovery of training data. Leave-one-out would remove the observation from the training section before preaching.",
+    "explanation": "Each point is its own nearest neighbor and therefore receives its own label. Leave-one-out evaluation would exclude that point before prediction and would not guarantee 100% accuracy.",
     "source": "Supervised Learning · Paragraphs 117–121",
     "difficulty": "medium",
     "sourceRefs": [
@@ -673,31 +673,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-020",
+    "id": "in3050-extra-ml-020-v2",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
-    "prompt": "Which pair separates a model parameter from a hyperparameter by regular linear regression practice with gradient descent?",
+    "prompt": "In ordinary linear regression trained with gradient descent, how do a weight and the learning rate differ?",
     "options": [
       {
         "id": "a",
-        "text": "The weight \\(w\\) is learned from data; the learning rate \\(\\eta\\) is selected as training setting."
+        "text": "The weight is fitted; the learning rate is a training setting."
       },
       {
         "id": "b",
-        "text": "Both \\(w\\) and \\(\\eta\\) must have been measured directly in the test set."
+        "text": "The learning rate is fitted; the weight is a training setting."
       },
       {
         "id": "c",
-        "text": "The learning rate is always taught as an ordinary coefficient in the regression."
+        "text": "Both values are fitted as coefficients in ordinary regression."
       },
       {
         "id": "d",
-        "text": "The number of features is the target variable, while the weight is a class label."
+        "text": "Both values are selected by optimizing the final test score."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "The model weights are adapted by the training algorithm. The learning rate determines how the alignment occurs and is here a selected hyperparameter, not an ordinary regression coefficient.",
+    "explanation": "Gradient descent fits the weight from training data. In ordinary regression training, the learning rate is a chosen hyperparameter controlling update size.",
     "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 6–8 · question 3c",
     "difficulty": "medium",
     "sourceRefs": [
@@ -743,7 +743,7 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-022",
+    "id": "in3050-extra-ml-022-v2",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
@@ -751,23 +751,23 @@
     "options": [
       {
         "id": "a",
-        "text": "It must have minimised logistical cross-entropy globally."
+        "text": "It found the separator with the smallest logistic loss."
       },
       {
         "id": "b",
-        "text": "It has found one separator for the training data; other separators can generalise differently."
+        "text": "It found a separator, which need not be the only one."
       },
       {
         "id": "c",
-        "text": "It has found the unique separator that exists."
+        "text": "It found the unique separator of the training examples."
       },
       {
         "id": "d",
-        "text": "Zero exercise error proves zero error on all future data."
+        "text": "It found a separator guaranteed to classify future examples."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "Linear separability can give many possible limits. The stop condition of the receiver describes the classification of the training kit, not evidence of optimal generalisation or resolution of another loss function.",
+    "explanation": "Zero training errors show that the algorithm found a separating boundary. The data can admit many separators, and training accuracy alone does not establish how they generalize.",
     "source": "Perceptron and Linear Regression · Paragraphs 98–104",
     "difficulty": "medium",
     "sourceRefs": [
@@ -887,31 +887,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-026",
+    "id": "in3050-extra-ml-026-v2",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
-    "prompt": "Three One-vs-Rest models produce \\(A=0.70\\), \\(B=0.60\\) and \\(C=0.10\\). You should select exactly one class at the highest score. What is selected?",
+    "prompt": "One-vs-Rest classifiers give scores A = 0.70, B = 0.60 and C = 0.10. The task requires exactly one class, chosen by argmax. What is predicted?",
     "options": [
       {
         "id": "a",
-        "text": "\\(A\\); the cuts do not need to add up to 1 for the argmax rule to be used."
+        "text": "A, because it has the highest score."
       },
       {
         "id": "b",
-        "text": "\\(B\\) because 0.60 is closest to 0.50."
+        "text": "B, because its score is closest to 0.5."
       },
       {
         "id": "c",
-        "text": "\\(A\\) and \\(B\\) simultaneously, even if the task requires one class."
+        "text": "A and B, because both exceed 0.5."
       },
       {
         "id": "d",
-        "text": "None; One-vs-Rest can never handle such cuts."
+        "text": "None, because the scores do not sum to one."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Argmax selects \\(A\\) because 0.70 is largest. Separate rent One-vs-Rest corps are not automatically a normalized common class distribution.",
+    "explanation": "Argmax chooses A because 0.70 is the largest score. Independently fitted One-vs-Rest scores need not sum to one for this decision rule to work.",
     "source": "Adapted from 2020 Exam with Suggested Solutions · PDF page 12 · question 6d",
     "difficulty": "medium",
     "sourceRefs": [
@@ -922,31 +922,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-027",
+    "id": "in3050-extra-ml-027-v2",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
-    "prompt": "Six unordered fruit types are coded as 1 measures to 6 and trained with square regression losses. What is the main problem with this encoding?",
+    "prompt": "Six unordered fruit classes are encoded as numbers 1 through 6 and fitted using squared regression loss. What is the problem?",
     "options": [
       {
         "id": "a",
-        "text": "All six classes are treated equally far apart."
+        "text": "It makes every pair of fruit types equally far apart."
       },
       {
         "id": "b",
-        "text": "The loss introduces any numerical order and distance between the types of fruit."
+        "text": "It imposes an arbitrary ordering and distance on fruit types."
       },
       {
         "id": "c",
-        "text": "Square loss does not accept integer as target."
+        "text": "It prevents integer labels from entering the loss function."
       },
       {
         "id": "d",
-        "text": "The model gets six independent probabilities that automatically sums to 1."
+        "text": "It produces a separate normalized probability for each fruit."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "To confuse class 1 with 6 is punishable much more than to confuse 1 with 2, although the numerical order is only a code. A nominal multiclass problem needs a suitable class model and target encoding.",
+    "explanation": "Squared loss penalizes confusing class 1 with class 6 more than confusing class 1 with class 2. That distance is arbitrary for unordered classes; a suitable classification model avoids imposing it.",
     "source": "Adapted from 2020 Exam with Suggested Solutions · PDF pages 11–12 · question 6b–c",
     "difficulty": "medium",
     "sourceRefs": [
@@ -1097,31 +1097,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-032",
+    "id": "in3050-extra-ml-032-v2",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
-    "prompt": "The model \\(p=\\sigma (2x-1)\\) is used at the threshold 0.5. All weights and bias are multiplied by 3. What happens to inputs that are not within the decision boundary?",
+    "prompt": "A logistic classifier uses p = σ(2x − 1) and threshold 0.5. Multiply both weight and bias by 3. What changes for points away from the decision boundary?",
     "options": [
       {
         "id": "a",
-        "text": "The decision boundary is moved from \\(x=0.5\\) to \\(x=1.5\\)."
+        "text": "The boundary shifts; predicted probabilities stay fixed."
       },
       {
         "id": "b",
-        "text": "The class selection is unchanged, but the probabilities are pushed closer to 0 or 1."
+        "text": "The boundary stays fixed; probabilities become more extreme."
       },
       {
         "id": "c",
-        "text": "All class choices are turned around."
+        "text": "The boundary stays fixed; predicted classes are reversed."
       },
       {
         "id": "d",
-        "text": "Both class choices and probabilities are unchanged."
+        "text": "The boundary stays fixed; probabilities remain unchanged."
       }
     ],
     "correctOptionId": "b",
-    "explanation": "The new login is \\(3(2x-1)\\). Positive scaling preserves the sign and the zero point, so the 0.5 threshold classes are equal. The size of the logo is increasing, so the sigmoid gives more extreme probabilities.",
+    "explanation": "The new logit is 3(2x − 1). Its sign and zero remain unchanged, preserving classifications at threshold 0.5, while larger absolute logits produce probabilities closer to 0 or 1.",
     "source": "Adapted from 2020 Mock Exam with Suggested Solutions · PDF page 12 · classification threshold",
     "difficulty": "hard",
     "sourceRefs": [
@@ -1136,31 +1136,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-033",
+    "id": "in3050-extra-ml-033-v2",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
-    "prompt": "An MLP with threshold functions in hidden layers can represent XOR. What is the problem of training these hidden layers with the usual gradient descent?",
+    "prompt": "A hidden layer of threshold units can represent XOR. Why is ordinary gradient descent unsuitable for training those units?",
     "options": [
       {
         "id": "a",
-        "text": "A hidden layer cannot have more than one node."
+        "text": "Hidden units cannot combine more than one input feature."
       },
       {
         "id": "b",
-        "text": "Back-propagation requires continuous target values."
+        "text": "Backpropagation requires targets to be continuous values."
       },
       {
         "id": "c",
-        "text": "The threshold function has zero derivative almost everywhere and is not derivable at the leap."
+        "text": "The derivative is zero almost everywhere and undefined at the threshold."
       },
       {
         "id": "d",
-        "text": "XOR becomes linearly separable only by changing the learning rate."
+        "text": "The learning rate changes which Boolean functions are linearly separable."
       }
     ],
     "correctOptionId": "c",
-    "explanation": "The ability to represent and train are different questions. Hidden threshold nodes may express non-linear functions, but their local derivative does not provide a useful common gradient signal.",
+    "explanation": "A threshold unit has zero derivative away from its threshold and is not differentiable at the threshold. Representing a function and learning it with useful gradients are separate requirements.",
     "source": "Adapted from 2022 Exam · PDF page 4 · question 7b",
     "difficulty": "medium",
     "sourceRefs": [
@@ -1459,27 +1459,27 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-042",
+    "id": "in3050-extra-ml-042-v2",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
-    "prompt": "Two identical sigmoid neurons in the same hidden layer are initialized with identical weights, bias and weights. They get the same inputs and are updated with deterministic gradient descent. Why is this symmetry unfortunate?",
+    "prompt": "Two hidden sigmoid neurons have identical input weights, biases and output weights. They receive the same inputs and deterministic gradient updates. Why is this symmetry undesirable?",
     "options": [
       {
         "id": "a",
-        "text": "The network does not get a rainy forward pass."
+        "text": "They must produce different outputs despite their identical inputs."
       },
       {
         "id": "b",
-        "text": "The nerves receive identical activations and gradients and can continue to learn the same feature."
+        "text": "They receive identical gradients and can keep learning the same feature."
       },
       {
         "id": "c",
-        "text": "They must automatically change the signs of all weights at the next step."
+        "text": "They cancel each other's gradients and force every layer to stop learning."
       },
       {
         "id": "d",
-        "text": "Identical weights always give different hidden participants."
+        "text": "They must reverse the signs of their weights after the first update."
       }
     ],
     "correctOptionId": "b",
@@ -1944,31 +1944,31 @@
     }
   },
   {
-    "id": "in3050-extra-ml-054",
+    "id": "in3050-extra-ml-054-v2",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
-    "prompt": "You have to select \\(k\\) for kNN. Candidates get different best \\(k\\) when the development set is split into two random parts. What is the most reasonable interpretation?",
+    "prompt": "Two random subsets of a validation set favor different values of k for kNN. What is the most reasonable interpretation?",
     "options": [
       {
         "id": "a",
-        "text": "The model selection can be sensitive to what observations are evaluated; more robust validation may be useful."
+        "text": "Validation rankings can vary with the sample; use more robust validation."
       },
       {
         "id": "b",
-        "text": "NNTP must be implemented error because subsets should always give the same ranking."
+        "text": "kNN is implemented incorrectly whenever two subsets choose different k."
       },
       {
         "id": "c",
-        "text": "The maximum \\(k\\) must be automatically correct on both subsets."
+        "text": "The largest k is preferable whenever two validation rankings disagree."
       },
       {
         "id": "d",
-        "text": "The final test set should be used until the two options are identical."
+        "text": "Repeatedly selecting k on the test set removes model-selection bias."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Selection variation can change measured results and ratings. Cross-validation may reduce the dependence of a single split, but does not guarantee identical choices.",
+    "explanation": "Validation performance depends on the examples being evaluated. Cross-validation can make selection less dependent on one split, without guaranteeing identical rankings across samples.",
     "source": "Supervised Learning · Paragraphs 131–146",
     "difficulty": "medium",
     "sourceRefs": [
@@ -2115,31 +2115,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-059",
+    "id": "in3050-extra-ml-059-v2",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
-    "prompt": "What statement about statistical inductive bias is correct?",
+    "prompt": "What is a statistical inductive bias?",
     "options": [
       {
         "id": "a",
-        "text": "There are assumptions that limit or prefer what the model can learn, such as linear relationships."
+        "text": "Assumptions that restrict or favor particular learned relationships"
       },
       {
         "id": "b",
-        "text": "That's always the same thing as an additive bee joints in one node."
+        "text": "An additive constant that shifts the output of every model"
       },
       {
         "id": "c",
-        "text": "It only means a bug in programming."
+        "text": "A numerical error caused only by a flawed optimizer implementation"
       },
       {
         "id": "d",
-        "text": "It's completely removed just using a larger test set."
+        "text": "A sampling error removed by increasing the size of the final test set"
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Inductive biases are the assumptions of the model or learning procedure that make generalisation from final data possible. This is a different use of the word than the bias parameter \\(b\\) in a linear score.",
+    "explanation": "An inductive bias consists of assumptions or preferences that guide generalization from finite data. It is distinct from an additive bias parameter in a neuron.",
     "source": "Adapted from 2021 Exam with Suggested Solutions · PDF page 9 · question 6c",
     "difficulty": "medium",
     "sourceRefs": [
@@ -2189,31 +2189,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-061",
+    "id": "in3050-extra-ml-061-v2",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
-    "prompt": "Which pair describes two common sources of variation between trees in a random forest?",
+    "prompt": "Which pair describes common sources of variation between trees in a random forest?",
     "options": [
       {
         "id": "a",
-        "text": "Just to give each three a different name."
+        "text": "Different tree names and identical copies of every observation"
       },
       {
         "id": "b",
-        "text": "Bootstrap samples of observations and random feature samples by split-candidates."
+        "text": "Bootstrap observations and random feature subsets at splits"
       },
       {
         "id": "c",
-        "text": "Identical observations and identical features at all elections."
+        "text": "Identical observations and every feature considered at every split"
       },
       {
         "id": "d",
-        "text": "A new test set for each node and no training data."
+        "text": "New test sets for each split and no bootstrap training samples"
       }
     ],
     "correctOptionId": "b",
-    "explanation": "Bootstrap changes what observations a tree sees. Random feature selections by split make strong features not necessarily dominate all trees in the same way.",
+    "explanation": "Bootstrap samples vary which observations each tree sees. Random feature subsets at splits help prevent the same strong features from dominating every tree.",
     "source": "Adapted from 2022 Exam · PDF page 5 · question 8",
     "difficulty": "easy",
     "sourceRefs": [
@@ -2228,7 +2228,7 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-062",
+    "id": "in3050-extra-ml-062-v2",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
@@ -2236,23 +2236,23 @@
     "options": [
       {
         "id": "a",
-        "text": "\\(0\\)"
+        "text": "\\((1/4)^4\\)"
       },
       {
         "id": "b",
-        "text": "\\(\\frac{3}{4}\\)"
+        "text": "\\((3/4)^1\\)"
       },
       {
         "id": "c",
-        "text": "\\((\\frac{3}{4})^{4}\\approx 0.316\\)"
+        "text": "\\((3/4)^4\\)"
       },
       {
         "id": "d",
-        "text": "\\(\\frac{1}{4}\\)"
+        "text": "\\((1/4)^1\\)"
       }
     ],
     "correctOptionId": "c",
-    "explanation": "For each of the four independent moves, there is a chance to avoid the \\(\\frac{3}{4}\\) observation. The probability of avoiding it in all four ways is the product \\((\\frac{3}{4})^{4}\\).",
+    "explanation": "Each independent draw avoids the chosen observation with probability 3/4. Avoiding it in all four draws therefore has probability (3/4)^4, approximately 0.316.",
     "source": "Adapted from Suggested Solutions for the 2022 Exam · PDF page 7 · bootstrap",
     "difficulty": "medium",
     "sourceRefs": [
@@ -2516,31 +2516,31 @@
     ]
   },
   {
-    "id": "in3050-extra-ml-070",
+    "id": "in3050-extra-ml-070-v2",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
-    "prompt": "What statement about selecting the regularisation strength fits a training, validation and testing configuration?",
+    "prompt": "How should regularization strength be selected with separate training, validation and test sets?",
     "options": [
       {
         "id": "a",
-        "text": "Compare the candidates for validation data and keep the test set for the final assessment."
+        "text": "Choose λ on validation data; evaluate once on test data."
       },
       {
         "id": "b",
-        "text": "Always choose the \\(\\lambda\\) that gives the lowest unregularised training error."
+        "text": "Choose λ by minimizing unregularized training error."
       },
       {
         "id": "c",
-        "text": "Always use the same \\(\\lambda\\) for all data sets without evaluation."
+        "text": "Choose λ once and use it unchanged for every new dataset."
       },
       {
         "id": "d",
-        "text": "Let each test sample phase determine its own \\(\\lambda\\)."
+        "text": "Choose a separate λ by examining each test example's label."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "The regulatory strength controls a weighing which must be assessed on data outside the alignment of the model weights. An unaffected test set is used after the settings have been selected.",
+    "explanation": "Compare regularization strengths on validation data after fitting each candidate on training data. Reserve the test set for evaluation after the strength has been selected.",
     "source": "Adapted from 2023 Exam Solutions Guide · PDF page 8 · question 5c",
     "difficulty": "easy",
     "sourceRefs": [

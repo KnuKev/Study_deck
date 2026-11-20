@@ -1,6 +1,6 @@
 [
   {
-    "id": "in3050-2024-01",
+    "id": "in3050-original-final-2024-1",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -33,14 +33,15 @@
         "location": "Question 1 · page 1"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-02",
+    "id": "in3050-original-final-2024-2",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
-    "type": "multi",
-    "prompt": "How are AI, machine learning, and deep learning related? Select two true statements.",
+    "type": "choice",
+    "prompt": "Which statement is true? (you may interpret “kind of” as “subset of”)",
     "options": [
       {
         "id": "a",
@@ -59,8 +60,8 @@
         "text": "Deep Learning is a kind of Machine Learning"
       }
     ],
-    "correctOptionId": "b,d",
-    "explanation": "The nesting is deep learning within machine learning within AI. The source marks D, but B is also true, so this version asks for both.",
+    "correctOptionId": "d",
+    "explanation": "Source issue: the paper asks for one true statement and marks D, but B and D are both true. Deep learning is a subset of machine learning, which is a subset of AI. This item is excluded from the score.",
     "difficulty": "easy",
     "source": "Question 2 · page 1",
     "sourceRefs": [
@@ -69,14 +70,16 @@
         "location": "Question 2 · page 1"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024",
+    "unscored": true
   },
   {
-    "id": "in3050-2024-03",
+    "id": "in3050-original-final-2024-3",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "Which statement about machine learning and rule-based AI is false?",
+    "prompt": "Which statement is false?",
     "options": [
       {
         "id": "a",
@@ -105,10 +108,11 @@
         "location": "Question 3 · page 1"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-04",
+    "id": "in3050-original-final-2024-4",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -142,14 +146,15 @@
       }
     ],
     "examYear": 2024,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-05",
+    "id": "in3050-original-final-2024-5",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
-    "prompt": "In simulated annealing, which temperature adjustment increases exploitation while keeping the proposal mechanism fixed?",
+    "prompt": "In simulated annealing, how can we increase “exploitation”?",
     "options": [
       {
         "id": "a",
@@ -176,17 +181,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 5 · page 1"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 4 · PDF page 1"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-06",
+    "id": "in3050-original-final-2024-6",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
@@ -219,10 +220,11 @@
         "location": "Question 6 · page 1"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-07",
+    "id": "in3050-original-final-2024-7",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
@@ -253,21 +255,17 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 7 · page 2"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 2 · PDF page 1"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-08",
+    "id": "in3050-original-final-2024-8",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
-    "prompt": "Which optimization problem is continuous when aircraft dimensions can vary over real-valued ranges?",
+    "prompt": "Which one is NOT a “Discrete” optimization problem?",
     "options": [
       {
         "id": "a",
@@ -294,17 +292,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 8 · page 2"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 3 · PDF page 1"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-09",
+    "id": "in3050-original-final-2024-9",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -337,10 +331,11 @@
         "location": "Question 9 · page 2"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-10",
+    "id": "in3050-original-final-2024-10",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
@@ -371,21 +366,17 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 10 · page 2"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 15 · PDF page 3–4"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-11",
+    "id": "in3050-original-final-2024-11",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "Given these example loan applications, which listed algorithm is a natural choice for classifying approval from mainly categorical tabular features?",
+    "prompt": "Consider the problem of predicting whether a loan application will be approved (Yes/No) based on applicant information using the following dataset: What is the most common algorithm to solve this problem given the types of features?",
     "options": [
       {
         "id": "a",
@@ -474,10 +465,11 @@
           "No"
         ]
       ]
-    }
+    },
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-12",
+    "id": "in3050-original-final-2024-12",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -508,17 +500,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 12 · page 3"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 11 · PDF page 3"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-13",
+    "id": "in3050-original-final-2024-13",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -549,17 +537,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 13 · page 3"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 12 · PDF page 3"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-14",
+    "id": "in3050-original-final-2024-14",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -592,10 +576,11 @@
         "location": "Question 14 · page 3–4"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-15",
+    "id": "in3050-original-final-2024-15",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
@@ -611,7 +596,7 @@
       },
       {
         "id": "c",
-        "text": "It applies a threshold to one affine score, so its decision boundary is linear."
+        "text": "A single-layer perceptron lacks multiple layers and non-linear activation functions that would allow it to model complex relationships in data."
       },
       {
         "id": "d",
@@ -619,28 +604,25 @@
       }
     ],
     "correctOptionId": "c",
-    "explanation": "The step is applied to one affine score, so its decision boundary is a hyperplane. XOR requires a nonlinear boundary, which a suitable hidden layer can express.",
+    "explanation": "Source issue: C is the intended answer, but the wording is misleading: a step activation is already nonlinear. The limitation is that thresholding a single affine score produces a linear decision boundary. XOR needs a nonlinear boundary, obtainable using a suitable hidden layer. This item is excluded from the score.",
     "difficulty": "medium",
     "source": "Question 15 · page 4",
     "sourceRefs": [
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 15 · page 4"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 22 · PDF page 5"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024",
+    "unscored": true
   },
   {
-    "id": "in3050-2024-16",
+    "id": "in3050-original-final-2024-16",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
-    "prompt": "Let \\(h(x,y)=(a+bx+cy)^2\\). What is the gradient at the origin \\((0,0)\\)?",
+    "prompt": "Suppose you have a function h(x,y) = (a + bx + cy)^2 where x and y are input variables and a, b, and c are some constants. What is the gradient of h at the origin (x=0, y =0)",
     "options": [
       {
         "id": "a",
@@ -669,10 +651,11 @@
         "location": "Question 16 · page 4"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-17",
+    "id": "in3050-original-final-2024-17",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -703,21 +686,17 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 17 · page 4–5"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 10 · PDF page 2"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-18",
+    "id": "in3050-original-final-2024-18",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
-    "prompt": "On a fixed dataset, what is common to the sum of squared errors (SE), mean squared error (MSE), and root mean squared error (RMSE) for the same model?",
+    "prompt": "Consider a simple linear regression problem with parameters w_0, w_1, …., w_m To measure the performance, one may consider, mean squared error (MSE), root mean squared error (RMSE), or squared error (SE). What is common among MSE, RMSE, and SE?",
     "options": [
       {
         "id": "a",
@@ -744,17 +723,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 18 · page 5"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 16 · PDF page 4"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-19",
+    "id": "in3050-original-final-2024-19",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
@@ -785,17 +760,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 19 · page 5"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 19 · PDF page 4"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-20",
+    "id": "in3050-original-final-2024-20",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
@@ -828,10 +799,11 @@
         "location": "Question 20 · page 5"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-21",
+    "id": "in3050-original-final-2024-21",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
@@ -862,17 +834,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 21 · page 6"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 18 · PDF page 4"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-22",
+    "id": "in3050-original-final-2024-22",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
@@ -905,10 +873,11 @@
         "location": "Question 22 · page 6"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-23",
+    "id": "in3050-original-final-2024-23",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
@@ -941,10 +910,11 @@
         "location": "Question 23 · page 6"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-24",
+    "id": "in3050-original-final-2024-24",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
@@ -977,10 +947,11 @@
         "location": "Question 24 · page 6"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-25",
+    "id": "in3050-original-final-2024-25",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
@@ -1011,21 +982,17 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 25 · page 7"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 5 · PDF page 1–2"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-26",
+    "id": "in3050-original-final-2024-26",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "multi",
-    "prompt": "Apply PMX to P1 = (3, 4, 8 | 2, 7, 1 | 6, 5) and P2 = (4, 2, 5 | 1, 6, 8 | 3, 7) using the marked middle segments. Select the two resulting offspring.",
+    "prompt": "Suppose we use Partially Mapped Crossover (PMX) on the following two parent tours with a randomly chosen cut point between the 3rd and 4th bits and another cut point between the 6th and 7th bits: Parent 1: P1 = (3, 4, 8, ∣2, 7, 1,∣ 6, 5) Parent 2: P2 = (4, 2, 5, ∣1, 6, 8,∣ 3, 7) Hint: Partially Mapped Crossover (PMX) algorithm: ● 1. Substring selection: Cut each parent into two substrings, and then select one substring for each parent at random. ● 2. Substring exchange: Exchange the two selected substrings to produce proto- offspring. ● 3. Mapping list determination: Determine the mapping relationship based on the selected substrings. ● 4. Offspring legalization: Legalize proto-offspring with the mapping relationship. What offspring can PMX generate from these parents? (Choose TWO answers)",
     "options": [
       {
         "id": "a",
@@ -1045,19 +1012,23 @@
       },
       {
         "id": "e",
-        "text": "(3, 4, 2, 1, 6, 8, 7, 5)"
+        "text": "(4, 2, 5, 1, 6, 8, 3, 7)"
       },
       {
         "id": "f",
-        "text": "(4, 2, 7, 1, 6, 8, 5, 3)"
+        "text": "(3, 4, 2, 1, 6, 8, 7, 5)"
       },
       {
         "id": "g",
+        "text": "(4, 2, 7, 1, 6, 8, 5, 3)"
+      },
+      {
+        "id": "h",
         "text": "(3, 4, 8, 2, 7, 1, 6, 5)"
       }
     ],
-    "correctOptionId": "b,e",
-    "explanation": "The segment maps 2↔1, 7↔6 and 1↔8. Keeping the first segment sends outside conflicts 2→1→8 and 7→6. Keeping the second sends 8→1→2 and 6→7.",
+    "correctOptionId": "b,f",
+    "explanation": "The segment maps 2↔1, 7↔6 and 1↔8. Keeping the first segment sends outside conflicts 2→1→8 and 7→6. Keeping the second sends 8→1→2 and 6→7. The source repeats the same incorrect tour in C and E; both copies are retained.",
     "difficulty": "hard",
     "source": "Question 26 · page 7",
     "sourceRefs": [
@@ -1066,14 +1037,15 @@
         "location": "Question 26 · page 7"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-27",
+    "id": "in3050-original-final-2024-27",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
-    "prompt": "For which listed task is a general-purpose genetic algorithm typically a poor fit compared with a specialized algorithm?",
+    "prompt": "For which of the following problems is a genetic algorithm generally not very efficient? Hint: ● N-Queens Problem: For an NxN chess board, place N queens such that no queen is able to attack another. ● Job-Shop Scheduling : Assigning a series of jobs to resources (like machines) while minimizing total completion time and ensuring no overlap for jobs requiring the same machine. ● Graph Coloring Problem: Coloring the graph vertices in such a way that no two adjacent vertices have the same color. ● Knapsack Problem: Given a set of items, each with a weight and a value, determine which items to include in the collection so that the total weight is less than or equal to a given limit and the total value is as large as possible.",
     "options": [
       {
         "id": "a",
@@ -1106,10 +1078,11 @@
         "location": "Question 27 · page 8"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-28",
+    "id": "in3050-original-final-2024-28",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
@@ -1140,21 +1113,17 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 28 · page 8"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 7 · PDF page 2"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-29",
+    "id": "in3050-original-final-2024-29",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
-    "prompt": "Roulette-wheel selection is used when most individuals have similar fitness values. What issue can result, and what alternative addresses it?",
+    "prompt": "You are using a roulette wheel selection method in a genetic algorithm for a problem with a fitness landscape where most individuals have similar fitness values. What issue might arise with this selection method, and which alternative selection strategy would address this issue?",
     "options": [
       {
         "id": "a",
@@ -1181,17 +1150,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 29 · page 8"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 8 · PDF page 2"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-30",
+    "id": "in3050-original-final-2024-30",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "multi",
@@ -1230,17 +1195,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 30 · page 9"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 9 · PDF page 2"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-31",
+    "id": "in3050-original-final-2024-31",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
@@ -1273,14 +1234,15 @@
         "location": "Question 31 · page 9"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-32",
+    "id": "in3050-original-final-2024-32",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
-    "prompt": "Fitness sharing uses \\(\\sigma_{\\mathrm{share}}=2\\) and \\(sh(d)=1-d/\\sigma_{\\mathrm{share}}\\) for neighbors inside the niche. An individual with fitness 8 is at distance 1 from each of two neighbors (fitness 9 and 7). Including self-sharing, what is its shared fitness?",
+    "prompt": "If an evolutionary algorithm applies fitness sharing with a niche size 𝜎_share=2, and three individuals with fitness values [9, 8, 7] are located within a distance less than 𝜎_share, calculate the shared fitness for the individual with fitness 8. Assume sharing function sh(d)=1−d/𝜎_share.",
     "options": [
       {
         "id": "a",
@@ -1300,7 +1262,7 @@
       }
     ],
     "correctOptionId": "b",
-    "explanation": "The denominator includes self-sharing of 1 and two contributions of \\(1-1/2=0.5\\) each. Shared fitness is \\(8/(1+0.5+0.5)=4\\).",
+    "explanation": "Source issue: the distances are not specified, so the shared fitness cannot be uniquely determined. The paper marks B (4), which follows if both neighbor distances are 1 and self-sharing is included: \\(8/(1+0.5+0.5)=4\\). Merely stating that the neighbors are within distance 2 is insufficient. This item is excluded from the score.",
     "difficulty": "hard",
     "source": "Question 32 · page 9",
     "sourceRefs": [
@@ -1309,10 +1271,12 @@
         "location": "Question 32 · page 9"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024",
+    "unscored": true
   },
   {
-    "id": "in3050-2024-33",
+    "id": "in3050-original-final-2024-33",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -1345,10 +1309,11 @@
         "location": "Question 33 · page 9"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-34",
+    "id": "in3050-original-final-2024-34",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -1381,10 +1346,11 @@
         "location": "Question 34 · page 10"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-35",
+    "id": "in3050-original-final-2024-35",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -1415,17 +1381,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 35 · page 10"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 13 · PDF page 3"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-36",
+    "id": "in3050-original-final-2024-36",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -1458,10 +1420,11 @@
         "location": "Question 36 · page 10"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-37",
+    "id": "in3050-original-final-2024-37",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
@@ -1494,14 +1457,15 @@
         "location": "Question 37 · page 10"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-38",
+    "id": "in3050-original-final-2024-38",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
-    "prompt": "Unregularized logistic regression perfectly separates the training set but performs poorly on held-out examples. Which issue best fits these symptoms?",
+    "prompt": "In a situation where the data is linearly separable, a logistic regression model is trained without regularization. This model achieves perfect accuracy on the training set but fails on the test set. Which issue best explains this performance?",
     "options": [
       {
         "id": "a",
@@ -1532,21 +1496,17 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 38 · page 10"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 20 · PDF page 4–5"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-39",
+    "id": "in3050-original-final-2024-39",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "multi",
-    "prompt": "Select two correct statements about regularization and adding training data.",
+    "prompt": "Which of the following statements are true? (Select TWO)",
     "options": [
       {
         "id": "a",
@@ -1579,14 +1539,15 @@
         "location": "Question 39 · page 11"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-40",
+    "id": "in3050-original-final-2024-40",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
-    "prompt": "Linear regression combines ridge (\\(\\lambda_2=0.5\\)) and lasso (\\(\\lambda_1=0.3\\)). For feature weights \\(w=(2,-1,3)\\), what total penalty is added?",
+    "prompt": "In a regularized linear regression model, both Ridge (L2) and and Lasso (L1) regularization terms are applied. The regularization parameters are set as λ_2=0.5 and λ_1=0.3 for L1 regularization. Given the weight vector w=[2, -1, 3], what is the total penalty added to the loss function by the regularization terms? (Hint: Calculate the L2 penalty and the L1 penalty separately, then add them to get the total penalty.)",
     "options": [
       {
         "id": "a",
@@ -1615,10 +1576,11 @@
         "location": "Question 40 · page 11"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-41",
+    "id": "in3050-original-final-2024-41",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -1655,10 +1617,11 @@
         "location": "Question 41 · page 11"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-42",
+    "id": "in3050-original-final-2024-42",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -1689,17 +1652,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 42 · page 11"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 26 · PDF page 6"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-43",
+    "id": "in3050-original-final-2024-43",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -1732,10 +1691,11 @@
         "location": "Question 43 · page 12"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-44",
+    "id": "in3050-original-final-2024-44",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -1766,17 +1726,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 44 · page 12"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 27 · PDF page 6"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-45",
+    "id": "in3050-original-final-2024-45",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -1807,17 +1763,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 45 · page 12"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 28 · PDF page 6"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-46",
+    "id": "in3050-original-final-2024-46",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -1850,10 +1802,11 @@
         "location": "Question 46 · page 12"
       }
     ],
-    "examYear": 2024
+    "examYear": 2024,
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-47",
+    "id": "in3050-original-final-2024-47",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "multi",
@@ -1892,18 +1845,14 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 47 · page 13"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 32 · PDF page 7"
       }
     ],
     "examYear": 2024,
     "historicalOnly": true,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-48",
+    "id": "in3050-original-final-2024-48",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -1934,18 +1883,14 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 48 · page 13"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 33 · PDF page 7"
       }
     ],
     "examYear": 2024,
     "historicalOnly": true,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-49",
+    "id": "in3050-original-final-2024-49",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "multi",
@@ -1980,38 +1925,34 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 49 · page 13"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 34 · PDF page 7"
       }
     ],
     "examYear": 2024,
     "historicalOnly": true,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2024-50",
+    "id": "in3050-original-final-2024-50",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "multi",
-    "prompt": "Select two correct statements about exploration, exploitation, and optima in a minimization problem.",
+    "prompt": "Choose ** two correct statements** among all statements:",
     "options": [
       {
         "id": "a",
-        "text": "Improving only to better neighbors can end at a local minimum."
+        "text": "Pure exploitation may find a local optimum by gradually improving solutions until we can’t find a better solution"
       },
       {
         "id": "b",
-        "text": "A global minimum can have a higher objective than a neighboring solution."
+        "text": "Global optimum can be worse than some neighboring solutions."
       },
       {
         "id": "c",
-        "text": "Exploration tries unfamiliar regions that might contain better solutions."
+        "text": "Exploration means moving (randomly) around in the search landscape, trying to find new types of solutions that potentially are better than what we have found before."
       },
       {
         "id": "d",
-        "text": "A local minimum has an immediately neighboring solution with a strictly smaller objective."
+        "text": "Local optimum can be worse than some neighboring solutions."
       }
     ],
     "correctOptionId": "a,c",
@@ -2022,17 +1963,13 @@
       {
         "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf",
         "location": "Question 50 · page 13"
-      },
-      {
-        "path": "IN3050/old_exams/trial-exam-2025.pdf",
-        "location": "Part 1, question 1 · PDF page 1"
       }
     ],
     "examYear": 2024,
-    "trial2025": true
+    "originalExam": "final-2024"
   },
   {
-    "id": "in3050-2025-1-a",
+    "id": "in3050-original-final-2025-1-a",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -2065,10 +2002,11 @@
         "location": "Question 1(a) · page 1"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-b",
+    "id": "in3050-original-final-2025-1-b",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -2101,10 +2039,11 @@
         "location": "Question 1(b) · page 2"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-c",
+    "id": "in3050-original-final-2025-1-c",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -2138,14 +2077,15 @@
       }
     ],
     "examYear": 2025,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-d",
+    "id": "in3050-original-final-2025-1-d",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
-    "prompt": "Which statement correctly distinguishes exploration from exploitation?",
+    "prompt": "Which statement is Correct about Exploration and Exploitation?",
     "options": [
       {
         "id": "a",
@@ -2174,14 +2114,15 @@
         "location": "Question 1(d) · page 3"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-e",
+    "id": "in3050-original-final-2025-1-e",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
-    "prompt": "Hill climbing repeatedly replaces its current solution with a better neighbor. What is its main limitation?",
+    "prompt": "In the hill climbing search method, we pick a solution (e.g., at random) and compare it to neighbor solutions. If the neighbor is better, we will replace the current best and repeat until we reach a certain number of evaluations. What is the main disadvantage/limitation of this method?",
     "options": [
       {
         "id": "a",
@@ -2210,14 +2151,15 @@
         "location": "Question 1(e) · page 3"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-f",
+    "id": "in3050-original-final-2025-1-f",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
-    "prompt": "Which limitation do greedy local search, hill climbing, and gradient descent/ascent share?",
+    "prompt": "What is common for algorithms such as greedy search, hill climbing, and gradient descent/ascent?",
     "options": [
       {
         "id": "a",
@@ -2250,10 +2192,11 @@
         "location": "Question 1(f) · page 4"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-g",
+    "id": "in3050-original-final-2025-1-g",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
@@ -2290,10 +2233,11 @@
         "location": "Question 1(g) · page 4"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-h",
+    "id": "in3050-original-final-2025-1-h",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
@@ -2326,10 +2270,11 @@
         "location": "Question 1(h) · page 5"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-i",
+    "id": "in3050-original-final-2025-1-i",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
@@ -2366,10 +2311,11 @@
         "location": "Question 1(i) · page 5"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-j",
+    "id": "in3050-original-final-2025-1-j",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -2402,14 +2348,15 @@
         "location": "Question 1(j) · page 6"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-k",
+    "id": "in3050-original-final-2025-1-k",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "Task A predicts tomorrow’s temperature from labeled observations. Task B chooses one of five image categories. How should the two supervised tasks be classified?",
+    "prompt": "Consider the following learning tasks: Task A: Given past meteorological measurements, estimate the numerical temperature value for the next day. Task B: Given an image, choose exactly one label from a predefined set of five categories. Which statement correctly characterizes the learning paradigms involved?",
     "options": [
       {
         "id": "a",
@@ -2446,10 +2393,11 @@
         "location": "Question 1(k) · page 6"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-l",
+    "id": "in3050-original-final-2025-1-l",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
@@ -2482,10 +2430,11 @@
         "location": "Question 1(l) · page 7"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-m",
+    "id": "in3050-original-final-2025-1-m",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -2526,10 +2475,11 @@
         "location": "Question 1(m) · page 8"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-n",
+    "id": "in3050-original-final-2025-1-n",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
@@ -2562,10 +2512,11 @@
         "location": "Question 1(n) · page 8"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-o",
+    "id": "in3050-original-final-2025-1-o",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
@@ -2606,10 +2557,11 @@
         "location": "Question 1(o) · page 9"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-p",
+    "id": "in3050-original-final-2025-1-p",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
@@ -2642,14 +2594,15 @@
         "location": "Question 1(p) · page 9"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-q",
+    "id": "in3050-original-final-2025-1-q",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
-    "prompt": "Which activation converts a multinomial logistic regression model’s logits to class probabilities?",
+    "prompt": "In multinomial logistic regression for multi-class classification, we first obtain the weighted sums of the input features and weights and biases.Then we apply some activation functions on the weighted sums (logits) to obtain predicted probabilities for each class (y’s) whose cross-entropy loss is computed with the one-hot ground-truth targets. What activation function is used to obtain prediction probabilities for each class?",
     "options": [
       {
         "id": "a",
@@ -2682,10 +2635,11 @@
         "location": "Question 1(q) · page 10"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-r",
+    "id": "in3050-original-final-2025-1-r",
     "courseId": "IN3050",
     "topicId": "ai-perceptron-regression",
     "type": "choice",
@@ -2705,7 +2659,7 @@
       },
       {
         "id": "d",
-        "text": "All three: OR, AND, and XOR"
+        "text": "All of the above"
       },
       {
         "id": "e",
@@ -2722,10 +2676,11 @@
         "location": "Question 1(r) · page 10"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-s",
+    "id": "in3050-original-final-2025-1-s",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
@@ -2762,10 +2717,11 @@
         "location": "Question 1(s) · page 11"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-t",
+    "id": "in3050-original-final-2025-1-t",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
@@ -2802,10 +2758,11 @@
         "location": "Question 1(t) · page 11"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-u",
+    "id": "in3050-original-final-2025-1-u",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
@@ -2842,30 +2799,31 @@
         "location": "Question 1(u) · page 12"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-v",
+    "id": "in3050-original-final-2025-1-v",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
-    "prompt": "Which feature does not follow from adding a residual connection to a deep network?",
+    "prompt": "What is “Not” an advantage of residual connection (ResNets) in deep neural networks?",
     "options": [
       {
         "id": "a",
-        "text": "The block can preserve its input through the identity connection."
+        "text": "Identity+ optional non-linearity"
       },
       {
         "id": "b",
-        "text": "The block can learn a correction to the identity."
+        "text": "Never worse than identity"
       },
       {
         "id": "c",
-        "text": "Stacked residual blocks can gradually build a more complex representation."
+        "text": "Filters can add non-linearities layer by layer Gradually learn a more complex representation"
       },
       {
         "id": "d",
-        "text": "It introduces an attention mechanism."
+        "text": "It uses powerful “attention mechanism”"
       }
     ],
     "correctOptionId": "d",
@@ -2878,10 +2836,11 @@
         "location": "Question 1(v) · page 12"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-w",
+    "id": "in3050-original-final-2025-1-w",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
@@ -2918,10 +2877,11 @@
         "location": "Question 1(w) · page 13"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-x",
+    "id": "in3050-original-final-2025-1-x",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
@@ -2954,14 +2914,15 @@
         "location": "Question 1(x) · page 13"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-y",
+    "id": "in3050-original-final-2025-1-y",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
-    "prompt": "In the language-modeling approach discussed in the lecture, how are input words represented as learned dense vectors?",
+    "prompt": "How does a language model encode input words?",
     "options": [
       {
         "id": "a",
@@ -2990,10 +2951,11 @@
         "location": "Question 1(y) · page 14"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-z",
+    "id": "in3050-original-final-2025-1-z",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
@@ -3026,10 +2988,11 @@
         "location": "Question 1(z) · page 14"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-aa",
+    "id": "in3050-original-final-2025-1-aa",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
@@ -3062,10 +3025,11 @@
         "location": "Question 1(aa) · page 15"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ab",
+    "id": "in3050-original-final-2025-1-ab",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "multi",
@@ -3081,7 +3045,7 @@
       },
       {
         "id": "c",
-        "text": "Genetic algorithms can be effective for discrete optimization when the fitness landscape has useful structure."
+        "text": "Genetic Algorithms (GA) are generally effective in discrete optimization problems with a continuous fitness landscap."
       },
       {
         "id": "d",
@@ -3093,7 +3057,7 @@
       }
     ],
     "correctOptionId": "a,c",
-    "explanation": "Elitism keeps the best seen candidates. GA search is useful in combinatorial spaces when variation can exploit fitness structure. Replacing a TSP city can create a duplicate.",
+    "explanation": "Source issue: A is defensible, but the requested second statement is ambiguous. C describes a continuous fitness landscape for a discrete problem without defining what continuity means. Elitism can preserve good solutions, while representation-valid mutation and selection pressure depend on the problem. This item is excluded from the score.",
     "difficulty": "hard",
     "source": "Question 1(ab) · page 15",
     "sourceRefs": [
@@ -3102,22 +3066,24 @@
         "location": "Question 1(ab) · page 15"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025",
+    "unscored": true
   },
   {
-    "id": "in3050-2025-1-ac",
+    "id": "in3050-original-final-2025-1-ac",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "multi",
-    "prompt": "The 2025 paper revisits PMX using P1 = (3, 4, 8 | 2, 7, 1 | 6, 5) and P2 = (4, 2, 5 | 1, 6, 8 | 3, 7). Keeping the marked segment of each parent in one child, which two tours are produced?",
+    "prompt": "Suppose we use Partially Mapped Crossover (PMX) on the following two parent tours with a randomly chosen cut point between the 3rd and 4th bits and another cut point between the 6th and 7th bits: Parent 1: P1 = (3, 4, 8, ∣2, 7, 1,∣ 6, 5) Parent 2: P2 = (4, 2, 5, ∣1, 6, 8,∣ 3, 7) What offspring can PMX generate from these parents? (Choose TWO answers) Hint: Partially Mapped Crossover (PMX) algorithm: 1. Substring selection: Cut each parent into two substrings, and then select one substring for each parent at random. 2. Substring exchange: Exchange the two selected substrings to produce proto- offspring. 3. Mapping list determination: Determine the mapping relationship based on the selected substrings. 4. Offspring legalization: Legalize proto-offspring with the mapping relationship.",
     "options": [
       {
         "id": "a",
-        "text": "(3, 4, 8, 2, 7, 1, 6, 5)"
+        "text": "(4, 8, 5, 2, 7, 1, 3, 6)"
       },
       {
         "id": "b",
-        "text": "(4, 8, 5, 2, 7, 1, 3, 6)"
+        "text": "(3, 4, 8, 2, 7, 1, 6, 5)"
       },
       {
         "id": "c",
@@ -3125,22 +3091,26 @@
       },
       {
         "id": "d",
-        "text": "(4, 2, 5, 1, 6, 8, 3, 7)"
-      },
-      {
-        "id": "e",
         "text": "(3, 4, 2, 1, 6, 8, 7, 5)"
       },
       {
-        "id": "f",
+        "id": "e",
         "text": "(3, 4, 5, 2, 7, 1, 6, 8)"
+      },
+      {
+        "id": "f",
+        "text": "(4, 2, 5, 1, 6, 8, 3, 7)"
       },
       {
         "id": "g",
         "text": "(4, 2, 7, 1, 6, 8, 5, 3)"
+      },
+      {
+        "id": "h",
+        "text": "(4, 2, 5,1, 6, 8, 3, 7)"
       }
     ],
-    "correctOptionId": "b,e",
+    "correctOptionId": "a,d",
     "explanation": "Keeping the first middle segment requires remapping conflicts 2→1→8 and 7→6. Keeping the other segment remaps 8→1→2 and 6→7.",
     "difficulty": "hard",
     "source": "Question 1(ac) · page 16",
@@ -3150,10 +3120,11 @@
         "location": "Question 1(ac) · page 16"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ad",
+    "id": "in3050-original-final-2025-1-ad",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -3186,10 +3157,11 @@
         "location": "Question 1(ad) · page 17"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ae",
+    "id": "in3050-original-final-2025-1-ae",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -3222,10 +3194,11 @@
         "location": "Question 1(ae) · page 17"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-af",
+    "id": "in3050-original-final-2025-1-af",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -3258,10 +3231,11 @@
         "location": "Question 1(af) · page 18"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ag",
+    "id": "in3050-original-final-2025-1-ag",
     "courseId": "IN3050",
     "topicId": "ai-evaluation-generalization",
     "type": "choice",
@@ -3294,10 +3268,11 @@
         "location": "Question 1(ag) · page 18"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ah",
+    "id": "in3050-original-final-2025-1-ah",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
@@ -3330,10 +3305,11 @@
         "location": "Question 1(ah) · page 19"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ai",
+    "id": "in3050-original-final-2025-1-ai",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "multi",
@@ -3370,10 +3346,11 @@
         "location": "Question 1(ai) · page 19"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-aj",
+    "id": "in3050-original-final-2025-1-aj",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
@@ -3406,10 +3383,11 @@
         "location": "Question 1(aj) · page 20"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ak",
+    "id": "in3050-original-final-2025-1-ak",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -3442,14 +3420,15 @@
         "location": "Question 1(ak) · page 20"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-al",
+    "id": "in3050-original-final-2025-1-al",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
-    "prompt": "Use the ridge penalty \\(\\lambda\\sum_{j=1}^3 w_j^2\\) with \\(\\lambda=0.5\\). The weights including the intercept are \\((1,2,-1,3)\\). What is the penalty?",
+    "prompt": "In Ridge regression, the regularization term added to the loss is 2 times the sum of squared feature weights (the bias term is not penalized). Suppose λ = 0.5 and the learned weights are w = [ w 0 , w 1 , w 2 , w 3, ] = [1, 2, −1, 3], where w 0 is the bias. What is the value of the Ridge penalty term added to the loss?",
     "options": [
       {
         "id": "a",
@@ -3478,10 +3457,11 @@
         "location": "Question 1(al) · page 21"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-am",
+    "id": "in3050-original-final-2025-1-am",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -3514,14 +3494,15 @@
         "location": "Question 1(am) · page 21"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-an",
+    "id": "in3050-original-final-2025-1-an",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
-    "prompt": "A dendrogram was built with average linkage. What happens to the number of clusters if you raise the cut across a merge?",
+    "prompt": "You have a dendrogram from average linkage. Cutting the tree at a higher distance threshold will:",
     "options": [
       {
         "id": "a",
@@ -3550,14 +3531,15 @@
         "location": "Question 1(an) · page 22"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ao",
+    "id": "in3050-original-final-2025-1-ao",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
-    "prompt": "The table shows the pairwise distances for five items. Which linkage method is most consistent with the dendrogram?",
+    "prompt": "Consider five items 1,2,3,4,5 with the symmetric distance matrix shown below. You run agglomerative hierarchical clustering and obtain the dendrogram shown. Which linkage method is most consistent with this dendrogram?",
     "options": [
       {
         "id": "a",
@@ -3640,10 +3622,11 @@
         ]
       ]
     },
-    "figure": "exam-dendrogram"
+    "figure": "exam-dendrogram",
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ap",
+    "id": "in3050-original-final-2025-1-ap",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "multi",
@@ -3681,10 +3664,11 @@
       }
     ],
     "examYear": 2025,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-aq",
+    "id": "in3050-original-final-2025-1-aq",
     "courseId": "IN3050",
     "topicId": "ai-regularization-ensembles",
     "type": "choice",
@@ -3717,10 +3701,11 @@
         "location": "Question 1(aq) · page 23"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ar",
+    "id": "in3050-original-final-2025-1-ar",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -3757,10 +3742,11 @@
         "location": "Question 1(ar) · page 24"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-as",
+    "id": "in3050-original-final-2025-1-as",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
@@ -3772,7 +3758,7 @@
       },
       {
         "id": "b",
-        "text": "The encoder’s weights can initialize a downstream network for classification, often improving convergence when labeled data are limited"
+        "text": ") The encoder’s weights can initialize a downstream network for classification, often improving convergence when labeled data are limited"
       },
       {
         "id": "c",
@@ -3793,14 +3779,15 @@
         "location": "Question 1(as) · page 24"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-at",
+    "id": "in3050-original-final-2025-1-at",
     "courseId": "IN3050",
     "topicId": "ai-deep-learning",
     "type": "choice",
-    "prompt": "A tiny perturbation causes a deep network to misclassify a panda as a gibbon. Which of the listed ideas is the closest philosophical analogy to why good performance by itself does not demonstrate understanding?",
+    "prompt": "A deep learning system that misclassifies a panda as a gibbon after a tiny perturbation illustrates which philosophical concern?",
     "options": [
       {
         "id": "a",
@@ -3830,10 +3817,11 @@
       }
     ],
     "examYear": 2025,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-au",
+    "id": "in3050-original-final-2025-1-au",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -3867,18 +3855,19 @@
       }
     ],
     "examYear": 2025,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-av",
+    "id": "in3050-original-final-2025-1-av",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
-    "prompt": "Which broad concern links discussions of the Frame Problem and the Chinese Room?",
+    "prompt": "What do the Frame Problem and the Chinese Room have in common?",
     "options": [
       {
         "id": "a",
-        "text": "Both raise questions about what explicit rules can capture about context or meaning."
+        "text": "Both show that AI lacks the ability to connect symbols or actions to meaningful, contextual understanding"
       },
       {
         "id": "b",
@@ -3890,11 +3879,11 @@
       },
       {
         "id": "d",
-        "text": "Both concern whether adding memory always solves a search problem."
+        "text": "Both prove AI is dangerous"
       }
     ],
     "correctOptionId": "a",
-    "explanation": "The two ideas are distinct, but both invite questions about the limits of rule-governed behavior without meaningful context. The Frame Problem concerns modeling relevant changes; the Chinese Room concerns understanding.",
+    "explanation": "A is the closest intended answer. The Frame Problem concerns representing relevant changes and what remains unchanged; the Chinese Room challenges whether symbol manipulation is sufficient for understanding. Neither establishes a general proof that every AI lacks understanding.",
     "difficulty": "medium",
     "source": "Question 1(av) · page 26",
     "sourceRefs": [
@@ -3904,14 +3893,15 @@
       }
     ],
     "examYear": 2025,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-aw",
+    "id": "in3050-original-final-2025-1-aw",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "multi",
-    "prompt": "Select two true statements about functionalism, the Chinese Room, and weak AI.",
+    "prompt": "Which of the following statements are true? (Select TWO)",
     "options": [
       {
         "id": "a",
@@ -3945,10 +3935,11 @@
       }
     ],
     "examYear": 2025,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ax",
+    "id": "in3050-original-final-2025-1-ax",
     "courseId": "IN3050",
     "topicId": "ai-supervised-knn",
     "type": "choice",
@@ -3982,10 +3973,11 @@
       }
     ],
     "examYear": 2025,
-    "historicalOnly": true
+    "historicalOnly": true,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-1-ay",
+    "id": "in3050-original-final-2025-1-ay",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-applications",
     "type": "choice",
@@ -4018,14 +4010,15 @@
         "location": "Question 1(ay) · page 27"
       }
     ],
-    "examYear": 2025
+    "examYear": 2025,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-2-a",
+    "id": "in3050-original-final-2025-2-a",
     "courseId": "IN3050",
     "topicId": "ai-logistic-regression",
     "type": "choice",
-    "prompt": "For multiclass softmax classification, which NumPy expression gives the mean categorical cross-entropy? Rows are examples; Y gives class probabilities and T gives one-hot targets.",
+    "prompt": "For a multiclass classification problem using softmax as the activation function, which of the following loss functions is most appropriate? Here, Y is the predicted probability for each class, and T is the true one-hot label vector.",
     "options": [
       {
         "id": "a",
@@ -4037,7 +4030,7 @@
       },
       {
         "id": "c",
-        "text": "-np.mean(np.sum(T * np.log(Y), axis=1))"
+        "text": "np.mean(T*np.log(Y))"
       },
       {
         "id": "d",
@@ -4045,7 +4038,7 @@
       }
     ],
     "correctOptionId": "c",
-    "explanation": "Minimize the negative log-probability of the true class. Sum over class columns, then average over examples. The source's intended option had a missing minus sign and averaged over all entries.",
+    "explanation": "Source issue: no option gives the standard categorical cross-entropy loss. C has the intended log-likelihood term but omits the minus sign; its mean also averages over classes. With one-hot targets and examples in rows, use \\(-\\operatorname{mean}_i\\sum_c T_{ic}\\log Y_{ic}\\), or -np.mean(np.sum(T * np.log(Y), axis=1)). This item is excluded from the score.",
     "difficulty": "hard",
     "source": "Question 2(a) · page 28",
     "sourceRefs": [
@@ -4055,14 +4048,16 @@
       }
     ],
     "examYear": 2025,
-    "codeOptions": true
+    "codeOptions": true,
+    "originalExam": "final-2025",
+    "unscored": true
   },
   {
-    "id": "in3050-2025-2-b",
+    "id": "in3050-original-final-2025-2-b",
     "courseId": "IN3050",
     "topicId": "ai-backpropagation",
     "type": "choice",
-    "prompt": "Given these forward and backward values for a two-layer network, which gradient-descent weight updates use the correct layer inputs and deltas?",
+    "prompt": "In a neural network with one hidden layer (therefore two weight matrices: weights1 for input to hidden; weights2 for hidden to output), you perform the following forward and backward computations during training epochs. Which of the following weight-update equations is correct?",
     "options": [
       {
         "id": "a",
@@ -4092,35 +4087,36 @@
       }
     ],
     "examYear": 2025,
-    "code": "X_train_bias = add_bias(X_train, self.bias)\nfor e in range(epochs):\n    hidden_outs, outputs = self.forward(X_train_bias)\n    out_deltas = outputs - T_train\n    hiddenout_diffs = out_deltas @ self.weights2.T\n    hiddenact_deltas = (\n        hiddenout_diffs[:, 1:] *\n        self.activ_diff(hidden_outs[:, 1:])\n    )",
-    "codeOptions": true
+    "code": "X_train_bias = add_bias(X_train, self.bias)\nfor e in range(epochs):\n    # One epoch\n    # The forward step:\n    hidden_outs, outputs = self.forward(X_train_bias)\n    # The delta term on the output node:\n    out_deltas = (outputs - T_train)\n    # The delta terms at the output of the hidden layer:\n    hiddenout_diffs = out_deltas @ self.weights2.T\n    # The deltas at the input to the hidden layer:\n    hiddenact_deltas = (hiddenout_diffs[:, 1:] *\n                       self.activ_diff(hidden_outs[:, 1:]))",
+    "codeOptions": true,
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-2-c",
+    "id": "in3050-original-final-2025-2-c",
     "courseId": "IN3050",
     "topicId": "ai-unsupervised-learning",
     "type": "choice",
-    "prompt": "X has 100 examples and 2 features. Which line creates Y so the snippet computes the principal direction using the centered scatter matrix?",
+    "prompt": "What’s Missing?\n\nWhich line should replace # TODO so the code computes PCA correctly (minimal required step)?",
     "options": [
       {
         "id": "a",
-        "text": "Y = X - X.mean(axis=0)"
+        "text": "X = X - X.mean(axis=0) — center columns"
       },
       {
         "id": "b",
-        "text": "Y = X / X.std(axis=0)"
+        "text": "X = X / X.std(axis=0) — scale only (no centering)"
       },
       {
         "id": "c",
-        "text": "Y = X - X.mean(axis=1, keepdims=True)"
+        "text": "X = X - X.mean(axis=1, keepdims=True) — row centering"
       },
       {
         "id": "d",
-        "text": "Y = X"
+        "text": "Nothing is missing; the code is already correct."
       }
     ],
     "correctOptionId": "a",
-    "explanation": "Subtract the mean of each feature column before computing the scatter matrix. This version uses Y consistently as the centered matrix in the following line.",
+    "explanation": "Source issue: the snippet uses Y without defining it. A centers X, which is the intended PCA preprocessing, but still leaves Y undefined. The missing line should be Y = X - X.mean(axis=0), or the later calculation should consistently use centered X. None of the original options fully repairs the snippet, so this item is excluded from the score.",
     "difficulty": "hard",
     "source": "Question 2(c) · page 30",
     "sourceRefs": [
@@ -4130,19 +4126,21 @@
       }
     ],
     "examYear": 2025,
-    "code": "# X has shape (100, 2)\n# TODO\nZ = Y.T @ Y\neigenvalues, eigenvectors = np.linalg.eigh(Z)\nw = eigenvectors[:, np.argmax(eigenvalues)]",
-    "codeOptions": true
+    "code": "import numpy as np\n\n# Create a small toy data set with 100 samples and 2 features\nfrom random import normalvariate as rnorm\nx = [rnorm(2,0.8) for e in range(100)]\ny = [x[e] + rnorm(0,0.8) for e in range(100)]\nX = np.transpose(np.array([x,y]))\n\n# TODO: missing step here\n\n# Calculate weight vector w\nZ = np.transpose(Y) @ Y\neigenvalues, eigenvectors = np.linalg.eig(Z)\nw = eigenvectors[:, np.argmax(eigenvalues)]",
+    "codeOptions": false,
+    "originalExam": "final-2025",
+    "unscored": true
   },
   {
-    "id": "in3050-2025-2-d",
+    "id": "in3050-original-final-2025-2-d",
     "courseId": "IN3050",
     "topicId": "ai-optimization-search",
     "type": "choice",
-    "prompt": "What is wrong with this implementation of gradient descent for minimizing a differentiable loss?",
+    "prompt": "What’s wrong with the following implementation of gradient descent for minimizing a loss L(w)? Assume loss_gradient(w) returns the derivative ∂L/∂w.",
     "options": [
       {
         "id": "a",
-        "text": "It moves locally in the direction of increasing loss."
+        "text": "It maximizes loss instead of minimizing"
       },
       {
         "id": "b",
@@ -4168,14 +4166,15 @@
       }
     ],
     "examYear": 2025,
-    "code": "weight = 1\nlearning_rate = 0.1\nfor i in range(1000):\n    weight = weight + learning_rate * loss_gradient(weight)"
+    "code": "num_iterations = 1000\nlearning_rate = 0.1\nweight=1 #initial weight\nfor i in range(num_iterations):\n    weight = weight + learning_rate * loss_gradient(weight)",
+    "originalExam": "final-2025"
   },
   {
-    "id": "in3050-2025-2-e",
+    "id": "in3050-original-final-2025-2-e",
     "courseId": "IN3050",
     "topicId": "ai-evolutionary-algorithms",
     "type": "choice",
-    "prompt": "The permutation crossover keeps a segment from one parent and repairs conflicts using the other parent. Which operator is the example intended to illustrate?",
+    "prompt": "The following code and its output show an example of a crossover operator used in genetic algorithms. Based on what you see, which type of crossover is being used?",
     "options": [
       {
         "id": "a",
@@ -4205,6 +4204,7 @@
       }
     ],
     "examYear": 2025,
-    "code": "def crossover(p1, p2, a, b):\n    child = np.zeros_like(p1)\n    child[a:b] = p1[a:b]\n    from_p1 = p1[a:b][~np.isin(p1[a:b], p2[a:b])]\n    from_p2 = p2[a:b][~np.isin(p2[a:b], p1[a:b])]\n    positions = np.isin(p2, from_p1)\n    child[positions] = from_p2\n    remaining = ~positions\n    remaining[a:b] = False\n    child[remaining] = p2[remaining]\n    return child\n\n# Example pair of outputs:\n# [5, 4, 1, 3, 2, 6, 8, 9, 7]\n# [2, 6, 7, 8, 9, 4, 1, 3, 5]"
+    "code": "def crossover(p1, p2, a, b):\n    child = np.zeros_like(p1)\n    child[a:b] = p1[a:b]\n    from_p1 = p1[a:b][~np.isin(p1[a:b], p2[a:b])]\n    from_p2 = p2[a:b][~np.isin(p2[a:b], p1[a:b])]\n    positions = np.isin(p2, from_p1)\n    child[positions] = from_p2\n    remaining = ~positions\n    remaining[a:b] = False\n    child[remaining] = p2[remaining]\n    return child\n\n# Example pair of outputs:\n# [5, 4, 1, 3, 2, 6, 8, 9, 7]\n# [2, 6, 7, 8, 9, 4, 1, 3, 5]",
+    "originalExam": "final-2025"
   }
 ]

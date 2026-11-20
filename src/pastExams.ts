@@ -11,13 +11,8 @@ export type ExamSelection = PastExamId | 'all'
 
 export function getPastExamPool(questions: readonly Question[], selection: ExamSelection): Question[] {
   return questions.filter(question => {
-    if (question.courseId !== 'IN3050' || question.isDemo || question.examPrep || question.writtenAdaptation) return false
-    // Explicit paper membership distinguishes exam items from authored questions that cite a paper.
-    const papers = PAST_EXAMS.filter(paper => {
-      if (paper.id === 'trial-2025') return question.trial2025
-      return question.examYear === (paper.id === 'final-2025' ? 2025 : 2024)
-    })
-    return papers.some(paper => (selection === 'all' || paper.id === selection)
+    if (question.courseId !== 'IN3050' || question.isDemo || question.retired || question.examPrep || question.writtenAdaptation) return false
+    return PAST_EXAMS.some(paper => question.originalExam === paper.id && (selection === 'all' || paper.id === selection)
       && question.sourceRefs?.some(reference => reference.path === paper.path))
   })
 }

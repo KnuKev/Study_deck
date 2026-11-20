@@ -113,6 +113,7 @@ export default function App() {
   const selectedCount = countOption === 0 ? pool.length : countOption
   const result = history.find(item => item.id === resultId)
   const courseHistory = history.filter(item => item.courseId === studySetId)
+  const lastScore = courseHistory[0] ? summarizeSession(courseHistory[0], questionsFor(courseHistory[0])) : null
   const resultQuestions = result ? questionsFor(result) : ALL_QUESTIONS
   const resultIndex = result?.deck ? new Map(resultQuestions.map(question => [question.id, question])) : QUESTION_INDEX
   const showSetup = view === 'practice' && !active && !result
@@ -212,7 +213,7 @@ export default function App() {
 
   function start(retry?: Session) {
     const sourceDeck = retry ? retry.deck : deck
-    const ids = retry?.questionIds.filter(id => retry.answers[id] !== resultIndex.get(id)?.correctOptionId)
+    const ids = retry?.questionIds.filter(id => !resultIndex.get(id)?.unscored && retry.answers[id] !== resultIndex.get(id)?.correctOptionId)
     const shuffled = createSession({
       courseId: retry?.courseId ?? studySetId,
       mode: retry ? 'practice' : mode,
@@ -382,7 +383,7 @@ export default function App() {
             </section>
             {courseHistory[0] && <section className="panel last-session">
               <div className="panel-heading"><h2>Last session</h2><Icon name="chart" /></div>
-              <strong className="last-score">{summarizeSession(courseHistory[0], questionsFor(courseHistory[0])).percentage}%<small>correct</small></strong>
+              <strong className="last-score">{lastScore?.total ? `${lastScore.percentage}%` : '—'}<small>{lastScore?.total ? 'correct' : 'not scored'}</small></strong>
               <p>{dateFormat.format(courseHistory[0].finishedAt!)}</p>
               <button className="text-button" onClick={() => { setResultId(courseHistory[0]!.id); window.scrollTo(0, 0) }}>Review answers<Icon name="arrow" /></button>
             </section>}
@@ -395,12 +396,12 @@ export default function App() {
         <div className="session-progress"><span>Question <strong>{active.currentIndex + 1}</strong> of {active.questionIds.length}</span><span>{Object.keys(active.answers).length} answered</span><progress value={Object.keys(active.answers).length} max={active.questionIds.length} aria-label="Answered questions" /></div>
         <article className="panel question-panel">{!active.deck && <div className="question-meta"><span className={'sample-pill difficulty-' + current.difficulty}>{current.isDemo ? 'Legacy sample question' : DIFFICULTY_LABELS[current.difficulty]}</span>{current.trial2025 && current.examYear === 2024 ? <span>2024 exam · 2025 trial</span> :
             current.trial2025 ? <span>2025 trial exam</span> : current.examYear && <span>{current.examYear} exam</span>}
-          {current.writtenAdaptation && <span>Adapted written prompt</span>}{current.examPrep && <span>Exam prep</span>}
+          {current.unscored && <span>Not scored · source issue</span>}{current.writtenAdaptation && <span>Adapted written prompt</span>}{current.examPrep && <span>Exam prep</span>}
           {current.type === 'multi' && <span>Choose {answerCount} answers</span>}</div>}<h2 ref={questionHeading} tabIndex={-1}><MathText>{current.prompt}</MathText></h2><QuestionMaterial question={current} />
           <fieldset className="answer-options"><legend className="sr-only">{current.type === 'multi' ? `Choose ${answerCount} answers` : 'Choose an answer'}</legend>{getOrderedOptions(current, active.id).map((option, index) => {
             const chosen = (recorded ? answerIds(recorded) : selected).includes(option.id)
-            const correct = isFeedback && answerIds(current.correctOptionId).includes(option.id)
-            const wrong = isFeedback && chosen && !correct
+            const correct = isFeedback && !current.unscored && answerIds(current.correctOptionId).includes(option.id)
+            const wrong = isFeedback && !current.unscored && chosen && !correct
             return <label key={option.id} className={'answer-option' + (chosen ? ' chosen' : '') + (correct ? ' correct' : '') + (wrong ? ' wrong' : '')}><input type={current.type === 'multi' ? 'checkbox' : 'radio'} name={current.id} checked={chosen}
               disabled={Boolean(recorded) || remaining === 0 || (current.type === 'multi' && !chosen && selected.length === answerCount)}
               onChange={event => {
@@ -410,7 +411,7 @@ export default function App() {
                   : [option.id])
               }} value={option.id} /><span className="option-letter">{String.fromCharCode(65 + index)}</span><span className="option-content"><AnswerText text={option.text} code={current.codeOptions} /></span>{correct ? <Icon name="checkCircle" /> : wrong ? <Icon name="close" /> : <span className={current.type === 'multi' ? 'option-radio option-checkbox' : 'option-radio'} />}</label>
           })}</fieldset>
-          {isFeedback && <div className={'answer-feedback' + (recorded === current.correctOptionId ? ' is-correct' : '')} role="status"><h3><Icon name={recorded === current.correctOptionId ? 'checkCircle' : 'info'} />{recorded === current.correctOptionId ? 'Correct!' : 'Incorrect'}</h3>{current.explanation && <p><MathText>{current.explanation}</MathText></p>}{!active.deck && <QuestionSources question={current} />}</div>}
+          {isFeedback && <div className={'answer-feedback' + (!current.unscored && recorded === current.correctOptionId ? ' is-correct' : '')} role="status"><h3><Icon name={!current.unscored && recorded === current.correctOptionId ? 'checkCircle' : 'info'} />{current.unscored ? 'Not scored · source issue' : recorded === current.correctOptionId ? 'Correct!' : 'Incorrect'}</h3>{current.explanation && <p><MathText>{current.explanation}</MathText></p>}{!active.deck && <QuestionSources question={current} />}</div>}
           <div className="question-actions"><button className="secondary-button" disabled={active.currentIndex === 0} onClick={() => setProgress(previous => ({ ...previous, active: { ...active, currentIndex: active.currentIndex - 1 } }))}><Icon name="chevron" className="rotate-back" />Previous</button><div>{!recorded && <button className="text-button skip-button" onClick={() => advance(active)}>Skip</button>}{recorded ? <button className="primary-button" onClick={() => advance(active)}>{active.currentIndex === active.questionIds.length - 1 ? 'View results' : 'Next question'}<Icon name="arrow" /></button> : <button className="primary-button" disabled={!canSubmit} onClick={submit}>{active.mode === 'practice' ? 'Check answer' : active.currentIndex === active.questionIds.length - 1 ? 'Submit and view results' : 'Submit and continue'}<Icon name="arrow" /></button>}</div></div>
         </article>
         <div className="session-bottom"><button className="text-button" onClick={() => setConfirmEnd(true)}>End session</button></div>
@@ -419,11 +420,11 @@ export default function App() {
 
       {view === 'practice' && !active && result && summary && <>
         <div className="page-heading"><div><h1>Session complete</h1><p>{sessionTitle(result)} · {dateFormat.format(result.finishedAt!)}{result.endReason === 'timeout' ? ' · Time ran out' : ''}</p></div><button className="secondary-button" onClick={() => setResultId(null)}>New session<Icon name="arrow" /></button></div>
-        <section className="panel result-overview"><div className="score-ring" style={{ '--score': `${summary.percentage}%` } as React.CSSProperties}><div><strong>{summary.percentage}%</strong><span>correct</span></div></div><div className="result-copy">{hasLegacyQuestions(result) && <span className="sample-pill">Legacy sample content</span>}<h2>{summary.correct} of {summary.total} correct</h2><p>{summary.answered} answered · {summary.total - summary.answered} unanswered · {time(summary.elapsedSeconds)} elapsed</p>{summary.correct < summary.total && <button className="primary-button" onClick={() => start(result)}><Icon name="refresh" />Retry missed and unanswered questions</button>}</div></section>
+        <section className="panel result-overview"><div className="score-ring" style={{ '--score': `${summary.percentage}%` } as React.CSSProperties}><div><strong>{summary.total ? `${summary.percentage}%` : '—'}</strong><span>{summary.total ? 'correct' : 'not scored'}</span></div></div><div className="result-copy">{hasLegacyQuestions(result) && <span className="sample-pill">Legacy sample content</span>}<h2>{summary.total ? `${summary.correct} of ${summary.total} correct` : 'No scored questions'}</h2><p>{summary.answered} answered · {summary.total - summary.answered} unanswered · {time(summary.elapsedSeconds)} elapsed</p>{summary.unscored > 0 && <p>{summary.unscored} {summary.unscored === 1 ? 'source issue excluded' : 'source issues excluded'} from the score.</p>}{summary.correct < summary.total && <button className="primary-button" onClick={() => start(result)}><Icon name="refresh" />Retry missed and unanswered questions</button>}</div></section>
         <section className="panel topic-results"><div className="panel-heading"><h2>Results by topic</h2><span>Correct / total</span></div>{summary.topics.map(topic => <div key={topic.topicId} className="topic-result-row"><span>{sessionTopic(result, topic.topicId)}</span><progress value={topic.correct} max={topic.total} aria-label={`${sessionTopic(result, topic.topicId)}: ${topic.correct} of ${topic.total} correct`} /><strong>{topic.correct} / {topic.total}</strong></div>)}</section>
-        <section className="answer-review"><div className="section-heading"><h2>Answers and explanations</h2><span>{countLabel(summary.total, 'question')}</span></div>{result.questionIds.map((id, index) => {
-          const question = resultIndex.get(id)!, answer = result.answers[id], correct = answer === question.correctOptionId
-          return <details className="panel review-item" key={id}><summary><span className={'review-marker' + (correct ? ' correct' : '')}><Icon name={correct ? 'check' : answer ? 'close' : 'info'} /></span><span><small>Question {index + 1} · {sessionTopic(result, question.topicId)}</small><strong><MathText>{question.prompt}</MathText></strong></span><Icon name="chevron" /></summary><div className="review-body"><QuestionMaterial question={question} /><p><strong>Your answer:</strong> <AnswerReview question={question} answer={answer} /></p><p><strong>{question.type === 'multi' ? 'Correct answers:' : 'Correct answer:'}</strong> <AnswerReview question={question} answer={question.correctOptionId} /></p>{question.explanation && <p><MathText>{question.explanation}</MathText></p>}{!result.deck && <QuestionSources question={question} />}</div></details>
+        <section className="answer-review"><div className="section-heading"><h2>Answers and explanations</h2><span>{countLabel(result.questionIds.length, 'question')}</span></div>{result.questionIds.map((id, index) => {
+          const question = resultIndex.get(id)!, answer = result.answers[id], correct = !question.unscored && answer === question.correctOptionId
+          return <details className="panel review-item" key={id}><summary><span className={'review-marker' + (question.unscored ? ' unscored' : correct ? ' correct' : '')}><Icon name={question.unscored ? 'info' : correct ? 'check' : answer ? 'close' : 'info'} /></span><span><small>Question {index + 1} · {sessionTopic(result, question.topicId)}</small><strong><MathText>{question.prompt}</MathText></strong></span><Icon name="chevron" /></summary><div className="review-body"><QuestionMaterial question={question} /><p><strong>Your answer:</strong> <AnswerReview question={question} answer={answer} /></p>{question.unscored ? <p><strong>Not scored · source issue</strong></p> : <p><strong>{question.type === 'multi' ? 'Correct answers:' : 'Correct answer:'}</strong> <AnswerReview question={question} answer={question.correctOptionId} /></p>}{question.explanation && <p><MathText>{question.explanation}</MathText></p>}{!result.deck && <QuestionSources question={question} />}</div></details>
         })}</section>
       </>}
 

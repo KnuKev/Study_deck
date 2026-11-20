@@ -277,6 +277,7 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 4px; }
 .review-item[open] > summary > .ui-icon { transform: rotate(90deg); }
 .review-marker { display: grid; place-items: center; flex: 0 0 30px; height: 30px; background: var(--danger-soft); color: var(--danger); border-radius: 50%; }
 .review-marker .ui-icon { width: 15px; height: 15px; }
+.review-marker.unscored { background: var(--surface-muted); color: var(--text-secondary); }
 .review-marker.correct { background: var(--success-soft); color: var(--success); }
 .review-body { padding: 0 25px 22px 66px; }
 .review-body p { font-size: 12px; }
