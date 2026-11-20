@@ -17,7 +17,9 @@ import KeyTerms from './KeyTerms'
 import type { TermFilters } from './glossary'
 import TopicSummaryDialog from './TopicSummaryDialog'
 import type { Period } from './resultsPeriod'
-import { getPastExamPool, PAST_EXAMS } from './pastExams'
+import { examSelectionLabel, getPastExamPool, PAST_EXAMS } from './pastExams'
+import { getPracticePriority, IN3050_EXAM_GUIDANCE } from './examGuidance'
+import ExamPreparationGuidance from './ExamPreparationGuidance'
 import type { ExamSelection } from './pastExams'
 
 type View = 'practice' | 'history' | 'syllabus' | 'decks' | 'terms'
@@ -82,7 +84,8 @@ export default function App() {
   const [difficulty, setDifficulty] = useState<Difficulty | 'all'>('all')
   const [focus, setFocus] = useState<QuestionFocus>('mixed')
   const [questionSource, setQuestionSource] = useState<'bank' | 'exams'>('bank')
-  const [examSelection, setExamSelection] = useState<ExamSelection>('all')
+  const [examSelection, setExamSelection] = useState<ExamSelection>('fall')
+  const [currentExamTopicsOnly, setCurrentExamTopicsOnly] = useState(true)
   const [mode, setMode] = useState<'practice' | 'exam'>('practice')
   const [duration, setDuration] = useState<number | null>(15)
   const [count, setCount] = useState(10)
@@ -102,10 +105,9 @@ export default function App() {
   const studySetId = deck?.id ?? courseId
   const courseQuestions = getPracticePool(QUESTIONS, courseId, [])
   const examOnly = !deck && courseId === 'IN3050' && questionSource === 'exams'
-  const selectedExam = PAST_EXAMS.find(exam => exam.id === examSelection)
   const pool = deck ? deckQuestions(deck) : examOnly
-    ? getPastExamPool(QUESTIONS, examSelection)
-    : getPracticePool(QUESTIONS, courseId, topicIds, difficulty, focus)
+    ? getPastExamPool(QUESTIONS, examSelection, currentExamTopicsOnly)
+    : getPracticePool(QUESTIONS, courseId, topicIds, difficulty, focus, mode)
   const availableTopicIds = new Set(courseQuestions.map(question => question.topicId))
   const practiceTopics = course.topics.filter(topic => availableTopicIds.has(topic.id))
   const courseSources = SOURCES.filter(source => source.courseId === courseId)
@@ -181,6 +183,8 @@ export default function App() {
     setFocus('mixed')
     setQuestionSource('bank')
     setDifficulty('all')
+    setCount(id === 'IN3050' && mode === 'exam' ? IN3050_EXAM_GUIDANCE.format.approximateQuestions : 10)
+    if (id === 'IN3050' && mode === 'exam') setDuration(null)
     setResultId(null)
   }
 
@@ -188,8 +192,16 @@ export default function App() {
     setQuestionSource(next)
     setTopicIds([])
     setDifficulty('all')
-    setCount(10)
+    setCount(next === 'exams' || mode === 'exam' ? IN3050_EXAM_GUIDANCE.format.approximateQuestions : 10)
     if (next === 'exams') setDuration(null)
+  }
+
+  function chooseMode(next: 'practice' | 'exam') {
+    setMode(next)
+    if (next === 'exam' && !deck && courseId === 'IN3050') {
+      setCount(IN3050_EXAM_GUIDANCE.format.approximateQuestions)
+      setDuration(null)
+    }
   }
 
   function toggleTopic(id: string) {
@@ -207,6 +219,7 @@ export default function App() {
 
   function practiseDeck(id: DeckId) {
     setDeckId(id)
+    setCount(10)
     setResultsSource(null)
     navigate('practice')
   }
@@ -220,7 +233,7 @@ export default function App() {
       questionIds: ids ?? pool.map(question => question.id),
       durationMinutes: retry ? null : duration,
       priority: !retry && !deck && !examOnly
-        ? new Map(pool.map(question => [question.id, question.examPrep || question.examYear === 2025 ? 4 : question.trial2025 ? 3 : question.examYear === 2024 ? 2 : 1]))
+        ? new Map(pool.map(question => [question.id, getPracticePriority(question)]))
         : undefined,
     })
     const session = retry ? shuffled : { ...shuffled, questionIds: shuffled.questionIds.slice(0, selectedCount) }
@@ -327,7 +340,8 @@ export default function App() {
         </div>
         <div className="setup-grid">
           <section className="panel session-setup"><div className="panel-heading"><h2>Set up a session</h2><Icon name="target" /></div>
-            <fieldset><legend>Mode</legend><div className="mode-options"><button className={mode === 'practice' ? 'selected' : ''} aria-pressed={mode === 'practice'} onClick={() => setMode('practice')}><Icon name="book" /><strong>Practice</strong><span>See answers and explanations as you go.</span>{mode === 'practice' && <Icon name="checkCircle" />}</button><button className={mode === 'exam' ? 'selected' : ''} aria-pressed={mode === 'exam'} onClick={() => setMode('exam')}><Icon name="flag" /><strong>Mock exam</strong><span>Review your answers at the end.</span>{mode === 'exam' && <Icon name="checkCircle" />}</button></div></fieldset>
+            <fieldset><legend>Mode</legend><div className="mode-options"><button className={mode === 'practice' ? 'selected' : ''} aria-pressed={mode === 'practice'} onClick={() => chooseMode('practice')}><Icon name="book" /><strong>Practice</strong><span>See answers and explanations as you go.</span>{mode === 'practice' && <Icon name="checkCircle" />}</button><button className={mode === 'exam' ? 'selected' : ''} aria-pressed={mode === 'exam'} onClick={() => chooseMode('exam')}><Icon name="flag" /><strong>Mock exam</strong><span>Review your answers at the end.</span>{mode === 'exam' && <Icon name="checkCircle" />}</button></div></fieldset>
+            {!deck && courseId === 'IN3050' && mode === 'exam' && <p className="field-hint">The final exam has about 50 multiple-choice questions.</p>}
             {!deck && <div className="question-focus">
               {courseId === 'IN3050' && <fieldset className="question-source">
                 <legend>Question source</legend>
@@ -340,18 +354,20 @@ export default function App() {
                 <label className="form-field">Exam
                   <span className="question-focus-control">
                     <select value={examSelection} onChange={event => setExamSelection(event.target.value as ExamSelection)}>
-                      <option value="all">All past exams</option>
+                      <option value="fall">Fall 2024 and Fall 2025</option>
                       {PAST_EXAMS.map(exam => <option key={exam.id} value={exam.id}>{exam.label}</option>)}
+                      <option value="all">All past exams</option>
                     </select>
                     <Icon name="chevron" />
                   </span>
                 </label>
-                <p className="field-hint">Exam questions only. Includes historical topics.</p>
+                <label className="exam-scope-filter"><input type="checkbox" checked={currentExamTopicsOnly} onChange={event => setCurrentExamTopicsOnly(event.target.checked)} />Current exam topics only</label>
+                {!currentExamTopicsOnly && <p className="field-hint">Full papers include AI Philosophy and other historical topics.</p>}
               </> : <label className="form-field">Question focus
                 <span className="question-focus-control">
                   <select value={focus} onChange={event => setFocus(event.target.value === 'prep' ? 'prep' : 'mixed')}>
                     <option value="mixed">Mixed practice</option>
-                    <option value="prep">{courseId === 'IN3050' ? 'Recent exams and prep' : 'Application-layer exam prep'}</option>
+                    <option value="prep">{courseId === 'IN3050' ? 'Exam prep' : 'Application-layer exam prep'}</option>
                   </select>
                   <Icon name="chevron" />
                 </span>
@@ -359,8 +375,8 @@ export default function App() {
             </div>}
             <fieldset><legend><Icon name="clock" />Duration</legend><div ref={durationOptions} className="segmented duration-options sliding-indicator">{[15, 30, 45, 60, null].map(minutes => <button key={minutes ?? 'none'} aria-pressed={duration === minutes} onClick={() => setDuration(minutes)}>{minutes === null ? 'Untimed' : `${minutes} min`}</button>)}</div>{duration !== null && <p className="field-hint">The timer keeps running if you leave.</p>}</fieldset>
             {!deck && !examOnly && <fieldset><legend>Difficulty</legend><div ref={difficultyOptions} className="segmented difficulty-options sliding-indicator">{(['all', 'easy', 'medium', 'hard'] as const).map(level => <button key={level} aria-pressed={difficulty === level} onClick={() => setDifficulty(level)}>{level === 'all' ? 'Mixed' : DIFFICULTY_LABELS[level]}</button>)}</div></fieldset>}
-            <fieldset><legend>Number of questions</legend><div ref={countOptions} className="segmented count-options sliding-indicator">{[5, 10, 20, 40, 0].map(amount => <button key={amount} disabled={amount > pool.length} aria-pressed={amount === countOption} onClick={() => setCount(amount)}>{amount === 0 ? 'All' : amount}</button>)}</div></fieldset>
-            <div className="session-start"><span><strong>{countLabel(selectedCount, 'question')}</strong><small>{deck ? 'Custom deck' : examOnly ? selectedExam?.label ?? 'All past exams' : topicIds.length ? `${countLabel(topicIds.length, 'topic')} selected` : 'All topics'} · {duration ? `${duration} minutes` : 'No time limit'}</small></span><button className="primary-button" disabled={!selectedCount} onClick={() => start()}>Start session<Icon name="arrow" /></button></div>
+            <fieldset><legend>Number of questions</legend><div ref={countOptions} className="segmented count-options sliding-indicator">{[5, 10, 20, !deck && courseId === 'IN3050' ? 50 : 40, 0].map(amount => <button key={amount} disabled={amount > pool.length} aria-pressed={amount === countOption} onClick={() => setCount(amount)}>{amount === 0 ? 'All' : amount}</button>)}</div></fieldset>
+            <div className="session-start"><span><strong>{countLabel(selectedCount, 'question')}</strong><small>{deck ? 'Custom deck' : examOnly ? examSelectionLabel(examSelection) : topicIds.length ? `${countLabel(topicIds.length, 'topic')} selected` : 'All topics'} · {duration ? `${duration} minutes` : 'No time limit'}</small></span><button className="primary-button" disabled={!selectedCount} onClick={() => start()}>Start session<Icon name="arrow" /></button></div>
           </section>
           <div className="setup-aside">
             <section className="panel selection-panel">
@@ -451,6 +467,7 @@ export default function App() {
       {view === 'syllabus' && deck && <div className="page-heading"><div><h1>Syllabus</h1><p>Select a course to view its syllabus.</p></div></div>}
       {view === 'syllabus' && !deck && <>
         <div className="page-heading"><div><h1>Syllabus</h1><p>{countLabel(practiceTopics.length, 'topic')} · {courseQuestions.length} questions</p></div></div>
+        {courseId === 'IN3050' && <ExamPreparationGuidance />}
         {courseId === 'IN3230' && <p className="syllabus-scope">Midterm C programming is outside this question bank.</p>}
         <div className="syllabus-grid">{practiceTopics.map(topic => {
           const topicQuestions = courseQuestions.filter(question => question.topicId === topic.id)

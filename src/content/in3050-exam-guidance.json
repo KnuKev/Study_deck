@@ -1,0 +1,35 @@
+{
+  "courseId": "IN3050",
+  "receivedOn": "2026-11-20",
+  "source": "Professor's announcement supplied by the user",
+  "primaryMaterial": "Lecture presentation slides",
+  "excludedMaterial": "Lecture 14, Part 2 (AI Philosophy)",
+  "format": {
+    "type": "multiple-choice",
+    "approximateQuestions": 50,
+    "durationMinutes": null,
+    "durationNote": "The announcement does not specify an exam duration."
+  },
+  "recommendedPapers": [
+    {
+      "id": "final-2024",
+      "label": "Fall 2024",
+      "path": "IN3050/old_exams/in40503050-final-exam_2024.pdf"
+    },
+    {
+      "id": "final-2025",
+      "label": "Fall 2025",
+      "path": "IN3050/old_exams/in4050in3050_-december-8th-2025.pdf"
+    }
+  ],
+  "notFormatReference": "Spring 2025",
+  "announcedPractice": [
+    "Around 20 sample questions shared in the last lecture",
+    "Sample questions in More On Supervised Learning, Regularization, and Unsupervised Learning",
+    "Two exam-preparation sessions led by Artur, with online access through the previously shared Zoom link"
+  ],
+  "pendingMaterial": {
+    "name": "exam_walkthrough_30min",
+    "status": "Awaiting the remaining walkthrough slides; not present in the supplied resources as of 2026-11-20"
+  }
+}

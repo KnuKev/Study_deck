@@ -20,7 +20,7 @@ import sources from './content/sources.json' with { type: 'json' }
 import archived from './content/archived.json' with { type: 'json' }
 import { LEGACY_COURSES, LEGACY_QUESTIONS } from './legacyDemo.ts'
 
-export const CONTENT_UPDATED = '2026-11-19'
+export const CONTENT_UPDATED = '2026-11-20'
 export const DIFFICULTY_LABELS = { easy: 'Basic', medium: 'Intermediate', hard: 'Challenging' } as const
 export const QUESTIONS = [...in3050Questions, ...in3050ExamFoundations, ...in3050ExamLearning, ...in3050Unsupervised, ...in3230CoreQuestions, ...in3230AdvancedQuestions, ...in3230Notes, ...in3230WirelessIoT, ...in3050RecentExams, ...in3050Trial, ...in3050ExamPrep, ...in3230ExamPrep] as Question[]
 export const ALL_QUESTIONS = [...QUESTIONS, ...(archived as Question[]), ...LEGACY_QUESTIONS]

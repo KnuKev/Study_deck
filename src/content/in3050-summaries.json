@@ -708,7 +708,7 @@
         "answer": "The recurrent model’s weight matrices are reused. Hidden-state values change with the inputs and the preceding state."
       }
     ],
-    "lowerPriority": "Model-release history, named awards, frontier architectures only mentioned in passing, and AI philosophy excluded by the wrap-up. Learn the architectural mechanism and trace a small example.",
+    "lowerPriority": "Model-release history, named awards, frontier architectures only mentioned in passing, and Lecture 14, Part 2 (AI Philosophy), excluded by the professor’s latest announcement. Learn the architectural mechanism and trace a small example.",
     "sourceRefs": [
       {
         "path": "IN3050/personal_notes/Forelesning/Exam preperation - wrap up.docx",

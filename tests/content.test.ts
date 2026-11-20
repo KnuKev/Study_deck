@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { ALL_QUESTIONS, COURSES, QUESTIONS, SOURCE_INDEX } from '../src/data.ts'
 import { getOrderedOptions, getPracticePool, isValidAnswer } from '../src/engine.ts'
+import { isIN3050ExamPreparation } from '../src/examGuidance.ts'
 
 test('curriculum questions have distinct identities, real topics and valid answer keys', () => {
   assert.equal(new Set(ALL_QUESTIONS.map(question => question.id)).size, ALL_QUESTIONS.length)
@@ -114,7 +115,7 @@ test('full papers contain all original items while focused practice uses only re
     assert(paper.some(question => question.historicalOnly))
   }
   const aiPrep = getPracticePool(ALL_QUESTIONS, 'IN3050', [], 'all', 'prep')
-  assert(aiPrep.every(question => !question.historicalOnly && (question.examPrep || question.examYear || question.trial2025)))
+  assert(aiPrep.every(question => !question.historicalOnly && isIN3050ExamPreparation(question)))
   assert(aiPrep.some(question => question.examPrep && question.code))
   const networkingPrep = getPracticePool(ALL_QUESTIONS, 'IN3230', [], 'all', 'prep')
   assert(networkingPrep.length > 0)
@@ -138,7 +139,7 @@ test('the 2025 trial retains its own wording for every quiz and keeps written ad
     assert.equal(locations.filter(location => location.startsWith(`Part 2, written prompt ${i} ·`)).length, 1)
   }
   const prep = getPracticePool(ALL_QUESTIONS, 'IN3050', [], 'all', 'prep')
-  assert(prep.some(question => question.examPrep && question.sourceRefs?.some(reference => reference.path === source)))
+  assert(!prep.some(question => question.originalExam === 'trial-2025'))
   assert(prep.every(question => question.topicId !== 'ai-reinforcement-learning'))
 })
 

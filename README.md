@@ -6,11 +6,10 @@ I built Study Deck with AI to revise for **IN3050** and **IN3230**. Anyone is we
 
 ## Practise
 
-- In **Practice**, choose **Question source → Past exams** for IN3050. Select the 2024 final, 2025 final, 2025 trial, or **All past exams**, then choose the number of questions. Answer options retain the papers’ wording and order, including typos and duplicate choices. Generated variants and converted written prompts are excluded. Source errors are explained after answering; ambiguous or broken items do not affect the score.
-- Use **Question bank → Recent exams and prep** for exam-based practice including variants and adapted written prompts.
-- In **Syllabus**, choose **Practise this topic** to study one topic. Both courses have **Summary of this topic** with core concepts, a worked example, and self-check questions.
-
-- In **Key terms**, search short definitions for both courses, filter by course or topic, and sort A–Z or by topic.
+- **Past exams** in IN3050 defaults to Fall 2024 and Fall 2025. Turn off **Current exam topics only** for complete papers. The 2025 trial is extra practice. Original options and order are preserved; source errors are explained and excluded from scores.
+- **Mock exam** in IN3050 defaults to 50 multiple-choice questions. **Question bank → Exam prep** combines lecture-based and Fall-exam material. Lecture slides are the primary reference; AI Philosophy (Lecture 14, Part 2) is excluded. Spring 2025 is not a format reference.
+- **Syllabus** offers **Practise this topic**, **Summary of this topic**, and IN3050 exam guidance. The remaining walkthrough slides are pending.
+- **Key terms** provides short definitions for both courses, with course/topic filters and alphabetical sorting.
 
 ## Create and share decks
 

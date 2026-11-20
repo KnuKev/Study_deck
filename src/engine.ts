@@ -1,8 +1,9 @@
 import type { StudySetId, Difficulty, EndReason, ExamYear, Question, Session, SessionMode, SessionSummary } from './model.ts'
+import { isIN3050ExamPreparation } from './examGuidance.ts'
 
 export type QuestionFocus = 'mixed' | 'prep' | 'trial-2025' | ExamYear
 
-export function getPracticePool(questions: readonly Question[], courseId: StudySetId, topicIds: readonly string[], difficulty: Difficulty | 'all' = 'all', focus: QuestionFocus = 'mixed') {
+export function getPracticePool(questions: readonly Question[], courseId: StudySetId, topicIds: readonly string[], difficulty: Difficulty | 'all' = 'all', focus: QuestionFocus = 'mixed', mode: SessionMode = 'practice') {
   const topics = new Set(topicIds)
   return questions.filter(question => {
     if (question.isDemo || question.retired || question.courseId !== courseId) return false
@@ -10,7 +11,8 @@ export function getPracticePool(questions: readonly Question[], courseId: StudyS
     if (typeof focus === 'number') return question.examYear === focus
     if (question.historicalOnly || (topics.size && !topics.has(question.topicId))) return false
     if (difficulty !== 'all' && question.difficulty !== difficulty) return false
-    return focus === 'mixed' || Boolean(question.examPrep || question.examYear || question.trial2025)
+    if (courseId === 'IN3050' && mode === 'exam' && (question.type === 'boolean' || question.unscored)) return false
+    return focus === 'mixed' || (courseId === 'IN3050' ? isIN3050ExamPreparation(question) : Boolean(question.examPrep || question.examYear || question.trial2025))
   })
 }
 
